@@ -27,4 +27,6 @@ The dashboard on the site is explicitly presented as a visual representation of 
 
 ## GitHub Pages
 
-To publish: open **Settings → Pages**, choose **Deploy from a branch**, select `main` and `/ (root)`, then save.
+Publishing source: `main` / `/ (root)`.
+
+Deployment trigger refreshed after Pages was enabled.
