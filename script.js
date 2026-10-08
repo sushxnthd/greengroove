@@ -57,7 +57,6 @@ const sectionMap={
   system:'#architecture',
   architecture:'#architecture',
   engineering:'#engineering',
-  archive:'#engineering',
   validation:'#validation',
   contribution:'#overview',
   reflection:'#overview',
@@ -97,8 +96,7 @@ const destinations={
   contribution:['role','my role','contribution','my work','sushanth'],
   validation:['evidence','validation','prayaas','ncert','grant','50000','50k'],
   reflection:['reflection','learned','learning','what changed','lesson'],
-  team:['team','aryan','members'],
-  archive:['archive','behance','original','artifacts','design']
+  team:['team','aryan','members']
 };
 
 function findDestination(value){
