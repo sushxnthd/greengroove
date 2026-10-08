@@ -1,1 +1,8 @@
-const navShell=document.querySelector('.nav-shell');const menu=document.querySelector('.menu');const nav=document.querySelector('.nav');const reveals=document.querySelectorAll('.reveal');window.addEventListener('scroll',()=>{navShell.classList.toggle('scrolled',window.scrollY>18)},{passive:true});menu?.addEventListener('click',()=>{const open=nav.classList.toggle('mobile-open');menu.setAttribute('aria-expanded',String(open))});document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('mobile-open');menu?.setAttribute('aria-expanded','false')}));const io=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('in');io.unobserve(entry.target)}})},{threshold:.12,rootMargin:'0px 0px -30px 0px'});reveals.forEach(el=>io.observe(el));document.getElementById('year').textContent=new Date().getFullYear();
+const header=document.querySelector('.site-header');
+const menu=document.querySelector('.menu');
+window.addEventListener('scroll',()=>header?.classList.toggle('scrolled',scrollY>12),{passive:true});
+menu?.addEventListener('click',()=>{const open=header.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));});
+document.querySelectorAll('.desktop-nav a').forEach(a=>a.addEventListener('click',()=>{header.classList.remove('open');menu?.setAttribute('aria-expanded','false');}));
+const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.1,rootMargin:'0px 0px -40px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+document.getElementById('year').textContent=new Date().getFullYear();
