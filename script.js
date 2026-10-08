@@ -13,7 +13,36 @@ const roleChips=[...document.querySelectorAll('.role-chip')];
 const rolePanels=[...document.querySelectorAll('.role-copy')];
 const rolePanel=document.querySelector('.role-panel');
 const mediaRibbon=document.querySelector('.media-ribbon-track');
+const heroSequence=[...document.querySelectorAll('.claude-hero .hero-center > *')];
+const heroOrbitCards=[...document.querySelectorAll('.claude-hero .orbit-card')];
 const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if(!reduceMotion){
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    heroSequence.forEach((item,index)=>{
+      item.animate([
+        {opacity:0,filter:'blur(12px)',transform:'translateY(24px) scale(.985)'},
+        {opacity:1,filter:'blur(0)',transform:'translateY(0) scale(1)'}
+      ],{
+        duration:1050,
+        delay:120+index*105,
+        easing:'cubic-bezier(.22,1,.36,1)',
+        fill:'both'
+      });
+    });
+    heroOrbitCards.forEach((card,index)=>{
+      card.animate([
+        {opacity:0,filter:'blur(14px)',scale:.92},
+        {opacity:1,filter:'blur(0)',scale:1}
+      ],{
+        duration:1150,
+        delay:180+index*115,
+        easing:'cubic-bezier(.22,1,.36,1)',
+        fill:'both'
+      });
+    });
+  }));
+}
 
 window.addEventListener('scroll',()=>{
   header?.classList.toggle('scrolled',window.scrollY>8);
