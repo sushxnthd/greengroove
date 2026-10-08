@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="ambient" aria-hidden="true"></div>
   <header class="site-header">
     <a class="brand" href="#top" aria-label="Green Groove home"><span class="spark">✦</span><span>GREEN GROOVE</span></a>
     <nav class="desktop-nav" aria-label="Primary navigation">
@@ -31,156 +30,146 @@
   </header>
 
   <main id="top">
-    <section class="hero reveal">
-      <img class="hero-bg" src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/09cb22211169339.67245eac9212c.png" alt="Original Green Groove Behance cover" />
-      <div class="hero-shade"></div>
-      <div class="hero-frame"></div>
-      <div class="hero-top"><span class="year-pill">2023—'24</span><span class="hero-type">PRODUCT DESIGN</span></div>
-      <div class="hero-copy">
-        <div class="spark-stack" aria-hidden="true"><i>✦</i><i>✦</i><i>✦</i></div>
-        <h1>GREEN<br>GROOVE</h1>
-        <p>smart shopping.</p>
+    <section class="hero shell reveal">
+      <div class="artboard hero-board">
+        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/09cb22211169339.67245eac9212c.png" alt="Original Green Groove Behance cover" />
       </div>
-      <div class="hero-bottom"><span>01</span><a href="#discover">SCROLL TO DISCOVER ↓</a><span>06</span></div>
+      <div class="hero-meta">
+        <span>2023—24 · PRODUCT DESIGN</span>
+        <a href="#discover">SCROLL TO DISCOVER ↓</a>
+      </div>
     </section>
 
-    <section class="project-intro section-shell">
-      <div class="intro-label reveal">A STUDENT PRODUCT + SYSTEMS PROJECT</div>
+    <section class="intro shell reveal">
+      <div class="intro-label">GREEN GROOVE / SMART SHOPPING</div>
       <div class="intro-grid">
-        <div class="intro-title reveal">
-          <span class="eyebrow">GREEN GROOVE / SMART SHOPPING</span>
-          <h2>A supermarket system designed around the moment a product leaves the shelf.</h2>
-        </div>
-        <div class="intro-copy reveal">
+        <h1>A connected retail system designed around the moment a product leaves the shelf.</h1>
+        <div class="intro-copy">
           <p>Green Groove combines an RFID-enabled shopper identity, smart-shelf sensing and a digital cart to rethink checkout and inventory interaction.</p>
-          <p>It began as a product-design project and developed into a broader IoT system spanning hardware concepts, interface design and retail workflow research.</p>
-          <a class="mini-link" href="#design">View system architecture ↘</a>
+          <p>This website extends the original Behance case study without introducing a second visual language: the original boards remain the primary design surface, while the surrounding web layer stays deliberately restrained.</p>
         </div>
       </div>
     </section>
 
     <section class="phase" id="discover">
-      <div class="phase-bar reveal"><span>PHASE 1</span><strong>DISCOVER</strong><i>✦</i></div>
-      <div class="section-shell">
-        <div class="phase-heading reveal">
-          <div><span class="eyebrow">IoT IN SUPERMARKET</span><h2>Three product touchpoints.<br>One connected trip.</h2></div>
-          <p>The original case study explored the system through three linked product concepts: the smart shelf, the Groove Band and the G'G app.</p>
+      <div class="shell">
+        <div class="phase-bar reveal"><span>PHASE 1</span><strong>DISCOVER</strong><i>✦</i></div>
+        <div class="phase-copy reveal">
+          <div><span class="eyebrow">IOT IN SUPERMARKET</span><h2>Understand the friction before designing the intervention.</h2></div>
+          <p>The first phase maps the existing supermarket experience, identifies recurring operational pain points and frames the three connected product touchpoints: Smart Shelf, Groove Band and the G'G app.</p>
         </div>
-
-        <div class="product-grid">
-          <article class="product-card wire reveal">
-            <span class="card-index">01</span><h3>Smart Shelf</h3><p>Sensor-assisted shelving tracks physical product movement and supports live inventory state.</p>
-            <div class="wire-shelf" aria-hidden="true"><i></i><i></i><i></i><i></i><b></b></div>
-          </article>
-          <article class="product-card band reveal">
-            <span class="card-index">02</span><h3>Groove Band</h3><p>An RFID-enabled wearable provides a persistent shopper identity for the shopping session.</p>
-            <div class="band-render" aria-hidden="true"><div></div><span>GG</span></div>
-          </article>
-          <article class="product-card app reveal">
-            <span class="card-index">03</span><h3>The G'G App</h3><p>A lightweight interface exposes the evolving digital cart, prices and store-side information.</p>
-            <div class="phone" aria-hidden="true"><span class="notch"></span><b>groove.</b><i></i><i></i><i></i><small>₹ 684</small></div>
-          </article>
-        </div>
-
-        <div class="case-plate reveal">
-          <div class="plate-meta"><span>ORIGINAL CASE STUDY / PRODUCT CONCEPTS</span><a href="https://www.behance.net/gallery/211169339/Green-Groove/modules/1202436157" target="_blank" rel="noreferrer">open module ↗</a></div>
+        <figure class="artboard case-board reveal">
           <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/8f77ac211169339.67245eac91a69.png" alt="Green Groove product concepts and pain points from the original Behance project" loading="lazy" />
-        </div>
-
-        <div class="pain-head reveal"><span>5 PAIN POINTS</span><b>→</b></div>
-        <div class="pain-grid">
-          <article class="pain-card reveal"><div class="neon-icon radar-icon"></div><span>01</span><h3>Limited Visibility</h3></article>
-          <article class="pain-card reveal"><div class="neon-icon alert-icon">!</div><span>02</span><h3>Manual Errors</h3></article>
-          <article class="pain-card reveal"><div class="neon-icon star-icon">☆</div><span>03</span><h3>Customer Issues</h3></article>
-          <article class="pain-card reveal"><div class="neon-icon tool-icon">⌁</div><span>04</span><h3>Restocking</h3></article>
-          <article class="pain-card reveal"><div class="neon-icon gear-icon">◉</div><span>05</span><h3>Maintenance</h3></article>
+          <figcaption><span>ORIGINAL CASE STUDY / PRODUCT CONCEPTS + PAIN POINTS</span><a href="https://www.behance.net/gallery/211169339/Green-Groove/modules/1202436157" target="_blank" rel="noreferrer">OPEN MODULE ↗</a></figcaption>
+        </figure>
+        <div class="annotation-grid reveal">
+          <article><span>01</span><h3>Smart Shelf</h3><p>Shelf-side sensing tracks product movement and changing inventory state.</p></article>
+          <article><span>02</span><h3>Groove Band</h3><p>An RFID wearable gives the shopper a persistent identity during the trip.</p></article>
+          <article><span>03</span><h3>The G'G App</h3><p>A lightweight interface exposes the evolving digital cart and store information.</p></article>
         </div>
       </div>
     </section>
 
     <section class="phase" id="ideate">
-      <div class="phase-bar reveal"><span>PHASE 2</span><strong>IDEATE</strong><i>✦</i></div>
-      <div class="section-shell">
-        <div class="split-heading reveal">
-          <div><span class="eyebrow">PRODUCT ENGINEERING</span><h2>Kano analysis<br>before form.</h2></div>
-          <p>The concept was structured around basic requirements, satisfiers and delighters before visual direction was locked.</p>
+      <div class="shell">
+        <div class="phase-bar reveal"><span>PHASE 2</span><strong>IDEATE</strong><i>✦</i></div>
+        <div class="phase-copy reveal">
+          <div><span class="eyebrow">PRODUCT ENGINEERING</span><h2>Kano analysis before form.</h2></div>
+          <p>Basic requirements, satisfiers and delighters were separated before visual direction was locked. The design brief then condensed the intended character into three words: modern, retroistic and minimal.</p>
         </div>
-        <div class="kano-grid">
-          <article class="kano-card reveal"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/c2fc79211169339.67245eac92c6c.png" alt="Original Green Groove Kano analysis and ideation board" loading="lazy" /><div class="kano-overlay"><span>01</span><h3>Basic</h3><div class="progress"><i style="width:75%"></i></div><small>75%</small></div></article>
-          <article class="kano-copy reveal"><span class="eyebrow">DESIGN BRIEF</span><h3>Make the system feel <em>modern</em>, slightly <em>retroistic</em>, and still <em>minimal</em>.</h3><p>The visual identity intentionally pairs nostalgic, rounded display typography with futuristic wireframes and luminous gradients.</p><div class="mood-pills"><span>Modern</span><span>Retroistic</span><span>Minimal</span></div></article>
-        </div>
-        <div class="moodboard reveal" aria-label="Original Behance ideation board">
-          <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/c2fc79211169339.67245eac92c6c.png" alt="Green Groove moodboard and Kano analysis from Behance" loading="lazy" />
-        </div>
+        <figure class="artboard case-board reveal">
+          <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/c2fc79211169339.67245eac92c6c.png" alt="Green Groove Kano analysis, design brief and moodboard from the original Behance project" loading="lazy" />
+          <figcaption><span>ORIGINAL CASE STUDY / KANO + DESIGN BRIEF + MOODBOARD</span><a href="https://www.behance.net/gallery/211169339/Green-Groove/modules/1202436155" target="_blank" rel="noreferrer">OPEN MODULE ↗</a></figcaption>
+        </figure>
+        <div class="pill-row reveal" aria-label="Green Groove mood keywords"><span>Modern</span><span>Retroistic</span><span>Minimal</span></div>
       </div>
     </section>
 
     <section class="phase" id="design">
-      <div class="phase-bar reveal"><span>PHASE 3</span><strong>DESIGN</strong><i>✦</i></div>
-      <div class="section-shell design-shell">
-        <div class="design-heading reveal"><span class="eyebrow">FROM CONCEPT TO SYSTEM</span><h2>The shelf, the band,<br>and the transaction.</h2></div>
-        <div class="design-flow reveal">
-          <article><span>01</span><h3>Identify</h3><p>The Groove Band assigns the shopper a session identity using RFID.</p></article>
-          <b>→</b>
-          <article><span>02</span><h3>Sense</h3><p>Smart-shelf sensing records product movement and changing shelf state.</p></article>
-          <b>→</b>
-          <article><span>03</span><h3>Associate</h3><p>Physical events are mapped to the shopper’s live digital cart.</p></article>
-          <b>→</b>
-          <article class="active"><span>04</span><h3>Settle</h3><p>The accumulated cart becomes the basis for checkout and inventory updates.</p></article>
+      <div class="shell">
+        <div class="phase-bar reveal"><span>PHASE 3</span><strong>DESIGN</strong><i>✦</i></div>
+        <div class="phase-copy reveal">
+          <div><span class="eyebrow">FROM CONCEPT TO SYSTEM</span><h2>The shelf, the band and the transaction.</h2></div>
+          <p>The designed system moves identity and sensing upstream from the checkout counter. A shopper is identified once, product movement is sensed where it occurs, and the digital cart is maintained throughout the trip.</p>
         </div>
-        <div class="case-plate reveal">
-          <div class="plate-meta"><span>ORIGINAL CASE STUDY / PHASE 3 DESIGN</span><a href="https://www.behance.net/gallery/211169339/Green-Groove/modules/1202436163" target="_blank" rel="noreferrer">open module ↗</a></div>
-          <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/991f2f211169339.67245eac930ce.png" alt="Green Groove Phase 3 design from original Behance project" loading="lazy" />
-        </div>
-
-        <div class="architecture reveal">
-          <div class="arch-copy"><span class="eyebrow">SYSTEM VIEW</span><h3>Physical actions become digital state.</h3><p>The core research idea is simple: avoid re-identifying every item at the end. Instead, connect shopper identity with shelf-level sensing while shopping is happening.</p></div>
-          <div class="arch-map" aria-label="Conceptual Green Groove architecture">
-            <div class="arch-node n1"><span>RFID</span><strong>Groove Band</strong></div>
-            <div class="arch-node n2"><span>SENSOR</span><strong>Smart Shelf</strong></div>
-            <div class="arch-core"><small>LIVE</small><strong>CART</strong><i>✦</i></div>
-            <div class="arch-node n3"><span>STATE</span><strong>Inventory</strong></div>
-            <div class="arch-node n4"><span>OUTPUT</span><strong>Billing</strong></div>
-            <svg viewBox="0 0 800 560" aria-hidden="true"><path d="M145 125C275 130 270 275 400 280"/><path d="M655 125C525 130 530 275 400 280"/><path d="M145 440C275 430 270 285 400 280"/><path d="M655 440C525 430 530 285 400 280"/></svg>
-          </div>
+        <figure class="artboard case-board reveal">
+          <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/991f2f211169339.67245eac930ce.png" alt="Green Groove Phase 3 design from the original Behance project" loading="lazy" />
+          <figcaption><span>ORIGINAL CASE STUDY / PHASE 3 DESIGN</span><a href="https://www.behance.net/gallery/211169339/Green-Groove/modules/1202436163" target="_blank" rel="noreferrer">OPEN MODULE ↗</a></figcaption>
+        </figure>
+        <div class="system-strip reveal" aria-label="Green Groove system flow">
+          <article><span>01</span><h3>Identify</h3><p>RFID establishes the shopper session.</p></article>
+          <b>→</b>
+          <article><span>02</span><h3>Sense</h3><p>Shelf hardware records product movement.</p></article>
+          <b>→</b>
+          <article><span>03</span><h3>Associate</h3><p>The event updates the live digital cart.</p></article>
+          <b>→</b>
+          <article><span>04</span><h3>Settle</h3><p>The accumulated cart supports billing and inventory updates.</p></article>
         </div>
       </div>
     </section>
 
-    <section class="brand-section">
-      <div class="brand-words" aria-hidden="true"><span>GREEN</span><span>GROOVE</span></div>
-      <div class="torus" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-      <div class="brand-copy reveal"><span class="eyebrow">IDENTITY SYSTEM</span><h2>revolutionize.<br><em>smart shopping.</em></h2><p>The original identity uses a green→cyan→blue gradient, glowing wireframes, grayscale imagery and a rounded retro display serif to bridge physical product design and digital systems.</p></div>
-      <div class="case-plate brand-plate reveal"><div class="plate-meta"><span>ORIGINAL CASE STUDY / WORDMARK + TORUS</span><a href="https://www.behance.net/gallery/211169339/Green-Groove/modules/1202436159" target="_blank" rel="noreferrer">open module ↗</a></div><img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/70a4ef211169339.67245eac915e5.png" alt="Green Groove wordmark and torus design from Behance" loading="lazy" /></div>
+    <section class="identity-section">
+      <div class="shell">
+        <div class="identity-copy reveal">
+          <span class="eyebrow">IDENTITY SYSTEM</span>
+          <h2>One visual language from product concept to final wordmark.</h2>
+          <p>The identity is intentionally narrow: near-black backgrounds, white and gray typography, grayscale photography, luminous green→cyan→blue gradients, rounded geometry and neon wireframes.</p>
+        </div>
+        <figure class="artboard case-board reveal">
+          <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/70a4ef211169339.67245eac915e5.png" alt="Green Groove wordmark and torus identity board from Behance" loading="lazy" />
+          <figcaption><span>ORIGINAL CASE STUDY / WORDMARK + TORUS</span><a href="https://www.behance.net/gallery/211169339/Green-Groove/modules/1202436159" target="_blank" rel="noreferrer">OPEN MODULE ↗</a></figcaption>
+        </figure>
+        <figure class="artboard case-board reveal secondary-board">
+          <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/d434be211169339.67245eac9258b.png" alt="Additional original Green Groove Behance board" loading="lazy" />
+          <figcaption><span>ORIGINAL CASE STUDY / FINAL BOARD</span><a href="https://www.behance.net/gallery/211169339/Green-Groove" target="_blank" rel="noreferrer">VIEW PROJECT ↗</a></figcaption>
+        </figure>
+      </div>
     </section>
 
     <section class="research" id="research">
-      <div class="section-shell">
-        <div class="research-head reveal"><span class="eyebrow">EXTERNAL VALIDATION</span><h2>Selected under<br><em>NCERT PRAYAAS.</em></h2></div>
-        <div class="research-grid">
-          <div class="research-copy reveal"><p>Green Groove was selected under NCERT’s PRAYAAS initiative, supporting student research and scientific problem-solving.</p><p>Published school coverage reports project support of ₹50,000. The website separates that verified recognition from the prototype’s conceptual product visuals.</p><div class="research-links"><a href="https://www.ncert.nic.in/desm/prayaas.php?ln=en" target="_blank" rel="noreferrer">NCERT programme ↗</a><a href="https://theglobaltimes.in/archives/december-15-2025.pdf" target="_blank" rel="noreferrer">Published coverage ↗</a></div></div>
-          <div class="stats reveal"><article><span>PROGRAMME</span><strong>PRAYAAS</strong><small>NCERT</small></article><article><span>PROJECT SUPPORT</span><strong>₹50K</strong><small>reported in school coverage</small></article><article><span>DOMAIN</span><strong>IoT × Retail</strong><small>product + systems research</small></article></div>
+      <div class="shell">
+        <div class="research-head reveal">
+          <span class="eyebrow">EXTERNAL VALIDATION</span>
+          <h2>Selected under <em>NCERT PRAYAAS.</em></h2>
+          <p>This section adds verified project context without changing the original visual identity.</p>
+        </div>
+        <div class="research-grid reveal">
+          <article><span>PROGRAMME</span><strong>PRAYAAS</strong><small>NCERT</small></article>
+          <article><span>PROJECT SUPPORT</span><strong>₹50K</strong><small>reported in published school coverage</small></article>
+          <article><span>DOMAIN</span><strong>IoT × Retail</strong><small>product + systems research</small></article>
+        </div>
+        <div class="research-footer reveal">
+          <p>Green Groove was selected under NCERT’s PRAYAAS initiative, supporting student research and scientific problem-solving.</p>
+          <div><a href="https://www.ncert.nic.in/desm/prayaas.php?ln=en" target="_blank" rel="noreferrer">NCERT PROGRAMME ↗</a><a href="https://theglobaltimes.in/archives/december-15-2025.pdf" target="_blank" rel="noreferrer">PUBLISHED COVERAGE ↗</a></div>
         </div>
       </div>
     </section>
 
-    <section class="team section-shell">
-      <div class="team-head reveal"><span class="eyebrow">TEAM</span><h2>Designed, researched<br>and prototyped by students.</h2></div>
-      <div class="people">
-        <article class="person reveal"><span>01 / CO-CREATOR</span><h3>Sushanth Dasari</h3><p>Research · systems · product design · prototyping</p></article>
-        <article class="person reveal"><span>02 / CO-CREATOR</span><h3>Aryan Kumar</h3><p>Research · systems · product design · prototyping</p></article>
+    <section class="team shell">
+      <div class="team-copy reveal">
+        <span class="eyebrow">TEAM</span>
+        <h2>Designed, researched and prototyped by students.</h2>
+      </div>
+      <div class="people reveal">
+        <article><span>01 / CO-CREATOR</span><h3>Sushanth Dasari</h3><p>Research · systems · product design · prototyping</p></article>
+        <article><span>02 / CO-CREATOR</span><h3>Aryan Kumar</h3><p>Research · systems · product design · prototyping</p></article>
       </div>
     </section>
 
-    <section class="thanks">
-      <div class="thanks-chevron">⌃<br>⌃</div>
-      <h2 class="reveal">Thank You</h2>
-      <div class="credit-pills reveal"><span>Sushanth × Aryan</span><span>Figma · Procreate · Blender</span></div>
-      <div class="thanks-bottom"><span>green groove · smart shopping</span><a href="https://www.behance.net/gallery/211169339/Green-Groove" target="_blank" rel="noreferrer">view original case study ↗</a></div>
+    <section class="closing shell reveal">
+      <div><span class="eyebrow">GREEN GROOVE</span><h2>revolutionize.<br><em>smart shopping.</em></h2></div>
+      <a class="round-link" href="https://www.behance.net/gallery/211169339/Green-Groove" target="_blank" rel="noreferrer" aria-label="Open original Green Groove Behance project">↗</a>
     </section>
   </main>
 
-  <footer><a class="brand" href="#top"><span class="spark">✦</span><span>GREEN GROOVE</span></a><p>Student product + research project · Gurugram, India</p><p>© <span id="year"></span></p></footer>
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <a class="brand" href="#top"><span class="spark">✦</span><span>GREEN GROOVE</span></a>
+      <p>Student product + research project · Gurugram, India</p>
+      <p>© <span id="year"></span></p>
+    </div>
+  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
