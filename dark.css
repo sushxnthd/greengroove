@@ -1,0 +1,33 @@
+.header-inner{grid-template-columns:auto 1fr auto}
+.desktop-nav{justify-content:flex-end}
+.mobile-menu-toggle{justify-self:end}
+.external-nav{color:#85857e}
+.external-nav:after{background:#85857e}
+
+.primary-button,.light-button{
+  background:#182019;
+  color:#d9f5de;
+  border:1px solid rgba(112,207,130,.24);
+}
+.primary-button:hover,.light-button:hover{
+  background:#203023;
+  color:#effff2;
+  border-color:rgba(112,207,130,.46);
+}
+.secondary-button{
+  background:#11130f;
+  color:#d0cec6;
+  border:1px solid rgba(244,241,233,.13);
+}
+.secondary-button:hover{background:#181a15;border-color:rgba(244,241,233,.22)}
+.explorer-box button{
+  background:#182019;
+  color:#8be59b;
+  border:1px solid rgba(112,207,130,.24);
+}
+.explorer-box button:hover{background:#203023;color:#b7f5c1}
+.role-chip.active{
+  background:#182019;
+  border-color:rgba(112,207,130,.34);
+  color:#a7efb3;
+}
