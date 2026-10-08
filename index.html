@@ -3,159 +3,305 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#e9e9e6" />
+  <meta name="theme-color" content="#ffffff" />
   <meta name="description" content="Green Groove — a student-built retail systems project combining RFID identity, shelf sensing and a live digital cart. Selected under NCERT PRAYAAS." />
-  <meta property="og:title" content="Green Groove — retail systems project" />
+  <meta property="og:title" content="Green Groove — project documentation" />
   <meta property="og:description" content="A student engineering and product-design project by Sushanth Dasari and Aryan Kumar." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/991f2f211169339.67245eac930ce.png" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <title>Green Groove — retail systems project</title>
+  <title>Green Groove — project documentation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="page">
-    <header class="site-header">
-      <a class="brand" href="#top">green groove</a>
-      <nav class="desktop-nav" aria-label="Primary navigation">
-        <a href="#story">story</a>
-        <a href="#system">system</a>
-        <a href="#notes">notes</a>
-        <a href="#evidence">evidence</a>
+  <div class="announcement">
+    <span>Selected under NCERT PRAYAAS</span>
+    <a href="https://theglobaltimes.in/archives/december-15-2025.pdf" target="_blank" rel="noreferrer">Read published coverage ↗</a>
+  </div>
+
+  <header class="topbar">
+    <a class="brand" href="#overview" aria-label="Green Groove home">
+      <span class="brand-mark">gg</span>
+      <span>Green Groove</span>
+    </a>
+
+    <button class="search-trigger" type="button" aria-label="Search project documentation">
+      <span class="search-icon">⌕</span>
+      <span class="search-placeholder">Search project...</span>
+      <kbd>Ctrl K</kbd>
+    </button>
+
+    <div class="top-actions">
+      <a href="https://www.behance.net/gallery/211169339/Green-Groove" target="_blank" rel="noreferrer">Original study</a>
+      <a class="dashboard-link" href="#evidence">Evidence <span>→</span></a>
+      <button class="sidebar-toggle" type="button" aria-label="Toggle project navigation" aria-expanded="false">☰</button>
+    </div>
+  </header>
+
+  <div class="docs-shell">
+    <aside class="left-sidebar" aria-label="Project navigation">
+      <nav>
+        <section>
+          <h2>Getting started</h2>
+          <a class="nav-item active" href="#overview"><span>◉</span>Overview</a>
+          <a class="nav-item" href="#problem"><span>◎</span>Why it exists</a>
+        </section>
+
+        <section>
+          <h2>System</h2>
+          <a class="nav-item" href="#architecture"><span>⌘</span>Architecture</a>
+          <a class="nav-item" href="#components"><span>◇</span>Components</a>
+          <a class="nav-item" href="#edge-cases"><span>△</span>Edge cases</a>
+        </section>
+
+        <section>
+          <h2>Project work</h2>
+          <a class="nav-item" href="#contribution"><span>✦</span>My contribution</a>
+          <a class="nav-item" href="#evidence"><span>✓</span>External validation</a>
+          <a class="nav-item" href="#reflection"><span>↗</span>Reflection</a>
+          <a class="nav-item" href="#team"><span>☺</span>Team</a>
+        </section>
+
+        <section>
+          <h2>Sources</h2>
+          <a class="nav-item external" href="https://www.ncert.nic.in/desm/prayaas.php?ln=en" target="_blank" rel="noreferrer"><span>↗</span>NCERT PRAYAAS</a>
+          <a class="nav-item external" href="https://theglobaltimes.in/archives/december-15-2025.pdf" target="_blank" rel="noreferrer"><span>↗</span>Published coverage</a>
+          <a class="nav-item external" href="https://www.behance.net/gallery/211169339/Green-Groove" target="_blank" rel="noreferrer"><span>↗</span>Visual archive</a>
+        </section>
       </nav>
-      <a class="archive-link" href="https://www.behance.net/gallery/211169339/Green-Groove" target="_blank" rel="noreferrer">original study ↗</a>
-      <button class="menu" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span></button>
-    </header>
+    </aside>
 
-    <main id="top">
-      <article>
-        <section class="project-head reveal">
-          <p class="meta-line">student research project · 2024 · gurugram, india</p>
-          <h1>green groove</h1>
-          <p class="dek">A supermarket checkout experiment that became a systems project about identity, sensing and keeping physical and digital state aligned.</p>
-        </section>
+    <main class="main-content">
+      <article class="doc-article">
+        <section id="overview" class="doc-section hero-doc">
+          <div class="page-badge">PROJECT OVERVIEW</div>
+          <h1>Green Groove</h1>
+          <p class="page-subtitle">A supermarket checkout experiment that became a systems project about identity, sensing, and keeping physical and digital state aligned.</p>
 
-        <figure class="hero-figure reveal">
-          <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/991f2f211169339.67245eac930ce.png" alt="Original Green Groove product design board showing the Groove Band and smart shelf" />
-          <figcaption>Original product study, 2024. The website focuses on the engineering story behind the project rather than reproducing the full design deck.</figcaption>
-        </figure>
+          <div class="callout info-callout">
+            <div class="callout-icon">i</div>
+            <div>
+              <strong>Research prototype</strong>
+              <p>Green Groove is presented here as a student research and product-design project, not as a production retail deployment.</p>
+            </div>
+          </div>
 
-        <section class="project-meta reveal" aria-label="Project metadata">
-          <div><span>role</span><p>co-creator; research, systems, product design, prototyping</p></div>
-          <div><span>team</span><p>Sushanth Dasari + Aryan Kumar</p></div>
-          <div><span>core</span><p>RFID identity + shelf-side sensing + live digital cart</p></div>
-          <div><span>recognition</span><p>selected under NCERT PRAYAAS</p></div>
-        </section>
-
-        <section class="article-section" id="story">
-          <p class="section-label reveal">why we made it</p>
-          <div class="prose reveal">
-            <p class="lead">We began with a simple observation: a supermarket already sees the moment a product leaves a shelf, but conventional checkout largely ignores that event and identifies the item again later.</p>
-            <p>Green Groove started as a product-design concept built around three pieces: an RFID-enabled shopper band, a sensor-assisted shelf and a digital cart. The early idea was mostly about convenience. The more interesting problem appeared when we tried to make the system internally coherent.</p>
-            <p>If a product moves, which shopper caused the movement? What happens when it is put back? What if the RFID evidence and the shelf signal disagree? Those questions pushed the project away from “smart object” design and toward systems engineering.</p>
+          <div class="card-grid overview-cards">
+            <article class="doc-card">
+              <div class="card-icon">◎</div>
+              <h3>Role</h3>
+              <p>Co-creator across research, systems thinking, product design, and prototyping.</p>
+            </article>
+            <article class="doc-card">
+              <div class="card-icon">◇</div>
+              <h3>Team</h3>
+              <p>Sushanth Dasari and Aryan Kumar; two students working across the full project.</p>
+            </article>
+            <article class="doc-card">
+              <div class="card-icon">⌁</div>
+              <h3>Core system</h3>
+              <p>RFID shopper identity, shelf-side sensing, and a continuously updated digital cart.</p>
+            </article>
+            <article class="doc-card">
+              <div class="card-icon">✓</div>
+              <h3>External validation</h3>
+              <p>Selected under NCERT PRAYAAS; published school coverage reports ₹50,000 in project support.</p>
+            </article>
           </div>
         </section>
 
-        <section class="article-section" id="system">
-          <p class="section-label reveal">system</p>
-          <div class="section-title reveal">
-            <h2>four hand-offs, one transaction.</h2>
-            <p>The transaction is built gradually while the customer shops instead of being reconstructed entirely at the counter.</p>
+        <section id="problem" class="doc-section">
+          <div class="section-anchor">WHY IT EXISTS</div>
+          <h2>Why identify every item twice?</h2>
+          <p>Green Groove began with a simple observation: a supermarket already sees the moment a product leaves a shelf, but conventional checkout largely ignores that event and identifies the product again later.</p>
+          <p>The first version was about convenience. The more useful version became a systems question: can the transaction be assembled gradually while the customer shops instead of reconstructed at the end?</p>
+
+          <blockquote>
+            The interesting problem was not making checkout look faster. It was deciding what the system should know, when it should know it, and what happens when the physical world becomes ambiguous.
+          </blockquote>
+        </section>
+
+        <section id="architecture" class="doc-section">
+          <div class="section-anchor">SYSTEM MODEL</div>
+          <h2>Architecture</h2>
+          <p>The transaction is distributed across four hand-offs. Each layer contributes state while the shopping trip is happening.</p>
+
+          <div class="architecture-list">
+            <article><span>01</span><div><h3>Identify</h3><p>An RFID-enabled band establishes one persistent shopper session.</p></div></article>
+            <article><span>02</span><div><h3>Sense</h3><p>Shelf-side hardware detects a product being picked up or returned.</p></div></article>
+            <article><span>03</span><div><h3>Associate</h3><p>The physical event is linked to the correct shopper and updates the live cart.</p></div></article>
+            <article><span>04</span><div><h3>Settle</h3><p>The accumulated state becomes the basis for billing and inventory updates.</p></div></article>
           </div>
 
-          <div class="spec-grid reveal">
-            <div><span>01</span><strong>identify</strong><p>An RFID-enabled band establishes one persistent shopper session.</p></div>
-            <div><span>02</span><strong>sense</strong><p>Shelf-side hardware detects a product being picked up or returned.</p></div>
-            <div><span>03</span><strong>associate</strong><p>The physical event is linked to the correct shopper and updates the live cart.</p></div>
-            <div><span>04</span><strong>settle</strong><p>The accumulated state becomes the basis for billing and inventory updates.</p></div>
+          <div class="code-block" aria-label="Conceptual Green Groove system logic">
+            <div class="code-toolbar">
+              <div class="code-tabs"><button class="code-tab active" data-tab="logic">Conceptual logic</button><button class="code-tab" data-tab="edge">Edge cases</button></div>
+              <span>pseudocode</span>
+            </div>
+            <pre class="code-panel active" data-panel="logic"><code><span class="line"><b>01</b><span class="kw">session</span> = identify(<span class="str">RFID_band</span>)</span>
+<span class="line"><b>02</b></span>
+<span class="line"><b>03</b><span class="kw">on</span> shelf_event(item, action):</span>
+<span class="line"><b>04</b>    shopper = associate(session, event)</span>
+<span class="line"><b>05</b>    <span class="kw">if</span> action == <span class="str">"pick"</span>:</span>
+<span class="line"><b>06</b>        cart[shopper].add(item)</span>
+<span class="line"><b>07</b>    <span class="kw">if</span> action == <span class="str">"return"</span>:</span>
+<span class="line"><b>08</b>        cart[shopper].remove(item)</span></code></pre>
+            <pre class="code-panel" data-panel="edge"><code><span class="line"><b>01</b><span class="kw">if</span> RFID != shelf_signal:</span>
+<span class="line"><b>02</b>    flag(<span class="str">"uncertain event"</span>)</span>
+<span class="line"><b>03</b></span>
+<span class="line"><b>04</b><span class="kw">if</span> multiple_shoppers_nearby:</span>
+<span class="line"><b>05</b>    resolve_association()</span>
+<span class="line"><b>06</b></span>
+<span class="line"><b>07</b><span class="kw">if</span> item_returned:</span>
+<span class="line"><b>08</b>    reverse_original_state_change()</span></code></pre>
+          </div>
+          <p class="code-caption">Conceptual logic only. It summarizes the system model; it is not presented as production implementation code.</p>
+        </section>
+
+        <section id="components" class="doc-section">
+          <div class="section-anchor">CORE CONCEPTS</div>
+          <h2>Three product touchpoints</h2>
+          <p>The original concept split the experience into three connected pieces rather than treating checkout as one device.</p>
+
+          <div class="card-grid component-cards">
+            <article class="doc-card">
+              <div class="card-icon">⌁</div>
+              <h3>Groove Band</h3>
+              <p>A persistent shopper identity that remains stable across the trip.</p>
+            </article>
+            <article class="doc-card">
+              <div class="card-icon">▦</div>
+              <h3>Smart Shelf</h3>
+              <p>The point where product movement becomes observable system state.</p>
+            </article>
+            <article class="doc-card">
+              <div class="card-icon">▤</div>
+              <h3>Live Cart</h3>
+              <p>A transaction record that updates continuously instead of being assembled only at checkout.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="edge-cases" class="doc-section">
+          <div class="section-anchor">ENGINEERING NOTES</div>
+          <h2>Edge cases changed the project</h2>
+          <p>The most useful design decisions came from asking what breaks the clean happy path.</p>
+
+          <h3>Returns are first-class events</h3>
+          <p>A removal-only system is not enough. Putting an item back must reverse the exact cart state created by the original pick event.</p>
+
+          <h3>Sensor disagreement</h3>
+          <p>RFID evidence and shelf-state change may not arrive together or may point to different interpretations. Uncertain events should be preserved as uncertain rather than silently converted into transactions.</p>
+
+          <h3>Simultaneous actions</h3>
+          <p>Nearby shoppers can create overlapping events. Association logic matters as much as detection because the system must decide not only that something moved, but whose cart should change.</p>
+
+          <h3>Identity must persist</h3>
+          <p>Re-inferring the shopper at every shelf would recreate the same identification problem the system was trying to remove from checkout.</p>
+
+          <div class="callout warning-callout">
+            <div class="callout-icon">!</div>
+            <div>
+              <strong>Systems lesson</strong>
+              <p>A polished user interaction is only credible when the failure cases underneath it are credible too.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="contribution" class="doc-section">
+          <div class="section-anchor">PROJECT WORK</div>
+          <h2>My contribution</h2>
+          <p>I worked across the project rather than owning only one isolated layer.</p>
+
+          <div class="work-table">
+            <div><strong>Research</strong><p>Mapped supermarket friction points and narrowed them into a system problem we could design around.</p></div>
+            <div><strong>Architecture</strong><p>Helped shape the identity → shelf event → cart state → settlement model and the logic around returns and ambiguous events.</p></div>
+            <div><strong>Interaction</strong><p>Designed how the band, shelf, and digital cart should behave as one experience rather than three disconnected products.</p></div>
+            <div><strong>Prototyping</strong><p>Built the visual and product artifacts used to explain the concept, expose weaknesses, and iterate on it.</p></div>
+          </div>
+        </section>
+
+        <section id="evidence" class="doc-section">
+          <div class="section-anchor">EXTERNAL VALIDATION</div>
+          <h2>Selected under NCERT PRAYAAS</h2>
+          <p>Green Groove was selected under NCERT’s Promotion of Research Attitude among Young And Aspiring Students initiative. Published school coverage reports ₹50,000 in project support.</p>
+
+          <div class="card-grid evidence-cards">
+            <a class="doc-card link-card" href="https://www.ncert.nic.in/desm/prayaas.php?ln=en" target="_blank" rel="noreferrer">
+              <div class="card-icon">↗</div>
+              <h3>NCERT programme</h3>
+              <p>Official PRAYAAS programme page.</p>
+            </a>
+            <a class="doc-card link-card" href="https://theglobaltimes.in/archives/december-15-2025.pdf" target="_blank" rel="noreferrer">
+              <div class="card-icon">↗</div>
+              <h3>Published coverage</h3>
+              <p>School publication documenting the selection and reported support.</p>
+            </a>
           </div>
 
-          <figure class="body-figure reveal">
-            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/8f77ac211169339.67245eac91a69.png" alt="Original Green Groove project board showing product concepts and problem framing" loading="lazy" />
-            <figcaption>Early project board showing the three product touchpoints. It is useful here as evidence of how the system was originally framed.</figcaption>
+          <figure class="artifact">
+            <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/991f2f211169339.67245eac930ce.png" alt="Original Green Groove design board showing the Groove Band and smart shelf" loading="lazy" />
+            <figcaption>Original Green Groove project board, 2024. Included here as process evidence rather than as the website’s visual identity.</figcaption>
           </figure>
         </section>
 
-        <section class="article-section" id="notes">
-          <p class="section-label reveal">engineering notes</p>
-          <div class="section-title reveal">
-            <h2>the questions that changed the project.</h2>
-            <p>These were more useful than adding another feature or polishing another screen.</p>
-          </div>
+        <section id="reflection" class="doc-section">
+          <div class="section-anchor">REFLECTION</div>
+          <h2>What I took from it</h2>
+          <p>The useful part of Green Groove was not the branding exercise. It was learning that a polished interaction only works when the invisible state underneath it is trustworthy.</p>
+          <p>The project made me think about what each component knows, when it knows it, what can go wrong, and how a physical action becomes reliable digital information. That systems perspective is the part I would keep developing now.</p>
+        </section>
 
-          <div class="qa">
-            <section class="qa-item reveal">
-              <h3>what happens when an item is returned?</h3>
-              <p>A removal-only system is not enough. Returning an item has to reverse the exact cart state created by the original pick event. That made inverse events a first-class part of the model rather than an edge case.</p>
-            </section>
-            <section class="qa-item reveal">
-              <h3>what if two signals disagree?</h3>
-              <p>RFID evidence and shelf-state change may not arrive at the same time or may point to different interpretations. A credible implementation should preserve uncertainty instead of silently converting every sensor event into a transaction.</p>
-            </section>
-            <section class="qa-item reveal">
-              <h3>what if two people act at once?</h3>
-              <p>Nearby shoppers can create overlapping events. That means association logic matters as much as detection: the system needs to decide not only that something moved, but whose cart should change.</p>
-            </section>
-            <section class="qa-item reveal">
-              <h3>what actually needs to persist?</h3>
-              <p>The shopper identity must survive across the whole trip. Re-inferring it at every shelf would make the system fragile and would recreate the same identification problem that checkout already has.</p>
-            </section>
+        <section id="team" class="doc-section final-section">
+          <div class="section-anchor">TEAM</div>
+          <h2>Two students, one end-to-end system</h2>
+          <div class="team-grid">
+            <div><strong>Sushanth Dasari</strong><p>Co-creator · research · systems · product design · prototyping</p></div>
+            <div><strong>Aryan Kumar</strong><p>Co-creator · research · systems · product design · prototyping</p></div>
           </div>
         </section>
 
-        <section class="article-section" id="work">
-          <p class="section-label reveal">my work</p>
-          <div class="section-title reveal">
-            <h2>across the project, not just one layer.</h2>
-          </div>
-          <div class="work-notes reveal">
-            <p><strong>research.</strong> We mapped supermarket friction points and narrowed them into a system problem that could be designed and discussed concretely.</p>
-            <p><strong>architecture.</strong> I helped shape the identity → shelf event → cart state → settlement flow and the logic around returns and ambiguous events.</p>
-            <p><strong>interaction.</strong> I worked on how the band, shelf and digital cart should behave as one experience rather than three unrelated products.</p>
-            <p><strong>prototyping and communication.</strong> I built the visual and product artifacts used to explain the concept, expose weaknesses and iterate on it.</p>
-          </div>
-        </section>
-
-        <section class="article-section" id="evidence">
-          <p class="section-label reveal">external validation</p>
-          <div class="evidence-block reveal">
-            <div>
-              <h2>selected under NCERT PRAYAAS.</h2>
-              <p>Green Groove was selected under NCERT’s Promotion of Research Attitude among Young And Aspiring Students initiative. Published school coverage reports ₹50,000 in project support.</p>
-            </div>
-            <div class="evidence-links">
-              <a href="https://www.ncert.nic.in/desm/prayaas.php?ln=en" target="_blank" rel="noreferrer">NCERT programme ↗</a>
-              <a href="https://theglobaltimes.in/archives/december-15-2025.pdf" target="_blank" rel="noreferrer">published coverage ↗</a>
-            </div>
-          </div>
-        </section>
-
-        <section class="article-section reflection reveal">
-          <p class="section-label">what I took from it</p>
-          <div class="prose">
-            <p class="lead">The useful part of Green Groove was not the branding exercise. It was learning that a polished interaction only works when the invisible state underneath it is trustworthy.</p>
-            <p>The project made me think about what each component knows, when it knows it, what can go wrong, and how a physical action becomes reliable digital information. That systems perspective is the part I would keep developing now.</p>
-          </div>
-        </section>
-
-        <section class="team-section reveal">
-          <p class="section-label">team</p>
-          <div class="team-row">
-            <div><strong>Sushanth Dasari</strong><p>co-creator · research · systems · product design · prototyping</p></div>
-            <div><strong>Aryan Kumar</strong><p>co-creator · research · systems · product design · prototyping</p></div>
-          </div>
-        </section>
+        <footer class="doc-footer">
+          <div><a href="#overview">Overview</a><a href="#architecture">System architecture</a><a href="#evidence">Evidence</a></div>
+          <p>Green Groove · student engineering project · <span id="year"></span></p>
+        </footer>
       </article>
     </main>
 
-    <footer class="site-footer">
-      <p>green groove · student engineering project</p>
-      <div><a href="https://www.behance.net/gallery/211169339/Green-Groove" target="_blank" rel="noreferrer">original visual study ↗</a><a href="#top">back to top ↑</a></div>
-      <p>© <span id="year"></span></p>
-    </footer>
+    <aside class="right-toc" aria-label="On this page">
+      <div class="toc-inner">
+        <h2>On this page</h2>
+        <a class="toc-link active" href="#overview">Overview</a>
+        <a class="toc-link" href="#problem">Why it exists</a>
+        <a class="toc-link" href="#architecture">Architecture</a>
+        <a class="toc-link" href="#components">Components</a>
+        <a class="toc-link" href="#edge-cases">Edge cases</a>
+        <a class="toc-link" href="#contribution">My contribution</a>
+        <a class="toc-link" href="#evidence">External validation</a>
+        <a class="toc-link" href="#reflection">Reflection</a>
+        <a class="toc-link" href="#team">Team</a>
+      </div>
+    </aside>
+  </div>
+
+  <div class="search-dialog" role="dialog" aria-modal="true" aria-label="Search project" hidden>
+    <button class="search-backdrop" type="button" aria-label="Close search"></button>
+    <div class="search-panel">
+      <div class="search-input-wrap"><span>⌕</span><input id="project-search" type="search" placeholder="Search sections..." autocomplete="off" /><kbd>Esc</kbd></div>
+      <div class="search-results" id="search-results">
+        <a href="#overview" data-search="overview project role team core system validation">Overview<span>Project summary</span></a>
+        <a href="#problem" data-search="problem why checkout supermarket item shelf">Why it exists<span>Project motivation</span></a>
+        <a href="#architecture" data-search="architecture identify sense associate settle RFID shelf cart billing">Architecture<span>System model</span></a>
+        <a href="#components" data-search="components groove band smart shelf live cart">Components<span>Product touchpoints</span></a>
+        <a href="#edge-cases" data-search="edge cases return sensor disagreement simultaneous identity failure">Edge cases<span>Engineering notes</span></a>
+        <a href="#contribution" data-search="contribution research architecture interaction prototyping">My contribution<span>Project work</span></a>
+        <a href="#evidence" data-search="evidence NCERT PRAYAAS grant support coverage">External validation<span>Sources and recognition</span></a>
+        <a href="#reflection" data-search="reflection lesson systems physical digital state">Reflection<span>What I learned</span></a>
+      </div>
+    </div>
   </div>
 
   <script src="script.js"></script>
