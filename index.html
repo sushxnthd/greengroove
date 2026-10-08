@@ -8,7 +8,6 @@
   <meta property="og:title" content="Green Groove — retail systems project" />
   <meta property="og:description" content="A student engineering and product-design project by Sushanth Dasari and Aryan Kumar." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/09cb22211169339.67245eac9212c.png" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <title>Green Groove — retail systems project</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,7 +26,6 @@
         <a class="nav-link" href="#engineering">Engineering</a>
         <a class="nav-link" href="#validation">Evidence</a>
         <a class="nav-link" href="#team">Team</a>
-        <a class="nav-link external-nav" href="https://www.behance.net/gallery/211169339/Green-Groove" target="_blank" rel="noreferrer">Original study ↗</a>
       </nav>
       <button class="mobile-menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
     </div>
@@ -38,16 +36,24 @@
       <a href="#contribution">My contribution</a>
       <a href="#validation">Evidence</a>
       <a href="#team">Team</a>
-      <a href="https://www.behance.net/gallery/211169339/Green-Groove" target="_blank" rel="noreferrer">Original study ↗</a>
     </div>
   </header>
 
   <main>
     <section class="hero" id="overview">
       <div class="hero-orbit hero-orbit-left" aria-hidden="true">
-        <figure class="orbit-card orbit-a"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/991f2f211169339.67245eac930ce.png" alt="" /></figure>
-        <figure class="orbit-card orbit-b"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/8f77ac211169339.67245eac91a69.png" alt="" /></figure>
+        <div class="orbit-card system-tile orbit-a">
+          <div class="tile-top"><span>01</span><span>IDENTITY</span></div>
+          <div class="id-rings"><i></i><i></i><i></i></div>
+          <div class="tile-bottom"><strong>RFID session</strong><small>shopper linked</small></div>
+        </div>
+        <div class="orbit-card system-tile orbit-b">
+          <div class="tile-top"><span>02</span><span>SHELF EVENT</span></div>
+          <div class="shelf-bars"><i></i><i></i><i></i><i></i></div>
+          <div class="tile-bottom"><strong>pick / return</strong><small>physical state</small></div>
+        </div>
       </div>
+
       <div class="hero-center reveal">
         <p class="eyebrow">Student engineering + product design · 2024</p>
         <h1>Green<br>Groove</h1>
@@ -62,9 +68,18 @@
         </form>
         <p id="explorer-feedback" class="explorer-feedback" aria-live="polite"></p>
       </div>
+
       <div class="hero-orbit hero-orbit-right" aria-hidden="true">
-        <figure class="orbit-card orbit-c"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/c2fc79211169339.67245eac92c6c.png" alt="" /></figure>
-        <figure class="orbit-card orbit-d"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/70a4ef211169339.67245eac915e5.png" alt="" /></figure>
+        <div class="orbit-card system-tile orbit-c">
+          <div class="tile-top"><span>03</span><span>LIVE CART</span></div>
+          <div class="cart-lines"><i></i><i></i><i></i></div>
+          <div class="tile-bottom"><strong>state updated</strong><small>event associated</small></div>
+        </div>
+        <div class="orbit-card system-tile orbit-d">
+          <div class="tile-top"><span>04</span><span>SETTLEMENT</span></div>
+          <div class="settle-mark"><i></i><span>SYNCED</span></div>
+          <div class="tile-bottom"><strong>billing ready</strong><small>inventory aligned</small></div>
+        </div>
       </div>
     </section>
 
@@ -76,9 +91,21 @@
           <p>If a store can observe a product leaving a shelf, Green Groove asks whether that event can become the beginning of a transaction instead of something ignored until the customer reaches the counter.</p>
           <a class="text-link" href="#architecture">See how the system works <span>→</span></a>
         </div>
-        <figure class="dark-media reveal media-parallax">
-          <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/09cb22211169339.67245eac9212c.png" alt="Original Green Groove project cover" />
-        </figure>
+        <div class="system-visual reveal media-parallax" aria-label="Conceptual flow from shopper identity through shelf event to live cart and billing">
+          <div class="visual-head"><span>LIVE TRANSACTION STATE</span><small>concept model</small></div>
+          <div class="visual-flow">
+            <div class="visual-node"><span>01</span><b>RFID</b><small>shopper</small></div>
+            <i>→</i>
+            <div class="visual-node"><span>02</span><b>SHELF</b><small>event</small></div>
+            <i>→</i>
+            <div class="visual-node active"><span>03</span><b>CART</b><small>updated</small></div>
+            <i>→</i>
+            <div class="visual-node"><span>04</span><b>SETTLE</b><small>ready</small></div>
+          </div>
+          <div class="visual-trace"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          <div class="visual-log"><span>14:32:08</span><b>item_042 / pick</b><em>associated → session_07</em></div>
+          <div class="visual-log"><span>14:32:16</span><b>item_042 / return</b><em>inverse event → resolved</em></div>
+        </div>
       </div>
     </section>
 
@@ -111,17 +138,6 @@
           <article class="engineering-card reveal" id="edge-sensors"><div class="card-label">Sensor disagreement</div><h3>Uncertainty should stay visible.</h3><p>RFID evidence and shelf-state change may not arrive together or may point to different interpretations.</p></article>
           <article class="engineering-card reveal" id="edge-overlap"><div class="card-label">Simultaneous actions</div><h3>Detection is not association.</h3><p>Nearby shoppers can create overlapping events. The system must determine not only what moved, but whose cart should change.</p></article>
           <article class="engineering-card card-wide reveal" id="edge-identity"><div class="card-label">Persistent identity</div><h3>Re-identifying the shopper at every shelf would recreate the same problem.</h3><p>The shopper identity has to persist across the trip, so one session can absorb many shelf events without repeatedly guessing who caused them.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="surface-section artifact-section" id="archive">
-      <div class="container">
-        <div class="section-kicker reveal"><span>Original project artifacts</span><a href="https://www.behance.net/gallery/211169339/Green-Groove" target="_blank" rel="noreferrer">View visual archive ↗</a></div>
-        <div class="artifact-grid stagger-group">
-          <figure class="artifact-main reveal media-parallax"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/991f2f211169339.67245eac930ce.png" alt="Green Groove product design board showing the Groove Band and smart shelf" /><figcaption>Groove Band + smart shelf study, 2024.</figcaption></figure>
-          <figure class="reveal media-parallax"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/8f77ac211169339.67245eac91a69.png" alt="Green Groove product concepts and pain points" /><figcaption>Early system touchpoints and problem framing.</figcaption></figure>
-          <figure class="reveal media-parallax"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/c2fc79211169339.67245eac92c6c.png" alt="Green Groove ideation board" /><figcaption>Research and ideation material from the original project.</figcaption></figure>
         </div>
       </div>
     </section>
@@ -179,9 +195,9 @@
     <div class="footer-grid container">
       <div class="footer-brand-col"><a class="footer-brand" href="#top"><span class="brand-dot"></span>Green Groove</a><p>A student engineering project about retail sensing, identity and physical-digital state.</p></div>
       <div class="footer-col"><h3>Project</h3><a href="#overview">Overview</a><a href="#contribution">My contribution</a><a href="#reflection">Reflection</a></div>
-      <div class="footer-col"><h3>System</h3><a href="#architecture">Architecture</a><a href="#engineering">Engineering notes</a><a href="#archive">Artifacts</a></div>
+      <div class="footer-col"><h3>System</h3><a href="#architecture">Architecture</a><a href="#engineering">Engineering notes</a></div>
       <div class="footer-col"><h3>Evidence</h3><a href="#validation">PRAYAAS</a><a href="https://www.ncert.nic.in/desm/prayaas.php?ln=en" target="_blank" rel="noreferrer">NCERT ↗</a><a href="https://theglobaltimes.in/archives/december-15-2025.pdf" target="_blank" rel="noreferrer">Coverage ↗</a></div>
-      <div class="footer-col"><h3>Archive</h3><a href="https://www.behance.net/gallery/211169339/Green-Groove" target="_blank" rel="noreferrer">Behance ↗</a><a href="#team">Team</a></div>
+      <div class="footer-col"><h3>People</h3><a href="#team">Team</a><a href="#top">Back to top ↑</a></div>
     </div>
     <div class="footer-bottom container"><p>Green Groove © <span id="year"></span></p><a href="#top">Back to top ↑</a><p>Gurugram, India</p></div>
   </footer>
