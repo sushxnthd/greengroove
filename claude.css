@@ -1,0 +1,181 @@
+/* Claude-first art direction layered over the dark Green Groove foundation. */
+:root{
+  --claude-warm:#d7b89a;
+  --claude-paper:#eee9df;
+  --claude-ink:#0b0c0a;
+  --claude-surface:#11120f;
+  --claude-surface-2:#171814;
+  --claude-line:rgba(239,233,223,.12);
+  --claude-ease:cubic-bezier(.22,1,.36,1);
+}
+
+body{background:#090a08}
+
+/* Single understated header; Claude-like calm rather than SaaS chrome. */
+.site-header{background:rgba(9,10,8,.72);backdrop-filter:blur(22px) saturate(115%)}
+.site-header.scrolled{background:rgba(9,10,8,.92)}
+.header-inner{max-width:1480px}
+.desktop-nav{gap:26px}
+.external-nav{color:#8e8b83}
+
+/* Hero: Claude product-overview composition with flanking media tiles. */
+.claude-hero{
+  min-height:880px;
+  padding-top:112px;
+  padding-bottom:110px;
+  background:
+    radial-gradient(circle at 50% 31%,rgba(118,87,61,.20),transparent 24%),
+    radial-gradient(circle at 50% 0%,rgba(78,109,77,.12),transparent 34%),
+    #090a08;
+}
+.claude-hero:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.23;
+  background-image:radial-gradient(rgba(255,255,255,.16) .6px,transparent .6px);
+  background-size:7px 7px;
+  mask-image:linear-gradient(to bottom,rgba(0,0,0,.5),transparent 74%);
+}
+.claude-hero .hero-center{max-width:760px;margin-inline:auto}
+.claude-hero h1{font-size:clamp(94px,10.7vw,174px);line-height:.76}
+.claude-hero .hero-dek{max-width:640px;color:#b8b4aa}
+.claude-hero .primary-button{background:var(--claude-paper);color:#11110f;border-color:transparent}
+.claude-hero .primary-button:hover{background:#fff}
+.claude-hero .secondary-button{background:#171813;border-color:rgba(239,233,223,.12);color:#e7e1d7}
+.claude-hero .explorer-box{max-width:650px;background:#11120f;border-color:rgba(239,233,223,.12);box-shadow:0 24px 80px rgba(0,0,0,.34)}
+
+.orbit-card{width:min(252px,17vw);border-radius:18px;border-color:rgba(239,233,223,.14);background:#131410;box-shadow:0 35px 95px rgba(0,0,0,.42)}
+.orbit-card img{filter:saturate(.72) brightness(.86);transition:transform 1.1s var(--claude-ease),filter .7s ease}
+.orbit-card:hover img{transform:scale(1.035);filter:saturate(.98) brightness(.98)}
+.hero-orbit{gap:34px}
+.hero-orbit-left{transform:translateX(-9%)}
+.hero-orbit-right{transform:translateX(9%)}
+.orbit-a{transform:rotate(-5deg) translateY(-32px)}
+.orbit-b{transform:rotate(3deg) translateX(-34px)}
+.orbit-c{transform:rotate(5deg) translateY(25px)}
+.orbit-d{transform:rotate(-3deg) translateX(36px)}
+
+/* Hero content enters like Claude: each part arrives independently and softly. */
+.claude-hero .hero-center>*{opacity:0;filter:blur(10px);transform:translateY(20px);animation:claudeHeroIn .95s var(--claude-ease) forwards}
+.claude-hero .hero-center>.eyebrow{animation-delay:.05s}
+.claude-hero .hero-center>h1{animation-delay:.12s}
+.claude-hero .hero-center>.hero-dek{animation-delay:.22s}
+.claude-hero .hero-center>.hero-actions{animation-delay:.32s}
+.claude-hero .hero-center>.explorer-box{animation-delay:.42s}
+.claude-hero .hero-center>.explorer-feedback{animation-delay:.46s}
+@keyframes claudeHeroIn{to{opacity:1;filter:blur(0);transform:none}}
+
+/* Large product-story section — media gets more visual authority. */
+.product-stage{padding:130px 0 148px;background:#0c0d0a;overflow:hidden}
+.product-stage-grid{display:grid;grid-template-columns:.72fr 1.28fr;gap:7vw;align-items:center}
+.product-stage-copy{max-width:560px}
+.product-stage-copy h2{font-family:var(--serif);font-size:clamp(62px,7vw,108px);font-weight:500;line-height:.91;letter-spacing:-.06em;margin:0 0 28px}
+.product-stage-copy>p:not(.eyebrow){font-size:16px;line-height:1.75;color:#a9a69e;margin:0 0 30px}
+.product-stage-media{position:relative;margin:0;border-radius:22px;overflow:hidden;border:1px solid var(--claude-line);background:#171814;box-shadow:0 40px 120px rgba(0,0,0,.46)}
+.product-stage-media:before{content:"";display:block;padding-top:65%}
+.product-stage-media img{position:absolute;inset:-3% 0;width:100%;height:106%;object-fit:cover;filter:saturate(.75) brightness(.86);transform:translateY(calc(var(--parallax,0) * 1px)) scale(1.035);transition:filter .7s ease,transform 1s var(--claude-ease)}
+.product-stage-media:hover img{filter:saturate(.96) brightness(.96);transform:translateY(calc(var(--parallax,0) * 1px)) scale(1.052)}
+
+/* Claude-style horizontal visual rail. */
+.media-ribbon{padding:34px 0 126px;overflow:hidden;background:#0c0d0a}
+.media-ribbon-track{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(290px,34vw);gap:18px;padding-inline:max(32px,calc((100vw - 1400px)/2));overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.media-ribbon-track::-webkit-scrollbar{display:none}
+.media-ribbon-card{scroll-snap-align:center;margin:0;min-height:420px;border-radius:18px;overflow:hidden;border:1px solid var(--claude-line);background:#141510;position:relative;box-shadow:0 20px 70px rgba(0,0,0,.22);transition:transform .7s var(--claude-ease),border-color .45s ease}
+.media-ribbon-card:hover{transform:translateY(-7px);border-color:rgba(215,184,154,.3)}
+.media-ribbon-card img{width:100%;height:100%;min-height:420px;object-fit:cover;filter:saturate(.72) brightness(.82);transition:filter .7s ease,transform 1s var(--claude-ease)}
+.media-ribbon-card:hover img{filter:saturate(.98) brightness(.96);transform:scale(1.025)}
+.media-ribbon-card figcaption{position:absolute;left:16px;bottom:14px;padding:8px 10px;border-radius:9px;background:rgba(8,9,7,.72);backdrop-filter:blur(10px);font-size:11px;color:#d1cdc3}
+
+.media-placeholder{display:grid;place-items:center;background:linear-gradient(145deg,#171813,#0f100d)}
+.media-placeholder:before{content:"";position:absolute;inset:14px;border:1px dashed rgba(239,233,223,.17);border-radius:13px}
+.media-placeholder>div{position:relative;z-index:1;display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:28px;max-width:290px}
+.media-placeholder span{font-size:10px;letter-spacing:.12em;color:var(--claude-warm);font-weight:600}
+.media-placeholder strong{font-family:var(--serif);font-size:30px;line-height:1.02;font-weight:500;color:#efe9df}
+.media-placeholder small{font-size:12px;color:#76756f}
+
+/* More Claude-like section breathing room. */
+.surface-section{padding-top:138px;padding-bottom:138px}
+.section-kicker{margin-bottom:64px}
+.statement-grid{margin-bottom:84px}
+.statement-grid h2,.statement-center h2,.contribution-intro h2{font-size:clamp(62px,6.6vw,102px)}
+.statement-grid p,.statement-center p,.contribution-intro p{color:#a8a59c}
+
+.step-grid{gap:14px}
+.step-grid article{min-height:280px;border-radius:18px;padding:26px;background:#141510}
+.step-grid h3{font-size:38px}
+.step-grid article:hover{transform:translateY(-7px) scale(1.006)}
+.state-rail{margin-top:16px;padding:28px;border-radius:18px}
+
+/* Feature mosaic inspired by Claude role/product cards. */
+.claude-feature-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+.claude-feature-card{grid-column:span 6;min-height:430px;padding:30px;border-radius:20px;background:#141510;border:1px solid var(--claude-line);display:flex;flex-direction:column;overflow:hidden;position:relative;transition:transform .7s var(--claude-ease),background .45s ease,border-color .45s ease}
+.claude-feature-card:nth-child(2),.claude-feature-card:nth-child(3){background:#181914}
+.claude-feature-card:hover{transform:translateY(-7px);background:#1b1d17;border-color:rgba(215,184,154,.28)}
+.claude-feature-card h3{font-family:var(--serif);font-size:clamp(40px,4vw,62px);line-height:.98;letter-spacing:-.05em;font-weight:500;margin:auto 0 18px;max-width:620px}
+.claude-feature-card p{font-size:14px;line-height:1.65;color:#9c9a93;margin:0;max-width:600px}
+.mini-viz{height:92px;margin-top:28px;border-top:1px solid var(--claude-line);display:flex;align-items:center;gap:10px;color:#85837c}
+.inverse-viz span{height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--green))}.inverse-viz span:last-child{background:linear-gradient(90deg,var(--claude-warm),transparent)}.inverse-viz b{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em}.inverse-viz i{font-style:normal;color:#62615d}
+.signal-viz{justify-content:flex-end;align-items:flex-end;padding-bottom:18px}.signal-viz span{width:18%;background:rgba(112,207,130,.2);border:1px solid rgba(112,207,130,.24);border-radius:6px 6px 2px 2px}.signal-viz span:nth-child(1){height:28%}.signal-viz span:nth-child(2){height:78%}.signal-viz span:nth-child(3){height:48%;background:rgba(215,184,154,.16);border-color:rgba(215,184,154,.25)}.signal-viz span:nth-child(4){height:66%}
+.overlap-viz{justify-content:center}.overlap-viz i{width:58px;height:58px;border-radius:50%;border:1px solid rgba(239,233,223,.25);margin:0 -9px}.overlap-viz i:nth-child(2){border-color:rgba(112,207,130,.44);background:rgba(112,207,130,.08)}
+.identity-viz{justify-content:space-between}.identity-viz span{width:46px;height:46px;border-radius:50%;border:1px solid var(--claude-line);display:grid;place-items:center;font-size:11px;color:#8e8d86;position:relative}.identity-viz span:not(:last-child):after{content:"";position:absolute;left:100%;width:calc((100% + 10vw)/2);height:1px;background:rgba(112,207,130,.2)}
+
+/* Dedicated media gallery with obvious future expansion capacity. */
+.gallery-stage{background:#0d0e0b}
+.gallery-stage-head{display:grid;grid-template-columns:1.15fr .65fr;gap:8vw;align-items:end;margin-bottom:58px}
+.gallery-stage-head h2{font-family:var(--serif);font-size:clamp(54px,6vw,92px);line-height:.93;letter-spacing:-.055em;font-weight:500;margin:0}
+.gallery-stage-head p{font-size:15px;line-height:1.7;color:#99978f;margin:0;max-width:520px}
+.gallery-mosaic{display:grid;grid-template-columns:1.35fr .65fr;grid-template-rows:minmax(260px,1fr) minmax(260px,1fr);gap:16px}
+.gallery-mosaic figure{margin:0;position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--claude-line);background:#151611;min-height:280px;transition:transform .7s var(--claude-ease),border-color .45s ease}
+.gallery-mosaic figure:hover{transform:translateY(-6px);border-color:rgba(215,184,154,.28)}
+.gallery-large{grid-row:1/3}.gallery-wide{grid-column:2;grid-row:2}.gallery-small{grid-column:2}
+.gallery-mosaic img{width:100%;height:100%;object-fit:cover;filter:saturate(.72) brightness(.84);transform:translateY(calc(var(--parallax,0) * 1px)) scale(1.025);transition:filter .7s ease,transform 1s var(--claude-ease)}
+.gallery-mosaic figure:hover img{filter:saturate(.98) brightness(.96);transform:translateY(calc(var(--parallax,0) * 1px)) scale(1.045)}
+.gallery-mosaic figcaption{position:absolute;left:14px;bottom:14px;padding:8px 10px;border-radius:9px;background:rgba(8,9,7,.74);backdrop-filter:blur(10px);font-size:11px;color:#d0ccc2}
+
+/* Validation reads as a premium product proof block, not an OpenAI-style break. */
+.dark-validation{padding:148px 0;background:radial-gradient(circle at 78% 30%,rgba(112,207,130,.10),transparent 28%),#0a0b09}
+.validation-number strong{color:#eee8de}
+
+.role-chips{gap:10px}.role-chip{padding:11px 17px;background:#151611;border-color:var(--claude-line);transition:background .35s ease,color .35s ease,transform .45s var(--claude-ease)}.role-chip:hover{transform:translateY(-2px)}.role-chip.active{background:#eee8de;color:#121310;border-color:#eee8de}
+.role-panel{border-radius:20px;background:#141510;border-color:var(--claude-line);min-height:380px;padding:40px}
+.role-panel.switching{opacity:.25;filter:blur(10px);transform:translateY(7px) scale(.995)}
+.role-copy h3{margin-top:86px}
+
+.team-grid article{border-radius:18px;background:#141510}
+
+/* Claude-like reveal: slower, softer, slightly scaled rather than simple fade-up. */
+.reveal{opacity:0;filter:blur(9px);transform:translateY(22px) scale(.988);transition:opacity .85s var(--claude-ease),transform .85s var(--claude-ease),filter .85s var(--claude-ease);transition-delay:var(--delay,0ms)}
+.reveal.in{opacity:1;filter:blur(0);transform:none}
+
+@media(max-width:1120px){
+  .claude-hero{grid-template-columns:180px minmax(420px,1fr) 180px}.orbit-card{width:190px}
+  .product-stage-grid{grid-template-columns:1fr;gap:54px}.product-stage-copy{max-width:760px}.product-stage-media{max-width:980px}
+  .media-ribbon-track{grid-auto-columns:minmax(300px,48vw)}
+  .gallery-stage-head{grid-template-columns:1fr;gap:28px}.gallery-stage-head p{max-width:720px}
+}
+
+@media(max-width:860px){
+  .claude-hero{grid-template-columns:1fr;min-height:auto;padding-top:86px}.claude-hero .hero-orbit{display:none}
+  .product-stage{padding:96px 0 108px}.product-stage-media{border-radius:18px}
+  .media-ribbon{padding-bottom:94px}.media-ribbon-track{grid-auto-columns:minmax(280px,76vw);padding-inline:18px}
+  .claude-feature-grid{grid-template-columns:1fr}.claude-feature-card{grid-column:auto;min-height:390px}
+  .gallery-mosaic{grid-template-columns:1fr;grid-template-rows:auto}.gallery-large,.gallery-small,.gallery-wide{grid-column:auto;grid-row:auto;min-height:380px}.gallery-small{min-height:300px}
+}
+
+@media(max-width:560px){
+  .claude-hero{padding-top:66px;padding-bottom:76px}.claude-hero h1{font-size:clamp(72px,22vw,106px)}
+  .product-stage-copy h2{font-size:56px}.product-stage-media:before{padding-top:78%}
+  .media-ribbon-track{grid-auto-columns:86vw}.media-ribbon-card,.media-ribbon-card img{min-height:360px}
+  .surface-section{padding-top:90px;padding-bottom:90px}.section-kicker{margin-bottom:40px}.statement-grid{margin-bottom:54px}
+  .claude-feature-card{padding:23px;min-height:360px}.claude-feature-card h3{font-size:42px}
+  .gallery-stage-head h2{font-size:54px}.gallery-mosaic figure{border-radius:16px}.gallery-large{min-height:420px}.gallery-small,.gallery-wide{min-height:280px}
+  .role-panel{padding:26px;min-height:340px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .claude-hero .hero-center>*{opacity:1;filter:none;transform:none;animation:none}
+  .reveal{opacity:1;filter:none;transform:none;transition:none}
+  .orbit-card{animation:none!important;opacity:1;filter:none}
+}
