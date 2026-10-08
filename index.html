@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0b2a22" />
+  <meta name="description" content="Green Groove — an IoT-assisted supermarket queue intelligence research project by Sushanth Dasari and Aryan Kumar, selected under NCERT PRAYAAS." />
+  <meta property="og:title" content="Green Groove — Smarter queues, lighter stores." />
+  <meta property="og:description" content="Student-led IoT research on real-time supermarket queue intelligence, selected under NCERT PRAYAAS." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <title>Green Groove — Smarter queues, lighter stores.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <header class="nav-shell">
+    <nav class="nav wrap">
+      <a class="brand" href="#top" aria-label="Green Groove home">
+        <span class="brand-mark" aria-hidden="true"><span class="g-ring"></span><span class="g-cut"></span><span class="g-leaf"></span></span>
+        <span>GREEN GROOVE</span>
+      </a>
+      <div class="nav-links"><a href="#problem">Problem</a><a href="#system">System</a><a href="#research">Research</a><a href="#recognition">Recognition</a></div>
+      <a class="nav-cta" href="https://www.behance.net/gallery/211169339/Green-Groove" target="_blank" rel="noreferrer">Visual case study ↗</a>
+      <button class="menu" aria-label="Open navigation" aria-expanded="false"><span></span><span></span></button>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero wrap">
+      <div class="hero-kicker reveal"><span class="status-dot"></span>NCERT PRAYAAS · selected project · 2025–26</div>
+      <div class="hero-grid">
+        <div class="hero-copy reveal">
+          <h1>Smarter queues.<br><span>Lighter stores.</span></h1>
+          <p class="lede">Green Groove explores how low-cost IoT signals can help supermarkets understand congestion in real time and route customers toward faster checkout.</p>
+          <div class="hero-actions"><a href="#system" class="button primary">Explore the system <span>↓</span></a><a href="#recognition" class="button ghost">Why it matters</a></div>
+        </div>
+        <div class="hero-visual reveal" aria-label="Animated Green Groove queue intelligence schematic">
+          <div class="visual-topline"><span>LIVE STORE MODEL</span><span class="live">● simulation</span></div>
+          <div class="store-grid">
+            <div class="aisle a1"><i></i><i></i><i></i><i></i></div><div class="aisle a2"><i></i><i></i><i></i></div><div class="aisle a3"><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="sensor s1"><span></span></div><div class="sensor s2"><span></span></div><div class="sensor s3"><span></span></div>
+            <div class="checkout c1"><b>01</b><em></em><em></em><em></em></div><div class="checkout c2"><b>02</b><em></em><em></em></div><div class="checkout c3 active"><b>03</b><em></em></div>
+            <svg class="flow" viewBox="0 0 800 560" role="img" aria-label="Routing path through the store"><path class="route-bg" d="M85 95 C190 105 190 195 290 198 S420 238 430 320 S540 414 710 450" /><path class="route" d="M85 95 C190 105 190 195 290 198 S420 238 430 320 S540 414 710 450" /></svg>
+            <div class="route-card"><span>RECOMMENDED</span><strong>Checkout 03</strong><small>lowest estimated congestion</small></div>
+          </div>
+          <div class="visual-footer"><span>occupancy</span><b>→</b><span>queue estimate</span><b>→</b><span>routing</span></div>
+        </div>
+      </div>
+      <div class="hero-meta reveal"><div><span>01</span><p>Student-led research project</p></div><div><span>02</span><p>IoT + real-time systems</p></div><div><span>03</span><p>Sustainability through efficiency</p></div><div><span>04</span><p>Selected under NCERT PRAYAAS</p></div></div>
+    </section>
+
+    <section class="marquee" aria-hidden="true"><div class="track"><span>WAIT LESS</span><i>✳</i><span>MOVE SMARTER</span><i>✳</i><span>USE LESS</span><i>✳</i><span>WAIT LESS</span><i>✳</i><span>MOVE SMARTER</span><i>✳</i><span>USE LESS</span><i>✳</i></div></section>
+
+    <section class="section wrap" id="problem">
+      <div class="section-label reveal"><span>01 / THE PROBLEM</span><span>Queues are a systems problem.</span></div>
+      <div class="statement reveal"><p class="eyebrow">THE QUESTION</p><h2>What if a supermarket could respond to a queue <em>before</em> it becomes a queue?</h2></div>
+      <div class="problem-grid">
+        <article class="problem-card reveal"><span class="num">A</span><h3>Congestion is dynamic.</h3><p>Checkout load changes minute by minute. Static lane assignment reacts late, after customers have already accumulated.</p><div class="spark"><i style="height:24%"></i><i style="height:38%"></i><i style="height:34%"></i><i style="height:58%"></i><i style="height:82%"></i><i style="height:64%"></i><i style="height:92%"></i></div></article>
+        <article class="problem-card reveal"><span class="num">B</span><h3>More hardware is not always the answer.</h3><p>The project investigates whether lightweight sensing and better information can improve flow without simply adding more counters.</p><div class="nodes"><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+        <article class="problem-card accent-card reveal"><span class="num">C</span><h3>Efficiency can be sustainable.</h3><p>Less idle infrastructure, smoother movement and better operational decisions connect customer experience with resource efficiency.</p><div class="ring-stat"><span>FLOW</span></div></article>
+      </div>
+    </section>
+
+    <section class="section system-section" id="system"><div class="wrap">
+      <div class="section-label light reveal"><span>02 / THE SYSTEM</span><span>Sense → estimate → guide.</span></div>
+      <div class="system-intro reveal"><h2>A small feedback loop<br>for a busy physical space.</h2><p>Green Groove treats checkout flow as a real-time estimation problem. Signals from the store are converted into an interpretable congestion state, then used to recommend the least-loaded path.</p></div>
+      <div class="pipeline reveal">
+        <div class="pipe-step"><div class="pipe-icon radar"><i></i><i></i><i></i></div><div><span>01 · SENSE</span><h3>Observe occupancy</h3><p>Collect lightweight signals that approximate where demand is building.</p></div></div><div class="connector"><span></span></div>
+        <div class="pipe-step"><div class="pipe-icon bars"><i></i><i></i><i></i><i></i></div><div><span>02 · ESTIMATE</span><h3>Score congestion</h3><p>Translate noisy observations into a comparable state for each checkout.</p></div></div><div class="connector"><span></span></div>
+        <div class="pipe-step"><div class="pipe-icon arrow">↗</div><div><span>03 · GUIDE</span><h3>Recommend a lane</h3><p>Route attention toward a lower-load counter while keeping the logic visible.</p></div></div>
+      </div>
+      <div class="dashboard reveal"><div class="dash-sidebar"><div class="mini-brand"><span class="dot"></span> GREEN GROOVE</div><button class="selected">Store overview</button><button>Queue health</button><button>Sensor status</button><button>Research log</button><div class="mini-note">Prototype interface<br><b>for system thinking</b></div></div><div class="dash-main"><div class="dash-head"><div><small>STORE STATE / DEMO</small><h3>Queue health</h3></div><span class="timestamp">LIVE · 14:32</span></div><div class="metrics"><div><small>COUNTERS</small><strong>03</strong><span>monitored</span></div><div><small>LOW LOAD</small><strong>01</strong><span>recommended</span></div><div><small>SYSTEM</small><strong class="ok">ON</strong><span>feedback active</span></div></div><div class="queue-table"><div class="row head"><span>COUNTER</span><span>LOAD</span><span>STATE</span><span>ACTION</span></div><div class="row"><span><b>01</b> North checkout</span><span><i class="meter m78"></i></span><span class="warm">HIGH</span><span>Observe</span></div><div class="row"><span><b>02</b> Centre checkout</span><span><i class="meter m51"></i></span><span>MEDIUM</span><span>Hold</span></div><div class="row choice"><span><b>03</b> South checkout</span><span><i class="meter m23"></i></span><span class="good">LOW</span><span>Recommend →</span></div></div></div></div>
+      <p class="prototype-note reveal">Interface above is a visual representation of the research concept, not a claim of deployed production infrastructure.</p>
+    </div></section>
+
+    <section class="section wrap" id="research">
+      <div class="section-label reveal"><span>03 / RESEARCH</span><span>Built to be tested, not merely pitched.</span></div>
+      <div class="research-grid"><div class="research-copy reveal"><p class="eyebrow">RESEARCH FRAME</p><h2>From a simple frustration to a measurable systems question.</h2><p>The project reframes supermarket waiting time as a feedback-control problem: detect a changing state, estimate load, communicate an action and measure whether the intervention improves flow.</p></div><div class="research-list reveal"><div><span>01</span><h3>Observe</h3><p>Map the variables that affect checkout load and identify signals that can be sensed at low cost.</p></div><div><span>02</span><h3>Model</h3><p>Represent counter-level congestion in a form that allows fast comparison between lanes.</p></div><div><span>03</span><h3>Intervene</h3><p>Generate a simple routing recommendation instead of hiding the decision inside an opaque score.</p></div><div><span>04</span><h3>Evaluate</h3><p>Compare waiting, throughput and system behavior under different arrival patterns and constraints.</p></div></div></div>
+      <div class="research-question reveal"><span>CORE RESEARCH QUESTION</span><p>Can low-cost, real-time IoT signals reduce queue inefficiency in supermarkets without requiring proportionally more checkout infrastructure?</p></div>
+    </section>
+
+    <section class="section recognition-section" id="recognition"><div class="wrap">
+      <div class="section-label reveal"><span>04 / RECOGNITION</span><span>External validation.</span></div>
+      <div class="recognition-grid"><div class="recognition-main reveal"><div class="seal" aria-hidden="true"><svg viewBox="0 0 120 120"><defs><path id="circlePath" d="M60,60 m-42,0 a42,42 0 1,1 84,0 a42,42 0 1,1 -84,0"/></defs><text><textPath href="#circlePath" startOffset="3%">NCERT · PRAYAAS · RESEARCH · 2025 ·</textPath></text><circle cx="60" cy="60" r="25"></circle><path d="M50 63c8-1 11-10 19-15-1 10-4 20-16 24"></path></svg></div><div><p class="eyebrow">SELECTED PROJECT</p><h2>NCERT PRAYAAS</h2><p>Green Groove was selected under NCERT’s Promotion of Research Attitude among Young And Aspiring Students (PRAYAAS) initiative.</p><div class="source-links"><a href="https://www.ncert.nic.in/desm/prayaas.php?ln=en" target="_blank" rel="noreferrer">NCERT programme page ↗</a><a href="https://theglobaltimes.in/archives/december-15-2025.pdf" target="_blank" rel="noreferrer">Published school coverage ↗</a></div></div></div><aside class="recognition-side reveal"><span class="tag">PROJECT CONTEXT</span><dl><div><dt>Programme</dt><dd>PRAYAAS</dd></div><div><dt>Institution</dt><dd>NCERT</dd></div><div><dt>Domain</dt><dd>IoT · queue intelligence</dd></div><div><dt>Team</dt><dd>2 student researchers</dd></div><div><dt>School</dt><dd>Amity International School, Gurugram 46</dd></div></dl></aside></div>
+    </div></section>
+
+    <section class="section wrap team-section">
+      <div class="section-label reveal"><span>05 / TEAM</span><span>Student-led from problem framing to prototype.</span></div>
+      <div class="team-grid"><article class="person reveal"><div class="avatar monogram">SD</div><div><span>CO-CREATOR</span><h3>Sushanth Dasari</h3><p>Research, systems, prototyping</p></div></article><article class="person reveal"><div class="avatar monogram">AK</div><div><span>CO-CREATOR</span><h3>Aryan Kumar</h3><p>Research, systems, prototyping</p></div></article></div>
+      <div class="closing reveal"><div><p class="eyebrow">GREEN GROOVE</p><h2>Designing for the moments<br>people usually just tolerate.</h2></div><a href="https://www.behance.net/gallery/211169339/Green-Groove" target="_blank" rel="noreferrer" class="round-link" aria-label="Open Green Groove Behance project">↗</a></div>
+    </section>
+  </main>
+  <footer><div class="wrap footer-inner"><div class="brand footer-brand"><span class="brand-mark"><span class="g-ring"></span><span class="g-cut"></span><span class="g-leaf"></span></span><span>GREEN GROOVE</span></div><p>Student research project · Gurugram, India</p><p>© <span id="year"></span> Green Groove</p></div></footer>
+  <script src="script.js"></script>
+</body>
+</html>
