@@ -7,7 +7,10 @@ const revealItems=[...document.querySelectorAll('.reveal')];
 const explorer=document.querySelector('#project-explorer');
 const projectQuery=document.querySelector('#project-query');
 const feedback=document.querySelector('#explorer-feedback');
-const moreTrigger=document.querySelector('.more-links-trigger');
+const roleChips=[...document.querySelectorAll('.role-chip')];
+const rolePanels=[...document.querySelectorAll('.role-copy')];
+const contextLinks=[...document.querySelectorAll('.context-link')];
+const trackedSections=['overview','system','engineering','validation'].map(id=>document.getElementById(id)).filter(Boolean);
 
 window.addEventListener('scroll',()=>{
   header?.classList.toggle('scrolled',window.scrollY>8);
@@ -35,6 +38,7 @@ navGroups.forEach(group=>{
     group.classList.toggle('open');
   });
 });
+
 document.addEventListener('click',()=>navGroups.forEach(group=>group.classList.remove('open')));
 document.addEventListener('keydown',event=>{
   if(event.key==='Escape'){
@@ -43,29 +47,44 @@ document.addEventListener('keydown',event=>{
   }
 });
 
-const observer=new IntersectionObserver(entries=>{
+const revealObserver=new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
     if(entry.isIntersecting){
       entry.target.classList.add('in');
-      observer.unobserve(entry.target);
+      revealObserver.unobserve(entry.target);
     }
   });
 },{threshold:.08,rootMargin:'0px 0px -36px'});
-revealItems.forEach(item=>observer.observe(item));
+revealItems.forEach(item=>revealObserver.observe(item));
+
+const sectionObserver=new IntersectionObserver(entries=>{
+  const visible=entries.filter(entry=>entry.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio);
+  if(!visible[0]) return;
+  const id=visible[0].target.id;
+  contextLinks.forEach(link=>link.classList.toggle('active',link.getAttribute('href')===`#${id}`));
+},{rootMargin:'-22% 0px -62% 0px',threshold:[0,.2,.45,.7]});
+trackedSections.forEach(section=>sectionObserver.observe(section));
+
+roleChips.forEach(chip=>chip.addEventListener('click',()=>{
+  const role=chip.dataset.role;
+  roleChips.forEach(item=>item.classList.toggle('active',item===chip));
+  rolePanels.forEach(panel=>panel.classList.toggle('active',panel.dataset.rolePanel===role));
+}));
 
 const destinations={
   overview:['overview','green groove','project','what is','summary'],
-  architecture:['system','architecture','flow','how it works','checkout','transaction'],
-  components:['components','band','wristband','rfid','shelf','cart','live cart'],
+  system:['system','how it works','checkout','transaction','flow'],
+  architecture:['architecture','identify','sense','associate','settle'],
   engineering:['engineering','edge cases','failure','failures','ambiguity','uncertainty'],
   'edge-return':['return','returns','put back','inverse'],
   'edge-sensors':['sensor','sensors','disagree','disagreement','signal','weight'],
   'edge-overlap':['simultaneous','overlap','two shoppers','association'],
-  'edge-identity':['identity','session','persistent','shopper id'],
+  'edge-identity':['identity','session','persistent','shopper id','rfid'],
   contribution:['role','my role','contribution','my work','sushanth'],
-  evidence:['evidence','validation','prayaas','ncert','grant','50000','50k'],
+  validation:['evidence','validation','prayaas','ncert','grant','50000','50k'],
   reflection:['reflection','learned','learning','what changed','lesson'],
-  team:['team','aryan','members']
+  team:['team','aryan','members'],
+  archive:['archive','behance','original','artifacts','design']
 };
 
 function findDestination(value){
@@ -94,11 +113,6 @@ explorer?.addEventListener('submit',event=>{
     if(feedback) feedback.textContent='Try “RFID”, “returns”, “architecture”, “my role”, or “PRAYAAS”.';
     projectQuery?.focus();
   }
-});
-
-moreTrigger?.addEventListener('click',()=>{
-  if(feedback) feedback.textContent='Try “returns”, “sensor disagreement”, “team”, “reflection”, or “PRAYAAS”.';
-  projectQuery?.focus();
 });
 
 if(document.getElementById('year')) document.getElementById('year').textContent=new Date().getFullYear();
