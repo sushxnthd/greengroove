@@ -13,6 +13,75 @@ const rolePanel=document.querySelector('.role-panel');
 const mediaTrack=document.querySelector('.media-track');
 const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+/* Admissions-facing polish: preserve expandable media areas without exposing placeholder language. */
+const heroStatus=document.querySelector('.hero-meta div:nth-child(3) strong');
+if(heroStatus) heroStatus.textContent='NCERT PRAYAAS · ₹50K reported support';
+
+const featureCaption=document.querySelector('.feature-media figcaption');
+if(featureCaption){
+  const parts=featureCaption.querySelectorAll('span');
+  if(parts[0]) parts[0].textContent='Project visual';
+  if(parts[1]) parts[1].textContent='Product + system exploration';
+}
+
+const mediaNativeCopy=[
+  ['Prototype evidence','Hardware / wristband photography','Physical build evidence: wristband, shelf and component detail.'],
+  ['Field evidence','In-store demo / test sequence','Shopper interaction, pick/return sequence, or field-test evidence.'],
+  ['Hardware detail','RFID / electronics close-up','RFID, load sensing, electronics or shelf-build evidence.']
+];
+document.querySelectorAll('.media-native').forEach((card,index)=>{
+  const copy=mediaNativeCopy[index];
+  if(!copy) return;
+  const label=card.querySelector('span');
+  const title=card.querySelector('h3');
+  const body=card.querySelector('p');
+  if(label) label.textContent=copy[0];
+  if(title) title.textContent=copy[1];
+  if(body) body.textContent=copy[2];
+});
+
+const galleryHeading=document.querySelector('.media-gallery .split-heading h2');
+const galleryDeck=document.querySelector('.media-gallery .split-heading p');
+if(galleryHeading) galleryHeading.textContent='Visual evidence, from concept to system.';
+if(galleryDeck) galleryDeck.textContent='The media system is deliberately expandable: prototype photography, electronics close-ups, system diagrams, field-test frames and process evidence can slot into the same visual language.';
+
+document.querySelectorAll('.gallery-native').forEach((card,index)=>{
+  const body=card.querySelector('p');
+  if(!body) return;
+  body.textContent=index===0?'RFID, electronics and shelf-sensing evidence.':'Shopper interaction, demo footage or an annotated test sequence.';
+});
+
+const riskTags={
+  'edge-return':'Core invariant',
+  'edge-sensors':'High-priority unknown',
+  'edge-overlap':'Association risk',
+  'edge-identity':'Foundational constraint'
+};
+Object.entries(riskTags).forEach(([id,label])=>{
+  const top=document.querySelector(`#${id} .risk-top`);
+  if(!top||top.querySelector('.risk-priority')) return;
+  const tag=document.createElement('span');
+  tag.className='risk-priority';
+  tag.textContent=label;
+  top.appendChild(tag);
+});
+
+const roleArtifacts={
+  research:['problem framing','assumptions','failure questions'],
+  architecture:['identity','event','cart','settlement'],
+  interaction:['shopper action','system response','uncertainty'],
+  prototyping:['visual model','critique','iteration']
+};
+rolePanels.forEach(panel=>{
+  const key=panel.dataset.rolePanel;
+  const items=roleArtifacts[key];
+  if(!items||panel.querySelector('.role-artifact')) return;
+  const artifact=document.createElement('div');
+  artifact.className=`role-artifact role-artifact-${key}`;
+  artifact.innerHTML=items.map((item,index)=>`<span><i>${String(index+1).padStart(2,'0')}</i>${item}</span>`).join('<b>→</b>');
+  panel.appendChild(artifact);
+});
+
 requestAnimationFrame(()=>requestAnimationFrame(()=>hero?.classList.add('ready')));
 
 window.addEventListener('scroll',()=>{
