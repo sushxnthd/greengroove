@@ -13,6 +13,18 @@ const rolePanel=document.querySelector('.role-panel');
 const mediaTrack=document.querySelector('.media-track');
 const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+const polishStyle=document.createElement('style');
+polishStyle.textContent=`
+.risk-priority{margin-left:auto!important;padding:6px 9px;border:1px solid var(--line);border-radius:999px!important;font-size:8px!important;letter-spacing:.08em!important;color:#aaa69d!important;white-space:nowrap;background:rgba(255,255,255,.025)}
+.risk-top>span:not(.risk-priority){margin-left:auto}.risk-top .risk-priority{margin-left:0!important}
+.role-artifact{margin-top:34px;padding-top:22px;border-top:1px solid var(--line-soft);display:flex;align-items:center;gap:10px;flex-wrap:wrap;color:#706d65}
+.role-artifact span{display:inline-flex;align-items:center;gap:8px;padding:9px 11px;border:1px solid var(--line-soft);border-radius:999px;background:rgba(255,255,255,.025);font-size:10px;color:#a19d94}
+.role-artifact span i{font-style:normal;font-size:8px;letter-spacing:.08em;color:var(--green)}
+.role-artifact b{font-size:11px;font-weight:400;color:#4f4e49}
+@media(max-width:560px){.risk-top{align-items:flex-start;flex-wrap:wrap}.risk-priority{margin-left:0!important}.role-artifact b{display:none}.role-artifact{gap:7px}}
+`;
+document.head.appendChild(polishStyle);
+
 /* Admissions-facing polish: preserve expandable media areas without exposing placeholder language. */
 const heroStatus=document.querySelector('.hero-meta div:nth-child(3) strong');
 if(heroStatus) heroStatus.textContent='NCERT PRAYAAS · ₹50K reported support';
@@ -126,19 +138,7 @@ if('IntersectionObserver' in window){
   revealItems.forEach(item=>item.classList.add('in'));
 }
 
-const navTargets={
-  research:'#research',
-  system:'#system',
-  architecture:'#system',
-  engineering:'#engineering',
-  method:'#engineering',
-  validation:'#validation',
-  contribution:'#contribution',
-  next:'#contribution',
-  archive:'#contribution',
-  reflection:'#contribution',
-  team:'#contribution'
-};
+const navTargets={research:'#research',system:'#system',architecture:'#system',engineering:'#engineering',method:'#engineering',validation:'#validation',contribution:'#contribution',next:'#contribution',archive:'#contribution',reflection:'#contribution',team:'#contribution'};
 const trackedSections=[...document.querySelectorAll('main section[id]')].filter(section=>navTargets[section.id]);
 if('IntersectionObserver' in window){
   const navObserver=new IntersectionObserver(entries=>{
@@ -176,33 +176,21 @@ if(!reduceMotion&&parallaxItems.length){
     });
     ticking=false;
   };
-  const requestParallax=()=>{
-    if(!ticking){requestAnimationFrame(updateParallax);ticking=true;}
-  };
+  const requestParallax=()=>{if(!ticking){requestAnimationFrame(updateParallax);ticking=true;}};
   window.addEventListener('scroll',requestParallax,{passive:true});
   window.addEventListener('resize',requestParallax,{passive:true});
   updateParallax();
 }
 
 if(mediaTrack){
-  let dragging=false;
-  let startX=0;
-  let startScroll=0;
+  let dragging=false,startX=0,startScroll=0;
   mediaTrack.addEventListener('pointerdown',event=>{
-    dragging=true;
-    startX=event.clientX;
-    startScroll=mediaTrack.scrollLeft;
-    mediaTrack.setPointerCapture?.(event.pointerId);
-    mediaTrack.style.cursor='grabbing';
+    dragging=true;startX=event.clientX;startScroll=mediaTrack.scrollLeft;
+    mediaTrack.setPointerCapture?.(event.pointerId);mediaTrack.style.cursor='grabbing';
   });
-  mediaTrack.addEventListener('pointermove',event=>{
-    if(!dragging) return;
-    mediaTrack.scrollLeft=startScroll-(event.clientX-startX);
-  });
+  mediaTrack.addEventListener('pointermove',event=>{if(dragging) mediaTrack.scrollLeft=startScroll-(event.clientX-startX);});
   const endDrag=()=>{dragging=false;mediaTrack.style.cursor='grab';};
-  mediaTrack.addEventListener('pointerup',endDrag);
-  mediaTrack.addEventListener('pointercancel',endDrag);
-  mediaTrack.addEventListener('lostpointercapture',endDrag);
+  mediaTrack.addEventListener('pointerup',endDrag);mediaTrack.addEventListener('pointercancel',endDrag);mediaTrack.addEventListener('lostpointercapture',endDrag);
 }
 
 if(document.getElementById('year')) document.getElementById('year').textContent=new Date().getFullYear();
