@@ -1,3 +1,16 @@
 /* Pixel-level corrections for Green Groove substitutions inside Osmo's source geometry. */
 .home-hero__top-logo.gg-glyph-replacement{width:1em!important;height:1em!important;font-size:5em!important;line-height:.82!important;flex:none!important;transform:rotate(7deg)}
-@media(max-width:767px){.home-hero__top-logo.gg-glyph-replacement{width:1em!important;height:1em!important;font-size:3em!important}}
+/* Green Groove's replacement words are wider than Osmo's originals; keep their visual envelope source-sized. */
+.home-hero__title-row .h-xl{font-size:6.5em!important}
+.home-hero__content{transform:translateY(-.8em)}
+.home-hero__content{grid-column-gap:max(1.5em,3.8svh)!important;grid-row-gap:max(1.5em,3.8svh)!important}
+/* Preserve the original top-nav button footprints despite longer Green Groove labels. */
+.nav-bar__login-button .button{width:6.15em!important;padding-left:.75em!important;padding-right:.75em!important}
+.nav-bar__signup-button .button{width:5.15em!important;padding-left:.55em!important;padding-right:.55em!important}
+.nav-bar__login-button .button-label,.nav-bar__signup-button .button-label{white-space:nowrap!important;font-size:.9em!important}
+@media(max-width:767px){
+ .home-hero__top-logo.gg-glyph-replacement{width:1em!important;height:1em!important;font-size:3em!important}
+ .home-hero__title-row .h-xl{font-size:4.5em!important}
+ .home-hero__content{transform:none;grid-column-gap:var(--gap-l)!important;grid-row-gap:var(--gap-l)!important}
+ .nav-bar__login-button .button,.nav-bar__signup-button .button{width:auto!important}
+}
