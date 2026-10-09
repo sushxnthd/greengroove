@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#f7f8f5" />
+  <meta name="theme-color" content="#090a0d" />
   <meta name="description" content="Green Groove — a student-built retail systems project exploring RFID identity, shelf sensing, reversible events and live cart state. Selected under NCERT PRAYAAS." />
   <meta property="og:title" content="Green Groove — retail state, built while you shop" />
   <meta property="og:description" content="RFID identity, shelf sensing and a live digital cart — a student engineering project by Sushanth Dasari and Aryan Kumar." />
@@ -28,244 +28,181 @@
     <div class="sidebar-inner">
       <a class="brand" href="#home" aria-label="Green Groove home">
         <span class="matrix-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
-        <span class="brand-text">green groove</span>
+        <span>green groove</span>
       </a>
-
-      <div class="mode-switch" aria-label="View type">
-        <button type="button" class="mode active" data-mode="project">Project</button>
-        <button type="button" class="mode" data-mode="research">Research</button>
-      </div>
 
       <nav class="primary-nav">
         <a href="#home" class="side-link active"><span class="nav-dot"></span>Home</a>
         <a href="#field" class="side-link"><span class="nav-dot"></span>Field</a>
-        <a href="#architecture" class="side-link"><span class="nav-dot"></span>System</a>
+        <a href="#system" class="side-link"><span class="nav-dot"></span>Product</a>
+        <a href="#research" class="side-link"><span class="nav-dot"></span>Research</a>
         <a href="#evidence" class="side-link"><span class="nav-dot"></span>Evidence</a>
-        <a href="#layers" class="side-link"><span class="nav-dot"></span>Layers</a>
         <a href="#notes" class="side-link"><span class="nav-dot"></span>Notes</a>
         <a href="https://www.behance.net/gallery/211169339/Green-Groove" target="_blank" rel="noreferrer" class="side-link external"><span class="nav-dot"></span>Original study ↗</a>
       </nav>
 
-      <div class="sidebar-rule"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="sidebar-rule"><span></span><span></span><span></span><span></span></div>
 
-      <div class="on-page">
-        <div class="on-page-label">On this page</div>
-        <a href="#field" data-section="field"><b></b><span>The field</span></a>
-        <a href="#architecture" data-section="architecture"><b></b><span>State engine</span></a>
-        <a href="#what-we-do" data-section="what-we-do"><b></b><span>What we built</span></a>
-        <a href="#evidence" data-section="evidence"><b></b><span>In research</span></a>
-        <a href="#layers" data-section="layers"><b></b><span>Physical layers</span></a>
-        <a href="#validation" data-section="validation"><b></b><span>External evidence</span></a>
-        <a href="#notes" data-section="notes"><b></b><span>Notes</span></a>
+      <div class="section-nav">
+        <span class="section-nav-label">Sections</span>
+        <a href="#field">The field</a>
+        <a href="#system">What we built</a>
+        <a href="#research">In research</a>
+        <a href="#evidence">External evidence</a>
       </div>
 
       <div class="sidebar-bottom">
-        <div class="status-line"><span class="pulse-dot"></span><span>project active</span></div>
+        <div><span class="pulse-dot"></span> project active</div>
         <span>Gurugram · 2024–26</span>
       </div>
     </div>
   </aside>
 
   <div class="mobile-drawer" aria-hidden="true">
-    <a href="#home">Home</a><a href="#field">Field</a><a href="#architecture">System</a><a href="#evidence">Evidence</a><a href="#layers">Layers</a><a href="#notes">Notes</a><a href="#validation">Validation</a>
+    <a href="#home">Home</a><a href="#field">Field</a><a href="#system">Product</a><a href="#research">Research</a><a href="#evidence">Evidence</a><a href="#notes">Notes</a>
   </div>
 
   <main class="page-shell">
-    <section class="hero page-section" id="home" data-title="Home">
+    <section class="hero page-section" id="home">
       <div class="announcement reveal">
-        <div><span class="pulse-dot"></span><strong>Selected under NCERT PRAYAAS</strong></div>
-        <a href="#validation" class="tiny-button">View evidence <span>↗</span></a>
+        <div><span class="pulse-dot"></span><span>Selected under NCERT PRAYAAS</span></div>
+        <a href="#evidence" class="tiny-button">Read the evidence <span>↗</span></a>
       </div>
 
       <div class="hero-copy reveal">
-        <div class="array-kicker">GREEN GROOVE // RETAIL STATE SYSTEM</div>
-        <h1>Retail state that forms <em>while you shop.</em></h1>
-        <p>Green Groove explores whether shopper identity and shelf events can build a trustworthy digital cart continuously — instead of rescanning every item at the end.</p>
+        <h1>A retail system that builds the cart <span>while you shop.</span></h1>
+        <p>Green Groove links shopper identity, shelf events and live cart state so checkout can begin before the customer reaches a scanner.</p>
         <div class="hero-actions">
-          <a class="primary-cta" href="#architecture"><span class="cta-glyph">✣</span> EXPLORE THE SYSTEM</a>
-          <a class="secondary-cta" href="#validation">VIEW VALIDATION <span>→</span></a>
+          <a class="primary-cta" href="#system"><span class="cta-glyph">✣</span> EXPLORE GREEN GROOVE</a>
+          <a class="secondary-cta" href="#evidence">VIEW VALIDATION <span>→</span></a>
         </div>
       </div>
 
-      <button class="copy-brief reveal" type="button" data-copy="Green Groove is a student-built retail systems project exploring persistent shopper identity, shelf sensing, reversible pick/return events, live digital cart state, and checkout without conventional item-by-item rescanning.">
+      <button class="copy-brief reveal" type="button" data-copy="Green Groove is a student-built retail systems project exploring persistent shopper identity, shelf sensing, reversible pick and return events, live digital cart state, and checkout without conventional item-by-item rescanning.">
         <span>COPY SYSTEM BRIEF</span>
-        <span class="copy-right"><span class="copy-icon">▤</span><span class="copy-chevron">⌄</span></span>
+        <span class="copy-right"><span>▤</span><span>⌄</span></span>
       </button>
       <div class="copy-toast" role="status">SYSTEM BRIEF COPIED</div>
 
-      <div class="works-with reveal">
-        <span class="works-label">SYSTEM LAYERS</span>
-        <div class="works-strip">
-          <div><span class="mini-glyph">◉</span>RFID identity</div>
-          <div><span class="mini-glyph">▥</span>shelf sensing</div>
-          <div><span class="mini-glyph">⌁</span>event state</div>
-          <div><span class="mini-glyph">▣</span>live cart</div>
-          <div><span class="mini-glyph">◎</span>settlement</div>
-        </div>
-      </div>
-
-      <div class="field-poster reveal" aria-label="Green Groove glyph matrix field poster">
+      <div class="field-poster reveal">
         <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/09cb22211169339.67245eac9212c.png" alt="Green Groove project visual" />
-        <div class="poster-wash"></div>
+        <div class="poster-overlay"></div>
         <div class="glyph-field hero-glyph-field" data-glyph-field="hero" aria-hidden="true"></div>
-        <div class="poster-caption"><span>GG.FIELD_01</span><span>IDENTITY → EVENT → STATE</span></div>
+        <div class="poster-copy">
+          <span>GG / FIELD_01</span>
+          <strong>identity → event → state</strong>
+        </div>
+      </div>
+
+      <div class="works-with reveal">
+        <span class="works-label">BUILT AROUND</span>
+        <div class="works-strip">
+          <div><span>◉</span>RFID identity</div>
+          <div><span>▥</span>shelf sensing</div>
+          <div><span>⌁</span>event state</div>
+          <div><span>▣</span>live cart</div>
+          <div><span>◎</span>settlement</div>
+        </div>
       </div>
     </section>
 
-    <section class="narrative page-section" id="field" data-title="The field">
+    <section class="field page-section" id="field">
       <div class="section-overline">THE FIELD</div>
-      <div class="narrative-head reveal">
-        <h2>a retail environment where the transaction is already forming.</h2>
-        <p>The recurring image behind Green Groove is not a faster checkout lane. It is a store in which every relevant physical action can become a reversible state transition: shopper identified, product moved, cart updated, state settled.</p>
+      <div class="split-copy reveal">
+        <h2>a store where the transaction is already forming.</h2>
+        <div>
+          <p>Green Groove starts with a simple observation: when a product leaves a shelf, the transaction has already begun physically. The system asks whether that event can also become a trustworthy digital state change.</p>
+          <p>The hard part is not detecting motion. It is keeping identity, association, reversibility and cart state synchronized.</p>
+        </div>
       </div>
+
       <div class="matrix-landscape reveal">
-        <div class="matrix-copy">
-          <span class="array-kicker">STATE / 0001–0110</span>
-          <strong>physical action<br>→ digital memory</strong>
-          <small>each event should be attributable, reversible, and inspectable</small>
-        </div>
+        <div class="matrix-label">STATE / 0001–0110</div>
+        <div class="matrix-copy">physical action<br><span>→ digital state</span></div>
         <div class="glyph-cloud" data-glyph-field="cloud" aria-hidden="true"></div>
-        <div class="matrix-axis axis-x">EVENT SEQUENCE →</div>
-        <div class="matrix-axis axis-y">CONFIDENCE</div>
+        <div class="matrix-axis">EVENT SEQUENCE →</div>
       </div>
     </section>
 
-    <section class="architecture page-section" id="architecture" data-title="State engine">
-      <div class="section-overline">ARCHITECTURE</div>
-      <div class="arch-grid reveal">
-        <div class="arch-copy">
-          <h2>Four hand-offs. One live state.</h2>
-          <p>The system only works if identity, sensing, association and settlement agree on the same transaction history.</p>
-          <div class="arch-flow-text">RAW ACTION → SESSION → EVENT → CART → SETTLEMENT</div>
-        </div>
-        <div class="ring-poster">
-          <div class="ring ring-a"></div><div class="ring ring-b"></div><div class="ring ring-c"></div><div class="ring ring-d"></div>
-          <div class="ring-core">GG</div>
-          <div class="ring-label label-1">IDENTITY</div><div class="ring-label label-2">SENSE</div><div class="ring-label label-3">ASSOCIATE</div><div class="ring-label label-4">SETTLE</div>
-          <div class="glyph-field ring-glyph-field" data-glyph-field="ring" aria-hidden="true"></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="what-we-do page-section" id="what-we-do" data-title="What we built">
+    <section class="product page-section" id="system">
       <div class="section-overline">WHAT WE BUILT</div>
-      <div class="feature-row reveal">
+
+      <article class="feature-row reveal">
         <div class="feature-glyph"><span>⟲</span><div class="glyph-mini-matrix" data-mini-matrix="return"></div></div>
-        <div><h3>State that can reverse.</h3><p>A return cannot be a correction made later. It has to be the inverse of the original pick event, resolving the exact cart state it created.</p><a href="#evidence">See the failure model →</a></div>
-      </div>
-      <div class="feature-row reveal">
+        <div class="feature-copy"><h3>State that can reverse.</h3><p>A return has to undo the exact state created by the original pick event. Reversibility is part of the system model, not a correction bolted on later.</p></div>
+      </article>
+
+      <article class="feature-row reveal">
         <div class="feature-glyph"><span>⌁</span><div class="glyph-mini-matrix" data-mini-matrix="signal"></div></div>
-        <div><h3>Association, not just detection.</h3><p>Knowing that an item moved is not enough. Green Groove has to associate the event with the correct persistent shopper session, especially when people overlap.</p><a href="#architecture">Read the system model →</a></div>
-      </div>
-      <div class="feature-row reveal">
+        <div class="feature-copy"><h3>Association, not just detection.</h3><p>Knowing an item moved is not enough. The event must be associated with the right persistent shopper session, including under overlap and sensor disagreement.</p></div>
+      </article>
+
+      <article class="feature-row reveal">
         <div class="feature-glyph"><span>▦</span><div class="glyph-mini-matrix" data-mini-matrix="state"></div></div>
-        <div><h3>The hard state logic, exposed.</h3><p>The project treats uncertainty, disagreement and state synchronization as first-class engineering problems rather than hiding them behind a polished retail interface.</p><a href="#notes">Read the research notes →</a></div>
-      </div>
+        <div class="feature-copy"><h3>The hard state logic, exposed.</h3><p>Green Groove treats ambiguity, confidence and synchronization as first-class engineering problems instead of hiding them behind a polished retail interface.</p></div>
+      </article>
     </section>
 
-    <section class="production page-section" id="evidence" data-title="In research">
+    <section class="research page-section" id="research">
       <div class="section-overline">IN RESEARCH</div>
-      <div class="production-intro reveal">
-        <h2>What is known, what is external, and what still needs to be measured.</h2>
-        <p>Green Groove does not invent performance numbers. This dashboard separates project structure and external validation from empirical questions that remain open.</p>
+      <div class="research-head reveal">
+        <h2>What we can say today — and what still needs to be measured.</h2>
+        <p>No invented accuracy numbers. No simulated proof presented as field validation. The site separates system structure, known failure modes and external recognition from the experiments still required.</p>
       </div>
 
-      <div class="data-grid stagger-group">
-        <article class="data-card reveal">
-          <div class="data-head"><span>State hand-offs</span><small>SYSTEM MODEL</small></div>
-          <strong class="mega-number">04</strong>
-          <div class="block-chart"><i style="--v:88%"></i><i style="--v:74%"></i><i style="--v:92%"></i><i style="--v:81%"></i></div>
-          <div class="card-foot">IDENTIFY · SENSE · ASSOCIATE · SETTLE</div>
-        </article>
-        <article class="data-card reveal">
-          <div class="data-head"><span>Known failure modes</span><small>ENGINEERING REVIEW</small></div>
-          <strong class="mega-number">04</strong>
-          <div class="matrix-list"><span>01 returns</span><span>02 disagreement</span><span>03 overlap</span><span>04 identity drift</span></div>
-        </article>
-        <article class="data-card accent-card reveal">
-          <div class="data-head"><span>External support</span><small>PUBLISHED COVERAGE</small></div>
-          <strong class="mega-number">₹50K</strong>
-          <div class="accent-bar"><span></span></div>
-          <div class="card-foot">reported project support under PRAYAAS</div>
-        </article>
-        <article class="data-card reveal">
-          <div class="data-head"><span>External selection</span><small>NCERT PRAYAAS</small></div>
-          <strong class="text-callout">SELECTED</strong>
-          <div class="matrix-stamp">URBAN PRIVATE // PROJECT GREEN GROOVE</div>
-        </article>
-        <article class="data-card wide-card reveal">
-          <div class="data-head"><span>Research status</span><small>NO CLAIM INFLATION</small></div>
-          <div class="status-tabs" role="tablist"><button class="active" data-status-tab="framed">Framed</button><button data-status-tab="external">External</button><button data-status-tab="next">Next</button></div>
-          <div class="status-panel active" data-status-panel="framed"><div class="status-glyph">▦</div><div><h4>Architecture + failure model</h4><p>Persistent identity, event association, reversible returns and live cart state are defined conceptually.</p></div></div>
-          <div class="status-panel" data-status-panel="external"><div class="status-glyph">◎</div><div><h4>PRAYAAS selection + published coverage</h4><p>External evidence supports the project’s selection and reported support — not unmeasured technical performance.</p></div></div>
-          <div class="status-panel" data-status-panel="next"><div class="status-glyph">→</div><div><h4>Empirical validation</h4><p>Next: association accuracy, return correctness, multi-shopper ambiguity and end-to-end cart consistency.</p></div></div>
-        </article>
-        <article class="data-card reveal matrix-card">
-          <div class="data-head"><span>State trace</span><small>CONCEPTUAL LOG</small></div>
-          <pre><code>session_07
-  ├─ pick    sku_042   +1
-  ├─ pick    sku_118   +1
-  ├─ return  sku_042   -1
-  └─ settle  cart      =1</code></pre>
-        </article>
+      <div class="research-grid stagger-group">
+        <article class="research-card reveal"><span class="card-label">SYSTEM MODEL</span><strong>04</strong><p>Identify · sense · associate · settle</p><div class="barline"><i></i><i></i><i></i><i></i></div></article>
+        <article class="research-card reveal"><span class="card-label">KNOWN FAILURE MODES</span><strong>04</strong><p>Returns · disagreement · overlap · identity drift</p><div class="glyph-row">× · + ○ × · + ○</div></article>
+        <article class="research-card accent reveal"><span class="card-label">PUBLISHED SUPPORT</span><strong>₹50K</strong><p>Reported project support under PRAYAAS</p><div class="accent-line"></div></article>
+        <article class="research-card reveal"><span class="card-label">EXTERNAL SELECTION</span><strong class="word-number">SELECTED</strong><p>NCERT PRAYAAS · Urban Private</p><div class="matrix-stamp">GG / PRAYAAS / EXT</div></article>
+      </div>
+
+      <div class="state-log reveal">
+        <div class="state-log-head"><span>STATE TRACE</span><span>CONCEPTUAL</span></div>
+        <pre><code>session_07
+├─ pick    sku_042   +1
+├─ pick    sku_118   +1
+├─ return  sku_042   -1
+└─ settle  cart      =1</code></pre>
       </div>
     </section>
 
-    <section class="layers page-section" id="layers" data-title="Physical layers">
-      <div class="section-overline">PHYSICAL LAYERS</div>
-      <div class="layers-intro reveal"><h2>Green Groove lives across the physical and digital store.</h2></div>
-      <div class="layer-row reveal"><span class="layer-num">001</span><div class="layer-icon glyph-device"><span>◉</span></div><div><h3>On the shopper</h3><p>Persistent identity through an RFID-enabled wristband or equivalent session token.</p></div></div>
-      <div class="layer-row reveal"><span class="layer-num">002</span><div class="layer-icon glyph-device"><span>▥</span></div><div><h3>On the shelf</h3><p>Product movement and shelf-state signals that distinguish picks from returns.</p></div></div>
-      <div class="layer-row reveal"><span class="layer-num">003</span><div class="layer-icon glyph-device"><span>▣</span></div><div><h3>In the state engine</h3><p>Association logic accumulates reversible events into the live digital cart and billing state.</p></div></div>
-    </section>
-
-    <section class="validation page-section" id="validation" data-title="External evidence">
+    <section class="evidence page-section" id="evidence">
       <div class="section-overline">EXTERNAL EVIDENCE</div>
-      <div class="validation-grid reveal">
+      <div class="evidence-grid reveal">
         <div>
           <h2>Selected under NCERT PRAYAAS.</h2>
-          <p>Published school coverage reports Green Groove’s selection in the Urban Private category and ₹50,000 in project support. These are the external claims this site relies on.</p>
-          <div class="validation-actions"><a href="https://www.ncert.nic.in/desm/prayaas.php?ln=en" target="_blank" rel="noreferrer">NCERT programme ↗</a><a href="https://theglobaltimes.in/archives/december-15-2025.pdf" target="_blank" rel="noreferrer">Published coverage ↗</a></div>
+          <p>Published school coverage identifies Project Green Groove, Aryan Kumar and Sushanth Dasari, and reports ₹50,000 in support under the Urban Private category.</p>
+          <div class="evidence-actions">
+            <a class="secondary-cta" href="https://www.ncert.nic.in/desm/prayaas.php?ln=en" target="_blank" rel="noreferrer">NCERT PROGRAMME ↗</a>
+            <a class="secondary-cta" href="https://theglobaltimes.in/archives/december-15-2025.pdf" target="_blank" rel="noreferrer">PUBLISHED COVERAGE ↗</a>
+          </div>
         </div>
-        <div class="badge-row">
-          <div class="evidence-badge"><span class="badge-glyph">✣</span><strong>PRAYAAS</strong><small>selected</small></div>
-          <div class="evidence-badge"><span class="badge-glyph">₹</span><strong>50K</strong><small>reported support</small></div>
-          <div class="evidence-badge"><span class="badge-glyph">02</span><strong>TEAM</strong><small>students</small></div>
+        <div class="evidence-mark">
+          <span>PRAYAAS</span>
+          <strong>₹50K</strong>
+          <small>reported support</small>
+          <div class="stamp-grid" data-mini-matrix="evidence"></div>
         </div>
       </div>
     </section>
 
-    <section class="reengage page-section">
-      <div class="glyph-divider" data-glyph-field="divider" aria-hidden="true"></div>
-      <div class="reengage-copy reveal">
-        <h2>Can retail state be trustworthy enough to remove the rescan?</h2>
-        <p>That is the real Green Groove question. The next version should answer it with measured evidence.</p>
-        <a href="#notes" class="primary-cta"><span class="cta-glyph">✣</span> SEE NEXT EXPERIMENTS</a>
-      </div>
-    </section>
-
-    <section class="notes page-section" id="notes" data-title="Notes">
+    <section class="notes page-section" id="notes">
       <div class="section-overline">NOTES</div>
       <div class="notes-list reveal">
-        <a href="#architecture"><span>01</span><strong>Why a smart shelf is actually a state-synchronization problem</strong><i>→</i></a>
-        <a href="#evidence"><span>02</span><strong>Returns, overlap and the difference between detecting and knowing</strong><i>→</i></a>
-        <a href="#validation"><span>03</span><strong>What Green Groove can claim today — and what still needs testing</strong><i>→</i></a>
+        <div><span>01</span><strong>Why returns are an inverse state transition, not a UI correction.</strong></div>
+        <div><span>02</span><strong>Why simultaneous shoppers turn sensing into an association problem.</strong></div>
+        <div><span>03</span><strong>What we would measure next: association accuracy, return correctness and end-to-end cart consistency.</strong></div>
       </div>
     </section>
 
-    <section class="team page-section" id="team">
-      <div class="section-overline">TEAM</div>
-      <div class="team-copy reveal"><h2>Two students building a physical-digital retail system.</h2><p>Green Groove was created by Sushanth Dasari and Aryan Kumar in Gurugram, India. Work spanned research, systems thinking, product design and prototyping.</p></div>
-    </section>
-
-    <footer class="footer">
+    <footer class="site-footer">
       <div class="footer-main">
-        <div class="footer-brand"><a href="#home"><span class="matrix-mark"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span>green groove</span></a><p>A student engineering project about identity, sensing and live retail state.</p><small>Gurugram.</small></div>
-        <div><h3>Project</h3><a href="#field">Field</a><a href="#architecture">System</a><a href="#evidence">Research</a><a href="#layers">Layers</a></div>
-        <div><h3>Evidence</h3><a href="#validation">PRAYAAS</a><a href="https://www.ncert.nic.in/desm/prayaas.php?ln=en" target="_blank" rel="noreferrer">NCERT ↗</a><a href="https://theglobaltimes.in/archives/december-15-2025.pdf" target="_blank" rel="noreferrer">Coverage ↗</a></div>
-        <div><h3>Project archive</h3><a href="https://www.behance.net/gallery/211169339/Green-Groove" target="_blank" rel="noreferrer">Original study ↗</a><a href="#notes">Notes</a><a href="#team">Team</a></div>
+        <div class="footer-brand"><a href="#home"><span class="matrix-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span>green groove</span></a><p>Retail state that forms while you shop.</p></div>
+        <div><span>Project</span><a href="#field">Field</a><a href="#system">Product</a><a href="#research">Research</a></div>
+        <div><span>Evidence</span><a href="#evidence">PRAYAAS</a><a href="https://www.ncert.nic.in/desm/prayaas.php?ln=en" target="_blank" rel="noreferrer">NCERT ↗</a></div>
       </div>
-      <div class="footer-bottom"><span>© <span id="year"></span> Green Groove.</span><span class="footer-status"><i></i>field system online</span><a href="#home">Back to top ↑</a></div>
+      <div class="footer-bottom"><span>© <span id="year"></span> Green Groove.</span><a href="#home">Back to top ↑</a></div>
     </footer>
   </main>
 
