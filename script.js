@@ -1,5 +1,13 @@
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+// Load the non-destructive refinement layer after the base replica stylesheet.
+if(!document.querySelector('link[href^="refinement.css"]')){
+  const refinement=document.createElement('link');
+  refinement.rel='stylesheet';
+  refinement.href='refinement.css?v=1';
+  document.head.appendChild(refinement);
+}
+
 // Menu
 const menuSheet = document.querySelector('.menu-sheet');
 const menuOpen = document.querySelector('.nav-menu');
@@ -23,6 +31,16 @@ if('IntersectionObserver' in window && !reduceMotion){
   }),{threshold:.08,rootMargin:'0px 0px -45px'});
   reveals.forEach((el,i)=>{el.style.transitionDelay=`${Math.min((i%3)*65,130)}ms`;io.observe(el)});
 }else reveals.forEach(el=>el.classList.add('in'));
+
+// Ensure direct anchor navigation never leaves the destination faded while IntersectionObserver catches up.
+function revealHashTarget(){
+  if(!location.hash)return;
+  const target=document.querySelector(location.hash);
+  target?.classList.add('in');
+  target?.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+}
+window.addEventListener('hashchange',()=>requestAnimationFrame(revealHashTarget));
+window.addEventListener('load',()=>requestAnimationFrame(revealHashTarget));
 
 // Floating nav tucks away on downward scroll, matching the reference behavior.
 const floatNav=document.querySelector('.float-nav');
@@ -59,8 +77,8 @@ dragRails.forEach(initDragRail);
 
 // Updates arrows
 const updatesRail=document.querySelector('.updates-rail');
-document.querySelector('[data-rail-prev="updates"]')?.addEventListener('click',()=>updatesRail?.scrollBy({left:-420,behavior:reduceMotion?'auto':'smooth'}));
-document.querySelector('[data-rail-next="updates"]')?.addEventListener('click',()=>updatesRail?.scrollBy({left:420,behavior:reduceMotion?'auto':'smooth'}));
+document.querySelector('[data-rail-prev="updates"]')?.addEventListener('click',()=>updatesRail?.scrollBy({left:-430,behavior:reduceMotion?'auto':'smooth'}));
+document.querySelector('[data-rail-next="updates"]')?.addEventListener('click',()=>updatesRail?.scrollBy({left:430,behavior:reduceMotion?'auto':'smooth'}));
 
 // Toolkit pills jump the corresponding card into view.
 const toolTabs=[...document.querySelectorAll('.tool-tabs button')];
@@ -143,13 +161,26 @@ if(dragCursor && !reduceMotion && window.matchMedia('(pointer:fine)').matches){
   });
 }
 
-// Subtle hero parallax without replacing the carefully set card rotations.
+// Subtle hero depth. The outer card rotations stay fixed; only the card screens parallax.
+const hero=document.querySelector('.hero');
 const heroOrbit=document.querySelector('.hero-orbit');
-if(heroOrbit && !reduceMotion){
+const orbitCards=[...document.querySelectorAll('.orbit-card')];
+if(hero && heroOrbit && !reduceMotion){
   window.addEventListener('scroll',()=>{
     const y=Math.min(window.scrollY,650);
-    heroOrbit.style.marginTop=`${y*.045}px`;
+    heroOrbit.style.marginTop=`${y*.035}px`;
   },{passive:true});
+  hero.addEventListener('pointermove',e=>{
+    const rect=hero.getBoundingClientRect();
+    const nx=(e.clientX-rect.left)/rect.width-.5;
+    const ny=(e.clientY-rect.top)/rect.height-.5;
+    orbitCards.forEach((card,index)=>{
+      const depth=((index%4)+1)*.9;
+      card.style.setProperty('--dx',`${(nx*depth*4).toFixed(2)}px`);
+      card.style.setProperty('--dy',`${(ny*depth*3).toFixed(2)}px`);
+    });
+  });
+  hero.addEventListener('pointerleave',()=>orbitCards.forEach(card=>{card.style.setProperty('--dx','0px');card.style.setProperty('--dy','0px')}));
 }
 
 // Reel demo button
