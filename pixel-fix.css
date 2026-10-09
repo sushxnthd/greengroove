@@ -1,16 +1,20 @@
 /* Pixel-level corrections for Green Groove substitutions inside Osmo's source geometry. */
 .home-hero__top-logo.gg-glyph-replacement{width:1em!important;height:1em!important;font-size:5em!important;line-height:.82!important;flex:none!important;transform:rotate(7deg)}
-/* Green Groove's replacement words are wider than Osmo's originals; keep their visual envelope source-sized. */
-.home-hero__title-row .h-xl{font-size:6.5em!important}
-.home-hero__content{transform:translateY(-.8em)}
-.home-hero__content{grid-column-gap:max(1.5em,3.8svh)!important;grid-row-gap:max(1.5em,3.8svh)!important}
-/* Preserve the original top-nav button footprints despite longer Green Groove labels. */
+/* Green Groove copy differs in glyph widths; compensate per phrase while preserving Osmo's flex geometry. */
+.home-hero__title-row .h-xl:first-child{font-size:6.9em!important}
+.home-hero__title-row .h-xl:last-child{font-size:6.45em!important}
+.home-hero__content{transform:translateY(-.45em)}
+.home-hero__content{grid-column-gap:max(1.5em,3.55svh)!important;grid-row-gap:max(1.5em,3.55svh)!important}
+/* Preserve original top-nav button footprints despite longer Green Groove labels. */
 .nav-bar__login-button .button{width:6.15em!important;padding-left:.75em!important;padding-right:.75em!important}
 .nav-bar__signup-button .button{width:5.15em!important;padding-left:.55em!important;padding-right:.55em!important}
 .nav-bar__login-button .button-label,.nav-bar__signup-button .button-label{white-space:nowrap!important;font-size:.9em!important}
+/* The reference uses an SVG globe/progress graphic. Keep the exact box and visual weight with Green Groove's own generated surface. */
+.testimonial-globe__progress.gg-svg-placeholder{display:block!important;position:absolute!important;inset:0!important;width:100%!important;height:100%!important;border-radius:50%;border:.55em solid currentColor!important;opacity:.82;box-sizing:border-box}
+.testimonial-globe__progress.gg-svg-placeholder:after{content:"";position:absolute;inset:10%;border-radius:50%;background:radial-gradient(circle at 28% 37%,currentColor 0 .13em,transparent .15em),radial-gradient(circle at 67% 31%,currentColor 0 .13em,transparent .15em),radial-gradient(circle at 72% 64%,currentColor 0 .13em,transparent .15em),radial-gradient(circle at 39% 69%,currentColor 0 .13em,transparent .15em),linear-gradient(18deg,transparent 48.8%,currentColor 49% 49.4%,transparent 49.6%),linear-gradient(96deg,transparent 49%,currentColor 49.2% 49.5%,transparent 49.7%);opacity:.26}
 @media(max-width:767px){
  .home-hero__top-logo.gg-glyph-replacement{width:1em!important;height:1em!important;font-size:3em!important}
- .home-hero__title-row .h-xl{font-size:4.5em!important}
+ .home-hero__title-row .h-xl:first-child,.home-hero__title-row .h-xl:last-child{font-size:4.5em!important}
  .home-hero__content{transform:none;grid-column-gap:var(--gap-l)!important;grid-row-gap:var(--gap-l)!important}
  .nav-bar__login-button .button,.nav-bar__signup-button .button{width:auto!important}
 }
