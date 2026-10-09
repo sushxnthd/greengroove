@@ -7,35 +7,35 @@
 html{scroll-padding-top:130px}
 section[id]{scroll-margin-top:125px}
 
-/* Floating chrome: tighter and more tactile */
+/* Floating chrome: measured against the live Osmo viewport in Opera */
 .float-nav{
-  top:27px;
-  width:min(756px,calc(100vw - 34px));
-  height:64px;
+  top:22px;
+  width:min(648px,calc(100vw - 34px));
+  height:58px;
   padding:4px;
   border-radius:6px;
   background:rgba(31,30,29,.985);
   box-shadow:0 1px 0 rgba(255,255,255,.08) inset,0 12px 36px rgba(20,20,18,.08);
   backdrop-filter:blur(16px);
 }
-.nav-menu{height:56px;padding-inline:14px;font-size:18px}
-.nav-brand{font-size:18px;gap:8px}
-.brand-glyph{font-size:25px;transform:rotate(8deg);display:inline-block}
-.nav-pill{height:52px;padding-inline:22px;font-size:17px}
+.nav-menu{height:50px;padding-inline:13px;font-size:17px}
+.nav-brand{font-size:16px;gap:7px}
+.brand-glyph{font-size:22px;transform:rotate(8deg);display:inline-block}
+.nav-pill{height:44px;padding-inline:18px;font-size:15px}
 .nav-muted{background:#4a4947}
 .nav-green{background:#86ff49}
-.ticker{top:71px;height:25px;border-radius:2px;box-shadow:0 1px 0 rgba(0,0,0,.08) inset}
-.ticker-track{gap:28px;animation-duration:18s}
+.ticker{top:64px;height:22px;border-radius:2px;box-shadow:0 1px 0 rgba(0,0,0,.08) inset;font-size:10px}
+.ticker-track{gap:25px;animation-duration:18s}
 
-/* Hero: closer proportions and less dead air */
-.hero{min-height:1110px;padding-top:238px}
+/* Hero: measured vertical offset against the live reference */
+.hero{min-height:1080px;padding-top:210px}
 .hero-copy{width:min(1510px,95vw)}
 .hero-title-row{gap:25px}
 .hero-title-row h1{font-size:clamp(63px,7.25vw,129px);line-height:.91;letter-spacing:-.071em}
 .hero-mark{font-size:clamp(70px,6.2vw,108px);transform:rotate(7deg);filter:saturate(1.08)}
 .hero-sub{width:min(745px,89vw);margin-top:64px;font-size:30px;line-height:1.35;letter-spacing:-.03em}
 .hero-sub span{padding:1px 11px 2px;border-radius:10px;background:#ececea;box-shadow:0 1px 7px rgba(0,0,0,.025)}
-.hero-orbit{top:565px;width:1850px;height:535px}
+.hero-orbit{top:535px;width:1850px;height:535px}
 .orbit-card{border-width:5px;border-radius:6px;box-shadow:var(--gg-shadow);transition:filter .32s ease,box-shadow .38s ease}
 .orbit-card:hover{box-shadow:var(--gg-shadow-strong);filter:brightness(1.035)}
 .orbit-screen{transition:transform .32s var(--gg-ease),filter .3s ease;transform:translate3d(var(--dx,0),var(--dy,0),0) scale(1.008)}
@@ -164,7 +164,8 @@ section[id]{scroll-margin-top:125px}
 a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid #7652ff;outline-offset:3px}
 
 @media(max-width:1000px){
-  .hero{padding-top:220px;min-height:1040px}.hero-title-row{gap:18px}.hero-sub{font-size:26px;margin-top:52px}.hero-orbit{top:540px;transform:translateX(-50%) scale(.9)}
+  .float-nav{width:min(648px,calc(100vw - 28px))}
+  .hero{padding-top:200px;min-height:1010px}.hero-title-row{gap:18px}.hero-sub{font-size:26px;margin-top:52px}.hero-orbit{top:510px;transform:translateX(-50%) scale(.9)}
   .reel-layout{grid-template-columns:1fr}.reel-label{flex-direction:row;justify-content:space-between;align-items:center;padding-bottom:0}
   .creator-visual{min-height:600px}.community-head{min-height:320px}
 }
