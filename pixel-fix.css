@@ -1,0 +1,3 @@
+/* Pixel-level corrections for Green Groove substitutions inside Osmo's source geometry. */
+.home-hero__top-logo.gg-glyph-replacement{width:1em!important;height:1em!important;font-size:5em!important;line-height:.82!important;flex:none!important;transform:rotate(7deg)}
+@media(max-width:767px){.home-hero__top-logo.gg-glyph-replacement{width:1em!important;height:1em!important;font-size:3em!important}}
