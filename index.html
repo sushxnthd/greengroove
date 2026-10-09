@@ -3,31 +3,28 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#090a0d" />
+  <meta name="theme-color" content="#090a08" />
   <meta name="description" content="Green Groove — a student-built retail systems project exploring RFID identity, shelf sensing, reversible events and live cart state. Selected under NCERT PRAYAAS." />
   <meta property="og:title" content="Green Groove — retail state, built while you shop" />
   <meta property="og:description" content="RFID identity, shelf sensing and a live digital cart — a student engineering project by Sushanth Dasari and Aryan Kumar." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/09cb22211169339.67245eac9212c.png" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <title>Green Groove — retail systems project</title>
-  <link rel="preconnect" href="https://api.fontshare.com" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://api.fontshare.com/v2/css?f[]=array@400,600,700&f[]=satoshi@400,500,600,700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="supermemory.css" />
 </head>
 <body>
   <div class="mobile-topbar">
-    <a class="mobile-brand" href="#home"><span class="matrix-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span>green groove</span></a>
+    <a class="mobile-brand" href="#home"><span class="brand-mark" aria-hidden="true"></span><span>green groove</span></a>
     <button class="mobile-menu-button" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
   </div>
 
   <aside class="sidebar" aria-label="Site navigation">
     <div class="sidebar-inner">
       <a class="brand" href="#home" aria-label="Green Groove home">
-        <span class="matrix-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+        <span class="brand-mark" aria-hidden="true"></span>
         <span>green groove</span>
       </a>
 
@@ -73,7 +70,7 @@
         <h1>A retail system that builds the cart <span>while you shop.</span></h1>
         <p>Green Groove links shopper identity, shelf events and live cart state so checkout can begin before the customer reaches a scanner.</p>
         <div class="hero-actions">
-          <a class="primary-cta" href="#system"><span class="cta-glyph">✣</span> EXPLORE GREEN GROOVE</a>
+          <a class="primary-cta" href="#system">EXPLORE GREEN GROOVE</a>
           <a class="secondary-cta" href="#evidence">VIEW VALIDATION <span>→</span></a>
         </div>
       </div>
@@ -84,24 +81,19 @@
       </button>
       <div class="copy-toast" role="status">SYSTEM BRIEF COPIED</div>
 
-      <div class="field-poster reveal">
-        <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/09cb22211169339.67245eac9212c.png" alt="Green Groove project visual" />
-        <div class="poster-overlay"></div>
-        <div class="glyph-field hero-glyph-field" data-glyph-field="hero" aria-hidden="true"></div>
-        <div class="poster-copy">
-          <span>GG / FIELD_01</span>
-          <strong>identity → event → state</strong>
-        </div>
+      <div class="media-placeholder media-placeholder-hero reveal" role="img" aria-label="Placeholder for Green Groove hero image">
+        <span class="placeholder-index">01</span>
+        <div><strong>Hero image</strong><small>16:9 · prototype / in-store system photograph</small></div>
       </div>
 
       <div class="works-with reveal">
         <span class="works-label">BUILT AROUND</span>
         <div class="works-strip">
-          <div><span>◉</span>RFID identity</div>
-          <div><span>▥</span>shelf sensing</div>
-          <div><span>⌁</span>event state</div>
-          <div><span>▣</span>live cart</div>
-          <div><span>◎</span>settlement</div>
+          <div><span class="system-dot"></span>RFID identity</div>
+          <div><span class="system-dot"></span>shelf sensing</div>
+          <div><span class="system-dot"></span>event state</div>
+          <div><span class="system-dot"></span>live cart</div>
+          <div><span class="system-dot"></span>settlement</div>
         </div>
       </div>
     </section>
@@ -116,11 +108,9 @@
         </div>
       </div>
 
-      <div class="matrix-landscape reveal">
-        <div class="matrix-label">STATE / 0001–0110</div>
-        <div class="matrix-copy">physical action<br><span>→ digital state</span></div>
-        <div class="glyph-cloud" data-glyph-field="cloud" aria-hidden="true"></div>
-        <div class="matrix-axis">EVENT SEQUENCE →</div>
+      <div class="media-placeholder media-placeholder-wide reveal" role="img" aria-label="Placeholder for Green Groove field image">
+        <span class="placeholder-index">02</span>
+        <div><strong>Field / context image</strong><small>Wide image · supermarket environment, shelf interaction, or system-in-context</small></div>
       </div>
     </section>
 
@@ -128,17 +118,17 @@
       <div class="section-overline">WHAT WE BUILT</div>
 
       <article class="feature-row reveal">
-        <div class="feature-glyph"><span>⟲</span><div class="glyph-mini-matrix" data-mini-matrix="return"></div></div>
+        <div class="feature-media-placeholder"><span>03</span><small>Return-state visual</small></div>
         <div class="feature-copy"><h3>State that can reverse.</h3><p>A return has to undo the exact state created by the original pick event. Reversibility is part of the system model, not a correction bolted on later.</p></div>
       </article>
 
       <article class="feature-row reveal">
-        <div class="feature-glyph"><span>⌁</span><div class="glyph-mini-matrix" data-mini-matrix="signal"></div></div>
+        <div class="feature-media-placeholder"><span>04</span><small>Association visual</small></div>
         <div class="feature-copy"><h3>Association, not just detection.</h3><p>Knowing an item moved is not enough. The event must be associated with the right persistent shopper session, including under overlap and sensor disagreement.</p></div>
       </article>
 
       <article class="feature-row reveal">
-        <div class="feature-glyph"><span>▦</span><div class="glyph-mini-matrix" data-mini-matrix="state"></div></div>
+        <div class="feature-media-placeholder"><span>05</span><small>State-system visual</small></div>
         <div class="feature-copy"><h3>The hard state logic, exposed.</h3><p>Green Groove treats ambiguity, confidence and synchronization as first-class engineering problems instead of hiding them behind a polished retail interface.</p></div>
       </article>
     </section>
@@ -152,18 +142,19 @@
 
       <div class="research-grid stagger-group">
         <article class="research-card reveal"><span class="card-label">SYSTEM MODEL</span><strong>04</strong><p>Identify · sense · associate · settle</p><div class="barline"><i></i><i></i><i></i><i></i></div></article>
-        <article class="research-card reveal"><span class="card-label">KNOWN FAILURE MODES</span><strong>04</strong><p>Returns · disagreement · overlap · identity drift</p><div class="glyph-row">× · + ○ × · + ○</div></article>
+        <article class="research-card reveal"><span class="card-label">KNOWN FAILURE MODES</span><strong>04</strong><p>Returns · disagreement · overlap · identity drift</p><div class="plain-list"><span>returns</span><span>disagreement</span><span>overlap</span><span>identity drift</span></div></article>
         <article class="research-card accent reveal"><span class="card-label">PUBLISHED SUPPORT</span><strong>₹50K</strong><p>Reported project support under PRAYAAS</p><div class="accent-line"></div></article>
-        <article class="research-card reveal"><span class="card-label">EXTERNAL SELECTION</span><strong class="word-number">SELECTED</strong><p>NCERT PRAYAAS · Urban Private</p><div class="matrix-stamp">GG / PRAYAAS / EXT</div></article>
+        <article class="research-card reveal"><span class="card-label">EXTERNAL SELECTION</span><strong class="word-number">SELECTED</strong><p>NCERT PRAYAAS · Urban Private</p><div class="selection-note">external recognition</div></article>
       </div>
 
       <div class="state-log reveal">
         <div class="state-log-head"><span>STATE TRACE</span><span>CONCEPTUAL</span></div>
-        <pre><code>session_07
-├─ pick    sku_042   +1
-├─ pick    sku_118   +1
-├─ return  sku_042   -1
-└─ settle  cart      =1</code></pre>
+        <div class="state-rows">
+          <div><span>01</span><strong>identify shopper session</strong></div>
+          <div><span>02</span><strong>detect pick / return event</strong></div>
+          <div><span>03</span><strong>associate event with session</strong></div>
+          <div><span>04</span><strong>update or settle cart state</strong></div>
+        </div>
       </div>
     </section>
 
@@ -182,7 +173,6 @@
           <span>PRAYAAS</span>
           <strong>₹50K</strong>
           <small>reported support</small>
-          <div class="stamp-grid" data-mini-matrix="evidence"></div>
         </div>
       </div>
     </section>
@@ -198,7 +188,7 @@
 
     <footer class="site-footer">
       <div class="footer-main">
-        <div class="footer-brand"><a href="#home"><span class="matrix-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span>green groove</span></a><p>Retail state that forms while you shop.</p></div>
+        <div class="footer-brand"><a href="#home"><span class="brand-mark" aria-hidden="true"></span><span>green groove</span></a><p>Retail state that forms while you shop.</p></div>
         <div><span>Project</span><a href="#field">Field</a><a href="#system">Product</a><a href="#research">Research</a></div>
         <div><span>Evidence</span><a href="#evidence">PRAYAAS</a><a href="https://www.ncert.nic.in/desm/prayaas.php?ln=en" target="_blank" rel="noreferrer">NCERT ↗</a></div>
       </div>
