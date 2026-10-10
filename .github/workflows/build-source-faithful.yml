@@ -18,6 +18,7 @@ on:
       - qa_markers.py
       - ui_invariance.py
       - qa_runtime.py
+      - qa_about_probe.py
       - assets/raster/*.b64
       - favicon-source.svg
       - '*.fragment.html'
@@ -69,12 +70,17 @@ jobs:
           python -m playwright install --with-deps chromium
       - name: Run exhaustive desktop tablet and mobile functional QA
         run: python qa_runtime.py
-      - name: Archive QA report even when checks fail
+      - name: Probe desktop About interaction
+        if: always()
+        run: python qa_about_probe.py
+      - name: Archive QA reports even when checks fail
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: green-groove-qa-report
-          path: qa-report.json
+          path: |
+            qa-report.json
+            about-probe.json
           if-no-files-found: ignore
       - name: Apply canonical favicon artwork
         run: cp favicon-source.svg favicon.svg
