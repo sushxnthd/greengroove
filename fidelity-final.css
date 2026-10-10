@@ -13,6 +13,9 @@
 .nav-marquee .eyebrow.is--nav-marquee{font-size:0!important}
 .nav-marquee .eyebrow.is--nav-marquee::after{content:"GREEN GROOVE · SMART SHOPPING · NCERT PRAYAAS";font-size:.625rem!important;white-space:nowrap}
 
+/* Hero source cards use clean visual media; titles remain in Osmo's card-info strip below. */
+.radial-marquee__card-visual::after{display:none!important}
+
 /* Keep real-media cards readable at thumbnail scale. */
 .latest-resources-slider .vertical-slider__item:nth-child(1) .resource-visual{background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/8f77ac211169339.67245eac91a69.png')!important;background-size:cover!important;background-position:center 3%!important}
 .latest-resources-slider .vertical-slider__item:nth-child(2) .resource-visual{background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/70a4ef211169339.67245eac915e5.png')!important;background-size:cover!important;background-position:center!important}
@@ -27,7 +30,7 @@
 .about-card__text-h::after{content:"Aryan Kumar";display:block;font-size:.56em;line-height:1.08;margin-top:.18em;letter-spacing:-.035em;opacity:.72}
 
 /* Give tiny media captions the same crisp high-contrast treatment as the reference. */
-.radial-marquee__card-visual::after,.latest-resources-slider .resource-visual::after,.flick-group__item .showcase-media::before{backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+.latest-resources-slider .resource-visual::after,.flick-group__item .showcase-media::before{backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
 
 /* Slightly stronger media contrast; avoids the washed-out screenshot feel. */
 .radial-marquee__card-visual,.showcase-media,.about-card__img-layer,.reel__visual{filter:saturate(1.08) contrast(1.035)}
