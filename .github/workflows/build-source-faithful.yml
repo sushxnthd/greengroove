@@ -7,6 +7,7 @@ on:
     paths:
       - build_exact.py
       - tailor_v2.py
+      - tailor_v3.py
       - .github/workflows/build-source-faithful.yml
 
 permissions:
@@ -27,6 +28,8 @@ jobs:
         run: python build_exact.py
       - name: Tailor Green Groove content without changing source geometry
         run: python tailor_v2.py index.html
+      - name: Apply source-safe micro-tailoring
+        run: python tailor_v3.py index.html
       - name: Commit generated homepage
         run: |
           git config user.name "github-actions[bot]"
@@ -36,5 +39,5 @@ jobs:
             echo "No generated changes"
             exit 0
           fi
-          git commit -m "Generate and tailor source-faithful Green Groove [skip ci]"
+          git commit -m "Generate and refine source-faithful Green Groove [skip ci]"
           git push
