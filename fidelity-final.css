@@ -1,0 +1,44 @@
+/* Measured finishing corrections after live Opera comparison. */
+
+/* First viewport: align title, descriptor and radial cards to Osmo's actual baseline. */
+.home-hero__content{transform:translateY(-1.45em)!important}
+.home-hero__title-row .h-xl:last-child{font-size:6.34em!important}
+.home-hero__marquee-row{transform:translateY(-.18em)!important}
+
+/* Make the central brand footprint read like a finished wordmark, not plain body type. */
+.gg-brand-word{font-size:1.11em!important;transform:scaleX(.82)!important;letter-spacing:-.085em!important}
+.gg-footer-word{font-family:Georgia,"Times New Roman",serif!important;font-weight:700!important;letter-spacing:-.075em!important;transform:scaleX(.93);transform-origin:left center}
+
+/* The source ticker is a marketing strip; use a complete Green Groove line rather than one repeated award phrase. */
+.nav-marquee .eyebrow.is--nav-marquee{font-size:0!important}
+.nav-marquee .eyebrow.is--nav-marquee::after{content:"GREEN GROOVE · SMART SHOPPING · NCERT PRAYAAS";font-size:.625rem!important;white-space:nowrap}
+
+/* Keep real-media cards readable at thumbnail scale. */
+.latest-resources-slider .vertical-slider__item:nth-child(1) .resource-visual{background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/8f77ac211169339.67245eac91a69.png')!important;background-size:cover!important;background-position:center 3%!important}
+.latest-resources-slider .vertical-slider__item:nth-child(2) .resource-visual{background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/70a4ef211169339.67245eac915e5.png')!important;background-size:cover!important;background-position:center!important}
+.latest-resources-slider .vertical-slider__item:nth-child(3) .resource-visual{background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/09cb22211169339.67245eac9212c.png')!important;background-size:cover!important;background-position:center 42%!important}
+.latest-resources-slider .vertical-slider__item:nth-child(4) .resource-visual{background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/d434be211169339.67245eac9258b.png')!important;background-size:cover!important;background-position:center 3%!important}
+.latest-resources-slider .vertical-slider__item:nth-child(5) .resource-visual{background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/70a4ef211169339.67245eac915e5.png')!important;background-size:cover!important;background-position:center!important}
+
+/* Creator block: show the actual two-person team instead of inheriting Osmo's single-creator text behavior. */
+.about-card__text-h h3,.about-card__text-sub{display:none!important}
+.about-card__text-h{display:block!important;overflow:visible!important}
+.about-card__text-h::before{content:"Sushanth Dasari";display:block;font-size:1em;line-height:1;letter-spacing:-.045em}
+.about-card__text-h::after{content:"Aryan Kumar";display:block;font-size:.56em;line-height:1.08;margin-top:.18em;letter-spacing:-.035em;opacity:.72}
+
+/* Give tiny media captions the same crisp high-contrast treatment as the reference. */
+.radial-marquee__card-visual::after,.latest-resources-slider .resource-visual::after,.flick-group__item .showcase-media::before{backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+
+/* Slightly stronger media contrast; avoids the washed-out screenshot feel. */
+.radial-marquee__card-visual,.showcase-media,.about-card__img-layer,.reel__visual{filter:saturate(1.08) contrast(1.035)}
+
+/* Green Groove's native green→cyan accent replaces remaining template-purple cues. */
+[data-wf--button-theme--variant="purple"]{background:linear-gradient(135deg,#00ef78,#1ca9ff)!important}
+.home-hero__description-highlight{box-shadow:inset 0 0 0 1px rgba(29,27,27,.015)}
+
+@media(max-width:767px){
+  .home-hero__content{transform:none!important}
+  .home-hero__title-row .h-xl:last-child{font-size:4.5em!important}
+  .gg-brand-word{font-size:.88em!important;transform:scaleX(.86)!important}
+  .about-card__text-h::before{font-size:.88em}
+}
