@@ -12,6 +12,7 @@ on:
       - brand_apply_v2.py
       - brand_viewbox_fix.py
       - footer_osmo_exact.py
+      - favicon-source.svg
       - '*.fragment.html'
       - .github/workflows/build-source-faithful.yml
 
@@ -43,6 +44,8 @@ jobs:
         run: python brand_viewbox_fix.py index.html
       - name: Rebuild footer for exact Osmo path animation
         run: python footer_osmo_exact.py index.html
+      - name: Apply canonical favicon artwork
+        run: cp favicon-source.svg favicon.svg
       - name: Commit generated homepage
         run: |
           git config user.name "github-actions[bot]"
