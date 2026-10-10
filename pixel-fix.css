@@ -6,13 +6,13 @@
 .home-hero__description-p,
 [data-load-heading],
 [data-load-reveal]{opacity:1!important;visibility:visible!important;clip-path:none!important;filter:none!important}
-.home-hero__title-row{white-space:nowrap!important}
+.home-hero__title-row{white-space:nowrap!important;transform:translateY(.65em)!important}
 .home-hero__top-logo.gg-glyph-replacement{width:1em!important;height:1em!important;font-size:5em!important;line-height:.82!important;flex:none!important;transform:rotate(7deg)!important}
 /* Measured against Osmo in Opera at the same desktop viewport. */
 .home-hero__title-row .h-xl:first-child{font-size:7em!important;letter-spacing:-.06em!important;line-height:1!important;transform:none!important}
 .home-hero__title-row .h-xl:last-child{font-size:6.45em!important;letter-spacing:-.06em!important;line-height:1!important;transform:none!important}
 .home-hero__content{transform:translateY(-1.1em)!important;grid-column-gap:max(1.5em,4.5svh)!important;grid-row-gap:max(1.5em,4.5svh)!important}
-.home-hero__description-row,.home-hero__description-p{transform:none!important}
+.home-hero__description-row{transform:translateY(-.3em)!important}.home-hero__description-p{transform:none!important}
 /* Preserve Osmo's actual button footprints while retaining Green Groove semantics. */
 .nav-bar__login-button .button{width:5em!important;padding-left:1em!important;padding-right:1em!important}
 .nav-bar__signup-button .button{width:4.1em!important;padding-left:.75em!important;padding-right:.75em!important}
@@ -26,4 +26,4 @@
 /* The reference uses an SVG globe/progress graphic. Keep the exact box and mass with a generated Green Groove surface. */
 .testimonial-globe__progress.gg-svg-placeholder{display:block!important;position:absolute!important;inset:0!important;width:100%!important;height:100%!important;border-radius:50%;border:.55em solid currentColor!important;opacity:.82;box-sizing:border-box}
 .testimonial-globe__progress.gg-svg-placeholder:after{content:"";position:absolute;inset:10%;border-radius:50%;background:radial-gradient(circle at 28% 37%,currentColor 0 .13em,transparent .15em),radial-gradient(circle at 67% 31%,currentColor 0 .13em,transparent .15em),radial-gradient(circle at 72% 64%,currentColor 0 .13em,transparent .15em),radial-gradient(circle at 39% 69%,currentColor 0 .13em,transparent .15em),linear-gradient(18deg,transparent 48.8%,currentColor 49% 49.4%,transparent 49.6%),linear-gradient(96deg,transparent 49%,currentColor 49.2% 49.5%,transparent 49.7%);opacity:.26}
-@media(max-width:767px){.home-hero__top-logo.gg-glyph-replacement{width:1em!important;height:1em!important;font-size:3em!important}.home-hero__title-row{white-space:normal!important}.home-hero__title-row .h-xl:first-child,.home-hero__title-row .h-xl:last-child{font-size:4.5em!important}.home-hero__content{transform:none!important;grid-column-gap:var(--gap-l)!important;grid-row-gap:var(--gap-l)!important}.nav-bar__login-button .button,.nav-bar__signup-button .button{width:auto!important}}
+@media(max-width:767px){.home-hero__top-logo.gg-glyph-replacement{width:1em!important;height:1em!important;font-size:3em!important}.home-hero__title-row{white-space:normal!important;transform:none!important}.home-hero__title-row .h-xl:first-child,.home-hero__title-row .h-xl:last-child{font-size:4.5em!important}.home-hero__content{transform:none!important;grid-column-gap:var(--gap-l)!important;grid-row-gap:var(--gap-l)!important}.home-hero__description-row{transform:none!important}.nav-bar__login-button .button,.nav-bar__signup-button .button{width:auto!important}}
