@@ -19,7 +19,7 @@ def avif_data_uri(parts, expected_sha256):
     return 'data:image/avif;base64,' + encoded
 
 
-# Exact user-supplied Green Groove graphics, web-optimized to preserve transparency.
+# Canonical user-supplied Green Groove graphics, web-optimized while preserving transparency.
 light_uri = avif_data_uri(
     [f'assets/uploads/v3-light-{i:02d}.b64' for i in range(1, 8)],
     '42dfc66b859816c85bed92a7e3d5c805ae3b631d5f6ee142aa1cc5ee4406c3f2',
@@ -50,4 +50,4 @@ assert counts == {
 }, counts
 
 path.write_text(str(soup), encoding='utf-8')
-print('Installed supplied Green Groove micrographics:', counts)
+print('Installed canonical supplied Green Groove micrographics:', counts)
