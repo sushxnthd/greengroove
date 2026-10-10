@@ -37,6 +37,34 @@ for script in list(soup.find_all("script")):
     if "outseta" in src or "outseta" in body or any(marker in body for marker in redirect_markers):
         script.decompose()
 
+# Some retained Webflow runtime code still references the old global. Provide a
+# no-op compatibility surface before those scripts execute, instead of loading
+# the original auth/billing product or allowing a ReferenceError.
+for old in list(soup.find_all("script", attrs={"id": "gg-outseta-compat"})):
+    old.decompose()
+compat = soup.new_tag("script", id="gg-outseta-compat")
+compat.string = """
+(() => {
+  const asyncNull = () => Promise.resolve(null);
+  const noop = () => undefined;
+  let proxy;
+  proxy = new Proxy(function () {}, {
+    get(_target, prop) {
+      if (prop === 'then') return undefined;
+      if (prop === 'on' || prop === 'off') return noop;
+      if (['getUser','getAccessToken','getAccount','logout','login','register','fetch'].includes(String(prop))) return asyncNull;
+      return proxy;
+    },
+    apply() { return Promise.resolve(null); }
+  });
+  window.Outseta = proxy;
+})();
+""".strip()
+if soup.head:
+    soup.head.insert(0, compat)
+else:
+    soup.insert(0, compat)
+
 # Remove inert Outseta nocode attributes while preserving all styling hooks.
 for tag in soup.find_all(True):
     for attr in list(tag.attrs):
@@ -210,7 +238,10 @@ behavior.string = f"""
     if (!link) return;
     const href = link.getAttribute('href');
     if (!href || href.length < 2 || !document.getElementById(href.slice(1))) return;
-    requestAnimationFrame(() => history.replaceState(null, '', href));
+    const syncHash = () => history.replaceState(null, '', href);
+    syncHash();
+    queueMicrotask(syncHash);
+    setTimeout(syncHash, 80);
   }}, true);
 }})();
 """.strip()
@@ -230,6 +261,8 @@ for a in soup.find_all("a", href=True):
         errors.append(f"missing anchor target: {normalized_label(a)!r} -> {href!r}")
 
 for script in soup.find_all("script"):
+    if script.get("id") == "gg-outseta-compat":
+        continue
     src = str(script.get("src", "")).lower()
     body = script.get_text(" ", strip=False).lower()
     if "outseta" in src or "outseta" in body:
