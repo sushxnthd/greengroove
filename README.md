@@ -1,23 +1,40 @@
 # Green Groove
 
-A responsive project website for **Green Groove**, a student-led IoT research project exploring real-time supermarket queue intelligence.
+**Green Groove** is a student-built RFID + sensor retail system designed to remove manual basket reconstruction from checkout. It connects shopper identity, shelf events, a live virtual cart, reversible returns, and final billing into one physical-digital flow.
 
-## Project framing
+The project was **selected under NCERT PRAYAAS (Promotion of Research Attitude among Young And Aspiring Students)** in the urban private category and received a **₹50,000 development grant**.
 
-Green Groove investigates whether low-cost real-time sensing can help supermarkets estimate congestion and guide customers toward lower-load checkouts without simply adding more checkout infrastructure.
+## Why we built it
 
-The project was selected under **NCERT PRAYAAS (Promotion of Research Attitude among Young And Aspiring Students)**.
+Green Groove began with a simple problem: supermarket queues. That led to a harder question — instead of only making queues move faster, could the transaction state be built while the shopping trip is happening so checkout becomes settlement rather than reconstruction?
+
+That question changed the project from queue intelligence into a checkout-system prototype.
+
+## How the prototype works
+
+1. A shopper receives a unique RFID wristband that establishes identity and cart context.
+2. Shelf load cells and RFID readers detect when a product is picked up or returned.
+3. Each shelf event is associated with the relevant shopper before cart state changes.
+4. The live cart updates throughout the trip, while returns reverse earlier state rather than hiding it.
+5. The final invoice is generated from the cart state already built during shopping.
+
+## What we built
+
+The prototype is organized around three visible project modules:
+
+- **Groove Band** — RFID shopper identity
+- **Green Grooves** — sensor-assisted shelf events
+- **G/G App** — live digital cart and transaction state
+
+The website expands these into a six-layer system model: **Identity → Shelf Events → Association → Reversibility → Live Cart → Settlement**.
+
+Green Groove was created by **Sushanth Dasari and Aryan Kumar**.
 
 ## Website
 
-This repository contains a static site designed for portfolio and college-application use.
+This repository contains the static project site used to document the system, prototype, design decisions, evidence, and build process.
 
-- `index.html` — site content and structure
-- `styles.css` — visual system and responsive styling
-- `script.js` — navigation and scroll interactions
-- `favicon.svg` — Green Groove favicon
-
-The dashboard on the site is explicitly presented as a visual representation of the research concept rather than production-deployed infrastructure.
+The production workflow automatically checks routes, controls, media integrity, keyboard behavior, responsive interaction, and browser regressions across Chromium, Firefox, and WebKit before publishing generated changes.
 
 ## Public references
 
@@ -28,5 +45,3 @@ The dashboard on the site is explicitly presented as a visual representation of 
 ## GitHub Pages
 
 Publishing source: `main` / `/ (root)`.
-
-Deployment trigger refreshed after Pages was enabled.
