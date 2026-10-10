@@ -15,7 +15,7 @@
 
 /* Keep real-media cards readable at thumbnail scale. */
 .latest-resources-slider .vertical-slider__item:nth-child(1) .resource-visual{background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/8f77ac211169339.67245eac91a69.png')!important;background-size:cover!important;background-position:center 3%!important}
-.latest-resources-slider .vertical-slider__item:nth-child(2) .resource-visual{background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/70a4ef211169339.67245eac915e5.png')!important;background-size:cover!important;background-position:center!important}
+.latest-resources-slider .vertical-slider__item:nth-child(2) .resource-visual{background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/70a4ef211169339.67245eac915e5.png')!important;background-size:cover!important;background-position:center!important}
 .latest-resources-slider .vertical-slider__item:nth-child(3) .resource-visual{background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/09cb22211169339.67245eac9212c.png')!important;background-size:cover!important;background-position:center 42%!important}
 .latest-resources-slider .vertical-slider__item:nth-child(4) .resource-visual{background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/d434be211169339.67245eac9258b.png')!important;background-size:cover!important;background-position:center 3%!important}
 .latest-resources-slider .vertical-slider__item:nth-child(5) .resource-visual{background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/70a4ef211169339.67245eac915e5.png')!important;background-size:cover!important;background-position:center!important}
