@@ -13,6 +13,7 @@ on:
       - brand_viewbox_fix.py
       - footer_osmo_exact.py
       - micrographics_apply.py
+      - assets/raster/*.b64
       - favicon-source.svg
       - '*.fragment.html'
       - .github/workflows/build-source-faithful.yml
@@ -45,7 +46,7 @@ jobs:
         run: python brand_viewbox_fix.py index.html
       - name: Rebuild footer for exact Osmo path animation
         run: python footer_osmo_exact.py index.html
-      - name: Replace remaining Osmo micrographics
+      - name: Install approved raster Green Groove micrographics
         run: python micrographics_apply.py index.html
       - name: Apply canonical favicon artwork
         run: cp favicon-source.svg favicon.svg
