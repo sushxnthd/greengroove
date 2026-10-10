@@ -1,0 +1,395 @@
+{
+  "critical": [],
+  "warnings": [
+    "[desktop] hash click did not update location immediately: #project -> ",
+    "[desktop] hash click did not update location immediately: #architecture -> #project",
+    "[desktop] hash click did not update location immediately: #build -> #architecture",
+    "[desktop] hash click did not update location immediately: #evidence -> #build",
+    "[desktop] hash click did not update location immediately: #research -> #evidence",
+    "[desktop] hash click did not update location immediately: #system -> #research",
+    "[mobile] hash click did not update location immediately: #project -> ",
+    "[mobile] hash click did not update location immediately: #architecture -> #project",
+    "[mobile] hash click did not update location immediately: #build -> #architecture",
+    "[mobile] hash click did not update location immediately: #evidence -> #build",
+    "[mobile] hash click did not update location immediately: #research -> #evidence",
+    "[mobile] hash click did not update location immediately: #system -> #research"
+  ],
+  "viewports": {
+    "desktop": {
+      "anchor_count": 436,
+      "unique_hash_targets_clicked": [
+        "#project",
+        "#architecture",
+        "#build",
+        "#evidence",
+        "#research",
+        "#system"
+      ],
+      "visible_controls": [
+        {
+          "tag": "BUTTON",
+          "text": "More info More info More info",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "About the project About the project About the project",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "previous slide",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "next slide",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Identity Identity Identity",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Shelf Events Shelf Events Shelf Events",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Association Association Association",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Reversibility Reversibility Reversibility",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Live Cart Live Cart Live Cart",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Settlement Settlement Settlement",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Discover Discover Discover",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Discover Discover Discover",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Discover Discover Discover",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Discover Discover Discover",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Discover Discover Discover",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "previous slide",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "next slide",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Today Today Today",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Next Next Next",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "DIV",
+          "text": "Open source Open source Open source",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "About",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Close Close Close",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "RETAIL STATE SYSTEM RETAIL STATE SYSTEM",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "RETAIL STATE SYSTEM RETAIL STATE SYSTEM",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "View section View section View section",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Close Close Close",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Close Close Close",
+          "ariaExpanded": null,
+          "ariaControls": null
+        }
+      ],
+      "expandable_controls_tested": [],
+      "broken_image_count": 0,
+      "page_error_count": 0,
+      "console_error_count": 0
+    },
+    "mobile": {
+      "anchor_count": 436,
+      "unique_hash_targets_clicked": [
+        "#project",
+        "#architecture",
+        "#build",
+        "#evidence",
+        "#research",
+        "#system"
+      ],
+      "visible_controls": [
+        {
+          "tag": "BUTTON",
+          "text": "About the project About the project About the project",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "previous slide",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "next slide",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Identity Identity Identity",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Shelf Events Shelf Events Shelf Events",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Association Association Association",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Reversibility Reversibility Reversibility",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Live Cart Live Cart Live Cart",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Settlement Settlement Settlement",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Discover Discover Discover",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Discover Discover Discover",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Discover Discover Discover",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Discover Discover Discover",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Discover Discover Discover",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "previous slide",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "next slide",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Today Today Today",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Next Next Next",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "DIV",
+          "text": "Open source Open source Open source",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "About",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Close Close Close",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "RETAIL STATE SYSTEM RETAIL STATE SYSTEM",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "RETAIL STATE SYSTEM RETAIL STATE SYSTEM",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "View section View section View section",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Close Close Close",
+          "ariaExpanded": null,
+          "ariaControls": null
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Close Close Close",
+          "ariaExpanded": null,
+          "ariaControls": null
+        }
+      ],
+      "expandable_controls_tested": [],
+      "broken_image_count": 0,
+      "page_error_count": 0,
+      "console_error_count": 0
+    }
+  }
+}
