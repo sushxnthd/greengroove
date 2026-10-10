@@ -63,6 +63,13 @@ jobs:
           python -m playwright install --with-deps chromium
       - name: Run desktop and mobile functional QA
         run: python qa_runtime.py
+      - name: Archive QA report even when checks fail
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: green-groove-qa-report
+          path: qa-report.json
+          if-no-files-found: ignore
       - name: Apply canonical favicon artwork
         run: cp favicon-source.svg favicon.svg
       - name: Commit generated homepage and QA report
