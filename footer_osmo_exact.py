@@ -1,82 +1,49 @@
 from bs4 import BeautifulSoup
 from pathlib import Path
-import sys
+import re, sys
 
 path = Path(sys.argv[1] if len(sys.argv) > 1 else "index.html")
 soup = BeautifulSoup(path.read_text(encoding="utf8"), "html.parser")
 
-# Osmo's licensed/source animation in 55554.js is deliberately authored around
-# seven path elements. It assigns a fixed seven-point arc to paths 0..6 and
-# scrubs them back to their neutral position as the footer enters the viewport.
-#
-# The supplied Green Groove Vector.svg contains three consecutive GREEN GROOVE
-# wordmarks (33 unique letter paths) and then an exact duplicate of those 33
-# paths. Leaving all 66 in place causes the transformed paths to have stationary
-# duplicates directly underneath them, which visually cancels the animation.
-#
-# Keep one GREEN GROOVE wordmark and combine its 11 letter paths into seven
-# balanced chunks around the central G. That lets the original Osmo routine run
-# unchanged and animate every visible part of the mark.
-GROUPS = (
-    (0,),       # G
-    (1, 2),     # R E
-    (3, 4),     # E N
-    (5,),       # G — center/anchor path, matching Osmo's stationary center
-    (6, 7),     # R O
-    (8, 9),     # O V
-    (10,),      # E
-)
+# User-supplied GREENGROOVE.svg (4325x446). Its second compound path is the
+# 35-unit outline of the first. Rendering the first path with the same stroke
+# preserves the supplied artwork while letting us repartition the wordmark into
+# the seven direct <path> children expected by Osmo's original footer routine.
+SOURCE_D = 'M424.5 211.833V415.333H367.208L366.292 359.417C339.708 399.75 291.125 428.167 222.833 428.167C106.417 428.167 17.5001 343.833 17.5001 222.833C17.5001 101.833 103.667 17.5 230.167 17.5C313.583 17.5 397.917 56.4584 418.542 153.167H327.333C312.667 118.333 277.833 96.7917 231.542 96.7917C160.042 96.7917 107.792 148.583 107.792 222.833C107.792 296.625 160.5 348.875 229.708 348.875C268.208 348.875 321.833 331.917 335.125 273.708H223.292V211.833H424.5ZM818.796 415.333H728.046L664.796 300.75H540.587V415.333H449.379V30.3334H651.504C754.629 30.3334 809.171 78.4584 809.171 168.292C809.171 221.917 783.046 260.875 743.629 282.417L818.796 415.333ZM540.587 106.875V230.625H646.462C692.754 230.625 718.421 209.542 718.421 168.75C718.421 127.958 692.754 106.875 646.462 106.875H540.587ZM833.025 415.333V30.3334H1157.07V105.042H924.234V189.375H1148.82V255.375H924.234V340.167H1157.07V415.333H833.025ZM1180.15 415.333V30.3334H1504.19V105.042H1271.36V189.375H1495.94V255.375H1271.36V340.167H1504.19V415.333H1180.15ZM1527.27 415.333V30.3334H1633.15L1811.9 289.292H1820.6V30.3334H1909.98V415.333H1805.94L1624.9 156.375H1616.65V415.333H1527.27ZM2332.53 211.833V415.333H2275.24L2274.32 359.417C2247.74 399.75 2199.15 428.167 2130.86 428.167C2014.44 428.167 1925.53 343.833 1925.53 222.833C1925.53 101.833 2011.69 17.5 2138.19 17.5C2221.61 17.5 2305.94 56.4584 2326.57 153.167H2235.36C2220.69 118.333 2185.86 96.7917 2139.57 96.7917C2068.07 96.7917 2015.82 148.583 2015.82 222.833C2015.82 296.625 2068.53 348.875 2137.74 348.875C2176.24 348.875 2229.86 331.917 2243.15 273.708H2131.32V211.833H2332.53ZM2726.82 415.333H2636.07L2572.82 300.75H2448.61V415.333H2357.41V30.3334H2559.53C2662.66 30.3334 2717.2 78.4584 2717.2 168.292C2717.2 221.917 2691.07 260.875 2651.66 282.417L2726.82 415.333ZM2448.61 106.875V230.625H2554.49C2600.78 230.625 2626.45 209.542 2626.45 168.75C2626.45 127.958 2600.78 106.875 2554.49 106.875H2448.61ZM2934.19 428.167C2808.61 428.167 2722.9 343.833 2722.9 222.833C2722.9 101.833 2808.61 17.5 2934.19 17.5C3060.23 17.5 3145.94 101.833 3145.94 222.833C3145.94 343.833 3060.23 428.167 2934.19 428.167ZM2934.19 348.875C3002.94 348.875 3055.19 298.458 3055.19 222.833C3055.19 147.208 3002.94 96.7917 2934.19 96.7917C2865.9 96.7917 2813.19 147.208 2813.19 222.833C2813.19 298.458 2865.9 348.875 2934.19 348.875ZM3368.86 428.167C3243.28 428.167 3157.57 343.833 3157.57 222.833C3157.57 101.833 3243.28 17.5 3368.86 17.5C3494.9 17.5 3580.61 101.833 3580.61 222.833C3580.61 343.833 3494.9 428.167 3368.86 428.167ZM3368.86 348.875C3437.61 348.875 3489.86 298.458 3489.86 222.833C3489.86 147.208 3437.61 96.7917 3368.86 96.7917C3300.57 96.7917 3247.86 147.208 3247.86 222.833C3247.86 298.458 3300.57 348.875 3368.86 348.875ZM3696.73 415.333L3547.77 30.3334H3642.19L3754.94 328.708H3766.85L3879.6 30.3334H3974.48L3825.06 415.333H3696.73ZM3983.3 415.333V30.3334H4307.34V105.042H4074.51V189.375H4299.09V255.375H4074.51V340.167H4307.34V415.333H3983.3Z'
+LETTER_SLICES = ((0, 1), (1, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 9), (9, 11), (11, 13), (13, 14), (14, 15))
+GROUPS = ((0,), (1, 2), (3, 4), (5,), (6, 7), (8, 9), (10,))
+
+subpaths = [chunk for chunk in re.split(r"(?=M)", SOURCE_D) if chunk]
+if len(subpaths) != 15:
+    raise RuntimeError(f"GREENGROOVE.svg geometry changed: expected 15 compound subpaths, found {len(subpaths)}")
+letters = [" ".join(subpaths[a:b]) for a, b in LETTER_SLICES]
 
 updated = 0
 for wrap in soup.select("[data-footer-logo-wrap]"):
-    svg = wrap.find("svg")
-    if not svg:
-        continue
-
-    source_paths = svg.find_all("path")
-    unique_paths = []
-    seen_d = set()
-    for source_path in source_paths:
-        d = source_path.get("d")
-        if not d or d in seen_d:
-            continue
-        seen_d.add(d)
-        unique_paths.append(source_path)
-
-    if len(unique_paths) < 11:
-        raise RuntimeError(
-            f"Expected at least 11 unique Green Groove letter paths; found {len(unique_paths)}"
-        )
-
-    phrase = unique_paths[:11]
-    rebuilt = []
-    for group in GROUPS:
-        path_tag = soup.new_tag("path")
-        path_tag["d"] = " ".join(phrase[index].get("d", "") for index in group)
-        path_tag["fill"] = phrase[group[0]].get("fill", "#201D1D")
-        rebuilt.append(path_tag)
-
-    svg.clear()
-    for path_tag in rebuilt:
-        svg.append(path_tag)
-
-    # One complete GREEN GROOVE wordmark occupies the first ~4190 units of the
-    # user's 12578-unit-wide artwork. Cropping the repeated copies is essential:
-    # Osmo animates one oversized footer signature, not an ultra-wide strip.
-    for key in list(svg.attrs):
-        if key.lower() in {"width", "height", "viewbox", "preserveaspectratio", "class", "style"}:
-            del svg.attrs[key]
-    svg["viewBox"] = "0 0 4190 431"
+    svg = soup.new_tag("svg")
+    svg["viewBox"] = "0 0 4325 446"
     svg["preserveAspectRatio"] = "xMidYMid meet"
     svg["class"] = ["footer-bottom__logo-svg", "gg-footer-wordmark"]
     svg["style"] = "display:block;width:100%;height:auto;max-width:none;overflow:visible;"
     svg["role"] = "img"
     svg["aria-label"] = "Green Groove"
 
+    for group in GROUPS:
+        p = soup.new_tag("path")
+        p["d"] = " ".join(letters[i] for i in group)
+        p["fill"] = "#201D1D"
+        p["stroke"] = "#201D1D"
+        p["stroke-width"] = "35"
+        p["stroke-linejoin"] = "miter"
+        p["stroke-miterlimit"] = "4"
+        svg.append(p)
+
+    wrap.clear()
+    wrap.append(svg)
     updated += 1
 
 if not updated:
     raise RuntimeError("No [data-footer-logo-wrap] footer mark found")
 
 path.write_text(str(soup), encoding="utf8")
-print(f"Rebuilt {updated} footer mark(s) as seven Osmo-compatible animated path chunks")
+print(f"Installed uploaded GREENGROOVE.svg as {updated} seven-path Osmo-animated footer mark(s)")
