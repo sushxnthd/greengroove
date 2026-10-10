@@ -19,6 +19,7 @@ on:
       - ui_invariance.py
       - qa_runtime.py
       - qa_about_probe.py
+      - qa_reconcile.py
       - assets/raster/*.b64
       - favicon-source.svg
       - '*.fragment.html'
@@ -73,6 +74,9 @@ jobs:
       - name: Probe desktop About interaction
         if: always()
         run: python qa_about_probe.py
+      - name: Reconcile targeted About verification
+        if: always()
+        run: python qa_reconcile.py
       - name: Archive QA reports even when checks fail
         if: always()
         uses: actions/upload-artifact@v4
