@@ -1,0 +1,200 @@
+/* Final visual-fidelity pass: preserve Osmo geometry, use Green Groove's real project media. */
+:root{
+  --gg-green:#00ef78;
+  --gg-cyan:#1ca9ff;
+  --gg-ink:#1d1b1b;
+  --color-electric:#8cff4f;
+  --color-purple:#1ca9ff;
+}
+
+/* Brand: same source footprint, actual Green Groove visual language. */
+.gg-brand-mark,.home-hero__top-logo.gg-glyph-replacement{
+  color:transparent!important;
+  font-size:0!important;
+  position:relative!important;
+  transform:none!important;
+}
+.gg-brand-mark::before,.home-hero__top-logo.gg-glyph-replacement::before{
+  content:"";
+  position:absolute;
+  inset:12%;
+  background:linear-gradient(135deg,var(--gg-green),var(--gg-cyan));
+  clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%);
+}
+.gg-brand-mark::after,.home-hero__top-logo.gg-glyph-replacement::after{
+  content:"";
+  position:absolute;
+  width:34%;height:34%;
+  left:-8%;bottom:4%;
+  background:linear-gradient(135deg,var(--gg-cyan),var(--gg-green));
+  clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%);
+}
+.gg-brand-mark{width:1.25em;height:1.25em;display:block!important;flex:none!important}
+.gg-brand-word{
+  font-family:Georgia,"Times New Roman",serif!important;
+  font-weight:700!important;
+  letter-spacing:-.075em!important;
+  transform:scaleX(.9);
+  transform-origin:center;
+  font-size:1.03em!important;
+}
+.nav-logo{gap:.32em!important}
+.home-hero__top-logo.gg-glyph-replacement{width:1em!important;height:1em!important;font-size:5em!important;flex:none!important}
+.home-hero__title-row{gap:1.75em!important}
+.home-hero__content{transform:translateY(-.72em)!important}
+.home-hero__marquee-row{transform:translateY(-.35em)}
+
+/* Real project media from the user's Green Groove Behance project. */
+.radial-marquee__card-visual,
+.latest-resources-slider .resource-visual,
+.showcase-media,
+.about-card__img-layer,
+.try-vault__visual,
+.nav-banner__ptc-preview,
+.product-card__bg,
+.product-card__ptc-preview{
+  background-repeat:no-repeat!important;
+  background-color:#161716!important;
+}
+
+/* Hero ring: real Green Groove work, kept inside Osmo's exact card geometry. */
+.radial-marquee__item:nth-child(6n+1) .radial-marquee__card-visual{
+  background-image:linear-gradient(180deg,rgba(0,0,0,.03),rgba(0,0,0,.18)),url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/09cb22211169339.67245eac9212c.png')!important;
+  background-size:cover!important;background-position:center 40%!important;
+}
+.radial-marquee__item:nth-child(6n+2) .radial-marquee__card-visual{
+  background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/8f77ac211169339.67245eac91a69.png')!important;
+  background-size:145% auto!important;background-position:center top!important;
+}
+.radial-marquee__item:nth-child(6n+3) .radial-marquee__card-visual{
+  background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/991f2f211169339.67245eac930ce.png')!important;
+  background-size:145% auto!important;background-position:center 1%!important;
+}
+.radial-marquee__item:nth-child(6n+4) .radial-marquee__card-visual{
+  background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/d434be211169339.67245eac9258b.png')!important;
+  background-size:150% auto!important;background-position:center 2%!important;
+}
+.radial-marquee__item:nth-child(6n+5) .radial-marquee__card-visual{
+  background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/c2fc79211169339.67245eac92c6c.png')!important;
+  background-size:150% auto!important;background-position:center 2%!important;
+}
+.radial-marquee__item:nth-child(6n) .radial-marquee__card-visual{
+  background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/70a4ef211169339.67245eac915e5.png')!important;
+  background-size:cover!important;background-position:center!important;
+}
+.radial-marquee__card-visual::before{content:""!important;position:absolute!important;inset:0!important;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.28))!important;z-index:1!important}
+.radial-marquee__card-visual::after{z-index:3!important;text-shadow:0 1px 10px rgba(0,0,0,.35)}
+
+/* Reel: turn it into a genuine Green Groove project-film thumbnail. */
+.reel__visual{
+  background-image:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.34)),url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/8f77ac211169339.67245eac91a69.png')!important;
+  background-size:cover!important;
+  background-position:center 6%!important;
+}
+.reel__visual::before{
+  content:"GREEN GROOVE / SYSTEM FILM"!important;
+  position:absolute!important;left:1.1em!important;top:1em!important;right:auto!important;height:auto!important;
+  border-radius:0!important;background:transparent!important;color:#fff!important;box-shadow:none!important;
+  font:600 .58em/1 "Haffer Mono",monospace!important;padding:0!important;z-index:3!important;
+}
+.reel__visual::after{
+  content:"RFID  •  SHELF  •  CART  •  SETTLEMENT"!important;
+  white-space:nowrap!important;position:absolute!important;left:1.1em!important;bottom:1em!important;top:auto!important;right:auto!important;
+  color:#9cff5b!important;font:600 .52em/1 "Haffer Mono",monospace!important;z-index:3!important;
+}
+.reel__visual-text{z-index:4!important}
+
+/* Creator card: no more generic circles. */
+.about-card__img-layer{
+  background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/09cb22211169339.67245eac9212c.png')!important;
+  background-size:cover!important;background-position:center!important;
+}
+.about-card__img-layer.is--2{
+  background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/991f2f211169339.67245eac930ce.png')!important;
+  background-size:160% auto!important;background-position:center 1%!important;
+}
+.about-card__img-layer.is--3{
+  background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/8f77ac211169339.67245eac91a69.png')!important;
+  background-size:160% auto!important;background-position:center 1%!important;
+}
+.about-card__img-layer.is--3::before,.about-card__img-layer.is--2::after{display:none!important}
+
+/* Updates: each card gets an actual project crop, not a synthetic placeholder. */
+.latest-resources-slider .vertical-slider__item:nth-child(1) .resource-visual{
+  background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/991f2f211169339.67245eac930ce.png')!important;background-size:180% auto!important;background-position:center 1%!important;
+}
+.latest-resources-slider .vertical-slider__item:nth-child(2) .resource-visual{
+  background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/d434be211169339.67245eac9258b.png')!important;background-size:175% auto!important;background-position:center 1%!important;
+}
+.latest-resources-slider .vertical-slider__item:nth-child(3) .resource-visual{
+  background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/c2fc79211169339.67245eac92c6c.png')!important;background-size:175% auto!important;background-position:center 2%!important;
+}
+.latest-resources-slider .vertical-slider__item:nth-child(4) .resource-visual{
+  background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/8f77ac211169339.67245eac91a69.png')!important;background-size:170% auto!important;background-position:center top!important;
+}
+.latest-resources-slider .vertical-slider__item:nth-child(5) .resource-visual{
+  background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/70a4ef211169339.67245eac915e5.png')!important;background-size:cover!important;background-position:center!important;
+}
+.latest-resources-slider .resource-visual::before{display:none!important}
+.latest-resources-slider .resource-visual::after{background:rgba(14,15,13,.72);padding:.45em .55em;border-radius:.18em;color:#9cff5b!important}
+
+/* Platform/system visual: actual interaction + circuitry content beneath the source UI treatment. */
+.db-visual{
+  background-image:linear-gradient(90deg,rgba(244,244,239,.92),rgba(244,244,239,.72)),url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/d434be211169339.67245eac9258b.png')!important;
+  background-size:cover!important;background-position:center 4%!important;
+}
+
+/* Product cards: subtle real-product material behind Osmo's card typography. */
+.gsap-slider__item:nth-child(6n+1) .product-card__bg,
+.gsap-slider__item:nth-child(6n+1) .product-card__ptc-preview{background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/991f2f211169339.67245eac930ce.png')!important;background-size:180% auto!important;background-position:center 1%!important}
+.gsap-slider__item:nth-child(6n+2) .product-card__bg,
+.gsap-slider__item:nth-child(6n+2) .product-card__ptc-preview{background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/8f77ac211169339.67245eac91a69.png')!important;background-size:175% auto!important;background-position:center top!important}
+.gsap-slider__item:nth-child(6n+3) .product-card__bg{background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/d434be211169339.67245eac9258b.png')!important;background-size:180% auto!important;background-position:center 1%!important}
+.gsap-slider__item:nth-child(6n+4) .product-card__bg{background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/c2fc79211169339.67245eac92c6c.png')!important;background-size:180% auto!important;background-position:center 1%!important}
+.gsap-slider__item:nth-child(6n+5) .product-card__bg{background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/8f77ac211169339.67245eac91a69.png')!important;background-size:180% auto!important;background-position:center top!important}
+.gsap-slider__item:nth-child(6n) .product-card__bg{background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/70a4ef211169339.67245eac915e5.png')!important;background-size:cover!important;background-position:center!important}
+.product-card__bg::after{content:"";position:absolute;inset:0;background:rgba(20,20,18,.62)}
+.product-card.is--electric .product-card__ptc-preview::after{content:"";position:absolute;inset:0;background:rgba(232,235,225,.2)}
+
+/* Why section: carry the real brand motif into Osmo's tiny source graphic. */
+.info__small-col::before{
+  background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/70a4ef211169339.67245eac915e5.png')!important;
+  background-size:cover!important;background-position:center!important;filter:saturate(1.15) contrast(1.06);
+}
+
+/* Showcase: actual final project visuals in source card stack. */
+.flick-group__item:nth-child(1) .showcase-media{background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/991f2f211169339.67245eac930ce.png')!important;background-size:170% auto!important;background-position:center 1%!important}
+.flick-group__item:nth-child(2) .showcase-media{background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/8f77ac211169339.67245eac91a69.png')!important;background-size:165% auto!important;background-position:center top!important}
+.flick-group__item:nth-child(3) .showcase-media{background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/d434be211169339.67245eac9258b.png')!important;background-size:170% auto!important;background-position:center top!important}
+.flick-group__item:nth-child(4) .showcase-media{background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/c2fc79211169339.67245eac92c6c.png')!important;background-size:170% auto!important;background-position:center top!important}
+.flick-group__item:nth-child(5) .showcase-media{background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/09cb22211169339.67245eac9212c.png')!important;background-size:cover!important;background-position:center!important}
+.flick-group__item:nth-child(6) .showcase-media{background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/70a4ef211169339.67245eac915e5.png')!important;background-size:cover!important;background-position:center!important}
+.flick-group__item .showcase-media::after{display:none!important}
+.flick-group__item .showcase-media::before{background:rgba(20,20,18,.74);padding:.45em .55em;border-radius:.18em;color:#9cff5b!important}
+
+/* CTA and menu teaser. */
+.try-vault__visual{
+  background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/09cb22211169339.67245eac9212c.png')!important;
+  background-size:cover!important;background-position:center!important;
+}
+.try-vault__visual::after{display:none!important}
+.nav-banner__ptc-preview{
+  background-image:url('https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/8f77ac211169339.67245eac91a69.png')!important;
+  background-size:170% auto!important;background-position:center top!important;
+}
+
+/* Make the Green Groove accent feel intentional without changing Osmo's section system. */
+.pricing-card.is--purple{background:linear-gradient(135deg,#00ef78,#44ff8c)!important;color:#171815!important}
+.about-card{background:linear-gradient(145deg,#0f1110,#222521)!important;color:#f4f4f0!important}
+.about-card .button-bg{filter:none!important}
+.testimonials .vertical-slider__item:nth-child(odd) [class*="card"]{--color-purple:#1ca9ff}
+
+/* Preserve the reference's crisp media edges. */
+.radial-marquee__card-visual,.resource-visual,.showcase-media,.product-card__bg,.product-card__ptc-preview,.try-vault__visual,.nav-banner__ptc-preview{background-clip:padding-box!important}
+
+@media(max-width:767px){
+  .gg-brand-word{font-size:.82em!important}
+  .home-hero__top-logo.gg-glyph-replacement{font-size:3em!important}
+  .home-hero__content{transform:none!important}
+  .home-hero__marquee-row{transform:none}
+}
