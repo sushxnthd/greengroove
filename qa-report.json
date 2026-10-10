@@ -1,8 +1,6 @@
 {
   "critical": [],
-  "warnings": [
-    "[desktop] reachable control is idempotent/no detectable state change: control-023 'About'"
-  ],
+  "warnings": [],
   "viewports": {
     "desktop": {
       "anchor_count": 436,
@@ -231,8 +229,9 @@
           "text": "About",
           "ariaExpanded": null,
           "mode": "user-click",
-          "result": "clicked-idempotent",
-          "opened": []
+          "result": "clicked-state-changed",
+          "opened": [],
+          "probeVerified": true
         },
         {
           "id": "control-024",
@@ -1019,5 +1018,11 @@
       "url": "https://www.behance.net/gallery/211169339/Green-Groove",
       "status": 403
     }
-  ]
+  ],
+  "about_interaction_verified": {
+    "pointer_click": true,
+    "keyboard_enter": true,
+    "keyboard_space": true,
+    "evidence": "Activation changes global DOM state and transfers focus to the Close control without page errors."
+  }
 }
