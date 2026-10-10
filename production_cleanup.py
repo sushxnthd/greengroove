@@ -25,9 +25,7 @@ for link in list(soup.find_all("link", href=True)):
     if ("outseta.com" in href or "osmo.b-cdn.net" in href) and rel.intersection({"preconnect", "dns-prefetch"}):
         link.decompose()
 
-stale_script_markers = (
-    "osmo.outseta.com",
-    "outseta.on(",
+redirect_markers = (
     "postlogoutredirect",
     "authenticationcallbackurl",
     "location.pathname.replace(/\\/+$/,'') === '/no-access'",
@@ -36,7 +34,7 @@ stale_script_markers = (
 for script in list(soup.find_all("script")):
     src = str(script.get("src", "")).lower()
     body = script.get_text(" ", strip=False).lower()
-    if "outseta.com" in src or any(marker in body for marker in stale_script_markers):
+    if "outseta" in src or "outseta" in body or any(marker in body for marker in redirect_markers):
         script.decompose()
 
 # Remove inert Outseta nocode attributes while preserving all styling hooks.
@@ -185,7 +183,7 @@ if footer:
 # 4) Empty source videos are intentionally static project-media surfaces. Mark them
 # as such for accessibility/runtime code without changing their poster or geometry.
 for video in soup.find_all("video"):
-    has_src = bool(video.get("src")) or any(source.get("src") for source in video.find_all("source"))
+    has_src = bool(str(video.get("src", "")).strip()) or any(str(source.get("src", "")).strip() for source in video.find_all("source"))
     if not has_src:
         video["data-gg-static-media"] = "true"
         video["preload"] = "none"
@@ -193,7 +191,7 @@ for video in soup.find_all("video"):
         video["tabindex"] = "-1"
         video.attrs.pop("controls", None)
 
-# 5) Add a tiny behavior guard for the existing footer form only. No visual DOM/CSS.
+# 5) Add behavior guards that do not touch geometry or styling.
 for old in list(soup.find_all("script", attrs={"id": "gg-production-behavior"})):
     old.decompose()
 behavior = soup.new_tag("script", id="gg-production-behavior")
@@ -206,6 +204,14 @@ behavior.string = f"""
       window.open('{GITHUB}', '_blank', 'noopener,noreferrer');
     }});
   }}
+
+  document.addEventListener('click', (event) => {{
+    const link = event.target.closest && event.target.closest('a[href^="#"]');
+    if (!link) return;
+    const href = link.getAttribute('href');
+    if (!href || href.length < 2 || !document.getElementById(href.slice(1))) return;
+    requestAnimationFrame(() => history.replaceState(null, '', href));
+  }}, true);
 }})();
 """.strip()
 (soup.body or soup).append(behavior)
@@ -226,7 +232,7 @@ for a in soup.find_all("a", href=True):
 for script in soup.find_all("script"):
     src = str(script.get("src", "")).lower()
     body = script.get_text(" ", strip=False).lower()
-    if "outseta.com" in src or "osmo.outseta.com" in body or "outseta.on(" in body:
+    if "outseta" in src or "outseta" in body:
         errors.append("stale Outseta runtime remains")
 
 if errors:
