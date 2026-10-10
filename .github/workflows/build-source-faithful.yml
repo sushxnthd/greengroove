@@ -9,6 +9,7 @@ on:
       - tailor_v2.py
       - tailor_v3.py
       - brand_apply.py
+      - brand_apply_v2.py
       - .github/workflows/build-source-faithful.yml
 
 permissions:
@@ -31,13 +32,15 @@ jobs:
         run: python tailor_v2.py index.html
       - name: Apply source-safe micro-tailoring
         run: python tailor_v3.py index.html
-      - name: Apply canonical Green Groove brand assets
+      - name: Apply canonical Green Groove header and hero assets
         run: python brand_apply.py index.html
+      - name: Apply canonical Green Groove compact and footer assets
+        run: python brand_apply_v2.py index.html
       - name: Commit generated homepage
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html
+          git add index.html favicon.svg
           if git diff --cached --quiet; then
             echo "No generated changes"
             exit 0
