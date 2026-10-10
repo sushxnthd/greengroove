@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from pathlib import Path
 from urllib.parse import urlparse
-import re
 import sys
 
 from bs4 import BeautifulSoup
@@ -125,7 +124,6 @@ for a in soup.find_all("a", href=True):
     if not raw or low.startswith("javascript:"):
         dest = label_destination(label) or "#project"
     elif raw == "#":
-        # A plain hash is never a meaningful destination on this one-page site.
         dest = label_destination(label) or "#project"
     elif low.startswith("/resource/") or low.startswith("/preview/") or low.startswith("/no-access") or low.startswith("/logged-out") or low.startswith("/onboarding"):
         dest = label_destination(label) or "#build"
@@ -151,11 +149,16 @@ for a in soup.find_all("a", href=True):
         a["href"] = dest
 
     href = str(a.get("href", ""))
-    if href.startswith("http://") or href.startswith("https://"):
+    parsed_final = urlparse(href)
+    is_external = parsed_final.scheme in {"http", "https"} and parsed_final.netloc and parsed_final.netloc.lower() != PROJECT_HOST
+    if is_external:
         a["target"] = "_blank"
         rel = set(a.get("rel") or [])
         rel.update({"noopener", "noreferrer"})
         a["rel"] = sorted(rel)
+    elif parsed_final.netloc.lower() == PROJECT_HOST:
+        a.attrs.pop("target", None)
+        a.attrs.pop("rel", None)
 
 # 3) Make the footer's existing update/source control honest and functional.
 # Keep the exact form DOM and styling; only its behavior/semantics change.
