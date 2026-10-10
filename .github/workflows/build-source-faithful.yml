@@ -20,6 +20,7 @@ on:
       - qa_runtime.py
       - qa_about_probe.py
       - qa_reconcile.py
+      - qa_cross_browser.py
       - assets/raster/*.b64
       - favicon-source.svg
       - '*.fragment.html'
@@ -68,7 +69,7 @@ jobs:
       - name: Install browser QA runtime
         run: |
           pip install playwright
-          python -m playwright install --with-deps chromium
+          python -m playwright install --with-deps chromium firefox webkit
       - name: Run exhaustive desktop tablet and mobile functional QA
         run: python qa_runtime.py
       - name: Probe desktop About interaction
@@ -77,6 +78,8 @@ jobs:
       - name: Reconcile targeted About verification
         if: always()
         run: python qa_reconcile.py
+      - name: Run Firefox and WebKit functional regression QA
+        run: python qa_cross_browser.py
       - name: Archive QA reports even when checks fail
         if: always()
         uses: actions/upload-artifact@v4
@@ -84,15 +87,16 @@ jobs:
           name: green-groove-qa-report
           path: |
             qa-report.json
+            qa-cross-browser.json
             about-probe.json
           if-no-files-found: ignore
       - name: Apply canonical favicon artwork
         run: cp favicon-source.svg favicon.svg
-      - name: Commit generated homepage and QA report
+      - name: Commit generated homepage and QA reports
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html favicon.svg qa-report.json
+          git add index.html favicon.svg qa-report.json qa-cross-browser.json
           if git diff --cached --quiet; then
             echo "No generated changes"
             exit 0
