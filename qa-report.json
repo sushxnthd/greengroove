@@ -1,18 +1,7 @@
 {
   "critical": [],
   "warnings": [
-    "[desktop] hash click did not update location immediately: #project -> ",
-    "[desktop] hash click did not update location immediately: #architecture -> #project",
-    "[desktop] hash click did not update location immediately: #build -> #architecture",
-    "[desktop] hash click did not update location immediately: #evidence -> #build",
-    "[desktop] hash click did not update location immediately: #research -> #evidence",
-    "[desktop] hash click did not update location immediately: #system -> #research",
-    "[mobile] hash click did not update location immediately: #project -> ",
-    "[mobile] hash click did not update location immediately: #architecture -> #project",
-    "[mobile] hash click did not update location immediately: #build -> #architecture",
-    "[mobile] hash click did not update location immediately: #evidence -> #build",
-    "[mobile] hash click did not update location immediately: #research -> #evidence",
-    "[mobile] hash click did not update location immediately: #system -> #research"
+    "[desktop] reachable control is idempotent/no detectable state change: control-023 'About'"
   ],
   "viewports": {
     "desktop": {
@@ -25,183 +14,662 @@
         "#research",
         "#system"
       ],
-      "visible_controls": [
+      "controls_total": 30,
+      "controls_exercised": [
         {
+          "id": "control-000",
           "tag": "BUTTON",
           "text": "More info More info More info",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "contextual-handler",
+          "result": "contextual-handler-exercised",
+          "opened": []
         },
         {
+          "id": "control-001",
           "tag": "BUTTON",
           "text": "About the project About the project About the project",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
         },
         {
+          "id": "control-002",
           "tag": "BUTTON",
           "text": "previous slide",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
         },
         {
+          "id": "control-003",
           "tag": "BUTTON",
           "text": "next slide",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
         },
         {
+          "id": "control-004",
           "tag": "BUTTON",
           "text": "Identity Identity Identity",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
         },
         {
+          "id": "control-005",
           "tag": "BUTTON",
           "text": "Shelf Events Shelf Events Shelf Events",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
         },
         {
+          "id": "control-006",
           "tag": "BUTTON",
           "text": "Association Association Association",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
         },
         {
+          "id": "control-007",
           "tag": "BUTTON",
           "text": "Reversibility Reversibility Reversibility",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
         },
         {
+          "id": "control-008",
           "tag": "BUTTON",
           "text": "Live Cart Live Cart Live Cart",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
         },
         {
+          "id": "control-009",
           "tag": "BUTTON",
           "text": "Settlement Settlement Settlement",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
         },
         {
+          "id": "control-010",
           "tag": "BUTTON",
           "text": "Discover Discover Discover",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
         },
         {
+          "id": "control-011",
           "tag": "BUTTON",
           "text": "Discover Discover Discover",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
         },
         {
+          "id": "control-012",
           "tag": "BUTTON",
           "text": "Discover Discover Discover",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
         },
         {
+          "id": "control-013",
           "tag": "BUTTON",
           "text": "Discover Discover Discover",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "contextual-handler",
+          "result": "contextual-handler-exercised",
+          "opened": []
         },
         {
+          "id": "control-014",
           "tag": "BUTTON",
           "text": "Discover Discover Discover",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
         },
         {
+          "id": "control-015",
           "tag": "BUTTON",
           "text": "previous slide",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
         },
         {
+          "id": "control-016",
           "tag": "BUTTON",
           "text": "next slide",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
         },
         {
+          "id": "control-017",
           "tag": "BUTTON",
           "text": "Today Today Today",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
         },
         {
+          "id": "control-018",
           "tag": "BUTTON",
           "text": "Next Next Next",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
         },
         {
+          "id": "control-019",
           "tag": "BUTTON",
           "text": "",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "contextual-handler",
+          "result": "contextual-handler-exercised",
+          "opened": []
         },
         {
+          "id": "control-020",
           "tag": "BUTTON",
           "text": "",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
         },
         {
+          "id": "control-021",
           "tag": "DIV",
           "text": "Open source Open source Open source",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "contextual-handler",
+          "result": "contextual-handler-exercised",
+          "opened": []
         },
         {
+          "id": "control-022",
+          "tag": "INPUT",
+          "text": "Open source",
+          "ariaExpanded": null,
+          "mode": "contextual-handler",
+          "result": "contextual-handler-exercised",
+          "opened": [
+            "https://github.com/sushxnthd/greengroove"
+          ]
+        },
+        {
+          "id": "control-023",
           "tag": "BUTTON",
           "text": "About",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "user-click",
+          "result": "clicked-idempotent",
+          "opened": []
         },
         {
+          "id": "control-024",
           "tag": "BUTTON",
           "text": "Close Close Close",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "contextual-handler",
+          "result": "contextual-handler-exercised",
+          "opened": []
         },
         {
+          "id": "control-025",
           "tag": "BUTTON",
           "text": "RETAIL STATE SYSTEM RETAIL STATE SYSTEM",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "contextual-handler",
+          "result": "contextual-handler-exercised",
+          "opened": []
         },
         {
+          "id": "control-026",
           "tag": "BUTTON",
           "text": "RETAIL STATE SYSTEM RETAIL STATE SYSTEM",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "contextual-handler",
+          "result": "contextual-handler-exercised",
+          "opened": []
         },
         {
+          "id": "control-027",
           "tag": "BUTTON",
           "text": "View section View section View section",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "contextual-handler",
+          "result": "contextual-handler-exercised",
+          "opened": []
         },
         {
+          "id": "control-028",
           "tag": "BUTTON",
           "text": "Close Close Close",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "contextual-handler",
+          "result": "contextual-handler-exercised",
+          "opened": []
         },
         {
+          "id": "control-029",
           "tag": "BUTTON",
           "text": "Close Close Close",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "contextual-handler",
+          "result": "contextual-handler-exercised",
+          "opened": []
         }
       ],
-      "expandable_controls_tested": [],
+      "opener_close_flows": [
+        {
+          "opener": "About",
+          "result": "opened-no-close-required"
+        },
+        {
+          "opener": "About the project",
+          "result": "opened-no-close-required"
+        },
+        {
+          "opener": "More info",
+          "result": "not-currently-exposed"
+        }
+      ],
+      "keyboard_focus_steps": [
+        "go to homepage",
+        "Story Story",
+        "Source Source",
+        "Overview",
+        "Architecture",
+        "Groove Band NEW",
+        "G/G App",
+        "Green Grooves",
+        "Build Gallery",
+        "Evidence 06",
+        "Roadmap",
+        "Behance project",
+        "GitHub source",
+        "Green Groove website",
+        "SYSTEM MAP Architecture More info More info More info",
+        "More info More info More info",
+        "SELECTED UNDER NCERT PRAYAAS SELECTED UNDER NCERT PRAYAAS SELECTED UNDER NCERT PRAYAAS SELECTED UNDE",
+        "A",
+        "About the project About the project About the project",
+        "3 DAYS AGO PROJECT MODULE Groove Band RFID IDENTITY",
+        "previous slide",
+        "next slide",
+        "System overview System overview",
+        "Identity Identity Identity",
+        "Shelf Events Shelf Events Shelf Events",
+        "Association Association Association",
+        "Reversibility Reversibility Reversibility",
+        "Live Cart Live Cart Live Cart",
+        "Settlement Settlement Settlement",
+        "PART OF THE SYSTEM Identity Resolve a shopper or cart context before committing an item event. Disco"
+      ],
+      "broken_image_count": 0,
+      "page_error_count": 0,
+      "console_error_count": 0
+    },
+    "tablet": {
+      "anchor_count": 436,
+      "unique_hash_targets_clicked": [
+        "#project",
+        "#architecture",
+        "#build",
+        "#evidence",
+        "#research",
+        "#system"
+      ],
+      "controls_total": 30,
+      "controls_exercised": [
+        {
+          "id": "control-000",
+          "tag": "BUTTON",
+          "text": "More infoMore infoMore info",
+          "ariaExpanded": null,
+          "mode": "contextual-handler",
+          "result": "contextual-handler-exercised",
+          "opened": []
+        },
+        {
+          "id": "control-001",
+          "tag": "BUTTON",
+          "text": "About the project About the project About the project",
+          "ariaExpanded": null,
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
+        },
+        {
+          "id": "control-002",
+          "tag": "BUTTON",
+          "text": "previous slide",
+          "ariaExpanded": null,
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
+        },
+        {
+          "id": "control-003",
+          "tag": "BUTTON",
+          "text": "next slide",
+          "ariaExpanded": null,
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
+        },
+        {
+          "id": "control-004",
+          "tag": "BUTTON",
+          "text": "Identity Identity Identity",
+          "ariaExpanded": null,
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
+        },
+        {
+          "id": "control-005",
+          "tag": "BUTTON",
+          "text": "Shelf Events Shelf Events Shelf Events",
+          "ariaExpanded": null,
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
+        },
+        {
+          "id": "control-006",
+          "tag": "BUTTON",
+          "text": "Association Association Association",
+          "ariaExpanded": null,
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
+        },
+        {
+          "id": "control-007",
+          "tag": "BUTTON",
+          "text": "Reversibility Reversibility Reversibility",
+          "ariaExpanded": null,
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
+        },
+        {
+          "id": "control-008",
+          "tag": "BUTTON",
+          "text": "Live Cart Live Cart Live Cart",
+          "ariaExpanded": null,
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
+        },
+        {
+          "id": "control-009",
+          "tag": "BUTTON",
+          "text": "Settlement Settlement Settlement",
+          "ariaExpanded": null,
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
+        },
+        {
+          "id": "control-010",
+          "tag": "BUTTON",
+          "text": "Discover Discover Discover",
+          "ariaExpanded": null,
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
+        },
+        {
+          "id": "control-011",
+          "tag": "BUTTON",
+          "text": "Discover Discover Discover",
+          "ariaExpanded": null,
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
+        },
+        {
+          "id": "control-012",
+          "tag": "BUTTON",
+          "text": "Discover Discover Discover",
+          "ariaExpanded": null,
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
+        },
+        {
+          "id": "control-013",
+          "tag": "BUTTON",
+          "text": "Discover Discover Discover",
+          "ariaExpanded": null,
+          "mode": "contextual-handler",
+          "result": "contextual-handler-exercised",
+          "opened": []
+        },
+        {
+          "id": "control-014",
+          "tag": "BUTTON",
+          "text": "Discover Discover Discover",
+          "ariaExpanded": null,
+          "mode": "contextual-handler",
+          "result": "contextual-handler-exercised",
+          "opened": []
+        },
+        {
+          "id": "control-015",
+          "tag": "BUTTON",
+          "text": "previous slide",
+          "ariaExpanded": null,
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
+        },
+        {
+          "id": "control-016",
+          "tag": "BUTTON",
+          "text": "next slide",
+          "ariaExpanded": null,
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
+        },
+        {
+          "id": "control-017",
+          "tag": "BUTTON",
+          "text": "Today Today Today",
+          "ariaExpanded": null,
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
+        },
+        {
+          "id": "control-018",
+          "tag": "BUTTON",
+          "text": "Next Next Next",
+          "ariaExpanded": null,
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
+        },
+        {
+          "id": "control-019",
+          "tag": "BUTTON",
+          "text": "",
+          "ariaExpanded": null,
+          "mode": "contextual-handler",
+          "result": "contextual-handler-exercised",
+          "opened": []
+        },
+        {
+          "id": "control-020",
+          "tag": "BUTTON",
+          "text": "",
+          "ariaExpanded": null,
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
+        },
+        {
+          "id": "control-021",
+          "tag": "DIV",
+          "text": "Open source Open source Open source",
+          "ariaExpanded": null,
+          "mode": "contextual-handler",
+          "result": "contextual-handler-exercised",
+          "opened": []
+        },
+        {
+          "id": "control-022",
+          "tag": "INPUT",
+          "text": "Open source",
+          "ariaExpanded": null,
+          "mode": "contextual-handler",
+          "result": "contextual-handler-exercised",
+          "opened": [
+            "https://github.com/sushxnthd/greengroove"
+          ]
+        },
+        {
+          "id": "control-023",
+          "tag": "BUTTON",
+          "text": "About",
+          "ariaExpanded": null,
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
+        },
+        {
+          "id": "control-024",
+          "tag": "BUTTON",
+          "text": "Close Close Close",
+          "ariaExpanded": null,
+          "mode": "contextual-handler",
+          "result": "contextual-handler-exercised",
+          "opened": []
+        },
+        {
+          "id": "control-025",
+          "tag": "BUTTON",
+          "text": "RETAIL STATE SYSTEM RETAIL STATE SYSTEM",
+          "ariaExpanded": null,
+          "mode": "contextual-handler",
+          "result": "contextual-handler-exercised",
+          "opened": []
+        },
+        {
+          "id": "control-026",
+          "tag": "BUTTON",
+          "text": "RETAIL STATE SYSTEM RETAIL STATE SYSTEM",
+          "ariaExpanded": null,
+          "mode": "contextual-handler",
+          "result": "contextual-handler-exercised",
+          "opened": []
+        },
+        {
+          "id": "control-027",
+          "tag": "BUTTON",
+          "text": "View section View section View section",
+          "ariaExpanded": null,
+          "mode": "contextual-handler",
+          "result": "contextual-handler-exercised",
+          "opened": []
+        },
+        {
+          "id": "control-028",
+          "tag": "BUTTON",
+          "text": "Close Close Close",
+          "ariaExpanded": null,
+          "mode": "contextual-handler",
+          "result": "contextual-handler-exercised",
+          "opened": []
+        },
+        {
+          "id": "control-029",
+          "tag": "BUTTON",
+          "text": "Close Close Close",
+          "ariaExpanded": null,
+          "mode": "contextual-handler",
+          "result": "contextual-handler-exercised",
+          "opened": []
+        }
+      ],
+      "opener_close_flows": [
+        {
+          "opener": "About",
+          "result": "opened-no-close-required"
+        },
+        {
+          "opener": "About the project",
+          "result": "opened-no-close-required"
+        },
+        {
+          "opener": "More info",
+          "result": "not-currently-exposed"
+        }
+      ],
+      "keyboard_focus_steps": [
+        "go to homepage",
+        "Story Story",
+        "Source Source",
+        "Overview",
+        "Architecture",
+        "Groove Band NEW",
+        "G/G App",
+        "Green Grooves",
+        "Build Gallery",
+        "Evidence 06",
+        "Roadmap",
+        "Behance project",
+        "GitHub source",
+        "Green Groove website",
+        "SELECTED UNDER NCERT PRAYAAS SELECTED UNDER NCERT PRAYAAS SELECTED UNDER NCERT PRAYAAS SELECTED UNDE",
+        "A",
+        "About the project About the project About the project",
+        "3 DAYS AGO PROJECT MODULE Groove Band RFID IDENTITY",
+        "previous slide",
+        "next slide",
+        "System overview System overview",
+        "Identity Identity Identity",
+        "Shelf Events Shelf Events Shelf Events",
+        "Association Association Association",
+        "Reversibility Reversibility Reversibility",
+        "Live Cart Live Cart Live Cart",
+        "Settlement Settlement Settlement",
+        "PART OF THE SYSTEM Identity Resolve a shopper or cart context before committing an item event. Disco",
+        "Discover Discover Discover",
+        "PART OF THE SYSTEM Shelf Events Treat picks and returns at the shelf as explicit physical events. Di"
+      ],
       "broken_image_count": 0,
       "page_error_count": 0,
       "console_error_count": 0
@@ -216,180 +684,340 @@
         "#research",
         "#system"
       ],
-      "visible_controls": [
+      "controls_total": 30,
+      "controls_exercised": [
         {
+          "id": "control-000",
+          "tag": "BUTTON",
+          "text": "More infoMore infoMore info",
+          "ariaExpanded": null,
+          "mode": "contextual-handler",
+          "result": "contextual-handler-exercised",
+          "opened": []
+        },
+        {
+          "id": "control-001",
           "tag": "BUTTON",
           "text": "About the project About the project About the project",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
         },
         {
+          "id": "control-002",
           "tag": "BUTTON",
           "text": "previous slide",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
         },
         {
+          "id": "control-003",
           "tag": "BUTTON",
           "text": "next slide",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
         },
         {
+          "id": "control-004",
           "tag": "BUTTON",
           "text": "Identity Identity Identity",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
         },
         {
+          "id": "control-005",
           "tag": "BUTTON",
           "text": "Shelf Events Shelf Events Shelf Events",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
         },
         {
+          "id": "control-006",
           "tag": "BUTTON",
           "text": "Association Association Association",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
         },
         {
+          "id": "control-007",
           "tag": "BUTTON",
           "text": "Reversibility Reversibility Reversibility",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
         },
         {
+          "id": "control-008",
           "tag": "BUTTON",
           "text": "Live Cart Live Cart Live Cart",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
         },
         {
+          "id": "control-009",
           "tag": "BUTTON",
           "text": "Settlement Settlement Settlement",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
         },
         {
+          "id": "control-010",
           "tag": "BUTTON",
           "text": "Discover Discover Discover",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
         },
         {
+          "id": "control-011",
           "tag": "BUTTON",
           "text": "Discover Discover Discover",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
         },
         {
+          "id": "control-012",
           "tag": "BUTTON",
           "text": "Discover Discover Discover",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
         },
         {
+          "id": "control-013",
           "tag": "BUTTON",
           "text": "Discover Discover Discover",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "contextual-handler",
+          "result": "contextual-handler-exercised",
+          "opened": []
         },
         {
+          "id": "control-014",
           "tag": "BUTTON",
           "text": "Discover Discover Discover",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "contextual-handler",
+          "result": "contextual-handler-exercised",
+          "opened": []
         },
         {
+          "id": "control-015",
           "tag": "BUTTON",
           "text": "previous slide",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
         },
         {
+          "id": "control-016",
           "tag": "BUTTON",
           "text": "next slide",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
         },
         {
+          "id": "control-017",
           "tag": "BUTTON",
           "text": "Today Today Today",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
         },
         {
+          "id": "control-018",
           "tag": "BUTTON",
           "text": "Next Next Next",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
         },
         {
+          "id": "control-019",
           "tag": "BUTTON",
           "text": "",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "contextual-handler",
+          "result": "contextual-handler-exercised",
+          "opened": []
         },
         {
+          "id": "control-020",
           "tag": "BUTTON",
           "text": "",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "user-click",
+          "result": "clicked-state-changed",
+          "opened": []
         },
         {
+          "id": "control-021",
           "tag": "DIV",
           "text": "Open source Open source Open source",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "contextual-handler",
+          "result": "contextual-handler-exercised",
+          "opened": []
         },
         {
+          "id": "control-022",
+          "tag": "INPUT",
+          "text": "Open source",
+          "ariaExpanded": null,
+          "mode": "contextual-handler",
+          "result": "contextual-handler-exercised",
+          "opened": [
+            "https://github.com/sushxnthd/greengroove"
+          ]
+        },
+        {
+          "id": "control-023",
           "tag": "BUTTON",
           "text": "About",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "contextual-handler",
+          "result": "contextual-handler-exercised",
+          "opened": []
         },
         {
+          "id": "control-024",
           "tag": "BUTTON",
           "text": "Close Close Close",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "contextual-handler",
+          "result": "contextual-handler-exercised",
+          "opened": []
         },
         {
+          "id": "control-025",
           "tag": "BUTTON",
           "text": "RETAIL STATE SYSTEM RETAIL STATE SYSTEM",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "contextual-handler",
+          "result": "contextual-handler-exercised",
+          "opened": []
         },
         {
+          "id": "control-026",
           "tag": "BUTTON",
           "text": "RETAIL STATE SYSTEM RETAIL STATE SYSTEM",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "contextual-handler",
+          "result": "contextual-handler-exercised",
+          "opened": []
         },
         {
+          "id": "control-027",
           "tag": "BUTTON",
           "text": "View section View section View section",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "contextual-handler",
+          "result": "contextual-handler-exercised",
+          "opened": []
         },
         {
+          "id": "control-028",
           "tag": "BUTTON",
           "text": "Close Close Close",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "contextual-handler",
+          "result": "contextual-handler-exercised",
+          "opened": []
         },
         {
+          "id": "control-029",
           "tag": "BUTTON",
           "text": "Close Close Close",
           "ariaExpanded": null,
-          "ariaControls": null
+          "mode": "contextual-handler",
+          "result": "contextual-handler-exercised",
+          "opened": []
         }
       ],
-      "expandable_controls_tested": [],
+      "opener_close_flows": [
+        {
+          "opener": "About",
+          "result": "opened-no-close-required"
+        },
+        {
+          "opener": "About the project",
+          "result": "opened-no-close-required"
+        },
+        {
+          "opener": "More info",
+          "result": "not-currently-exposed"
+        }
+      ],
+      "keyboard_focus_steps": [
+        "go to homepage",
+        "Source Source",
+        "Overview",
+        "Architecture",
+        "Groove Band NEW",
+        "Green Grooves",
+        "G/G App",
+        "Build Gallery",
+        "Evidence 06",
+        "Roadmap",
+        "Research Research",
+        "View Project View Project",
+        "SELECTED UNDER NCERT PRAYAAS SELECTED UNDER NCERT PRAYAAS SELECTED UNDER NCERT PRAYAAS SELECTED UNDE",
+        "A",
+        "About the project About the project About the project",
+        "3 DAYS AGO PROJECT MODULE Groove Band RFID IDENTITY",
+        "previous slide",
+        "next slide",
+        "System overview System overview",
+        "Identity Identity Identity",
+        "Shelf Events Shelf Events Shelf Events",
+        "Association Association Association",
+        "Reversibility Reversibility Reversibility",
+        "Live Cart Live Cart Live Cart",
+        "Settlement Settlement Settlement",
+        "PART OF THE SYSTEM Identity Resolve a shopper or cart context before committing an item event. Disco",
+        "Discover Discover Discover",
+        "PART OF THE SYSTEM Shelf Events Treat picks and returns at the shelf as explicit physical events. Di",
+        "Discover Discover Discover",
+        "PART OF THE SYSTEM Association Match each item event to the most plausible active shopper. Discover "
+      ],
       "broken_image_count": 0,
       "page_error_count": 0,
       "console_error_count": 0
     }
-  }
+  },
+  "external_links": [
+    {
+      "url": "https://github.com/sushxnthd/greengroove",
+      "status": 200
+    },
+    {
+      "url": "https://www.behance.net/gallery/211169339/Green-Groove",
+      "status": 403
+    }
+  ]
 }
