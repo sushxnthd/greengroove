@@ -332,7 +332,7 @@
         "Reversibility Reversibility Reversibility",
         "Live Cart Live Cart Live Cart",
         "Settlement Settlement Settlement",
-        "PART OF THE SYSTEM Identity Resolve a shopper or cart context before committing an item event. Disco"
+        "PART OF THE SYSTEM Identity Give each shopper a unique RFID wristband so item events have a known ca"
       ],
       "broken_image_count": 0,
       "page_error_count": 0,
@@ -665,9 +665,9 @@
         "Reversibility Reversibility Reversibility",
         "Live Cart Live Cart Live Cart",
         "Settlement Settlement Settlement",
-        "PART OF THE SYSTEM Identity Resolve a shopper or cart context before committing an item event. Disco",
+        "PART OF THE SYSTEM Identity Give each shopper a unique RFID wristband so item events have a known ca",
         "Discover Discover Discover",
-        "PART OF THE SYSTEM Shelf Events Treat picks and returns at the shelf as explicit physical events. Di"
+        "PART OF THE SYSTEM Shelf Events Use load cells and RFID readers to detect when products leave or ret"
       ],
       "broken_image_count": 0,
       "page_error_count": 0,
@@ -998,11 +998,11 @@
         "Reversibility Reversibility Reversibility",
         "Live Cart Live Cart Live Cart",
         "Settlement Settlement Settlement",
-        "PART OF THE SYSTEM Identity Resolve a shopper or cart context before committing an item event. Disco",
+        "PART OF THE SYSTEM Identity Give each shopper a unique RFID wristband so item events have a known ca",
         "Discover Discover Discover",
-        "PART OF THE SYSTEM Shelf Events Treat picks and returns at the shelf as explicit physical events. Di",
+        "PART OF THE SYSTEM Shelf Events Use load cells and RFID readers to detect when products leave or ret",
         "Discover Discover Discover",
-        "PART OF THE SYSTEM Association Match each item event to the most plausible active shopper. Discover "
+        "PART OF THE SYSTEM Association Match each shelf event to the right active shopper before changing ca"
       ],
       "broken_image_count": 0,
       "page_error_count": 0,
