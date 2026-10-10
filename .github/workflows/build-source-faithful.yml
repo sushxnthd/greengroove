@@ -11,6 +11,7 @@ on:
       - brand_apply.py
       - brand_apply_v2.py
       - brand_viewbox_fix.py
+      - '*.fragment.html'
       - .github/workflows/build-source-faithful.yml
 
 permissions:
