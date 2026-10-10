@@ -13,6 +13,9 @@ on:
       - brand_viewbox_fix.py
       - footer_osmo_exact.py
       - micrographics_apply.py
+      - production_cleanup.py
+      - ui_invariance.py
+      - qa_runtime.py
       - assets/raster/*.b64
       - favicon-source.svg
       - '*.fragment.html'
@@ -48,16 +51,28 @@ jobs:
         run: python footer_osmo_exact.py index.html
       - name: Install palette-accurate project-specific raster micrographics
         run: python micrographics_apply.py index.html
+      - name: Snapshot UI before behavior-only cleanup
+        run: cp index.html /tmp/green-groove-before-cleanup.html
+      - name: Remove stale integrations and repair every residual route
+        run: python production_cleanup.py index.html
+      - name: Prove cleanup did not alter visible UI
+        run: python ui_invariance.py /tmp/green-groove-before-cleanup.html index.html
+      - name: Install browser QA runtime
+        run: |
+          pip install playwright
+          python -m playwright install --with-deps chromium
+      - name: Run desktop and mobile functional QA
+        run: python qa_runtime.py
       - name: Apply canonical favicon artwork
         run: cp favicon-source.svg favicon.svg
-      - name: Commit generated homepage
+      - name: Commit generated homepage and QA report
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html favicon.svg
+          git add index.html favicon.svg qa-report.json
           if git diff --cached --quiet; then
             echo "No generated changes"
             exit 0
           fi
-          git commit -m "Generate and refine source-faithful Green Groove [skip ci]"
+          git commit -m "Generate and production-verify Green Groove [skip ci]"
           git push
