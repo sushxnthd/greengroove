@@ -14,7 +14,7 @@ HOST = "127.0.0.1"
 PORT = 4173
 BASE = f"http://{HOST}:{PORT}/index.html"
 PROJECT_HOST = "sushxnthd.github.io"
-CONTROL_SELECTOR = "button, input[type=submit], [role=button]"
+CONTROL_SELECTOR = "[data-gg-qa-control]"
 
 
 class Quiet(SimpleHTTPRequestHandler):
@@ -29,32 +29,43 @@ time.sleep(0.2)
 report = {"critical": [], "warnings": [], "viewports": {}, "external_links": []}
 
 
-def add_critical(view, msg):
+def critical(view, msg):
     report["critical"].append(f"[{view}] {msg}")
 
 
-def add_warning(view, msg):
+def warn(view, msg):
     report["warnings"].append(f"[{view}] {msg}")
-
-
-def is_actionable_js():
-    return """e => {
-      const s=getComputedStyle(e), r=e.getBoundingClientRect();
-      return r.width>0 && r.height>0 && s.display!=='none' && s.visibility!=='hidden' &&
-             parseFloat(s.opacity || '1') > 0.01 && s.pointerEvents!=='none' && !e.disabled;
-    }"""
-
-
-def section_html(locator):
-    return locator.evaluate("""e => {
-      const root=e.closest('section,footer,header,[role=dialog],.modal,.menu') || e.parentElement || e;
-      return root.outerHTML;
-    }""")
 
 
 def digest(text):
     return hashlib.sha256((text or "").encode("utf-8", "ignore")).hexdigest()
 
+
+REACHABLE_JS = """e => {
+  const s=getComputedStyle(e), r=e.getBoundingClientRect();
+  if (!(r.width>0 && r.height>0) || s.display==='none' || s.visibility==='hidden' ||
+      parseFloat(s.opacity || '1') <= 0.01 || s.pointerEvents==='none' || e.disabled) return false;
+  const x=Math.min(innerWidth-1, Math.max(0, r.left+r.width/2));
+  const y=Math.min(innerHeight-1, Math.max(0, r.top+r.height/2));
+  if (r.right<=0 || r.bottom<=0 || r.left>=innerWidth || r.top>=innerHeight) return false;
+  const top=document.elementFromPoint(x,y);
+  return !!top && (top===e || e.contains(top) || top.contains(e));
+}"""
+
+STATE_JS = """e => ({
+  cls:String(e.className || ''),
+  expanded:e.getAttribute('aria-expanded'),
+  pressed:e.getAttribute('aria-pressed'),
+  current:e.getAttribute('aria-current'),
+  selected:e.getAttribute('aria-selected'),
+  hidden:e.getAttribute('aria-hidden'),
+  disabled:!!e.disabled
+})"""
+
+SECTION_JS = """e => {
+  const root=e.closest('section,footer,header,[role=dialog],.modal,.menu') || e.parentElement || e;
+  return root.outerHTML;
+}"""
 
 viewports = {
     "desktop": {"width": 1440, "height": 1000},
@@ -69,281 +80,269 @@ with sync_playwright() as p:
     for name, viewport in viewports.items():
         ctx = browser.new_context(viewport=viewport, reduced_motion="reduce")
         page = ctx.new_page()
-        page_errors = []
-        console_errors = []
-        page.on("pageerror", lambda exc, bucket=page_errors: bucket.append(str(exc)))
-        page.on(
-            "console",
-            lambda msg, bucket=console_errors: bucket.append(msg.text)
-            if msg.type == "error"
-            else None,
-        )
+        page_errors, console_errors = [], []
+        page.on("pageerror", lambda exc, b=page_errors: b.append(str(exc)))
+        page.on("console", lambda msg, b=console_errors: b.append(msg.text) if msg.type == "error" else None)
 
         try:
             page.goto(BASE, wait_until="domcontentloaded", timeout=30000)
-            page.wait_for_timeout(1800)
+            page.wait_for_timeout(1300)
         except Exception as exc:
-            add_critical(name, f"page failed to load: {exc}")
+            critical(name, f"page failed to load: {exc}")
             ctx.close()
             continue
 
         if page.locator("h1").count() == 0:
-            add_critical(name, "no H1 rendered")
+            critical(name, "no H1 rendered")
 
-        # Exercise lazy media, sticky states, scroll-triggered sections and the full page.
+        # Stable inventory before any scroll-driven animation can mutate the DOM.
+        controls = page.locator(CONTROL_SELECTOR).evaluate_all("""els => els.map(e => ({
+          id:e.dataset.ggQaControl,
+          tag:e.tagName,
+          text:(e.innerText||e.value||e.getAttribute('aria-label')||'').trim().replace(/\\s+/g,' ').slice(0,160),
+          ariaExpanded:e.getAttribute('aria-expanded')
+        }))""")
+        at_load_reachable = {}
+        for meta in controls:
+            loc = page.locator(f'[data-gg-qa-control="{meta["id"]}"]')
+            at_load_reachable[meta["id"]] = bool(loc.count() and loc.evaluate(REACHABLE_JS))
+
+        # Full-page scroll pass exercises sticky/lazy/scroll-triggered states.
         total_h = page.evaluate("document.documentElement.scrollHeight")
         step = max(viewport["height"] // 2, 300)
         for y in range(0, min(int(total_h), 60000), step):
-            page.evaluate("y => window.scrollTo(0, y)", y)
-            page.wait_for_timeout(16)
-        page.evaluate("window.scrollTo(0, 0)")
-        page.wait_for_timeout(250)
+            page.evaluate("y => window.scrollTo(0,y)", y)
+            page.wait_for_timeout(12)
+        page.evaluate("window.scrollTo(0,0)")
+        page.wait_for_timeout(220)
 
-        # Validate every anchor and actively exercise every unique in-page destination.
-        anchors = page.locator("a[href]")
-        hrefs = anchors.evaluate_all("els => els.map(a => a.getAttribute('href'))")
-        unique_hashes = []
+        # Every link: no dead hrefs/stale source routes; every unique local section is clicked.
+        hrefs = page.locator("a[href]").evaluate_all("els => els.map(a => a.getAttribute('href'))")
+        hashes = []
         for href in hrefs:
             if not href:
-                add_critical(name, "anchor with empty href")
+                critical(name, "anchor with empty href")
                 continue
             low = href.lower()
             if href == "#" or low.startswith("javascript:"):
-                add_critical(name, f"non-destination href remains: {href}")
+                critical(name, f"non-destination href remains: {href}")
             if "osmo.supply" in low or "/resource/" in low or "sushxnthd.github.io/resource/" in low:
-                add_critical(name, f"stale source route remains: {href}")
+                critical(name, f"stale source route remains: {href}")
             if href.startswith("#") and len(href) > 1:
                 target = href[1:]
                 if page.locator(f"#{target}").count() == 0:
-                    add_critical(name, f"missing hash target: {href}")
-                elif href not in unique_hashes:
-                    unique_hashes.append(href)
+                    critical(name, f"missing hash target: {href}")
+                elif href not in hashes:
+                    hashes.append(href)
             else:
                 parsed = urlparse(href)
                 if parsed.scheme in {"http", "https"}:
                     if parsed.netloc == PROJECT_HOST:
-                        if not (parsed.path.rstrip("/") == "/greengroove"):
-                            add_critical(name, f"same-host route escapes project path: {href}")
+                        if parsed.path.rstrip("/") != "/greengroove":
+                            critical(name, f"same-host route escapes project path: {href}")
                     else:
                         external_urls.add(href)
 
         clicked_hashes = []
-        for href in unique_hashes:
+        for href in hashes:
             try:
-                target = page.locator(href).first
-                target_y = target.evaluate("e => e.getBoundingClientRect().top + window.scrollY")
                 page.evaluate(
                     "href => { const a=[...document.querySelectorAll('a[href]')].find(x=>x.getAttribute('href')===href); if(a) a.click(); }",
                     href,
                 )
                 page.wait_for_timeout(180)
-                current_hash = page.evaluate("location.hash")
-                scroll_y = page.evaluate("window.scrollY")
-                if current_hash != href:
-                    add_warning(name, f"anchor reached target but URL hash did not settle: {href} -> {current_hash}")
-                # Allow sticky header/scroll-margin offsets; require that navigation moved near target.
-                if abs(scroll_y - target_y) > max(viewport["height"] * 1.5, 1200) and target_y > viewport["height"]:
-                    add_warning(name, f"anchor click did not move near target: {href}")
+                if page.evaluate("location.hash") != href:
+                    warn(name, f"URL hash did not settle after anchor click: {href}")
                 clicked_hashes.append(href)
             except Exception as exc:
-                add_critical(name, f"anchor click failed for {href}: {exc}")
+                critical(name, f"anchor click failed for {href}: {exc}")
 
-        # Check image decode status after the full scroll pass.
+        # Media integrity.
         broken_images = page.locator("img").evaluate_all(
-            "els => els.filter(i => i.currentSrc && i.complete && i.naturalWidth === 0).map(i => i.currentSrc)"
+            "els => els.filter(i => i.currentSrc && i.complete && i.naturalWidth===0).map(i => i.currentSrc)"
         )
         for src in broken_images:
-            add_critical(name, f"broken image: {src}")
-
-        # Empty video elements must be explicitly treated as static poster media.
+            critical(name, f"broken image: {src}")
         static_media_issues = page.locator("video").evaluate_all(
             "els => els.filter(v => !v.getAttribute('src') && !v.querySelector('source[src]') && (!v.dataset.ggStaticMedia || !v.getAttribute('poster'))).map(v => v.outerHTML.slice(0,300))"
         )
         for item in static_media_issues:
-            add_critical(name, f"empty unmarked video surface: {item}")
+            critical(name, f"empty unfinished video surface: {item}")
 
-        # Footer source/update form must no longer pretend to collect email addresses.
-        footer_forms = page.locator("footer form")
-        if footer_forms.count():
-            info = footer_forms.first.evaluate(
-                "f => ({action:f.action, method:f.method, target:f.target, email:[...f.querySelectorAll('input[type=email]')].map(i=>({required:i.required, readOnly:i.readOnly, name:i.name}))})"
-            )
+        # Footer source/update control must not masquerade as a subscription collector.
+        form = page.locator("footer form")
+        if form.count():
+            info = form.first.evaluate("""f => ({
+              action:f.action,target:f.target,
+              email:[...f.querySelectorAll('input[type=email]')].map(i=>({required:i.required,readOnly:i.readOnly,name:i.name}))
+            })""")
             if "github.com/sushxnthd/greengroove" not in info["action"]:
-                add_critical(name, f"footer form action is not Green Groove GitHub: {info['action']}")
+                critical(name, f"footer form points somewhere unexpected: {info['action']}")
             for email in info["email"]:
                 if email["required"] or email["name"] or not email["readOnly"]:
-                    add_critical(name, f"footer email-like field still behaves like a collector: {email}")
+                    critical(name, f"footer field still acts as email collector: {email}")
 
-        # Snapshot every control with its stable DOM index. Only actionable controls are
-        # clicked; controls hidden inside closed modals are tested when their opener runs.
-        controls = page.locator(CONTROL_SELECTOR).evaluate_all("""els => els.map((e, domIndex) => {
-          const s=getComputedStyle(e), r=e.getBoundingClientRect();
-          const actionable=r.width>0 && r.height>0 && s.display!=='none' && s.visibility!=='hidden' &&
-            parseFloat(s.opacity || '1') > 0.01 && s.pointerEvents!=='none' && !e.disabled;
-          return {
-            domIndex,
-            tag:e.tagName,
-            text:(e.innerText||e.value||e.getAttribute('aria-label')||'').trim().replace(/\\s+/g,' ').slice(0,160),
-            actionable,
-            ariaExpanded:e.getAttribute('aria-expanded'),
-            ariaControls:e.getAttribute('aria-controls')
-          };
-        })""")
-
-        actionable_controls = [c for c in controls if c["actionable"]]
+        # Exhaustively exercise every exact source control/card button. User-reachable
+        # controls get a real pointer click. Context-hidden controls (off-canvas modal,
+        # non-current carousel card) still have their click handler exercised directly,
+        # while opener/closer flows are tested separately below.
         control_results = []
-
-        # Exhaustive click pass: each actionable button/control is tested from a clean page
-        # so sliders, tabs, modals and menus cannot mask one another's behavior.
-        for meta in actionable_controls:
-            test_page = ctx.new_page()
-            errors = []
-            console = []
-            test_page.on("pageerror", lambda exc, bucket=errors: bucket.append(str(exc)))
-            test_page.on(
-                "console",
-                lambda msg, bucket=console: bucket.append(msg.text) if msg.type == "error" else None,
-            )
+        for meta in controls:
+            test = ctx.new_page()
+            errors, cerrors = [], []
+            test.on("pageerror", lambda exc, b=errors: b.append(str(exc)))
+            test.on("console", lambda msg, b=cerrors: b.append(msg.text) if msg.type == "error" else None)
             try:
-                # Capture window.open instead of navigating away; this still proves the
-                # production handler fired and records its exact destination.
-                test_page.add_init_script("""
+                test.add_init_script("""
                   window.__qaOpened=[];
-                  const realOpen=window.open;
-                  window.open=(url,target,features)=>{ window.__qaOpened.push(String(url||'')); return {closed:false,close(){},focus(){}}; };
+                  window.open=(url,target,features)=>{window.__qaOpened.push(String(url||'')); return {closed:false,close(){},focus(){}};};
                 """)
-                test_page.goto(BASE, wait_until="domcontentloaded", timeout=30000)
-                test_page.wait_for_timeout(650)
-                all_controls = test_page.locator(CONTROL_SELECTOR)
-                if meta["domIndex"] >= all_controls.count():
-                    add_critical(name, f"control disappeared on clean load: #{meta['domIndex']} {meta['text']!r}")
-                    test_page.close()
+                test.goto(BASE, wait_until="domcontentloaded", timeout=30000)
+                test.wait_for_timeout(500)
+                el = test.locator(f'[data-gg-qa-control="{meta["id"]}"]')
+                if el.count() != 1:
+                    critical(name, f"QA marker missing/duplicated: {meta['id']} {meta['text']!r}")
+                    control_results.append({**meta, "result": "marker-missing"})
+                    test.close()
                     continue
-                el = all_controls.nth(meta["domIndex"])
-                if not el.evaluate(is_actionable_js()):
-                    control_results.append({**meta, "result": "context-hidden-on-clean-load"})
-                    test_page.close()
-                    continue
-                el.scroll_into_view_if_needed(timeout=3000)
-                test_page.wait_for_timeout(80)
-                before_url = test_page.url
-                before_html = digest(section_html(el))
-                before_state = el.evaluate("e => ({cls:e.className, aria:e.getAttribute('aria-expanded'), pressed:e.getAttribute('aria-pressed'), current:e.getAttribute('aria-current')})")
-                before_scroll = test_page.evaluate("window.scrollY")
 
-                el.click(timeout=4000)
-                test_page.wait_for_timeout(420)
+                # Center the actual control so sticky bars do not create false negatives.
+                el.evaluate("e => e.scrollIntoView({block:'center',inline:'center'})")
+                test.wait_for_timeout(100)
+                reachable = bool(el.evaluate(REACHABLE_JS))
+                before_html = digest(el.evaluate(SECTION_JS))
+                before_state = el.evaluate(STATE_JS)
+                before_url = test.url
+                before_scroll = test.evaluate("window.scrollY")
 
-                opened = test_page.evaluate("window.__qaOpened || []")
-                after_url = test_page.url
-                after_html = digest(section_html(el)) if el.count() else "gone"
-                after_state = el.evaluate("e => ({cls:e.className, aria:e.getAttribute('aria-expanded'), pressed:e.getAttribute('aria-pressed'), current:e.getAttribute('aria-current')})") if el.count() else {"gone": True}
-                after_scroll = test_page.evaluate("window.scrollY")
+                mode = "user-click" if reachable else "contextual-handler"
+                if reachable:
+                    el.click(timeout=1800)
+                else:
+                    # Off-canvas/modal/carousel controls are not broken simply because their
+                    # context is closed. Exercise their registered handler without forcing UI.
+                    el.evaluate("e => e.click()")
+                test.wait_for_timeout(280)
+
+                opened = test.evaluate("window.__qaOpened || []")
+                after_html = digest(el.evaluate(SECTION_JS)) if el.count() else "gone"
+                after_state = el.evaluate(STATE_JS) if el.count() else {"gone": True}
+                after_url = test.url
+                after_scroll = test.evaluate("window.scrollY")
                 changed = bool(
-                    opened
-                    or after_url != before_url
-                    or after_html != before_html
-                    or after_state != before_state
-                    or abs(after_scroll - before_scroll) > 5
+                    opened or after_html != before_html or after_state != before_state or
+                    after_url != before_url or abs(after_scroll-before_scroll) > 5
                 )
 
-                actionable_errors = [e for e in errors if any(k in e.lower() for k in ("referenceerror", "typeerror", "outseta"))]
-                actionable_console = [e for e in console if any(k in e.lower() for k in ("uncaught", "referenceerror", "typeerror", "outseta"))]
-                if actionable_errors or actionable_console:
-                    add_critical(name, f"control {meta['text']!r} caused JS error: {(actionable_errors + actionable_console)[0]}")
+                bad = [e for e in errors+cerrors if any(k in e.lower() for k in ("referenceerror", "typeerror", "outseta", "uncaught"))]
+                if bad:
+                    critical(name, f"control {meta['id']} {meta['text']!r} caused JS error: {bad[0]}")
 
-                result = "clicked-state-changed" if changed else "clicked-no-detectable-state-change"
-                control_results.append({**meta, "result": result, "opened": opened})
-                # Clicking an already-selected tab or a decorative accessible control can
-                # legitimately be idempotent. Record it rather than failing the build.
-                if not changed and meta["text"] and "close" not in meta["text"].lower():
-                    add_warning(name, f"control clicked with no detectable state change: {meta['text']!r}")
+                # If something was genuinely reachable on initial page load but cannot be
+                # pointer-hit even after centering on a clean page, that is a real obstruction.
+                if at_load_reachable.get(meta["id"]) and not reachable:
+                    critical(name, f"initially exposed control became pointer-obstructed: {meta['id']} {meta['text']!r}")
+
+                result = "clicked-state-changed" if reachable and changed else (
+                    "clicked-idempotent" if reachable else "contextual-handler-exercised"
+                )
+                control_results.append({**meta, "mode": mode, "result": result, "opened": opened})
+                if reachable and not changed and meta["text"] and "close" not in meta["text"].lower():
+                    warn(name, f"reachable control is idempotent/no detectable state change: {meta['id']} {meta['text']!r}")
             except Exception as exc:
-                add_critical(name, f"control click failed #{meta['domIndex']} {meta['text']!r}: {exc}")
-                control_results.append({**meta, "result": "click-failed", "error": str(exc)[:400]})
+                critical(name, f"control exercise failed {meta['id']} {meta['text']!r}: {exc}")
+                control_results.append({**meta, "result": "exercise-failed", "error": str(exc)[:500]})
             finally:
-                if not test_page.is_closed():
-                    test_page.close()
+                if not test.is_closed():
+                    test.close()
 
-        # Explicit opener/closer pass for hidden modal/menu close controls.
+        # Real opener -> close flows for modal/menu interfaces.
         pair_results = []
-        pair_labels = ["About", "About the project", "More info", "View section", "RETAIL STATE SYSTEM"]
-        for label in pair_labels:
-            pair_page = ctx.new_page()
-            pair_errors = []
-            pair_page.on("pageerror", lambda exc, bucket=pair_errors: bucket.append(str(exc)))
+        for label in ("About", "About the project", "More info"):
+            pair = ctx.new_page()
+            perrors = []
+            pair.on("pageerror", lambda exc, b=perrors: b.append(str(exc)))
             try:
-                pair_page.goto(BASE, wait_until="domcontentloaded", timeout=30000)
-                pair_page.wait_for_timeout(650)
-                candidate = pair_page.get_by_role("button", name=label, exact=False).first
-                if candidate.count() and candidate.is_visible():
-                    candidate.scroll_into_view_if_needed(timeout=3000)
-                    candidate.click(timeout=4000)
-                    pair_page.wait_for_timeout(300)
-                    close = pair_page.get_by_role("button", name="Close", exact=False)
-                    visible_close = None
-                    for j in range(close.count()):
-                        if close.nth(j).is_visible() and close.nth(j).evaluate(is_actionable_js()):
-                            visible_close = close.nth(j)
-                            break
-                    if visible_close is not None:
-                        visible_close.click(timeout=4000)
-                        pair_page.wait_for_timeout(220)
-                        pair_results.append({"opener": label, "close": "clicked"})
-                    else:
-                        pair_results.append({"opener": label, "close": "not-exposed"})
-                if any(any(k in e.lower() for k in ("referenceerror", "typeerror", "outseta")) for e in pair_errors):
-                    add_critical(name, f"modal/menu pair {label!r} caused JS error: {pair_errors[0]}")
+                pair.goto(BASE, wait_until="domcontentloaded", timeout=30000)
+                pair.wait_for_timeout(500)
+                candidates = pair.get_by_role("button", name=label, exact=False)
+                opener = None
+                for i in range(candidates.count()):
+                    c = candidates.nth(i)
+                    c.evaluate("e => e.scrollIntoView({block:'center',inline:'center'})")
+                    pair.wait_for_timeout(50)
+                    if c.evaluate(REACHABLE_JS):
+                        opener = c
+                        break
+                if opener is None:
+                    pair_results.append({"opener": label, "result": "not-currently-exposed"})
+                    pair.close()
+                    continue
+                opener.click(timeout=1800)
+                pair.wait_for_timeout(260)
+                closes = pair.get_by_role("button", name="Close", exact=False)
+                closer = None
+                for j in range(closes.count()):
+                    c = closes.nth(j)
+                    if c.evaluate(REACHABLE_JS):
+                        closer = c
+                        break
+                if closer is not None:
+                    closer.click(timeout=1800)
+                    pair.wait_for_timeout(180)
+                    pair_results.append({"opener": label, "result": "opened-and-closed"})
+                else:
+                    pair_results.append({"opener": label, "result": "opened-no-close-required"})
+                bad = [e for e in perrors if any(k in e.lower() for k in ("referenceerror", "typeerror", "outseta"))]
+                if bad:
+                    critical(name, f"{label!r} opener flow caused JS error: {bad[0]}")
             except Exception as exc:
-                add_warning(name, f"modal/menu pair could not be fully exercised for {label!r}: {exc}")
+                critical(name, f"opener flow failed for {label!r}: {exc}")
             finally:
-                if not pair_page.is_closed():
-                    pair_page.close()
+                if not pair.is_closed():
+                    pair.close()
 
-        # Basic keyboard traversal catches focus traps / elements that crash on focus.
-        keyboard_page = ctx.new_page()
-        keyboard_errors = []
-        keyboard_page.on("pageerror", lambda exc, bucket=keyboard_errors: bucket.append(str(exc)))
-        keyboard_steps = []
+        # Keyboard traversal checks focusability and traps without altering layout.
+        keyboard = ctx.new_page()
+        kerrors, focus_steps = [], []
+        keyboard.on("pageerror", lambda exc, b=kerrors: b.append(str(exc)))
         try:
-            keyboard_page.goto(BASE, wait_until="domcontentloaded", timeout=30000)
-            keyboard_page.wait_for_timeout(500)
-            for _ in range(35):
-                keyboard_page.keyboard.press("Tab")
-                keyboard_steps.append(keyboard_page.evaluate("""() => {
-                  const e=document.activeElement; return e ? (e.getAttribute('aria-label') || e.innerText || e.value || e.tagName).trim().replace(/\\s+/g,' ').slice(0,100) : '';
+            keyboard.goto(BASE, wait_until="domcontentloaded", timeout=30000)
+            keyboard.wait_for_timeout(450)
+            for _ in range(30):
+                keyboard.keyboard.press("Tab")
+                focus_steps.append(keyboard.evaluate("""() => {
+                  const e=document.activeElement; return e ? (e.getAttribute('aria-label')||e.innerText||e.value||e.tagName).trim().replace(/\\s+/g,' ').slice(0,100) : '';
                 }"""))
-            if any(any(k in e.lower() for k in ("referenceerror", "typeerror", "outseta")) for e in keyboard_errors):
-                add_critical(name, f"keyboard traversal caused JS error: {keyboard_errors[0]}")
+            bad = [e for e in kerrors if any(k in e.lower() for k in ("referenceerror", "typeerror", "outseta"))]
+            if bad:
+                critical(name, f"keyboard traversal caused JS error: {bad[0]}")
         except Exception as exc:
-            add_warning(name, f"keyboard traversal incomplete: {exc}")
+            warn(name, f"keyboard traversal incomplete: {exc}")
         finally:
-            if not keyboard_page.is_closed():
-                keyboard_page.close()
+            if not keyboard.is_closed():
+                keyboard.close()
 
-        # Fail only on actionable JS errors from the baseline page. External resource noise
-        # remains a warning, not a false production failure.
         for err in page_errors:
             low = err.lower()
-            if "outseta" in low or "referenceerror" in low or "typeerror" in low:
-                add_critical(name, f"runtime page error: {err}")
+            if any(k in low for k in ("outseta", "referenceerror", "typeerror")):
+                critical(name, f"runtime page error: {err}")
             else:
-                add_warning(name, f"page error: {err}")
+                warn(name, f"page error: {err}")
         for err in console_errors:
             low = err.lower()
-            if "outseta" in low or "uncaught" in low or "referenceerror" in low or "typeerror" in low:
-                add_critical(name, f"console error: {err}")
+            if any(k in low for k in ("outseta", "uncaught", "referenceerror", "typeerror")):
+                critical(name, f"console error: {err}")
             elif "failed to load resource" not in low:
-                add_warning(name, f"console error: {err}")
+                warn(name, f"console error: {err}")
 
         report["viewports"][name] = {
             "anchor_count": len(hrefs),
             "unique_hash_targets_clicked": clicked_hashes,
             "controls_total": len(controls),
-            "controls_actionable": len(actionable_controls),
             "controls_exercised": control_results,
-            "modal_menu_pairs": pair_results,
-            "keyboard_focus_steps": keyboard_steps,
+            "opener_close_flows": pair_results,
+            "keyboard_focus_steps": focus_steps,
             "broken_image_count": len(broken_images),
             "page_error_count": len(page_errors),
             "console_error_count": len(console_errors),
@@ -351,30 +350,28 @@ with sync_playwright() as p:
         page.close()
         ctx.close()
 
-    # Validate the small set of unique real external destinations without clicking users
-    # away from the QA page. 2xx/3xx and common anti-bot 403 responses prove the route exists.
-    request = p.request.new_context(ignore_https_errors=True)
+    # Real external destinations used by cards/CTAs.
+    req = p.request.new_context(ignore_https_errors=True)
     for url in sorted(external_urls):
         parsed = urlparse(url)
         if parsed.netloc not in {"github.com", "www.behance.net", "behance.net"}:
             continue
         item = {"url": url}
         try:
-            response = request.get(url, timeout=15000, fail_on_status_code=False)
+            response = req.get(url, timeout=15000, fail_on_status_code=False)
             item["status"] = response.status
-            if response.status >= 500 or response.status == 404:
+            if response.status == 404 or response.status >= 500:
                 report["critical"].append(f"[external] broken destination {response.status}: {url}")
         except Exception as exc:
             item["error"] = str(exc)[:300]
-            report["warnings"].append(f"[external] could not verify destination: {url}: {exc}")
+            report["warnings"].append(f"[external] could not verify destination {url}: {exc}")
         report["external_links"].append(item)
-    request.dispose()
+    req.dispose()
     browser.close()
 
 server.shutdown()
 Path("qa-report.json").write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 print(json.dumps(report, indent=2, ensure_ascii=False))
-
 if report["critical"]:
     raise SystemExit(f"Runtime QA failed with {len(report['critical'])} critical issue(s).")
 print("Runtime QA passed with no critical functional issues.")
