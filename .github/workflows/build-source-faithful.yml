@@ -10,6 +10,7 @@ on:
       - tailor_v3.py
       - brand_apply.py
       - brand_apply_v2.py
+      - brand_viewbox_fix.py
       - .github/workflows/build-source-faithful.yml
 
 permissions:
@@ -36,6 +37,8 @@ jobs:
         run: python brand_apply.py index.html
       - name: Apply canonical Green Groove compact and footer assets
         run: python brand_apply_v2.py index.html
+      - name: Normalize canonical Green Groove SVG geometry
+        run: python brand_viewbox_fix.py index.html
       - name: Commit generated homepage
         run: |
           git config user.name "github-actions[bot]"
