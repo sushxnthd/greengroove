@@ -15,6 +15,7 @@ on:
       - micrographics_apply.py
       - media_integrity.py
       - production_cleanup.py
+      - qa_markers.py
       - ui_invariance.py
       - qa_runtime.py
       - assets/raster/*.b64
@@ -58,13 +59,15 @@ jobs:
         run: cp index.html /tmp/green-groove-before-cleanup.html
       - name: Remove stale integrations and repair every residual route
         run: python production_cleanup.py index.html
+      - name: Add nonvisual stable QA markers
+        run: python qa_markers.py index.html
       - name: Prove cleanup did not alter visible UI
         run: python ui_invariance.py /tmp/green-groove-before-cleanup.html index.html
       - name: Install browser QA runtime
         run: |
           pip install playwright
           python -m playwright install --with-deps chromium
-      - name: Run desktop and mobile functional QA
+      - name: Run exhaustive desktop tablet and mobile functional QA
         run: python qa_runtime.py
       - name: Archive QA report even when checks fail
         if: always()
