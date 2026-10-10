@@ -1,0 +1,61 @@
+/* Original Green Groove media surfaces dropped into Osmo's exact media boxes. No Osmo artwork is used. */
+/* Preserve intrinsic ratios of source artwork that affects layout. */
+.intro-col__micro .gg-placeholder-img{display:block!important;width:100%!important;height:auto!important;aspect-ratio:241/278!important;opacity:0!important}
+.info__graphic.gg-placeholder-img{display:block!important;width:7.5em!important;height:auto!important;aspect-ratio:480/251!important;opacity:0!important}
+.pricing-home__graphic>.gg-placeholder-img{display:block!important;width:100%!important;height:auto!important;aspect-ratio:880/142!important;opacity:0!important}
+.flick-group__bg>.gg-placeholder-img{display:block!important;width:100%!important;height:auto!important;aspect-ratio:1!important;opacity:0!important}
+/* Small join-avatar cluster: same source geometry, Green Groove labels instead of portrait files. */
+.join-faces__image-el{background:#22231f!important;color:#f4f4f0!important}
+.join-faces__image-el::after{font:600 .42em/1 "Haffer Mono",monospace;position:relative;z-index:2}
+.join-faces__image-el:nth-child(1)::after{content:"SD"}.join-faces__image-el:nth-child(2)::after{content:"AK"}.join-faces__image-el:nth-child(3)::after{content:"GG"}.join-faces__image-el:nth-child(4)::after{content:"+"}
+.join-faces__image-el:nth-child(2){background:#6840ff!important}.join-faces__image-el:nth-child(3){background:#8cff4f!important;color:#171815!important}.join-faces__image-el:nth-child(4){background:#d8d8d2!important;color:#171815!important}
+/* About card: replace removed portraits with concentric Green Groove identity artwork in the exact 28em source box. */
+.about-card__img-layer{background:#5c38e7!important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.about-card__img-layer.is--2{background:#282725!important}.about-card__img-layer.is--3{background:#9cff5b!important;color:#171815!important}
+.about-card__img-layer.is--3::before{content:"GG";font-size:4.5em;line-height:1;letter-spacing:-.08em;font-weight:500;transform:rotate(-6deg)}
+.about-card__img-layer.is--2::after{content:"RETAIL / STATE";position:absolute;bottom:10%;font:600 .48em/1 "Haffer Mono",monospace;letter-spacing:.08em;color:#a1ff62}
+.about-card__img-rotate.gg-svg-placeholder::before,.about-card__img-rotate .gg-svg-placeholder::before{content:"✳";display:grid;place-items:center;width:100%;height:100%;font-size:5em;color:#f4f4f0}
+/* Intro micrographic keeps its original footprint and gets an original state-flow motif. */
+.intro-col__micro{position:absolute!important}
+.intro-col__micro::before{content:"";position:absolute;inset:0;background:linear-gradient(150deg,transparent 0 28%,#6840ff 29% 32%,transparent 33% 58%,#8cff4f 59% 63%,transparent 64%),radial-gradient(circle at 24% 25%,#171815 0 .22em,transparent .24em),radial-gradient(circle at 72% 69%,#171815 0 .22em,transparent .24em);pointer-events:none}
+/* Latest updates: populate the source's media pane without changing a single card dimension. */
+.latest-resources-slider .resource-visual{position:relative!important;overflow:hidden!important}
+.latest-resources-slider .vertical-slider__item:nth-child(1) .resource-visual{background:repeating-radial-gradient(circle at 50% 55%,transparent 0 1.2em,rgba(140,255,79,.20) 1.25em 1.3em),#171a15!important}
+.latest-resources-slider .vertical-slider__item:nth-child(1) .resource-visual::after{content:"ID / GG-041"}
+.latest-resources-slider .vertical-slider__item:nth-child(2) .resource-visual{background:linear-gradient(145deg,#201f1d,#12130f)!important}
+.latest-resources-slider .vertical-slider__item:nth-child(2) .resource-visual::before{content:"↶";position:absolute;inset:0;display:grid;place-items:center;font-size:7em;color:#6eea8d}
+.latest-resources-slider .vertical-slider__item:nth-child(2) .resource-visual::after{content:"RETURN / INVERT"}
+.latest-resources-slider .vertical-slider__item:nth-child(3) .resource-visual{background:#dce4d7!important;color:#171815!important}
+.latest-resources-slider .vertical-slider__item:nth-child(3) .resource-visual::before{content:"A     B";position:absolute;inset:0;display:grid;place-items:center;font-size:4.4em;letter-spacing:.12em}
+.latest-resources-slider .vertical-slider__item:nth-child(3) .resource-visual::after{content:"AMBIGUITY";color:#47634b!important}
+.latest-resources-slider .vertical-slider__item:nth-child(4) .resource-visual{background:linear-gradient(180deg,#1a1c18,#22261f)!important}
+.latest-resources-slider .vertical-slider__item:nth-child(4) .resource-visual::before{content:"";position:absolute;left:16%;right:16%;bottom:15%;height:65%;background:linear-gradient(to right,#555b51 0 16%,transparent 16% 25%,#555b51 25% 48%,transparent 48% 57%,#8cff4f 57% 82%,transparent 82% 91%,#555b51 91% 100%);clip-path:polygon(0 62%,16% 62%,16% 42%,48% 42%,48% 17%,82% 17%,82% 50%,100% 50%,100% 100%,0 100%)}
+.latest-resources-slider .vertical-slider__item:nth-child(4) .resource-visual::after{content:"CONSISTENCY"}
+.latest-resources-slider .vertical-slider__item:nth-child(5) .resource-visual{background:#6840ff!important}
+.latest-resources-slider .vertical-slider__item:nth-child(5) .resource-visual::before{content:"PRAYAAS";position:absolute;inset:0;display:grid;place-items:center;font-size:4em;letter-spacing:-.06em;color:white}
+.latest-resources-slider .vertical-slider__item:nth-child(5) .resource-visual::after{content:"EXTERNAL VALIDATION";color:#b9ff87!important}
+.latest-resources-slider .resource-visual::after{position:absolute;left:1.25em;bottom:1.15em;font:600 .58em/1 "Haffer Mono",monospace;letter-spacing:.06em;color:#8cff4f;z-index:4}
+/* Why-section source micrographic: same 7.5em × 480:251 box. */
+.info__small-col{position:relative}
+.info__small-col::before{content:"";position:absolute;left:0;top:0;width:7.5em;aspect-ratio:480/251;background:linear-gradient(12deg,transparent 47%,#ff655e 48% 51%,transparent 52%),linear-gradient(168deg,transparent 47%,#6840ff 48% 51%,transparent 52%),radial-gradient(circle at 50% 50%,#8cff4f 0 .38em,transparent .4em);opacity:.95;pointer-events:none}
+/* Pricing source micrographic: its actual source ratio is 880×142, not square. */
+.pricing-home__graphic{position:relative!important}
+.pricing-home__graphic::before{content:"✳  ·  GG  ·  ✳";position:absolute;inset:0;display:grid;place-items:center;color:#706d6d;font-size:2em;line-height:1;letter-spacing:.12em;white-space:nowrap}
+.pricing-home__graphic::after{content:"";position:absolute;left:3%;right:3%;top:50%;height:1px;background:#4a4747;transform:translateY(-50%);z-index:-1}
+/* Restore the Made-with source decoration using original geometry, not Osmo's SVG. */
+.flick-group__bg{border-radius:50%;border:1px solid #3b3939!important;background:repeating-radial-gradient(circle at center,transparent 0 6em,rgba(140,255,79,.08) 6.05em 6.12em)!important}
+.flick-group__bg::before,.flick-group__bg::after{content:"";position:absolute;left:50%;top:0;bottom:0;width:1px;background:#3b3939}.flick-group__bg::after{left:0;right:0;top:50%;width:auto;height:1px}
+/* Showcase media: same 62.5% source media ratio, with Green Groove-specific module art. */
+.showcase-media{overflow:hidden!important;isolation:isolate}
+.flick-group__item:nth-child(1) .showcase-media{background:repeating-radial-gradient(circle at 50% 55%,transparent 0 2.2em,rgba(71,99,75,.18) 2.25em 2.32em),#dce5d7!important}
+.flick-group__item:nth-child(1) .showcase-media::after{content:"RFID\A SESSION";white-space:pre}
+.flick-group__item:nth-child(2) .showcase-media{background:#171a15!important}.flick-group__item:nth-child(2) .showcase-media::after{content:"PICK";color:#8cff4f!important}
+.flick-group__item:nth-child(3) .showcase-media{background:#dce4d7!important}.flick-group__item:nth-child(3) .showcase-media::after{content:"A ↔ B";color:#171815!important}
+.flick-group__item:nth-child(4) .showcase-media{background:#171815!important}.flick-group__item:nth-child(4) .showcase-media::after{content:"04\A ₹842";white-space:pre;color:white!important}
+.flick-group__item:nth-child(5) .showcase-media{background:#24231f!important}.flick-group__item:nth-child(5) .showcase-media::after{content:"↶";color:#6eea8d!important;font-size:8em!important}
+.flick-group__item:nth-child(6) .showcase-media{background:#e7e5de!important}.flick-group__item:nth-child(6) .showcase-media::after{content:"✓";color:#6840ff!important;font-size:7em!important}
+.flick-group__item .showcase-media::after{position:absolute;inset:0;display:grid;place-items:center;text-align:center;font-size:4.6em;line-height:.82;letter-spacing:-.06em;font-weight:500;z-index:2;color:#171815}
+.flick-group__item .showcase-media::before{content:attr(data-gg-label);position:absolute;left:1em;top:1em;font:600 .55em/1 "Haffer Mono",monospace;color:#6d7069;z-index:3;text-transform:uppercase}
+/* Footer/CTA stay image-free but retain visual mass. */
+.try-vault__visual::after{content:"GREEN GROOVE";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-7deg);font-size:2em;letter-spacing:-.05em;color:#171815;z-index:4}
+@media(max-width:767px){.about-card__img-layer.is--3::before{font-size:3em}.flick-group__item .showcase-media::after{font-size:3.2em}.pricing-home__graphic::before{font-size:1.3em}}
