@@ -14,101 +14,45 @@ qa('.footer-link__col').forEach(col=>{const top=q('.footer-link__col-top',col);i
 // Green Groove's reel preview needs a visible visual in place of the removed Osmo video asset.
 const preview=q('.reel__visual');if(preview&&!q('.gg-preview-state',preview)){const node=document.createElement('div');node.className='gg-preview-state';node.innerHTML='<span>GG-041</span><i></i><b>04</b>';preview.prepend(node)}
 
-// Footer motion copied from the purchased Osmo source: desktop-only, 7 pieces,
-// scrubbed from "top bottom" to the document's "bottom bottom". No hover animation.
+// Purchased Osmo footer behavior adapted to the actual Green Groove footer text.
 const footerWrap=q('[data-footer-logo-wrap]');
-const footerImg=footerWrap&&(q('.gg-footer-wordmark',footerWrap)||q('img[alt="Green Groove"]',footerWrap));
-if(footerWrap&&footerImg&&!footerWrap.dataset.ggSourceFooter){
+const footerWord=footerWrap&&q('.gg-footer-word',footerWrap);
+if(footerWrap&&footerWord&&!footerWrap.dataset.ggSourceFooter){
   footerWrap.dataset.ggSourceFooter='1';
-  const sourceStates=[
-    {rotate:-45,yPercent:90},
-    {rotate:-22.5,yPercent:35},
-    {rotate:-11.25,yPercent:20},
-    {rotate:0,yPercent:0},
-    {rotate:11.25,yPercent:10},
-    {rotate:22.5,yPercent:35},
-    {rotate:45,yPercent:90}
-  ];
-  const setSourceGeometry=()=>{
-    const mobile=innerWidth<768;
-    Object.assign(footerWrap.style,mobile?{
-      width:'210vw',marginTop:'var(--gap-xxl)',marginBottom:'.625em',marginLeft:'-85vw',left:'auto',transform:'none',overflow:'visible',display:'flex',position:'relative'
-    }:{
-      width:'122vw',marginTop:'',marginBottom:'',marginLeft:'',left:'50%',transform:'translateX(-50%)',overflow:'visible',display:'flex',position:'relative'
-    });
-    footerImg.style.animation='none';
-    footerImg.style.width='100%';
-    footerImg.style.maxWidth='none';
-    footerImg.style.margin='0';
-    footerImg.style.height='auto';
-  };
-  setSourceGeometry();
+  const chars=[...footerWord.textContent];
+  footerWord.textContent='';
+  const glyphs=[];
+  chars.forEach(ch=>{const span=document.createElement('span');span.textContent=ch===' '?'\u00a0':ch;span.setAttribute('aria-hidden','true');Object.assign(span.style,{display:'inline-block',transformOrigin:'center center',willChange:'transform'});footerWord.appendChild(span);if(ch!==' ')glyphs.push(span)});
+  footerWord.setAttribute('aria-label','GREEN GROOVE');
 
-  const build=()=>{
-    if(footerWrap.dataset.ggSourceFooterBuilt)return;
-    footerWrap.dataset.ggSourceFooterBuilt='1';
-    const w=footerImg.naturalWidth||170,h=footerImg.naturalHeight||15;
-    const ns='http://www.w3.org/2000/svg';
-    const svg=document.createElementNS(ns,'svg');
-    svg.setAttribute('viewBox',`0 0 ${w} ${h}`);
-    svg.setAttribute('aria-hidden','true');
-    svg.setAttribute('preserveAspectRatio','xMidYMid meet');
-    svg.classList.add('gg-footer-source-svg');
-    Object.assign(svg.style,{position:'absolute',inset:'0',width:'100%',height:'100%',overflow:'visible',pointerEvents:'none'});
-    const defs=document.createElementNS(ns,'defs');svg.appendChild(defs);
-    const pieces=[];
-    for(let i=0;i<7;i++){
-      const clip=document.createElementNS(ns,'clipPath');clip.id=`gg-footer-clip-${i}`;
-      const rect=document.createElementNS(ns,'rect');
-      rect.setAttribute('x',String(i*w/7-.02*w/7));rect.setAttribute('y','-1');
-      rect.setAttribute('width',String(w/7*1.04));rect.setAttribute('height',String(h+2));
-      clip.appendChild(rect);defs.appendChild(clip);
-      const g=document.createElementNS(ns,'g');
-      g.setAttribute('clip-path',`url(#${clip.id})`);
-      g.style.transformBox='fill-box';
-      g.style.transformOrigin='center center';
-      g.style.willChange='transform';
-      const image=document.createElementNS(ns,'image');
-      image.setAttribute('href',footerImg.src);image.setAttribute('x','0');image.setAttribute('y','0');
-      image.setAttribute('width',String(w));image.setAttribute('height',String(h));
-      image.setAttribute('preserveAspectRatio','xMidYMid meet');
-      g.appendChild(image);svg.appendChild(g);pieces.push(g);
-    }
-    footerWrap.appendChild(svg);
-    footerImg.style.visibility='hidden';
+  // Osmo uses seven letter states. Sample that exact state curve across Green Groove's eleven letters.
+  const stops=[[-45,90],[-22.5,35],[-11.25,20],[0,0],[11.25,10],[22.5,35],[45,90]];
+  const stateAt=t=>{const u=t*6,i=Math.min(5,Math.floor(u)),f=u-i,a=stops[i],b=stops[i+1];return{rotate:a[0]+(b[0]-a[0])*f,yPercent:a[1]+(b[1]-a[1])*f}};
+  const states=glyphs.map((_,i)=>stateAt(i/(glyphs.length-1)));
+  const setGeometry=()=>{const mobile=innerWidth<768;Object.assign(footerWrap.style,mobile?{width:'210vw',marginTop:'var(--gap-xxl)',marginBottom:'.625em',marginLeft:'-85vw',left:'auto',transform:'none',overflow:'visible',display:'flex',position:'relative'}:{width:'122vw',marginTop:'',marginBottom:'',marginLeft:'',left:'50%',transform:'translateX(-50%)',overflow:'visible',display:'flex',position:'relative'})};
+  setGeometry();
 
-    const gsap=window.gsap;
-    const hasScrollTrigger=!!(gsap&&(gsap.plugins?.ScrollTrigger||window.ScrollTrigger));
-    if(hasScrollTrigger&&innerWidth>=768){
-      try{
-        if(window.ScrollTrigger)gsap.registerPlugin(window.ScrollTrigger);
-        gsap.set(pieces,{transformOrigin:'center center'});
-        sourceStates.forEach((state,i)=>{if(i!==3)gsap.set(pieces[i],{rotate:state.rotate,yPercent:state.yPercent})});
-        gsap.to(pieces,{rotate:0,yPercent:0,ease:'none',scrollTrigger:{trigger:footerWrap,start:'top bottom',endTrigger:document.body,end:'bottom bottom',scrub:true}});
+  const reset=()=>glyphs.forEach(g=>g.style.transform='');
+  const gsap=window.gsap,ScrollTrigger=window.ScrollTrigger||gsap?.plugins?.ScrollTrigger;
+  if(gsap&&ScrollTrigger){
+    try{
+      if(window.ScrollTrigger)gsap.registerPlugin(window.ScrollTrigger);
+      if(gsap.matchMedia){
+        gsap.matchMedia().add('(min-width: 768px)',()=>{
+          states.forEach((s,i)=>gsap.set(glyphs[i],{rotate:s.rotate,yPercent:s.yPercent,transformOrigin:'center center'}));
+          const tween=gsap.to(glyphs,{rotate:0,yPercent:0,ease:'none',scrollTrigger:{trigger:footerWrap,start:'top bottom',endTrigger:document.body,end:'bottom bottom',scrub:true}});
+          return()=>{tween.scrollTrigger?.kill();tween.kill();reset()};
+        });
+        addEventListener('resize',setGeometry,{passive:true});
         return;
-      }catch(_e){}
-    }
+      }
+    }catch(_e){reset()}
+  }
 
-    // Fallback reproduces the same linear scrub if GSAP/ScrollTrigger has not initialized yet.
-    let raf=0;
-    const paint=()=>{
-      raf=0;
-      if(innerWidth<768){pieces.forEach(p=>p.style.transform='none');return}
-      const rect=footerWrap.getBoundingClientRect();
-      const start=scrollY+rect.top-innerHeight;
-      const end=Math.max(start+1,document.documentElement.scrollHeight-innerHeight);
-      const progress=Math.max(0,Math.min(1,(scrollY-start)/(end-start)));
-      pieces.forEach((piece,i)=>{
-        const s=sourceStates[i];
-        const k=1-progress;
-        piece.style.transform=`translateY(${s.yPercent*k}%) rotate(${s.rotate*k}deg)`;
-      });
-    };
-    const requestPaint=()=>{if(!raf)raf=requestAnimationFrame(paint)};
-    addEventListener('scroll',requestPaint,{passive:true});
-    addEventListener('resize',()=>{setSourceGeometry();requestPaint()},{passive:true});
-    requestPaint();
-  };
-  if(footerImg.complete)build();else footerImg.addEventListener('load',build,{once:true});
+  // Native fallback with the same start/end positions when GSAP is not exposed globally.
+  let raf=0;
+  const paint=()=>{raf=0;if(innerWidth<768){reset();return}const rect=footerWrap.getBoundingClientRect(),start=scrollY+rect.top-innerHeight,end=Math.max(start+1,document.documentElement.scrollHeight-innerHeight),p=Math.max(0,Math.min(1,(scrollY-start)/(end-start))),k=1-p;glyphs.forEach((g,i)=>{const s=states[i];g.style.transform=`translateY(${s.yPercent*k}%) rotate(${s.rotate*k}deg)`})};
+  const requestPaint=()=>{if(!raf)raf=requestAnimationFrame(paint)};
+  addEventListener('scroll',requestPaint,{passive:true});addEventListener('resize',()=>{setGeometry();requestPaint()},{passive:true});requestPaint();
 }
 })();
