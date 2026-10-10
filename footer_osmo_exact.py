@@ -1,41 +1,38 @@
 from bs4 import BeautifulSoup
 from pathlib import Path
-import re, sys
+import base64, gzip, hashlib, sys
 
 path = Path(sys.argv[1] if len(sys.argv) > 1 else "index.html")
 soup = BeautifulSoup(path.read_text(encoding="utf8"), "html.parser")
 
-# User-supplied GREENGROOVE.svg (4325x446). Its second compound path is the
-# 35-unit outline of the first. Rendering the first path with the same stroke
-# preserves the supplied artwork while letting us repartition the wordmark into
-# the seven direct <path> children expected by Osmo's original footer routine.
-SOURCE_D = 'M424.5 211.833V415.333H367.208L366.292 359.417C339.708 399.75 291.125 428.167 222.833 428.167C106.417 428.167 17.5001 343.833 17.5001 222.833C17.5001 101.833 103.667 17.5 230.167 17.5C313.583 17.5 397.917 56.4584 418.542 153.167H327.333C312.667 118.333 277.833 96.7917 231.542 96.7917C160.042 96.7917 107.792 148.583 107.792 222.833C107.792 296.625 160.5 348.875 229.708 348.875C268.208 348.875 321.833 331.917 335.125 273.708H223.292V211.833H424.5ZM818.796 415.333H728.046L664.796 300.75H540.587V415.333H449.379V30.3334H651.504C754.629 30.3334 809.171 78.4584 809.171 168.292C809.171 221.917 783.046 260.875 743.629 282.417L818.796 415.333ZM540.587 106.875V230.625H646.462C692.754 230.625 718.421 209.542 718.421 168.75C718.421 127.958 692.754 106.875 646.462 106.875H540.587ZM833.025 415.333V30.3334H1157.07V105.042H924.234V189.375H1148.82V255.375H924.234V340.167H1157.07V415.333H833.025ZM1180.15 415.333V30.3334H1504.19V105.042H1271.36V189.375H1495.94V255.375H1271.36V340.167H1504.19V415.333H1180.15ZM1527.27 415.333V30.3334H1633.15L1811.9 289.292H1820.6V30.3334H1909.98V415.333H1805.94L1624.9 156.375H1616.65V415.333H1527.27ZM2332.53 211.833V415.333H2275.24L2274.32 359.417C2247.74 399.75 2199.15 428.167 2130.86 428.167C2014.44 428.167 1925.53 343.833 1925.53 222.833C1925.53 101.833 2011.69 17.5 2138.19 17.5C2221.61 17.5 2305.94 56.4584 2326.57 153.167H2235.36C2220.69 118.333 2185.86 96.7917 2139.57 96.7917C2068.07 96.7917 2015.82 148.583 2015.82 222.833C2015.82 296.625 2068.53 348.875 2137.74 348.875C2176.24 348.875 2229.86 331.917 2243.15 273.708H2131.32V211.833H2332.53ZM2726.82 415.333H2636.07L2572.82 300.75H2448.61V415.333H2357.41V30.3334H2559.53C2662.66 30.3334 2717.2 78.4584 2717.2 168.292C2717.2 221.917 2691.07 260.875 2651.66 282.417L2726.82 415.333ZM2448.61 106.875V230.625H2554.49C2600.78 230.625 2626.45 209.542 2626.45 168.75C2626.45 127.958 2600.78 106.875 2554.49 106.875H2448.61ZM2934.19 428.167C2808.61 428.167 2722.9 343.833 2722.9 222.833C2722.9 101.833 2808.61 17.5 2934.19 17.5C3060.23 17.5 3145.94 101.833 3145.94 222.833C3145.94 343.833 3060.23 428.167 2934.19 428.167ZM2934.19 348.875C3002.94 348.875 3055.19 298.458 3055.19 222.833C3055.19 147.208 3002.94 96.7917 2934.19 96.7917C2865.9 96.7917 2813.19 147.208 2813.19 222.833C2813.19 298.458 2865.9 348.875 2934.19 348.875ZM3368.86 428.167C3243.28 428.167 3157.57 343.833 3157.57 222.833C3157.57 101.833 3243.28 17.5 3368.86 17.5C3494.9 17.5 3580.61 101.833 3580.61 222.833C3580.61 343.833 3494.9 428.167 3368.86 428.167ZM3368.86 348.875C3437.61 348.875 3489.86 298.458 3489.86 222.833C3489.86 147.208 3437.61 96.7917 3368.86 96.7917C3300.57 96.7917 3247.86 147.208 3247.86 222.833C3247.86 298.458 3300.57 348.875 3368.86 348.875ZM3696.73 415.333L3547.77 30.3334H3642.19L3754.94 328.708H3766.85L3879.6 30.3334H3974.48L3825.06 415.333H3696.73ZM3983.3 415.333V30.3334H4307.34V105.042H4074.51V189.375H4299.09V255.375H4074.51V340.167H4307.34V415.333H3983.3Z'
-LETTER_SLICES = ((0, 1), (1, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 9), (9, 11), (11, 13), (13, 14), (14, 15))
-GROUPS = ((0,), (1, 2), (3, 4), (5,), (6, 7), (8, 9), (10,))
+# Exact user-supplied "Group 2.svg" (4485x446), with softened corners.
+SOURCE_GZ_B64 = "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"
+source_bytes = gzip.decompress(base64.b64decode(SOURCE_GZ_B64))
+assert hashlib.sha256(source_bytes).hexdigest() == "2860e8a2df0394914a20ce3b881faaf6a9771348bfbff5284d48e0f8e36c2770"
+source = BeautifulSoup(source_bytes.decode("utf8"), "xml")
+source_paths = source.find_all("path")
+if len(source_paths) != 11:
+    raise RuntimeError(f"Expected 11 Green Groove letter paths; found {len(source_paths)}")
 
-subpaths = [chunk for chunk in re.split(r"(?=M)", SOURCE_D) if chunk]
-if len(subpaths) != 15:
-    raise RuntimeError(f"GREENGROOVE.svg geometry changed: expected 15 compound subpaths, found {len(subpaths)}")
-letters = [" ".join(subpaths[a:b]) for a, b in LETTER_SLICES]
+# The source path order is not typographic order. Reorder left-to-right to GREEN GROOVE.
+LETTER_ORDER = (0, 1, 2, 9, 3, 4, 5, 6, 8, 7, 10)
+letters = [source_paths[i] for i in LETTER_ORDER]
+GROUPS = ((0,), (1, 2), (3, 4), (5,), (6, 7), (8, 9), (10,))
 
 updated = 0
 for wrap in soup.select("[data-footer-logo-wrap]"):
     svg = soup.new_tag("svg")
-    svg["viewBox"] = "0 0 4325 446"
+    svg["viewBox"] = "0 0 4485 446"
     svg["preserveAspectRatio"] = "xMidYMid meet"
     svg["class"] = ["footer-bottom__logo-svg", "gg-footer-wordmark"]
-    svg["style"] = "display:block;width:100%;height:auto;max-width:none;overflow:visible;"
+    svg["style"] = "display:block;width:106%;height:auto;max-width:none;overflow:visible;transform:translateX(-3%);"
     svg["role"] = "img"
     svg["aria-label"] = "Green Groove"
 
     for group in GROUPS:
         p = soup.new_tag("path")
-        p["d"] = " ".join(letters[i] for i in group)
-        p["fill"] = "#201D1D"
-        p["stroke"] = "#201D1D"
-        p["stroke-width"] = "35"
-        p["stroke-linejoin"] = "miter"
-        p["stroke-miterlimit"] = "4"
+        p["d"] = " ".join(letters[i].get("d", "") for i in group)
+        p["fill"] = letters[group[0]].get("fill", "#201D1D")
         svg.append(p)
 
     wrap.clear()
@@ -46,4 +43,4 @@ if not updated:
     raise RuntimeError("No [data-footer-logo-wrap] footer mark found")
 
 path.write_text(str(soup), encoding="utf8")
-print(f"Installed uploaded GREENGROOVE.svg as {updated} seven-path Osmo-animated footer mark(s)")
+print(f"Installed softened Group 2.svg as {updated} seven-path Osmo-animated footer mark(s), rendered at 106% width")
