@@ -1,0 +1,471 @@
+{
+  "viewports": {
+    "desktop": [
+      {
+        "text": "Sushanth",
+        "element": "h3#overview.h-ml",
+        "clipper": "div.about-card__text-h",
+        "overflowX": "hidden",
+        "overflowY": "hidden",
+        "clipPath": "none",
+        "elementRect": {
+          "x": 70,
+          "y": 1963.109375,
+          "w": 261.171875,
+          "h": 62
+        },
+        "clipperRect": {
+          "x": 70,
+          "y": 1963.109375,
+          "w": 269.171875,
+          "h": 64
+        }
+      },
+      {
+        "text": "IIT Delhi HEI",
+        "element": "p.p-m",
+        "clipper": "div.pricing-card__sub-details",
+        "overflowX": "clip",
+        "overflowY": "clip",
+        "clipPath": "none",
+        "elementRect": {
+          "x": 217.609375,
+          "y": 7993.8125,
+          "w": 130.453125,
+          "h": 20.796875
+        },
+        "clipperRect": {
+          "x": 217.609375,
+          "y": 8014.609375,
+          "w": 130.453125,
+          "h": 20.796875
+        }
+      },
+      {
+        "text": "Selected in the urban private category under NCERT PRAYAAS, with IIT Delhi as the associated HEI and Prof. Satish Kumar Dubey of SeNSE as mentor. The ₹50,000 grant supports the nex",
+        "element": "p.p-m",
+        "clipper": "div.pricing-card.is--purple",
+        "overflowX": "hidden",
+        "overflowY": "hidden",
+        "clipPath": "none",
+        "elementRect": {
+          "x": 127.6875,
+          "y": 8184,
+          "w": 2002.40625,
+          "h": 20.796875
+        },
+        "clipperRect": {
+          "x": 30,
+          "y": 7749.734375,
+          "w": 800,
+          "h": 576.671875
+        }
+      },
+      {
+        "text": "RFID + sensing",
+        "element": "p.p-m",
+        "clipper": "div.pricing-card__sub-details",
+        "overflowX": "clip",
+        "overflowY": "clip",
+        "clipPath": "none",
+        "elementRect": {
+          "x": 1022.609375,
+          "y": 7993.8125,
+          "w": 103.765625,
+          "h": 20.796875
+        },
+        "clipperRect": {
+          "x": 1022.609375,
+          "y": 8014.609375,
+          "w": 103.765625,
+          "h": 20.796875
+        }
+      },
+      {
+        "text": "Groove Band + sensor shelves + G/G App turn physical product movement into a live digital cart.",
+        "element": "p.p-m",
+        "clipper": "div.pricing-card.is--dark.w-variant-fe447254-ce45-442d-5a9f-720c36cff7bc",
+        "overflowX": "hidden",
+        "overflowY": "hidden",
+        "clipPath": "none",
+        "elementRect": {
+          "x": 947.6875,
+          "y": 8184,
+          "w": 675.8125,
+          "h": 20.796875
+        },
+        "clipperRect": {
+          "x": 850,
+          "y": 7749.734375,
+          "w": 560,
+          "h": 576.671875
+        }
+      },
+      {
+        "text": "Integrated components",
+        "element": "h4.p-m",
+        "clipper": "div.modal__item",
+        "overflowX": "hidden",
+        "overflowY": "hidden",
+        "clipPath": "none",
+        "elementRect": {
+          "x": 1491.8485107421875,
+          "y": 1212.385986328125,
+          "w": 166.9071044921875,
+          "h": 37.9970703125
+        },
+        "clipperRect": {
+          "x": 1462.890869140625,
+          "y": 55.61199951171875,
+          "w": 798.603271484375,
+          "h": 1047.80126953125
+        }
+      },
+      {
+        "text": "Connected system layers",
+        "element": "h4.p-m",
+        "clipper": "div.modal__item",
+        "overflowX": "hidden",
+        "overflowY": "hidden",
+        "clipPath": "none",
+        "elementRect": {
+          "x": 1815.068115234375,
+          "y": 1246.3577880859375,
+          "w": 177.5361328125,
+          "h": 39.1142578125
+        },
+        "clipperRect": {
+          "x": 1462.890869140625,
+          "y": 55.61199951171875,
+          "w": 798.603271484375,
+          "h": 1047.80126953125
+        }
+      }
+    ],
+    "tablet": [
+      {
+        "text": "Sushanth",
+        "element": "h3#overview.h-ml",
+        "clipper": "div.about-card__text-h",
+        "overflowX": "hidden",
+        "overflowY": "hidden",
+        "clipPath": "none",
+        "elementRect": {
+          "x": 63.234375,
+          "y": 1851.34375,
+          "w": 234.078125,
+          "h": 56.015625
+        },
+        "clipperRect": {
+          "x": 63.234375,
+          "y": 1851.34375,
+          "w": 241.296875,
+          "h": 57.8125
+        }
+      },
+      {
+        "text": "The queue was the symptom. Manual reconstruction at checkout was the deeper problem.",
+        "element": "h3.h-ml.is--long",
+        "clipper": "main.main",
+        "overflowX": "clip",
+        "overflowY": "clip",
+        "clipPath": "none",
+        "elementRect": {
+          "x": 148.15625,
+          "y": 5517.234375,
+          "w": 722.8125,
+          "h": 224.0625
+        },
+        "clipperRect": {
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 11246.28125
+        }
+      },
+      {
+        "text": "Returns reverse earlier state instead of silently overwriting history, so the system can recover cleanly.",
+        "element": "p.p-m",
+        "clipper": "main.main",
+        "overflowX": "clip",
+        "overflowY": "clip",
+        "clipPath": "none",
+        "elementRect": {
+          "x": 148.15625,
+          "y": 6128.03125,
+          "w": 623.828125,
+          "h": 18.78125
+        },
+        "clipperRect": {
+          "x": 0,
+          "y": 0,
+          "w": 768,
+          "h": 11246.28125
+        }
+      },
+      {
+        "text": "IIT Delhi HEI",
+        "element": "p.p-m",
+        "clipper": "div.pricing-card__sub-details",
+        "overflowX": "clip",
+        "overflowY": "clip",
+        "clipPath": "none",
+        "elementRect": {
+          "x": 178.6875,
+          "y": 7801.453125,
+          "w": 118.6875,
+          "h": 18.78125
+        },
+        "clipperRect": {
+          "x": 178.6875,
+          "y": 7820.234375,
+          "w": 118.6875,
+          "h": 18.78125
+        }
+      },
+      {
+        "text": "Selected in the urban private category under NCERT PRAYAAS, with IIT Delhi as the associated HEI and Prof. Satish Kumar Dubey of SeNSE as mentor. The ₹50,000 grant supports the nex",
+        "element": "p.p-m",
+        "clipper": "div.pricing-card.is--purple",
+        "overflowX": "hidden",
+        "overflowY": "hidden",
+        "clipPath": "none",
+        "elementRect": {
+          "x": 97.203125,
+          "y": 7974.3125,
+          "w": 1797.8125,
+          "h": 18.78125
+        },
+        "clipperRect": {
+          "x": 27.09375,
+          "y": 7544.78125,
+          "w": 481.703125,
+          "h": 542.984375
+        }
+      },
+      {
+        "text": "RFID + sensing",
+        "element": "p.p-m",
+        "clipper": "div.pricing-card__sub-details",
+        "overflowX": "clip",
+        "overflowY": "clip",
+        "clipPath": "none",
+        "elementRect": {
+          "x": 638.140625,
+          "y": 7737.84375,
+          "w": 66.625,
+          "h": 37.5625
+        },
+        "clipperRect": {
+          "x": 638.140625,
+          "y": 7775.40625,
+          "w": 66.625,
+          "h": 18.78125
+        }
+      },
+      {
+        "text": "live cart",
+        "element": "p.p-m",
+        "clipper": "div.pricing-card__sub-details",
+        "overflowX": "clip",
+        "overflowY": "clip",
+        "clipPath": "none",
+        "elementRect": {
+          "x": 638.140625,
+          "y": 7794.1875,
+          "w": 66.625,
+          "h": 18.78125
+        },
+        "clipperRect": {
+          "x": 638.140625,
+          "y": 7775.40625,
+          "w": 66.625,
+          "h": 18.78125
+        }
+      },
+      {
+        "text": "Groove Band + sensor shelves + G/G App turn physical product movement into a live digital cart.",
+        "element": "p.p-m",
+        "clipper": "div.pricing-card.is--dark.w-variant-fe447254-ce45-442d-5a9f-720c36cff7bc",
+        "overflowX": "hidden",
+        "overflowY": "hidden",
+        "clipPath": "none",
+        "elementRect": {
+          "x": 596.96875,
+          "y": 7938.875,
+          "w": 600.28125,
+          "h": 18.78125
+        },
+        "clipperRect": {
+          "x": 526.859375,
+          "y": 7544.78125,
+          "w": 214.046875,
+          "h": 542.984375
+        }
+      },
+      {
+        "text": "Integrated components",
+        "element": "h4.p-m",
+        "clipper": "div.modal__item",
+        "overflowX": "hidden",
+        "overflowY": "hidden",
+        "clipPath": "none",
+        "elementRect": {
+          "x": 827.3759765625,
+          "y": 1096.5455322265625,
+          "w": 152.10491943359375,
+          "h": 34.458984375
+        },
+        "clipperRect": {
+          "x": 788.6865844726562,
+          "y": 50.90291976928711,
+          "w": 734.1531372070312,
+          "h": 1066.537841796875
+        }
+      },
+      {
+        "text": "Connected system layers",
+        "element": "h4.p-m",
+        "clipper": "div.modal__item",
+        "overflowX": "hidden",
+        "overflowY": "hidden",
+        "clipPath": "none",
+        "elementRect": {
+          "x": 1119.423583984375,
+          "y": 1127.2410888671875,
+          "w": 160.77587890625,
+          "h": 35.3702392578125
+        },
+        "clipperRect": {
+          "x": 788.6865844726562,
+          "y": 50.90291976928711,
+          "w": 734.1531372070312,
+          "h": 1066.537841796875
+        }
+      }
+    ],
+    "mobile": [
+      {
+        "text": "Sushanth",
+        "element": "h3#overview.h-ml",
+        "clipper": "div.about-card__text-h",
+        "overflowX": "hidden",
+        "overflowY": "hidden",
+        "clipPath": "none",
+        "elementRect": {
+          "x": 40,
+          "y": 1637.640625,
+          "w": 200.640625,
+          "h": 48
+        },
+        "clipperRect": {
+          "x": 40,
+          "y": 1637.640625,
+          "w": 208.640625,
+          "h": 44
+        }
+      },
+      {
+        "text": "IIT Delhi HEI",
+        "element": "p.p-m",
+        "clipper": "div.pricing-card__sub-details",
+        "overflowX": "clip",
+        "overflowY": "clip",
+        "clipPath": "none",
+        "elementRect": {
+          "x": 167.609375,
+          "y": 7232.109375,
+          "w": 130.453125,
+          "h": 20.796875
+        },
+        "clipperRect": {
+          "x": 167.609375,
+          "y": 7252.90625,
+          "w": 130.453125,
+          "h": 20.796875
+        }
+      },
+      {
+        "text": "RFID + sensing",
+        "element": "p.p-m",
+        "clipper": "div.pricing-card__sub-details",
+        "overflowX": "clip",
+        "overflowY": "clip",
+        "clipPath": "none",
+        "elementRect": {
+          "x": 152.609375,
+          "y": 7931.15625,
+          "w": 103.765625,
+          "h": 20.796875
+        },
+        "clipperRect": {
+          "x": 152.609375,
+          "y": 7951.953125,
+          "w": 103.765625,
+          "h": 20.796875
+        }
+      },
+      {
+        "text": "Reversibility",
+        "element": "p.p-m",
+        "clipper": "div.footer-link__col-bottom-wrap",
+        "overflowX": "hidden",
+        "overflowY": "hidden",
+        "clipPath": "none",
+        "elementRect": {
+          "x": 24,
+          "y": 10940.984375,
+          "w": 85.921875,
+          "h": 20.796875
+        },
+        "clipperRect": {
+          "x": -6,
+          "y": 10797,
+          "w": 390,
+          "h": 0
+        }
+      },
+      {
+        "text": "Integrated components",
+        "element": "h4.p-m",
+        "clipper": "div.modal__item",
+        "overflowX": "hidden",
+        "overflowY": "hidden",
+        "clipPath": "none",
+        "elementRect": {
+          "x": 406.8246154785156,
+          "y": 1030.6656494140625,
+          "w": 168.44381713867188,
+          "h": 58.613037109375
+        },
+        "clipperRect": {
+          "x": 408.324951171875,
+          "y": 27.044876098632812,
+          "w": 476.0855712890625,
+          "h": 880.142578125
+        }
+      },
+      {
+        "text": "Connected system layers",
+        "element": "h4.p-m",
+        "clipper": "div.modal__item",
+        "overflowX": "hidden",
+        "overflowY": "hidden",
+        "clipPath": "none",
+        "elementRect": {
+          "x": 590.8111572265625,
+          "y": 1050.00341796875,
+          "w": 168.44384765625,
+          "h": 58.613037109375
+        },
+        "clipperRect": {
+          "x": 408.324951171875,
+          "y": 27.044876098632812,
+          "w": 476.0855712890625,
+          "h": 880.142578125
+        }
+      }
+    ]
+  },
+  "candidate_count": 23
+}
