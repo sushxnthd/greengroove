@@ -37,7 +37,14 @@ dark_uri = avif_data_uri(
     'd604f1945c7cde8c5cb8a19ba6ab8381ba4779bbadeffafec55c9d3b34f34fc3',
 )
 notes_uri = avif_data_uri(
-    [f'assets/uploads/v4-notes-{i:02d}.b64' for i in range(1, 5)],
+    [
+        'assets/uploads/v4-notes-01a.b64',
+        'assets/uploads/v4-notes-01b.b64',
+        'assets/uploads/v4-notes-01c.b64',
+        'assets/uploads/v4-notes-02.b64',
+        'assets/uploads/v4-notes-03.b64',
+        'assets/uploads/v4-notes-04.b64',
+    ],
     '78b35c12d36b4de9fca6474a4a5d32d3debd541d677ae9cfa76d900953b1cf84',
 )
 
