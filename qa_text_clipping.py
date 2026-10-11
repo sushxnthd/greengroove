@@ -23,10 +23,16 @@ CLIP_AUDIT_JS = r"""() => {
   const intentional = /(marquee|ticker|carousel|slider|track|duplicate|clone|button-label|nav-marquee|loading|transition)/i;
   const out = [];
 
+  function inViewport(r) {
+    return r.bottom > -2 && r.top < innerHeight + 2 && r.right > -2 && r.left < innerWidth + 2;
+  }
+
   function visible(el) {
     const s = getComputedStyle(el), r = el.getBoundingClientRect();
-    return r.width > 1 && r.height > 1 && s.display !== 'none' && s.visibility !== 'hidden' &&
-      parseFloat(s.opacity || '1') > 0.02 && el.getAttribute('aria-hidden') !== 'true';
+    return r.width > 1 && r.height > 1 && inViewport(r) &&
+      s.display !== 'none' && s.visibility !== 'hidden' &&
+      parseFloat(s.opacity || '1') > 0.02 && el.getAttribute('aria-hidden') !== 'true' &&
+      !el.closest('[inert]');
   }
 
   function ident(el) {
@@ -58,7 +64,7 @@ CLIP_AUDIT_JS = r"""() => {
 
     const range = document.createRange();
     range.selectNodeContents(el);
-    const rects = [...range.getClientRects()].filter(r => r.width > .5 && r.height > .5);
+    const rects = [...range.getClientRects()].filter(r => r.width > .5 && r.height > .5 && inViewport(r));
     if (!rects.length) continue;
 
     let anc = el;
@@ -80,6 +86,7 @@ CLIP_AUDIT_JS = r"""() => {
             overflowX: s.overflowX,
             overflowY: s.overflowY,
             clipPath: s.clipPath,
+            scrollY: Math.round(scrollY),
             elementRect: (()=>{const r=el.getBoundingClientRect();return {x:r.x,y:r.y,w:r.width,h:r.height}})(),
             clipperRect: {x:ar.x,y:ar.y,w:ar.width,h:ar.height}
           });
@@ -99,7 +106,8 @@ CLIP_AUDIT_JS = r"""() => {
         overflowX: s.overflowX,
         overflowY: s.overflowY,
         lineClamp: clamp,
-        reason: 'line-clamp-truncation'
+        reason: 'line-clamp-truncation',
+        scrollY: Math.round(scrollY)
       });
     }
   }
@@ -131,16 +139,26 @@ with sync_playwright() as p:
         page = ctx.new_page()
         page.goto(URL, wait_until="domcontentloaded", timeout=30000)
         page.wait_for_timeout(1200)
+        page.evaluate("document.documentElement.style.scrollBehavior='auto'")
 
         total_h = int(page.evaluate("document.documentElement.scrollHeight"))
-        step = max(viewport["height"] // 2, 300)
+        step = max(int(viewport["height"] * 0.72), 320)
+        merged = {}
         for y in range(0, min(total_h, 60000), step):
             page.evaluate("y => window.scrollTo(0,y)", y)
-            page.wait_for_timeout(12)
-        page.evaluate("window.scrollTo(0,0)")
-        page.wait_for_timeout(250)
+            page.wait_for_timeout(220)
+            for item in page.evaluate(CLIP_AUDIT_JS):
+                key = f"{item.get('text')}|{item.get('element')}|{item.get('clipper')}|{item.get('reason','')}"
+                merged.setdefault(key, item)
 
-        candidates = page.evaluate(CLIP_AUDIT_JS)
+        last_y = max(0, total_h - viewport["height"])
+        page.evaluate("y => window.scrollTo(0,y)", last_y)
+        page.wait_for_timeout(350)
+        for item in page.evaluate(CLIP_AUDIT_JS):
+            key = f"{item.get('text')}|{item.get('element')}|{item.get('clipper')}|{item.get('reason','')}"
+            merged.setdefault(key, item)
+
+        candidates = list(merged.values())
         report["viewports"][name] = candidates
         report["candidate_count"] += len(candidates)
         ctx.close()
@@ -149,4 +167,4 @@ with sync_playwright() as p:
 server.shutdown()
 Path("qa-text-clipping.json").write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 print(json.dumps(report, indent=2, ensure_ascii=False))
-print(f"Text clipping audit found {report['candidate_count']} candidate(s) across three viewports.")
+print(f"Text clipping audit found {report['candidate_count']} user-visible candidate(s) across three viewports.")
