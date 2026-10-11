@@ -21,6 +21,7 @@ on:
       - qa_markers.py
       - ui_invariance.py
       - qa_runtime.py
+      - qa_text_clipping.py
       - qa_about_probe.py
       - qa_reconcile.py
       - qa_cross_browser.py
@@ -81,6 +82,8 @@ jobs:
           python -m playwright install --with-deps chromium firefox webkit
       - name: Run exhaustive desktop tablet and mobile functional QA
         run: python qa_runtime.py
+      - name: Audit rendered text for clipping and truncation
+        run: python qa_text_clipping.py
       - name: Probe desktop About interaction
         if: always()
         run: python qa_about_probe.py
@@ -96,6 +99,7 @@ jobs:
           name: green-groove-qa-report
           path: |
             qa-report.json
+            qa-text-clipping.json
             qa-cross-browser.json
             about-probe.json
           if-no-files-found: ignore
@@ -105,7 +109,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html favicon.svg qa-report.json qa-cross-browser.json
+          git add index.html favicon.svg qa-report.json qa-text-clipping.json qa-cross-browser.json
           if git diff --cached --quiet; then
             echo "No generated changes"
             exit 0
