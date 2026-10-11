@@ -583,7 +583,7 @@
           "text": "About",
           "ariaExpanded": null,
           "mode": "user-click",
-          "result": "clicked-state-changed",
+          "result": "clicked-idempotent",
           "opened": []
         },
         {
