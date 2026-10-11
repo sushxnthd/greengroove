@@ -19,7 +19,7 @@
           "x": 70,
           "y": 523.109375,
           "w": 269.171875,
-          "h": 64
+          "h": 66
         }
       },
       {
@@ -44,27 +44,6 @@
         }
       },
       {
-        "text": "Selected in the urban private category under NCERT PRAYAAS, with IIT Delhi as the associated HEI and Prof. Satish Kumar Dubey of SeNSE as mentor. The ₹50,000 grant supports the nex",
-        "element": "p.p-m",
-        "clipper": "div.pricing-card.is--purple",
-        "overflowX": "hidden",
-        "overflowY": "hidden",
-        "clipPath": "none",
-        "scrollY": 7200,
-        "elementRect": {
-          "x": 127.6875,
-          "y": 984,
-          "w": 2002.40625,
-          "h": 20.796875
-        },
-        "clipperRect": {
-          "x": 30,
-          "y": 549.734375,
-          "w": 800,
-          "h": 576.671875
-        }
-      },
-      {
         "text": "RFID + sensing",
         "element": "p.p-m",
         "clipper": "div.pricing-card__sub-details",
@@ -73,37 +52,16 @@
         "clipPath": "none",
         "scrollY": 7200,
         "elementRect": {
-          "x": 1022.609375,
+          "x": 909.484375,
           "y": 793.8125,
           "w": 103.765625,
           "h": 20.796875
         },
         "clipperRect": {
-          "x": 1022.609375,
+          "x": 909.484375,
           "y": 814.609375,
           "w": 103.765625,
           "h": 20.796875
-        }
-      },
-      {
-        "text": "Groove Band + sensor shelves + G/G App turn physical product movement into a live digital cart.",
-        "element": "p.p-m",
-        "clipper": "div.pricing-card.is--dark.w-variant-fe447254-ce45-442d-5a9f-720c36cff7bc",
-        "overflowX": "hidden",
-        "overflowY": "hidden",
-        "clipPath": "none",
-        "scrollY": 7200,
-        "elementRect": {
-          "x": 947.6875,
-          "y": 984,
-          "w": 675.8125,
-          "h": 20.796875
-        },
-        "clipperRect": {
-          "x": 850,
-          "y": 549.734375,
-          "w": 560,
-          "h": 576.671875
         }
       }
     ],
@@ -126,49 +84,7 @@
           "x": 63.234375,
           "y": 377.34375,
           "w": 241.296875,
-          "h": 57.8125
-        }
-      },
-      {
-        "text": "The queue was the symptom. Manual reconstruction at checkout was the deeper problem.",
-        "element": "h3.h-ml.is--long",
-        "clipper": "main.main",
-        "overflowX": "clip",
-        "overflowY": "clip",
-        "clipPath": "none",
-        "scrollY": 5159,
-        "elementRect": {
-          "x": 148.15625,
-          "y": 358.234375,
-          "w": 722.8125,
-          "h": 224.0625
-        },
-        "clipperRect": {
-          "x": 0,
-          "y": -5159,
-          "w": 768,
-          "h": 11246.28125
-        }
-      },
-      {
-        "text": "Returns reverse earlier state instead of silently overwriting history, so the system can recover cleanly.",
-        "element": "p.p-m",
-        "clipper": "main.main",
-        "overflowX": "clip",
-        "overflowY": "clip",
-        "clipPath": "none",
-        "scrollY": 5159,
-        "elementRect": {
-          "x": 148.15625,
-          "y": 969.03125,
-          "w": 623.828125,
-          "h": 18.78125
-        },
-        "clipperRect": {
-          "x": 0,
-          "y": -5159,
-          "w": 768,
-          "h": 11246.28125
+          "h": 61
         }
       },
       {
@@ -181,36 +97,15 @@
         "scrollY": 7370,
         "elementRect": {
           "x": 178.6875,
-          "y": 431.453125,
+          "y": 506.25,
           "w": 118.6875,
           "h": 18.78125
         },
         "clipperRect": {
           "x": 178.6875,
-          "y": 450.234375,
+          "y": 525.03125,
           "w": 118.6875,
           "h": 18.78125
-        }
-      },
-      {
-        "text": "Selected in the urban private category under NCERT PRAYAAS, with IIT Delhi as the associated HEI and Prof. Satish Kumar Dubey of SeNSE as mentor. The ₹50,000 grant supports the nex",
-        "element": "p.p-m",
-        "clipper": "div.pricing-card.is--purple",
-        "overflowX": "hidden",
-        "overflowY": "hidden",
-        "clipPath": "none",
-        "scrollY": 7370,
-        "elementRect": {
-          "x": 97.203125,
-          "y": 604.3125,
-          "w": 1797.8125,
-          "h": 18.78125
-        },
-        "clipperRect": {
-          "x": 27.09375,
-          "y": 174.78125,
-          "w": 481.703125,
-          "h": 542.984375
         }
       },
       {
@@ -222,15 +117,15 @@
         "clipPath": "none",
         "scrollY": 7370,
         "elementRect": {
-          "x": 638.140625,
-          "y": 367.84375,
-          "w": 66.625,
+          "x": 624.359375,
+          "y": 442.640625,
+          "w": 80.40625,
           "h": 37.5625
         },
         "clipperRect": {
-          "x": 638.140625,
-          "y": 405.40625,
-          "w": 66.625,
+          "x": 624.359375,
+          "y": 480.203125,
+          "w": 80.40625,
           "h": 18.78125
         }
       },
@@ -243,37 +138,16 @@
         "clipPath": "none",
         "scrollY": 7370,
         "elementRect": {
-          "x": 638.140625,
-          "y": 424.1875,
-          "w": 66.625,
+          "x": 624.359375,
+          "y": 498.984375,
+          "w": 80.40625,
           "h": 18.78125
         },
         "clipperRect": {
-          "x": 638.140625,
-          "y": 405.40625,
-          "w": 66.625,
+          "x": 624.359375,
+          "y": 480.203125,
+          "w": 80.40625,
           "h": 18.78125
-        }
-      },
-      {
-        "text": "Groove Band + sensor shelves + G/G App turn physical product movement into a live digital cart.",
-        "element": "p.p-m",
-        "clipper": "div.pricing-card.is--dark.w-variant-fe447254-ce45-442d-5a9f-720c36cff7bc",
-        "overflowX": "hidden",
-        "overflowY": "hidden",
-        "clipPath": "none",
-        "scrollY": 7370,
-        "elementRect": {
-          "x": 596.96875,
-          "y": 568.875,
-          "w": 600.28125,
-          "h": 18.78125
-        },
-        "clipperRect": {
-          "x": 526.859375,
-          "y": 174.78125,
-          "w": 214.046875,
-          "h": 542.984375
         }
       }
     ],
@@ -296,7 +170,7 @@
           "x": 40,
           "y": 423.640625,
           "w": 208.640625,
-          "h": 44
+          "h": 52
         }
       },
       {
@@ -364,5 +238,5 @@
       }
     ]
   },
-  "candidate_count": 17
+  "candidate_count": 11
 }
