@@ -19,6 +19,13 @@ def avif_data_uri(parts, expected_sha256):
     return 'data:image/avif;base64,' + encoded
 
 
+def avif_file_data_uri(file_path, expected_sha256):
+    raw = Path(file_path).read_bytes()
+    actual = hashlib.sha256(raw).hexdigest()
+    assert actual == expected_sha256, (actual, expected_sha256)
+    return 'data:image/avif;base64,' + base64.b64encode(raw).decode('ascii')
+
+
 # Canonical user-supplied Green Groove graphics, web-optimized while preserving transparency.
 light_uri = avif_data_uri(
     [f'assets/uploads/v3-light-{i:02d}.b64' for i in range(1, 8)],
@@ -28,11 +35,13 @@ dark_uri = avif_data_uri(
     [f'assets/uploads/v3-dark-{i:02d}.b64' for i in range(1, 8)],
     'd604f1945c7cde8c5cb8a19ba6ab8381ba4779bbadeffafec55c9d3b34f34fc3',
 )
+notes_uri = avif_file_data_uri(
+    'assets/uploads/green-groove-project-notes.avif',
+    '7a01befae5e78b1614a6c27cdbb3fe3d4dffb6f75de6a14bb7145fb9da68114c',
+)
 
-# Reuse the canonical transparent Green Groove artwork for the project-notes
-# micrographic as well, while keeping the existing DOM, dimensions and styling intact.
 targets = {
-    'osmo-micrographic-1.avif': light_uri,
+    'osmo-micrographic-1.avif': notes_uri,
     'osmo-micrographic-2.avif': light_uri,
     'osmo-micrographic-3.avif': dark_uri,
 }
