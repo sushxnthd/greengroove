@@ -62,14 +62,6 @@ def main() -> None:
   overflow-wrap: anywhere !important;
   word-break: normal !important;
 }
-
-/* The source reveal mask becomes 4px shorter than this heading at the mobile breakpoint. */
-@media (max-width: 480px) {
-  .about-card__text-h:has(#overview) {
-    height: 48px !important;
-    min-height: 48px !important;
-  }
-}
 """
         (soup.head or soup).append(style)
 
@@ -80,6 +72,21 @@ def main() -> None:
   var queued = false;
   var observedCards = new WeakSet();
   var cardObserver = null;
+
+  function fitOverviewMask() {
+    var heading = document.getElementById('overview');
+    if (!heading) return;
+    var mask = heading.closest('.about-card__text-h');
+    if (!mask) return;
+
+    var headingRect = heading.getBoundingClientRect();
+    var maskRect = mask.getBoundingClientRect();
+    var needed = Math.ceil(headingRect.height + 4);
+    if (maskRect.height + 0.5 < needed) {
+      mask.style.setProperty('height', needed + 'px', 'important');
+      mask.style.setProperty('min-height', needed + 'px', 'important');
+    }
+  }
 
   function fitCardCopy() {
     document.querySelectorAll('.pricing-card .gg-wrap-copy').forEach(function (el) {
@@ -125,6 +132,7 @@ def main() -> None:
   }
 
   function fitGreenGrooveCopy() {
+    fitOverviewMask();
     fitCardCopy();
     fitViewportCopy();
   }
