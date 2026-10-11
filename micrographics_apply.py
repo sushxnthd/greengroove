@@ -36,9 +36,9 @@ dark_uri = avif_data_uri(
     [f'assets/uploads/v3-dark-{i:02d}.b64' for i in range(1, 8)],
     'd604f1945c7cde8c5cb8a19ba6ab8381ba4779bbadeffafec55c9d3b34f34fc3',
 )
-notes_uri = avif_file_data_uri(
-    'assets/uploads/green-groove-project-notes.avif',
-    '7a01befae5e78b1614a6c27cdbb3fe3d4dffb6f75de6a14bb7145fb9da68114c',
+notes_uri = avif_data_uri(
+    [f'assets/uploads/v4-notes-{i:02d}.b64' for i in range(1, 5)],
+    '78b35c12d36b4de9fca6474a4a5d32d3debd541d677ae9cfa76d900953b1cf84',
 )
 
 targets = {
