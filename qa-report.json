@@ -5,12 +5,21 @@
     "desktop": {
       "anchor_count": 436,
       "unique_hash_targets_clicked": [
-        "#project",
+        "#story",
+        "#overview",
         "#architecture",
+        "#groove-band",
+        "#green-grooves",
+        "#gg-app",
         "#build",
         "#evidence",
+        "#roadmap",
         "#research",
-        "#system"
+        "#system",
+        "#project",
+        "#layer-identity",
+        "#layer-shelf-events",
+        "#notes"
       ],
       "controls_total": 30,
       "controls_exercised": [
@@ -341,12 +350,21 @@
     "tablet": {
       "anchor_count": 436,
       "unique_hash_targets_clicked": [
-        "#project",
+        "#story",
+        "#overview",
         "#architecture",
+        "#groove-band",
+        "#green-grooves",
+        "#gg-app",
         "#build",
         "#evidence",
+        "#roadmap",
         "#research",
-        "#system"
+        "#system",
+        "#project",
+        "#layer-identity",
+        "#layer-shelf-events",
+        "#notes"
       ],
       "controls_total": 30,
       "controls_exercised": [
@@ -676,12 +694,21 @@
     "mobile": {
       "anchor_count": 436,
       "unique_hash_targets_clicked": [
-        "#project",
+        "#story",
+        "#overview",
         "#architecture",
+        "#groove-band",
+        "#green-grooves",
+        "#gg-app",
         "#build",
         "#evidence",
+        "#roadmap",
         "#research",
-        "#system"
+        "#system",
+        "#project",
+        "#layer-identity",
+        "#layer-shelf-events",
+        "#notes"
       ],
       "controls_total": 30,
       "controls_exercised": [
