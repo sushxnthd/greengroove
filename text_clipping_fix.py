@@ -45,12 +45,10 @@ def main() -> None:
     if not soup.find(id="gg-text-clipping-fix"):
         style = soup.new_tag("style", id="gg-text-clipping-fix")
         style.string = r"""
-/* Green Groove: allow tailored long-form copy to wrap inside source-faithful masks. */
+/* Green Groove: tailored long-form copy must never inherit max-content clipping. */
 .pricing-card .gg-wrap-copy {
   display: block !important;
   white-space: normal !important;
-  width: auto !important;
-  max-width: 100% !important;
   min-width: 0 !important;
   box-sizing: border-box !important;
   overflow-wrap: anywhere !important;
@@ -64,6 +62,14 @@ def main() -> None:
   overflow-wrap: anywhere !important;
   word-break: normal !important;
 }
+
+/* The source reveal mask becomes 4px shorter than this heading at the mobile breakpoint. */
+@media (max-width: 480px) {
+  .about-card__text-h:has(#overview) {
+    height: 48px !important;
+    min-height: 48px !important;
+  }
+}
 """
         (soup.head or soup).append(style)
 
@@ -71,7 +77,28 @@ def main() -> None:
         script = soup.new_tag("script", id="gg-text-clipping-guard")
         script.string = r"""
 (function () {
-  function fitGreenGrooveNarrativeCopy() {
+  function fitCardCopy() {
+    document.querySelectorAll('.pricing-card .gg-wrap-copy').forEach(function (el) {
+      el.style.removeProperty('width');
+      el.style.removeProperty('max-width');
+      el.style.setProperty('display', 'block', 'important');
+      el.style.setProperty('white-space', 'normal', 'important');
+      el.style.setProperty('min-width', '0', 'important');
+      el.style.setProperty('overflow-wrap', 'anywhere', 'important');
+
+      var card = el.closest('.pricing-card');
+      if (!card) return;
+      var rect = el.getBoundingClientRect();
+      var cardRect = card.getBoundingClientRect();
+      var gutter = window.innerWidth <= 480 ? 12 : 16;
+      var available = Math.max(96, cardRect.right - rect.left - gutter);
+
+      el.style.setProperty('width', available + 'px', 'important');
+      el.style.setProperty('max-width', available + 'px', 'important');
+    });
+  }
+
+  function fitViewportCopy() {
     document.querySelectorAll('.gg-viewport-copy').forEach(function (el) {
       el.style.removeProperty('width');
       el.style.removeProperty('max-width');
@@ -87,13 +114,18 @@ def main() -> None:
     });
   }
 
+  function fitGreenGrooveCopy() {
+    fitCardCopy();
+    fitViewportCopy();
+  }
+
   var queued = false;
   function queueFit() {
     if (queued) return;
     queued = true;
     requestAnimationFrame(function () {
       queued = false;
-      fitGreenGrooveNarrativeCopy();
+      fitGreenGrooveCopy();
     });
   }
 
@@ -102,6 +134,7 @@ def main() -> None:
   } else {
     queueFit();
   }
+  window.addEventListener('load', queueFit, { once: true });
   window.addEventListener('resize', queueFit, { passive: true });
 })();
 """
