@@ -17,6 +17,7 @@ on:
       - micrographics_apply.py
       - media_integrity.py
       - semantic_routes.py
+      - text_clipping_fix.py
       - production_cleanup.py
       - qa_markers.py
       - ui_invariance.py
@@ -68,6 +69,8 @@ jobs:
         run: python media_integrity.py index.html
       - name: Make every named destination semantically truthful and distinct
         run: python semantic_routes.py index.html
+      - name: Keep tailored long-form copy inside responsive masks
+        run: python text_clipping_fix.py index.html
       - name: Snapshot UI before behavior-only cleanup
         run: cp index.html /tmp/green-groove-before-cleanup.html
       - name: Remove stale integrations and repair every residual route
