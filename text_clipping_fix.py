@@ -77,10 +77,12 @@ def main() -> None:
         script = soup.new_tag("script", id="gg-text-clipping-guard")
         script.string = r"""
 (function () {
+  var queued = false;
+  var observedCards = new WeakSet();
+  var cardObserver = null;
+
   function fitCardCopy() {
     document.querySelectorAll('.pricing-card .gg-wrap-copy').forEach(function (el) {
-      el.style.removeProperty('width');
-      el.style.removeProperty('max-width');
       el.style.setProperty('display', 'block', 'important');
       el.style.setProperty('white-space', 'normal', 'important');
       el.style.setProperty('min-width', '0', 'important');
@@ -88,21 +90,29 @@ def main() -> None:
 
       var card = el.closest('.pricing-card');
       if (!card) return;
+
+      if (cardObserver && !observedCards.has(card)) {
+        observedCards.add(card);
+        cardObserver.observe(card);
+      }
+
       var rect = el.getBoundingClientRect();
       var cardRect = card.getBoundingClientRect();
       var gutter = window.innerWidth <= 480 ? 12 : 16;
       var available = Math.max(96, cardRect.right - rect.left - gutter);
+      var current = rect.width;
 
-      el.style.setProperty('width', available + 'px', 'important');
-      el.style.setProperty('max-width', available + 'px', 'important');
+      /* Only rewrite when geometry meaningfully changed. This lets the observer
+         converge after wrapping changes the source grid/card width. */
+      if (Math.abs(current - available) > 0.75) {
+        el.style.setProperty('width', available + 'px', 'important');
+        el.style.setProperty('max-width', available + 'px', 'important');
+      }
     });
   }
 
   function fitViewportCopy() {
     document.querySelectorAll('.gg-viewport-copy').forEach(function (el) {
-      el.style.removeProperty('width');
-      el.style.removeProperty('max-width');
-
       var rect = el.getBoundingClientRect();
       var gutter = window.innerWidth <= 480 ? 16 : 24;
       var available = Math.max(120, window.innerWidth - rect.left - gutter);
@@ -119,7 +129,6 @@ def main() -> None:
     fitViewportCopy();
   }
 
-  var queued = false;
   function queueFit() {
     if (queued) return;
     queued = true;
@@ -129,12 +138,25 @@ def main() -> None:
     });
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', queueFit, { once: true });
-  } else {
-    queueFit();
+  if ('ResizeObserver' in window) {
+    cardObserver = new ResizeObserver(function () {
+      queueFit();
+    });
   }
-  window.addEventListener('load', queueFit, { once: true });
+
+  function settleFit() {
+    queueFit();
+    requestAnimationFrame(queueFit);
+    setTimeout(queueFit, 50);
+    setTimeout(queueFit, 250);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', settleFit, { once: true });
+  } else {
+    settleFit();
+  }
+  window.addEventListener('load', settleFit, { once: true });
   window.addEventListener('resize', queueFit, { passive: true });
 })();
 """
