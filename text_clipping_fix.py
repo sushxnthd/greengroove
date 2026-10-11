@@ -22,22 +22,22 @@ def main() -> None:
     path = Path(sys.argv[1] if len(sys.argv) > 1 else "index.html")
     soup = BeautifulSoup(path.read_text(encoding="utf-8"), "html.parser")
 
-    wrap_needles = (
-        "Selected in the urban private category under NCERT PRAYAAS",
-        "Groove Band + sensor shelves + G/G App turn physical product movement into a live digital cart.",
-    )
     viewport_needles = (
         "The queue was the symptom. Manual reconstruction at checkout was the deeper problem.",
         "Returns reverse earlier state instead of silently overwriting history, so the system can recover cleanly.",
     )
 
+    # Target the two evidence-card descriptions structurally rather than by their
+    # wording so future editorial copy changes cannot disable the clipping guard.
+    pricing_bodies = soup.select(".pricing-card .pricing-benefit__start > p")[:2]
     wrap_count = 0
+    for tag in pricing_bodies:
+        add_class(tag, "gg-wrap-copy")
+        wrap_count += 1
+
     viewport_count = 0
     for tag in soup.find_all(["p", "h1", "h2", "h3", "h4", "h5", "h6"]):
         text = norm(tag.get_text(" ", strip=True))
-        if any(needle in text for needle in wrap_needles):
-            add_class(tag, "gg-wrap-copy")
-            wrap_count += 1
         if any(needle in text for needle in viewport_needles):
             add_class(tag, "gg-viewport-copy")
             viewport_count += 1
@@ -45,13 +45,13 @@ def main() -> None:
     if not soup.find(id="gg-text-clipping-fix"):
         style = soup.new_tag("style", id="gg-text-clipping-fix")
         style.string = r"""
-/* Green Groove: tailored long-form copy must never inherit max-content clipping. */
+/* Green Groove: tailored card copy must never inherit source-template max-content clipping. */
 .pricing-card .gg-wrap-copy {
   display: block !important;
   white-space: normal !important;
   min-width: 0 !important;
   box-sizing: border-box !important;
-  overflow-wrap: anywhere !important;
+  overflow-wrap: normal !important;
   word-break: normal !important;
 }
 
@@ -93,7 +93,7 @@ def main() -> None:
       el.style.setProperty('display', 'block', 'important');
       el.style.setProperty('white-space', 'normal', 'important');
       el.style.setProperty('min-width', '0', 'important');
-      el.style.setProperty('overflow-wrap', 'anywhere', 'important');
+      el.style.setProperty('overflow-wrap', 'normal', 'important');
 
       var card = el.closest('.pricing-card');
       if (!card) return;
@@ -107,13 +107,14 @@ def main() -> None:
       var cardRect = card.getBoundingClientRect();
       var gutter = window.innerWidth <= 480 ? 12 : 16;
       var available = Math.max(96, cardRect.right - rect.left - gutter);
+      var editorialCap = window.innerWidth <= 767 ? available : Math.min(544, available);
       var current = rect.width;
 
-      /* Only rewrite when geometry meaningfully changed. This lets the observer
-         converge after wrapping changes the source grid/card width. */
-      if (Math.abs(current - available) > 0.75) {
-        el.style.setProperty('width', available + 'px', 'important');
-        el.style.setProperty('max-width', available + 'px', 'important');
+      /* Keep the copy inside its card while preserving the deliberate editorial
+         line length introduced by pricing_copy_refine.py. */
+      if (Math.abs(current - editorialCap) > 0.75) {
+        el.style.setProperty('width', editorialCap + 'px', 'important');
+        el.style.setProperty('max-width', editorialCap + 'px', 'important');
       }
     });
   }
@@ -171,7 +172,7 @@ def main() -> None:
         (soup.body or soup).append(script)
 
     if wrap_count < 2:
-        raise RuntimeError(f"Expected at least 2 long pricing copy targets, found {wrap_count}")
+        raise RuntimeError(f"Expected at least 2 pricing copy targets, found {wrap_count}")
     if viewport_count < 2:
         raise RuntimeError(f"Expected at least 2 viewport copy targets, found {viewport_count}")
 
