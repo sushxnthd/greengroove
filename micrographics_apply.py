@@ -5,7 +5,8 @@ import hashlib
 import sys
 
 path = Path(sys.argv[1] if len(sys.argv) > 1 else 'index.html')
-soup = BeautifulSoup(path.read_text(encoding='utf-8'), 'html.parser')
+original_html = path.read_text(encoding='utf-8')
+soup = BeautifulSoup(original_html, 'html.parser')
 
 
 def avif_data_uri(parts, expected_sha256):
@@ -47,6 +48,7 @@ targets = {
 }
 counts = {key: 0 for key in targets}
 
+# Normal img sources: preserve every class, dimension and surrounding DOM node.
 for img in soup.find_all('img'):
     src = img.get('src', '')
     for needle, replacement in targets.items():
@@ -62,5 +64,14 @@ assert counts == {
     'osmo-micrographic-3.avif': 1,
 }, counts
 
-path.write_text(str(soup), encoding='utf-8')
+# Final safeguard: source templates can carry the same image in picture/source,
+# lazy-load attributes or inline markup. Remove any surviving Osmo micrographic
+# reference without changing the UI structure around it.
+rendered = str(soup)
+for needle, replacement in targets.items():
+    full_url = 'https://osmo.b-cdn.net/website/bandwidth/' + needle
+    rendered = rendered.replace(full_url, replacement)
+    assert needle not in rendered, f'Stale Osmo micrographic survived build: {needle}'
+
+path.write_text(rendered, encoding='utf-8')
 print('Installed canonical supplied Green Groove micrographics:', counts)
