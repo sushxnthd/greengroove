@@ -29,7 +29,10 @@ dark_uri = avif_data_uri(
     'd604f1945c7cde8c5cb8a19ba6ab8381ba4779bbadeffafec55c9d3b34f34fc3',
 )
 
+# Reuse the canonical transparent Green Groove artwork for the project-notes
+# micrographic as well, while keeping the existing DOM, dimensions and styling intact.
 targets = {
+    'osmo-micrographic-1.avif': light_uri,
     'osmo-micrographic-2.avif': light_uri,
     'osmo-micrographic-3.avif': dark_uri,
 }
@@ -45,6 +48,7 @@ for img in soup.find_all('img'):
             counts[needle] += 1
 
 assert counts == {
+    'osmo-micrographic-1.avif': 1,
     'osmo-micrographic-2.avif': 1,
     'osmo-micrographic-3.avif': 1,
 }, counts
