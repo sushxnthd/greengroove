@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
     paths:
+      - pricing_copy_refine.py
       - text_clipping_fix.py
       - qa_text_clipping.py
       - .github/workflows/clipping-smoke.yml
@@ -28,6 +29,7 @@ jobs:
           python tailor_v3.py index.html
           python admissions_content.py index.html
           python admissions_content_v2.py index.html
+          python pricing_copy_refine.py index.html
           python brand_apply.py index.html
           python brand_apply_v2.py index.html
           python brand_viewbox_fix.py index.html
