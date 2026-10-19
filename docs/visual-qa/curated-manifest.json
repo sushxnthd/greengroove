@@ -1,0 +1,73 @@
+{
+  "branch": "feat/visual-overhaul-curated",
+  "policy": "DONE assets plus H11 motion explainer only; weak CGI and blocked evidence excluded",
+  "selected_assets": [
+    "G01",
+    "G02",
+    "G03",
+    "G04",
+    "G05",
+    "H05",
+    "H07",
+    "H11",
+    "P02",
+    "P05",
+    "A01",
+    "A02",
+    "A03",
+    "A04",
+    "A05",
+    "A06",
+    "A07",
+    "C01",
+    "C02",
+    "C03",
+    "C04",
+    "C05",
+    "C06",
+    "B04",
+    "R01",
+    "R02",
+    "E04"
+  ],
+  "excluded_assets": {
+    "weak_or_unverified_concepts": [
+      "H01",
+      "H02",
+      "H03",
+      "H04",
+      "H06",
+      "H08",
+      "H10",
+      "P01",
+      "P03",
+      "P04",
+      "B03",
+      "F01"
+    ],
+    "blocked_authentic_sources": [
+      "H09",
+      "B01",
+      "B02",
+      "E01",
+      "E02",
+      "E03",
+      "T01",
+      "T02"
+    ]
+  },
+  "temporary_substitutions": {
+    "RFID Identity": "A01",
+    "Shelf Event Capture": "A02",
+    "Return Reversal": "C02",
+    "Live Cart State": "A05",
+    "Checkout Settlement": "A06",
+    "Field Validation": "E04",
+    "Product Interaction": "P02",
+    "Groove Band": "A01",
+    "G/G App": "A05",
+    "Return State Recovery": "A04",
+    "Load-cell macro": "P02",
+    "Closing visual": "A07"
+  }
+}
