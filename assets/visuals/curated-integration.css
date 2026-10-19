@@ -1,0 +1,14 @@
+/* Green Groove curated visual integration — review branch.
+   Only approved SVG/system assets are wired. Synthetic product photography, unverified evidence,
+   and the concept film are intentionally excluded until authentic source material exists. */
+img[data-gg-asset]{opacity:1!important;visibility:visible!important}
+img[data-gg-fit="cover"]{object-fit:cover!important}
+img[data-gg-fit="contain"],.gg-system-reel-static{object-fit:contain!important;background:#f4f4f4}
+#system picture[data-gg-asset]{display:contents}
+.latest-resources-slider .vertical-slider__item .resource-visual{background-image:none!important}
+.radial-marquee__card-visual .resource-visual__before{background-image:none!important}
+.gg-placeholder-img[data-gg-asset]{opacity:1!important}
+.gg-preview-state,.gg-reel-demo{display:none!important}
+.reel__visual .gg-system-reel-static{display:block!important;width:100%;height:100%;padding:3%;background:#f4f4f4}
+/* no synthetic founder imagery */
+img[data-gg-hidden="template-person"]{display:none!important}
