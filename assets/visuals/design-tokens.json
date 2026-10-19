@@ -1,0 +1,67 @@
+{
+  "name": "Signal / State",
+  "version": "1.0",
+  "status": "proposed_review",
+  "date": "2026-10-19",
+  "brand": "Green Groove",
+  "design_principle": "A physical action becomes a trustworthy digital state.",
+  "colors": {
+    "paper": "#F4F4F4",
+    "porcelain": "#E8EAE3",
+    "ink": "#201D1D",
+    "charcoal": "#171A15",
+    "lime": "#A1FF62",
+    "lime_high": "#78FF45",
+    "muted": "#778078",
+    "hairline": "#CBD0C5",
+    "return": "#18BDF2",
+    "pending": "#BE9348",
+    "error": "#B65E54"
+  },
+  "typography": {
+    "display": "Haffer XH / existing licensed site stack",
+    "technical": "Haffer Mono / UI monospace fallback",
+    "image_text_policy": "native HTML or editable SVG"
+  },
+  "grid": {
+    "columns": 12,
+    "baseline_px": 8,
+    "crop_safe_fraction": 0.1
+  },
+  "media": {
+    "thumb_px": [
+      1280,
+      1280
+    ],
+    "editorial_px": [
+      1600,
+      1200
+    ],
+    "wide_px": [
+      2400,
+      1350
+    ],
+    "motion_seconds": 22,
+    "motion_fps": 24
+  },
+  "application": {
+    "H01": "dark",
+    "H02": "light",
+    "H03": "dark",
+    "H04": "light",
+    "H05": "dark",
+    "H06": "light",
+    "H07": "dark",
+    "H08": "light",
+    "H09": "dark"
+  },
+  "constraints": [
+    "no fake evidence",
+    "no synthetic founder likenesses",
+    "no photoreal false pilot claims",
+    "no fake operational UI",
+    "concepts must be labeled",
+    "vector diagrams must be logically accurate",
+    "do not copy reference artwork"
+  ]
+}
