@@ -2,7 +2,8 @@
 import json,threading
 from pathlib import Path
 from http.server import ThreadingHTTPServer,SimpleHTTPRequestHandler
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import sync_playwright,expect
+import traceback
 root=Path(__file__).resolve().parents[1]
 class Quiet(SimpleHTTPRequestHandler):
  def log_message(self,*args):pass
@@ -43,7 +44,7 @@ with sync_playwright() as p:
     assert page.locator('#gg-cart-total').inner_text()=='₹0'
     page.get_by_role('button',name='Close walkthrough',exact=True).click()
     page.get_by_role('button',name='Next',exact=True).click()
-    assert page.locator('.pricing-card__title').all_text_contents()==['Technical testing','Field evaluation']
+    expect(page.locator('.pricing-card__title')).to_have_text(['Technical testing','Field evaluation'])
     page.get_by_role('button',name='Today',exact=True).click()
     page.get_by_role('button',name='Next build component',exact=True).click()
     assert page.locator('#gg-gallery-position').inner_text()=='2 / 7'
@@ -53,7 +54,7 @@ with sync_playwright() as p:
     page.get_by_role('button',name='About the project',exact=True).click()
     assert page.locator('#gg-about').is_visible()
     page.keyboard.press('Escape')
-    assert not page.locator('#gg-about').is_visible()
+    expect(page.locator('#gg-about')).not_to_be_visible()
     assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+1')
     assert not external,external
     assert not errors,errors
@@ -61,7 +62,7 @@ with sync_playwright() as p:
     page.screenshot(path=str(out/f'{engine}-{width}.png'),full_page=True)
     report.append({'engine':engine,'width':width,'result':'pass'})
    except Exception as e:
-    report.append({'engine':engine,'width':width,'result':'fail','error':str(e),'console':errors,'external':external})
+    report.append({'engine':engine,'width':width,'result':'fail','error':str(e),'traceback':traceback.format_exc(),'console':errors,'external':external})
     page.screenshot(path=str(out/f'{engine}-{width}-failure.png'))
    context.close()
   browser.close()
