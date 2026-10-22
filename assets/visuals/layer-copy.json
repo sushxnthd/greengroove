@@ -1,0 +1,32 @@
+[
+  [
+    "Identity",
+    "a01-identity-layer.svg",
+    "A wristband identifies an active shopping session. An identity read establishes cart context; it does not by itself prove who picked up an item."
+  ],
+  [
+    "Shelf Events",
+    "a02-shelf-events-layer.svg",
+    "A load-cell change and RFID observations form a candidate shelf event. Calibration, product weight variation and simultaneous actions still need controlled testing."
+  ],
+  [
+    "Association",
+    "a03-association-layer.svg",
+    "A detected event must be matched to one valid shopping session before a cart changes. Ambiguous candidates stay on hold for review."
+  ],
+  [
+    "Reversibility",
+    "a04-reversibility-layer.svg",
+    "A return references an earlier accepted pickup. The inverse event changes quantity while preserving both actions in the history."
+  ],
+  [
+    "Live Cart",
+    "a05-live-cart-layer.svg",
+    "Accepted events determine quantities and subtotal. Held events stay separate so uncertainty cannot silently become a charge."
+  ],
+  [
+    "Settlement",
+    "a06-settlement-layer.svg",
+    "The final accepted cart becomes an invoice summary. Payment processing and a commercial deployment are separate from this prototype."
+  ]
+]

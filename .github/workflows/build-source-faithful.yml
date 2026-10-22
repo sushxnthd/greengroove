@@ -1,129 +1,46 @@
-name: Build source-faithful Green Groove
-
+name: Green Groove public-site checks
 on:
   workflow_dispatch:
   push:
     branches: [main]
     paths:
-      - build_exact.py
-      - tailor_v2.py
-      - tailor_v3.py
-      - admissions_content.py
-      - admissions_content_v2.py
-      - pricing_copy_refine.py
-      - brand_apply.py
-      - brand_apply_v2.py
-      - brand_viewbox_fix.py
-      - footer_osmo_exact.py
-      - micrographics_apply.py
-      - media_integrity.py
-      - semantic_routes.py
-      - text_clipping_fix.py
-      - production_cleanup.py
-      - qa_markers.py
-      - ui_invariance.py
-      - qa_runtime.py
-      - qa_text_clipping.py
-      - qa_about_probe.py
-      - qa_reconcile.py
-      - qa_cross_browser.py
-      - assets/raster/*.b64
-      - favicon-source.svg
-      - '*.fragment.html'
+      - index.html
+      - public-launch.*
+      - public_launch.py
+      - assets/**
+      - scripts/**
       - .github/workflows/build-source-faithful.yml
-
+  pull_request:
 permissions:
-  contents: write
-
+  contents: read
 concurrency:
-  group: green-groove-main-build
+  group: green-groove-public-${{ github.ref }}
   cancel-in-progress: true
-
 jobs:
-  build:
+  validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: pip install beautifulsoup4 pillow numpy
-      - name: Build directly from the licensed/source-faithful Osmo DOM
-        run: python build_exact.py
-      - name: Tailor Green Groove content without changing source geometry
-        run: python tailor_v2.py index.html
-      - name: Apply source-safe micro-tailoring
-        run: python tailor_v3.py index.html
-      - name: Maximize admissions impact without changing UI structure
-        run: python admissions_content.py index.html
-      - name: Sharpen AO narrative and surface IIT Delhi mentorship
-        run: python admissions_content_v2.py index.html
-      - name: Refine evidence-card descriptions
-        run: python pricing_copy_refine.py index.html
-      - name: Apply canonical Green Groove header and hero assets
-        run: python brand_apply.py index.html
-      - name: Apply canonical Green Groove compact and footer assets
-        run: python brand_apply_v2.py index.html
-      - name: Normalize canonical Green Groove SVG geometry
-        run: python brand_viewbox_fix.py index.html
-      - name: Rebuild footer for exact Osmo path animation
-        run: python footer_osmo_exact.py index.html
-      - name: Install palette-accurate project-specific raster micrographics
-        run: python micrographics_apply.py index.html
-      - name: Repair unfinished placeholder and empty media surfaces
-        run: python media_integrity.py index.html
-      - name: Make every named destination semantically truthful and distinct
-        run: python semantic_routes.py index.html
-      - name: Keep tailored long-form copy inside responsive masks
-        run: python text_clipping_fix.py index.html
-      - name: Snapshot UI before behavior-only cleanup
-        run: cp index.html /tmp/green-groove-before-cleanup.html
-      - name: Remove stale integrations and repair every residual route
-        run: python production_cleanup.py index.html
-      - name: Add nonvisual stable QA markers
-        run: python qa_markers.py index.html
-      - name: Prove cleanup did not alter visible UI
-        run: python ui_invariance.py /tmp/green-groove-before-cleanup.html index.html
-      - name: Install browser QA runtime
-        run: |
-          pip install playwright
-          python -m playwright install --with-deps chromium firefox webkit
-      - name: Run exhaustive desktop tablet and mobile functional QA
-        run: python qa_runtime.py
-      - name: Audit rendered text for clipping and truncation
-        run: python qa_text_clipping.py
-      - name: Probe desktop About interaction
-        if: always()
-        run: python qa_about_probe.py
-      - name: Reconcile targeted About verification
-        if: always()
-        run: python qa_reconcile.py
-      - name: Run Firefox and WebKit functional regression QA
-        run: python qa_cross_browser.py
-      - name: Archive QA reports even when checks fail
-        if: always()
-        uses: actions/upload-artifact@v4
+      - uses: actions/setup-node@v4
         with:
-          name: green-groove-qa-report
-          path: |
-            qa-report.json
-            qa-text-clipping.json
-            qa-cross-browser.json
-            about-probe.json
-          if-no-files-found: ignore
-      - name: Apply canonical favicon artwork
-        run: cp favicon-source.svg favicon.svg
-      - name: Commit generated homepage and QA reports
+          node-version: '22'
+      - run: pip install beautifulsoup4 playwright
+      - name: Validate public dependencies, labels and routes
+        run: python scripts/check_public_site.py
+      - name: Validate JavaScript syntax
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html favicon.svg qa-report.json qa-text-clipping.json qa-cross-browser.json
-          if git diff --cached --quiet; then
-            echo "No generated changes"
-            exit 0
-          fi
-          git commit -m "Generate and production-verify Green Groove [skip ci]"
-          git pull --rebase origin main
-          git push
+          node --check public-launch.js
+          node --check assets/vendor/animation-runtime.js
+      - run: python -m playwright install --with-deps chromium firefox webkit
+      - name: Check shopping flow, navigation, dialogs and responsive layouts
+        run: python scripts/check_public_browser.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: green-groove-public-qa
+          path: |
+            docs/visual-qa/public-static-audit.json
+            docs/visual-qa/browser/

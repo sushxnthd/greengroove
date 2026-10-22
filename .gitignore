@@ -1,0 +1,4 @@
+.openai/
+dist/
+__pycache__/
+docs/visual-qa/browser/*.png

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sushxnthd.github.io/greengroove/sitemap.xml

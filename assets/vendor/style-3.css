@@ -1,0 +1,207 @@
+/* ------------------------- BUTTON + TAG THEMES -------------------------  */
+[data-wf--button-theme--variant="coral"]{ background-color: var(--color-coral); }
+[data-wf--button-theme--variant="purple"]{ background-color: var(--color-purple); }
+[data-wf--button-theme--variant="neutral-200"]{ background-color: var(--color-neutral-200); }
+[data-wf--button-theme--variant="neutral-300"]{ background-color: var(--color-neutral-300); }
+[data-wf--button-theme--variant="neutral-525"]{ background-color: var(--color-neutral-525); }
+[data-wf--button-theme--variant="neutral-600"]{ background-color: var(--color-neutral-600); }
+[data-wf--button-theme--variant="neutral-800"]{ background-color: var(--color-neutral-800); }
+[data-wf--button-theme--variant="dark-10"]{ background-color: color-mix(in srgb,var(--color-neutral-800) 10%,transparent)}
+[data-wf--button-theme--variant="light-10"]{ background-color: color-mix(in srgb,var(--color-neutral-200) 10%,transparent)}
+[data-wf--button-theme--variant="dark-outline"]{ background-color: transparent; }
+[data-wf--button-theme--variant="light-outline"]{ background-color: transparent; }
+
+[data-theme]:has([data-wf--button-theme--variant="coral"]),
+[data-theme]:has([data-wf--button-theme--variant="purple"]),
+[data-theme]:has([data-wf--button-theme--variant="neutral-525"]),
+[data-theme]:has([data-wf--button-theme--variant="neutral-600"]),
+[data-theme]:has([data-wf--button-theme--variant="neutral-800"]),
+[data-theme]:has([data-wf--button-theme--variant="light-10"]){
+  color: var(--color-neutral-200);
+}
+
+[data-theme]:has( [data-wf--button-theme--variant="electric"]),
+[data-theme]:has( [data-wf--button-theme--variant="neutral-200"]),
+[data-theme]:has( [data-wf--button-theme--variant="neutral-300"]),
+[data-theme]:has( [data-wf--button-theme--variant="dark-10"]){
+  color: var(--color-neutral-800);
+}
+
+[data-theme]:has( [data-wf--button-theme--variant="light-outline"]){
+  color: var(--color-neutral-200);
+  border: 0.0625em solid currentColor;
+}
+
+[data-theme]:has( [data-wf--button-theme--variant="dark-outline"]){
+  color: var(--color-neutral-800);
+  border: 0.0625em solid currentColor;
+}
+
+/* ------------------------- PADDING HERO ------------------------------------------- */
+
+[data-wf--padding-hero--variant="nav"] {
+  height: var(--nav-bar-height);
+}
+
+[data-wf--padding-hero--variant="nav-medium"] {
+  height: calc(var(--nav-bar-height) + max(5em, 15svh));
+}
+
+[data-wf--padding-hero--variant="nav-large"] {
+  height: calc(var(--nav-bar-height) + max(6.666em, 20svh));
+}
+
+[data-wf--padding-hero--variant="nav-xl"] {
+  height: calc(var(--nav-bar-height) + max(8.333em, 25svh));
+}
+
+/* ------------------------- UNDER NAV BAR ------------------------------------------- */
+
+[data-wf--under-nav-bar--variant="purple"] .nav-marquee,
+[data-wf--under-nav-bar--variant="purple"] .nav-product-info__end .tag-bg{
+  background-color: var(--color-purple);
+}
+
+[data-wf--under-nav-bar--variant="coral"] .nav-marquee,
+[data-wf--under-nav-bar--variant="coral"] .nav-product-info__end .tag-bg{
+  background-color: var(--color-coral);
+}
+
+[data-wf--under-nav-bar--variant="purple"] .nav-marquee,
+[data-wf--under-nav-bar--variant="purple"] .nav-product-info__end .tag,
+[data-wf--under-nav-bar--variant="coral"] .nav-marquee,
+[data-wf--under-nav-bar--variant="coral"] .nav-product-info__end .tag{
+  color: var(--color-light);
+}
+
+
+/* ------------------------- PRICING CARDS ------------------------------------------- */
+
+[data-wf--pricing-card-member--variant="dark"],
+[data-wf--pricing-card-team--variant="dark"]{
+  background-color: var(--color-neutral-800) !important;
+  color: var(--color-neutral-200) !important;
+}
+
+[data-wf--pricing-card-member--variant="dark"] .pricing-benefit,
+[data-wf--pricing-card-team--variant="dark"] .pricing-benefit{
+ border-color: color-mix(in srgb,var(--color-neutral-200)20%,transparent);  
+}
+
+
+/* ------------------------- DEFAULT HERO ------------------------------------------- */
+
+[data-wf--default-hero--variant="gap-50"] .default-hero__content{
+  gap: 3.75em;
+}
+
+[data-wf--default-hero--variant="gap-80"] .default-hero__content{
+  gap: 5em;
+}
+
+[data-wf--default-hero-title--variant="xl"] h1{
+  font-size: 7em;
+}
+
+[data-wf--default-hero-title--variant="l"] h1{
+  font-size: 5em;
+}
+
+@media screen and (max-width: 767px){
+  
+  [data-wf--default-hero-title--variant="xl"] h1{
+    font-size: 4em;
+  }  
+  
+  [data-wf--default-hero-title--variant="l"] h1{
+    font-size: 4em;
+  }    
+  
+}
+
+@media screen and (max-width: 479px){
+  
+  [data-wf--default-hero-title--variant="l"] h1{
+    font-size: 3.5em;
+  } 
+  
+}
+
+
+
+
+/* ------------------------- HERO BG LINES ------------------------------------------- */
+
+[data-wf--hero-background-lines--variant="dark-mode"]{
+  color: var(--color-neutral-600);
+}
+
+
+/* ------------------------- HERO SCRIBBLE ------------------------------------------- */
+
+[data-wf--default-hero-scribble--variant="coral"]{
+  color: var(--color-coral);
+}
+
+[data-wf--default-hero-scribble--variant="purple"]{
+  color: var(--color-purple);
+}
+
+
+/* ------------------------- Profile Picture ------------------------------------------- */
+
+[data-wf--profile-picture--variant="medium"] {
+  width: 1.875em;
+  height: 1.875em;
+}
+
+
+/* ------------------------- Webcam float ------------------------------------------- */
+
+[data-wf--webcam-wrap--variant="electric"] .webcam__video{
+  outline-color: var(--color-electric);
+}
+
+/* ------------------------- Icon overview -------------------------------------------------- */
+
+[data-wf--icon-overview-card--variant="light"]{
+  background-color: var(--color-neutral-200);
+  color: var(--color-neutral-800);
+}
+
+[data-wf--icon-overview-card--variant="light"] .icon-overview__card-overlay{
+  background: linear-gradient(
+    180deg,
+    rgba(244, 244, 244, 0) 0%,
+    rgba(244, 244, 244, 1) 100%
+  );
+}
+
+
+/* ------------------------- Section title ------------------------------------------- */
+
+[data-wf--section-intro-title--variant="medium"] {
+  max-width: 43.75em;
+}
+
+
+/* ------------------------- SQUARE CARD ------------------------------------------- */
+
+[data-wf--square-cta-card--variant="dark-square"],
+[data-wf--square-cta-card--variant="dark-round"]{
+  background-color: var(--color-neutral-800);
+  color: var(--color-neutral-200);
+}
+
+[data-wf--square-cta-card--variant="dark-round"],
+[data-wf--square-cta-card--variant="electric-round"]{
+  border-radius: 100em;
+}
+
+
+
+/* ------------------------- LIFETIME TABLE ------------------------------------------- */
+
+[data-wf--lifetime-table-row--variant="not-included"] span{
+  opacity: 0.5;
+}

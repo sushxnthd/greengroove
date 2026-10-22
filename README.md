@@ -56,7 +56,11 @@ Green Groove was created by **Sushanth Dasari and Aryan Kumar**.
 
 This repository contains the static project site used to document the system, prototype, design decisions, evidence, and build process.
 
-The production workflow automatically checks routes, controls, media integrity, keyboard behavior, responsive interaction, and browser regressions across Chromium, Firefox, and WebKit before publishing generated changes.
+The public site includes a browser-only event walkthrough, six readable system detail views, a keyboard-accessible build gallery, programme source links and explicit prototype/illustration labels. It makes no third-party runtime requests and collects no signup information.
+
+`index.html` is the current public document. `public-launch.css`, `public-launch.js` and `assets/vendor/animation-runtime.js` maintain the public interaction layer. Legacy generation scripts remain for history; they must not overwrite the current document without applying `public_launch.py` and `scripts/finalize_public.py` afterwards.
+
+The public-site workflow validates local assets, anchors, accessible labels, JavaScript syntax and shopping-state behavior across Chromium, Firefox and WebKit at 390, 768 and 1440 pixels. QA artifacts are attached to each run. GitHub Pages currently publishes the `main` root.
 
 ## Public references
 

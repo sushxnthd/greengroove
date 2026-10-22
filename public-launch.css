@@ -1,0 +1,97 @@
+/* Public release: preserve the source layout; make content and controls dependable. */
+:root {--color-purple:#a1ff62;--color-electric:#a1ff62;--gg-ink:#201d1d;--gg-paper:#f4f4f4}
+html {scroll-padding-top:7rem}
+body {overflow-x:clip}
+main,.nav,.under-nav-bar {opacity:1!important;visibility:visible!important}
+.transition,.cursor {display:none!important}
+button {font:inherit}
+.nav-menu {border:0;padding:0;background:none;color:inherit;text-align:left}
+.gg-menu-open,.gg-dialog-open {overflow:hidden}
+.gg-skip {position:fixed;top:1rem;left:1rem;z-index:999999;background:#a1ff62;color:#201d1d;padding:1rem;transform:translateY(-200%)}
+.gg-skip:focus {transform:none}
+:where(a,button,[tabindex],summary):focus-visible {outline:3px solid #659c34!important;outline-offset:5px}
+.home-hero .h-xl {font-size:clamp(3rem,7.8vw,8.5rem);line-height:1.02;letter-spacing:-.065em}
+.home-hero__title-row {flex-wrap:nowrap}
+.home-hero__title-row h2 {max-width:7.6em;text-wrap:balance}
+.home-hero__description-row {opacity:1!important;visibility:visible!important}
+.home-hero__description-p {text-wrap:balance}
+[data-load-heading] {opacity:1!important;visibility:visible!important}
+.button-label[aria-hidden=true] {pointer-events:none}
+[data-gg-layer] {color:inherit;text-decoration:none}
+[data-gg-layer] .button {pointer-events:none}
+.gg-discover {display:inline-block;padding:.7em 1.2em;border-radius:99px;background:#a1ff62;color:#201d1d;margin-top:1em}
+[data-gg-dialog],.flick-card__click {cursor:pointer}
+.flick-card__click {padding:0;border:0;background:none}
+.flick-card__bottom {justify-content:center;min-height:2.5em}
+.flick-card__bottom .eyebrow {font-size:.7em;opacity:.8;text-align:center}
+.showcase-media__image {opacity:1!important;visibility:visible!important}
+.custom-player__loading,.showcase-media__loading {display:none!important}
+.gg-source-follow {display:grid;gap:1rem;max-width:36rem}
+.gg-source-follow .p-m {margin:0}
+.gg-solid-link {display:inline-block;width:fit-content;background:#a1ff62;color:#201d1d;padding:1rem 1.4rem;border:0;border-radius:99px;text-decoration:none;cursor:pointer;font-size:1rem;line-height:1.2}
+.gg-solid-link:hover {background:#c0ff99}
+.gg-text-link {color:inherit;text-underline-offset:.25em;background:none;border:0;padding:.2rem 0;width:fit-content;cursor:pointer;text-decoration:underline;font-size:1rem}
+.gg-kicker {font-family:'Haffer Mono',ui-monospace,monospace;text-transform:uppercase;font-size:.75rem;line-height:1.6;letter-spacing:.075em;margin:0 0 1rem}
+.gg-evidence-notes {padding-block:4rem;max-width:76rem}
+.gg-evidence-notes h3,.gg-questions h3 {font-size:clamp(1.8rem,4vw,3.5rem);line-height:1.1;margin:0 0 1.5rem;max-width:22ch}
+.gg-evidence-notes p:not(.gg-kicker),.gg-questions p {font-size:1.0625rem;line-height:1.65;max-width:65ch}
+.gg-reference-links {display:flex;flex-wrap:wrap;gap:1rem 2rem;margin:1.5rem 0}
+.gg-reference-links a {color:inherit;text-underline-offset:.25em;font-size:1rem}
+.gg-caption {font-size:.8125rem!important;line-height:1.6!important;opacity:.72;max-width:70ch}
+.gg-next-view .pricing-card__price-row {visibility:hidden}
+.gg-questions {padding-block:5rem;max-width:76rem}
+.gg-questions details {border-top:1px solid #bbb;padding:1.2rem 0;max-width:54rem}
+.gg-questions details:last-child {border-bottom:1px solid #bbb}
+.gg-questions summary {cursor:pointer;font-size:1.125rem;line-height:1.5;padding-right:1rem}
+.gg-dialog {background:#f4f4f4;color:#201d1d;border:1px solid #bbb;border-radius:1rem;padding:clamp(1.25rem,4vw,3.5rem);width:min(60rem,calc(100vw - 2rem));max-height:calc(100dvh - 2rem);overflow:auto;overscroll-behavior:contain;box-shadow:0 1rem 5rem #0004}
+.gg-dialog::backdrop {background:#151811b8;backdrop-filter:blur(8px)}
+.gg-dialog h2 {font-size:clamp(2rem,5vw,4rem);line-height:1.05;letter-spacing:-.045em;margin:1.25rem 0}
+.gg-dialog p {font-size:1rem;line-height:1.65}
+.gg-dialog-close {display:block;margin:0 0 2rem auto;border:1px solid #aaa;background:none;color:inherit;border-radius:99px;padding:.6rem 1rem;font-size:1rem;cursor:pointer}
+.gg-layer-dialog img {width:100%;height:auto;background:#eee;border:1px solid #d4d4d4;margin:1.5rem 0}
+.gg-demo-grid {display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-block:2rem}
+.gg-demo h3 {font-size:1.25rem;line-height:1.3;margin:0 0 1rem}
+.gg-demo-actions {display:grid;gap:.5rem}
+.gg-demo-actions button {border:1px solid #aaa;background:none;text-align:left;padding:.8rem 1rem;border-radius:.3rem;cursor:pointer;font-size:1rem}
+.gg-demo-actions button:hover:enabled {background:#e8eae3}
+.gg-demo button:disabled {opacity:.4;cursor:default}
+.gg-cart {padding:1.5rem;background:#e8eae3;border-radius:.4rem;font-size:1rem;line-height:1.6}
+.gg-total {display:flex;justify-content:space-between;border-top:1px solid #bbb;padding-top:1rem}
+#gg-demo-status {background:#201d1d;color:#fff;padding:1rem;border-radius:.3rem;min-height:4rem}
+.gg-ledger {margin:2rem 0;font-family:'Haffer Mono',ui-monospace,monospace;font-size:.8125rem}
+.gg-ledger ol {padding:0;list-style:none}
+.gg-ledger li {padding:.5rem 0;border-bottom:1px solid #ccc;line-height:1.5}
+.reel__visual .gg-system-reel-static {object-fit:contain!important;padding:.5em}
+img[data-gg-asset] {visibility:visible!important;opacity:1!important}
+@media(max-width:767px){
+ .home-hero__title-row {flex-wrap:wrap;gap:.1em;justify-content:center}
+ .home-hero .h-xl {font-size:clamp(3rem,12.5vw,6rem);text-align:center}
+ .home-hero__title-row h2 {max-width:100%}
+ .gg-demo-grid {grid-template-columns:1fr;gap:1.25rem}
+ .gg-evidence-notes,.gg-questions {padding-block:3rem}
+ .gg-reference-links {flex-direction:column}
+ .gg-dialog {width:calc(100vw - 1rem);max-height:calc(100dvh - 1rem)}
+ .gg-cart {padding:1.1rem}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{animation:none!important;transition:none!important}.radial-marquee__circle{transform:none!important}}
+.gg-hero-meta {display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.5rem 1.5rem;margin-top:1.4rem;color:#5a5b57;font-family:'Haffer Mono',monospace;font-size:.65rem;line-height:1.5;text-align:center}
+.gg-motion-link {color:inherit;text-underline-offset:.25em}
+.gg-gallery-controls {display:flex;align-items:center;justify-content:center;gap:1.5rem;position:relative;z-index:8;margin:3rem auto 1rem;font-size:.875rem}
+.gg-gallery-controls button {background:none;color:inherit;border:1px solid #888;border-radius:99px;padding:.7rem 1.2rem;cursor:pointer}
+html[data-gg-motion=reduce] *,html[data-gg-motion=reduce] *::before,html[data-gg-motion=reduce] *::after {animation:none!important;transition:none!important;scroll-behavior:auto!important}
+html[data-gg-motion=reduce] .home-hero__title-row>* {transform:none!important;opacity:1!important}
+@media(max-width:767px){.gg-hero-meta{margin:1rem auto 0;max-width:28rem;padding-inline:1rem;font-size:.625rem}.gg-gallery-controls{gap:1rem}}
+.button-label__wrap > .button-label:not(:first-child) {display:none!important}
+.button-label__wrap > .button-label {transform:none!important}
+.nav-bar__bottom-inner {overflow-x:hidden!important}
+@media(max-width:767px){.nav-bar__logo{z-index:2}.home-hero__content{padding-top:9em!important}.home-hero__description-row{margin-top:1.5em!important}.gg-hero-meta{margin-top:1.5rem!important}}
+.pricing-card.is--purple {background:#e8eae3!important;color:#201d1d!important}
+.pricing-card.is--purple :is(h3,p,.eyebrow) {color:inherit}
+.pricing-card.is--purple .button:has(.button-bg[data-wf--button-theme--variant="neutral-800"]) .button-label {color:#f4f4f4}
+.gg-next-view .pricing-card__price-row {display:none}
+@media(min-width:768px) and (max-width:991px){.home-hero__title-row{flex-direction:column;align-items:center}.home-hero__title-row h2{max-width:100%;text-align:center}.home-hero .h-xl{font-size:7.8vw;line-height:1.04}.home-hero__content{padding-top:10em!important}}
+.pricing-card.is--purple .tag {color:#201d1d}
+.pricing-home [data-pricing-button][aria-pressed=true] .button-bg {background:#a1ff62!important}
+.pricing-home [data-pricing-button][aria-pressed=true] .button-label {color:#201d1d!important}
+.pricing-home [data-pricing-button][aria-pressed=false] .button-bg {background:#393a34!important}
+.pricing-home [data-pricing-button][aria-pressed=false] .button-label {color:#f4f4f4!important}
