@@ -34,10 +34,15 @@ with sync_playwright() as p:
      page.get_by_role('link',name='Explore '+name+' layer',exact=True).click()
      expect(page.locator('#gg-layer-title')).to_have_text(name)
      page.get_by_role('button',name='Close system detail',exact=True).click()
+    expect(page.locator('.gsap-slider__item[inert]')).to_have_count(5)
     page.get_by_role('button',name='Show Identity layer',exact=True).click()
     for i in range(1,6):
      page.get_by_role('button',name='Next project note',exact=True).click()
-     expect(page.locator('.latest-resources-slider [data-vertical-slider-item][aria-hidden="false"]')).to_have_attribute('data-slide-id',str(i%5))
+     note=page.locator('.latest-resources-slider [data-vertical-slider-item][aria-hidden="false"]')
+     expect(note).to_have_attribute('data-slide-id',str(i%5))
+     note.get_by_role('link').click()
+     expect(page.locator('#gg-layer-title')).to_have_text(['Groove Band','Green Grooves','G/G App','Return Reversal','Association Logic'][i%5])
+     page.get_by_role('button',name='Close system detail',exact=True).click()
     for i in range(1,7):
      page.get_by_role('button',name='Next finding',exact=True).click()
      active=page.locator('#findings [data-vertical-slider-item][aria-hidden="false"]')
@@ -87,6 +92,10 @@ with sync_playwright() as p:
     assert not errors,errors
     page.get_by_role('link',name='go to homepage',exact=True).click()
     page.screenshot(path=str(out/f'{engine}-{width}.png'),full_page=True)
+    page.get_by_role('link',name='Enable motion',exact=True).click()
+    expect(page.locator('html')).to_have_attribute('data-gg-motion','full')
+    page.get_by_role('link',name='Pause motion',exact=True).click()
+    expect(page.locator('html')).to_have_attribute('data-gg-motion','reduce')
     report.append({'engine':engine,'width':width,'result':'pass'})
    except Exception as e:
     report.append({'engine':engine,'width':width,'result':'fail','error':str(e),'traceback':traceback.format_exc(),'console':errors,'external':external})

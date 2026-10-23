@@ -3,6 +3,7 @@ from pathlib import Path
 from bs4 import BeautifulSoup
 p=Path('index.html');s=BeautifulSoup(p.read_text(),'html.parser')
 def fragment(markup):return BeautifulSoup(markup,'html.parser')
+s.select_one('#gg-motion-preference').string='(()=>{const mode=new URLSearchParams(location.search).get("motion");document.documentElement.dataset.ggMotion=(mode==="reduce"||(mode!=="full"&&matchMedia("(prefers-reduced-motion: reduce)").matches))?"reduce":"full"})()'
 # Unrelated company marks must not imply customers or partnerships.
 for e in s.select('.trustedby-wrap'):e.decompose()
 # Both authors remain visible, including when motion is paused.
@@ -37,6 +38,11 @@ for im in s.select('[data-testimonial-map]'):
 for item in s.select('#findings [data-vertical-slider-item]'):
  key=item['data-slide-map'];files={'VNM':'c01-detection-vs-association.svg','UK':'c02-reversible-actions.svg','AUS':'c03-sensor-cross-check.svg','NL':'c04-identity-before-automation.svg','SWE':'c05-visible-uncertainty.svg','CA':'c06-settlement-vs-reconstruction.svg'}
  if not item.select_one('.gg-finding-link'):item.select_one('.testimonial-item').append(fragment(f'<a class="gg-text-link gg-finding-link" href="assets/visuals/{files[key]}" target="_blank" rel="noopener noreferrer">Open explanation diagram ↗</a>'))
+# Notes keep their subject legible at card size and open the full design.
+for item,layer,key in zip(s.select('.latest-resources-slider [data-vertical-slider-item]'),[0,1,4,3,2],['identity','shelf','cart','return','association']):
+ card=item.select_one('.resource-card');title=card.select_one('h4').get_text(strip=True)
+ card.name='a';card['href']='#layer-detail';card['data-gg-layer']=str(layer);card['data-gg-layer-title']=title;card['aria-label']='Open project note: '+title
+ im=card.select_one('img');im['src']='assets/visuals/thumbnails/'+key+'.svg';im['alt']='';im['aria-hidden']='true';im.attrs.pop('data-gg-fit',None)
 # Correct the shelf-sensing gallery visual.
 item=s.select_one('[data-gg-build-title="Shelf Sensing"] img')
 if item:item['src']='assets/visuals/a02-shelf-events-layer.svg';item['alt']='Shelf sensing: load-cell change and RFID observations form a candidate event'

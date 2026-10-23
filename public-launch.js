@@ -52,7 +52,7 @@
   }
   document.addEventListener('click',e=>{
     const close=e.target.closest('[data-gg-close]');if(close){close.closest('dialog').close();return}
-    const layer=e.target.closest('[data-gg-layer]');if(layer){e.preventDefault();showLayer(+layer.dataset.ggLayer);return}
+    const layer=e.target.closest('[data-gg-layer]');if(layer){e.preventDefault();showLayer(+layer.dataset.ggLayer,layer.dataset.ggLayerTitle);return}
     const build=e.target.closest('[data-gg-build]');if(build){showBuild(build.closest('[data-gg-build-title]'));return}
     const modal=e.target.closest('[data-gg-dialog]');if(modal){e.preventDefault();openDialog(modal.dataset.ggDialog);return}
     const link=e.target.closest('a[href^="#"]');if(link){

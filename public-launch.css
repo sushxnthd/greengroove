@@ -145,3 +145,8 @@ html[data-gg-motion=reduce] {scroll-behavior:auto!important}
 .testimonial-globe__map-w .testimonial-globe__img.is--active {opacity:1}
 .testimonial-globe__map-w .testimonial-globe__img.is--base {display:none}
 @media(max-width:767px){.testimonial-wrap {height:34rem;min-height:34rem}.try-vault__end {padding-left:0}}
+.vertical-slider__buttons.is--recent-updates {bottom:6.5rem}
+.latest-resources-slider .resource-card {color:inherit;text-decoration:none}
+.latest-resources-slider .resource-card:hover h4,.latest-resources-slider .resource-card:focus-visible h4 {text-decoration:underline;text-underline-offset:.15em}
+.latest-resources-slider__card-text,.latest-resources-slider__card-text * {pointer-events:none}
+.latest-resources-slider .resource-card {display:block;color:#201d1d;cursor:pointer}
