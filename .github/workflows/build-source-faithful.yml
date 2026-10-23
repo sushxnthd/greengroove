@@ -22,13 +22,13 @@ jobs:
     timeout-minutes: 15
     container:
       image: mcr.microsoft.com/playwright/python:v1.63.0-noble
-      options: --init --shm-size=1gb
+      options: --user pwuser --init --shm-size=1gb
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: pip install beautifulsoup4 playwright==1.63.0
+      - run: pip install --user beautifulsoup4 playwright==1.63.0
       - name: Validate public dependencies, labels and routes
         run: python scripts/check_public_site.py
       - name: Validate JavaScript syntax
