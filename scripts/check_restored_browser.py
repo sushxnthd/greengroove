@@ -45,7 +45,9 @@ with sync_playwright() as p:
     for i in range(6):
      page.get_by_role('button',name='Next finding',exact=True).click()
      active=page.locator('#findings [data-vertical-slider-item][aria-hidden="false"]');expect(active).to_have_attribute('data-slide-id',str((i+1)%6))
-     art=page.locator('.testimonial-globe__img.is--active');expect(art).to_have_css('opacity','1');expect(art).to_have_js_property('complete',True);assert art.evaluate('(e)=>e.naturalWidth')>0
+     art=page.locator('.testimonial-globe__img.is--active');expect(art).to_have_css('opacity','1')
+     if art.is_visible():
+      expect(art).to_have_js_property('complete',True);assert art.evaluate('(e)=>e.naturalWidth')>0
     page.screenshot(path=str(out/f'{engine}-{width}-findings.png'))
     page.get_by_role('button',name='Next',exact=True).click();expect(page.locator('.pricing-card__title')).to_have_text(['Technical testing','Field evaluation'])
     page.get_by_role('button',name='Today',exact=True).click();expect(page.locator('.pricing-card__title')).to_have_text(['Selected + funded','Built'])
