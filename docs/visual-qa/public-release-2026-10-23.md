@@ -38,3 +38,9 @@ Programme information: https://www.ncert.nic.in/desm/prayaas.php?ln=en
 Mentor’s institutional profile: https://sense.iitd.ac.in/faculty-profile/7
 
 Institutional mentorship and planned validation are described as development support, not a commercial performance certification. No invented pilot results, testimonials, product photos or app screenshots are introduced.
+
+## Follow-up section review
+
+The full-page screenshot review found residual third-party logo vectors, mismatched social glyphs, unfinished timeline placeholders, diagrams overlapping card text, hidden second-author text, and low-contrast white text on green cards. The follow-up removes those template remnants, keeps both creators visible, uses simple symbols in layer summaries and finding visuals, links full diagrams, and replaces the timeline with semantic project steps. Notes and findings now have visible named previous/next buttons and labelled bullet controls. Build details show the selected component's own illustration. Reduced-motion mode also disables root smooth scrolling and slider tweens.
+
+The static gate now checks local diagram links and rejects the removed template patterns. The browser gate additionally exercises all six layer dialogs, all five project notes, all six findings, the FAQ and mobile footer accordions at each viewport. Static dependency and JavaScript syntax checks passed before publication; browser results are available in the commit's GitHub Actions run.

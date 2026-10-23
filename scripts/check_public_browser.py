@@ -27,6 +27,25 @@ with sync_playwright() as p:
     page.get_by_role('link',name='Groove Band',exact=True).first.click()
     assert page.locator('#gg-layer-title').inner_text()=='Groove Band'
     page.get_by_role('button',name='Close system detail',exact=True).click()
+    for name in ['Identity','Shelf Events','Association','Reversibility','Live Cart','Settlement']:
+     control=page.get_by_role('button',name='Show '+name+' layer',exact=True)
+     control.click()
+     expect(control).to_have_attribute('aria-pressed','true')
+     page.get_by_role('link',name='Explore '+name+' layer',exact=True).click()
+     expect(page.locator('#gg-layer-title')).to_have_text(name)
+     page.get_by_role('button',name='Close system detail',exact=True).click()
+    page.get_by_role('button',name='Show Identity layer',exact=True).click()
+    for i in range(1,6):
+     page.get_by_role('button',name='Next project note',exact=True).click()
+     expect(page.locator('.latest-resources-slider [data-vertical-slider-item][aria-hidden="false"]')).to_have_attribute('data-slide-id',str(i%5))
+    for i in range(1,7):
+     page.get_by_role('button',name='Next finding',exact=True).click()
+     active=page.locator('#findings [data-vertical-slider-item][aria-hidden="false"]')
+     expect(active).to_have_attribute('data-slide-id',str(i%6))
+     expect(active.get_by_role('link',name='Open explanation diagram ↗')).to_be_visible()
+    page.get_by_role('button',name='Next finding',exact=True).click()
+    expect(page.locator('#findings [aria-hidden="false"] h3')).to_have_text('Physical actions must be reversible.')
+    page.get_by_role('button',name='Previous finding',exact=True).click()
     page.get_by_role('button',name='Open interactive system walkthrough',exact=True).click()
     page.get_by_role('button',name='Pick milk · ₹60',exact=True).click()
     page.get_by_role('button',name='Pick yogurt · ₹25',exact=True).click()
@@ -55,6 +74,14 @@ with sync_playwright() as p:
     assert page.locator('#gg-about').is_visible()
     page.keyboard.press('Escape')
     expect(page.locator('#gg-about')).not_to_be_visible()
+    page.get_by_text('What is the next milestone?',exact=True).click()
+    expect(page.locator('#questions details[open]')).to_have_count(1)
+    page.get_by_text('What is the next milestone?',exact=True).click()
+    if width<768:
+     page.locator('footer .footer-link__col-top').first.click()
+     expect(page.locator('footer .footer-link__col-top').first).to_have_attribute('aria-expanded','true')
+     page.locator('footer .footer-link__col-top').first.click()
+     expect(page.locator('footer .footer-link__col-top').first).to_have_attribute('aria-expanded','false')
     assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+1')
     assert not external,external
     assert not errors,errors

@@ -39,23 +39,27 @@
     ['Live Cart','a05-live-cart-layer.svg','Accepted events determine quantities and subtotal. Held events stay separate so uncertainty cannot silently become a charge.'],
     ['Settlement','a06-settlement-layer.svg','The final accepted cart becomes an invoice summary. Payment processing and a commercial deployment are separate from this prototype.']
   ];
-  function showLayer(i,title) {
-    const [name,file,copy]=layers[i],src='assets/visuals/'+file;
+  function showLayer(i,title,imageSource) {
+    const [name,file,copy]=layers[i],src=imageSource||'assets/visuals/'+file;
     $('#gg-layer-title').textContent=title||name;
     $('#gg-layer-description').textContent=copy;
     $('#gg-layer-image').src=src;$('#gg-layer-image').alt=name+' system design';$('#gg-layer-full').href=src;
     openDialog('layer-detail');
   }
+  function showBuild(card) {
+    const button=$('[data-gg-build]',card),i=+button.dataset.ggBuild;
+    showLayer([0,1,4,0,1,4,3][i],card.dataset.ggBuildTitle,$('.showcase-media__image',card)?.getAttribute('src'));
+  }
   document.addEventListener('click',e=>{
     const close=e.target.closest('[data-gg-close]');if(close){close.closest('dialog').close();return}
     const layer=e.target.closest('[data-gg-layer]');if(layer){e.preventDefault();showLayer(+layer.dataset.ggLayer);return}
-    const build=e.target.closest('[data-gg-build]');if(build){const card=build.closest('[data-gg-build-title]');showLayer([0,1,4,0,1,4,3][+build.dataset.ggBuild],card.dataset.ggBuildTitle);return}
+    const build=e.target.closest('[data-gg-build]');if(build){showBuild(build.closest('[data-gg-build-title]'));return}
     const modal=e.target.closest('[data-gg-dialog]');if(modal){e.preventDefault();openDialog(modal.dataset.ggDialog);return}
     const link=e.target.closest('a[href^="#"]');if(link){
       const target=document.getElementById(link.hash.slice(1));if(!target)return;
       e.preventDefault();$$('dialog[open]').forEach(d=>d.close());setMenu(false);
       const card=target.closest('[data-gg-build-title]');
-      if(card){showLayer([0,1,4][['groove-band','green-grooves','gg-app'].indexOf(target.id)]||0,card.dataset.ggBuildTitle);return}
+      if(card){showBuild(card);return}
       history.pushState(null,'',link.hash);
       window.scrollTo({top:Math.max(0,target.getBoundingClientRect().top+scrollY-110),behavior:reduced?'auto':'smooth'});
       target.setAttribute('tabindex','-1');target.focus({preventScroll:true});
@@ -69,11 +73,6 @@
       const first=f[0],last=f[f.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}
     }
   });
-  $$('[data-marketing-theme-toggle]').forEach(b=>b.addEventListener('click',()=>{
-    const light=b.getAttribute('aria-pressed')!=='true';
-    $$('[data-marketing-theme]').forEach(e=>e.setAttribute('data-marketing-theme',light?'dark':'light'));
-    $$('[data-marketing-theme-toggle]').forEach(e=>e.setAttribute('aria-pressed',String(light)));
-  }));
   // These cards document present support and the next validation milestone.
   const evidence=$('#evidence'), cards=$$('.pricing-card',evidence);evidence.setAttribute('data-pricing-section-status','quarterly');
   const originals=cards.map(c=>({title:$('.pricing-card__title',c)?.textContent,copy:$('.gg-card-description',c)?.innerHTML,tag:$('.pricing-card__inner > .tag .eyebrow',c)?.textContent}));

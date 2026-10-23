@@ -19,6 +19,8 @@ for e in s.select('[src],link[href]'):
  check_resource(e.get('src') or e.get('href'))
 for e in s.select('a[href^="#"]'):
  if not s.find(id=e['href'][1:]):errors.append('Missing anchor '+e['href'])
+for e in s.select('a[href]'):
+ if urlsplit(e['href']).path and not urlsplit(e['href']).scheme and not e['href'].startswith('#'):check_resource(e['href'])
 ids=Counter(e['id'] for e in s.select('[id]'))
 errors += ['Duplicate ID '+key for key,n in ids.items() if n>1]
 for e in s.select('a button,a a,button button'):errors.append('Nested interactive element')
@@ -31,6 +33,8 @@ for e in s.select('button'):
 if len(s.select('meta[name=viewport]'))!=1:errors.append('Duplicate/missing viewport')
 if s.select_one('meta[name=viewport]') and 'maximum-scale' in s.select_one('meta[name=viewport]')['content']:errors.append('Zoom restricted')
 if s.select('video,form,.sitemap,[data-player-src]'):errors.append('Unused integration remains')
+if s.select('.trustedby-wrap,footer a.square-button,[data-marketing-theme-toggle]'):errors.append('Unrelated template content remains')
+if len(s.select('.gg-creators span'))!=2:errors.append('Both project creators must remain visible')
 if not s.select_one('meta[name=gg-public-release]'):errors.append('Public layer missing')
 for meta in s.select('meta[property="og:image"],meta[name="twitter:image"]'):
  value=meta.get('content','');prefix='https://sushxnthd.github.io/greengroove/'
