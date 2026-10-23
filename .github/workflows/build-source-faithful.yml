@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - index.html
+      - source-repair.*
       - public-launch.*
       - public_launch.py
       - assets/**
@@ -25,22 +26,24 @@ jobs:
       options: --user pwuser --init --shm-size=1gb
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
       - run: pip install --user beautifulsoup4 playwright==1.63.0
       - name: Validate public dependencies, labels and routes
-        run: python scripts/check_public_site.py
+        run: python scripts/check_restored_site.py
       - name: Validate JavaScript syntax
         run: |
-          node --check public-launch.js
-          node --check assets/vendor/animation-runtime.js
+          node --check source-repair.js
+          node --check assets/vendor/osmo-native-runtime.js
       - name: Check shopping flow, navigation, dialogs and responsive layouts
-        run: python scripts/check_public_browser.py
+        run: python scripts/check_restored_browser.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: green-groove-public-qa
           path: |
-            docs/visual-qa/public-static-audit.json
+            docs/visual-qa/restored-static-audit.json
             docs/visual-qa/browser/

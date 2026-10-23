@@ -1,0 +1,74 @@
+"""Exercise original controls at phone, tablet and desktop widths in three engines."""
+import json,threading,traceback
+from pathlib import Path
+from http.server import ThreadingHTTPServer,SimpleHTTPRequestHandler
+from playwright.sync_api import sync_playwright,expect
+root=Path(__file__).resolve().parents[1]
+class Quiet(SimpleHTTPRequestHandler):
+ def log_message(self,*args):pass
+server=ThreadingHTTPServer(('127.0.0.1',4173),Quiet)
+threading.Thread(target=server.serve_forever,daemon=True).start()
+out=root/'docs/visual-qa/browser';out.mkdir(parents=True,exist_ok=True);report=[]
+with sync_playwright() as p:
+ for engine in ['chromium','firefox','webkit']:
+  browser=getattr(p,engine).launch()
+  for width,height in [(390,844),(768,1024),(1440,1000)]:
+   context=browser.new_context(viewport={'width':width,'height':height},reduced_motion='reduce')
+   page=context.new_page();errors=[];external=[]
+   page.on('pageerror',lambda e:errors.append(str(e)))
+   page.on('console',lambda m:errors.append(m.text) if m.type=='error' else None)
+   page.on('request',lambda r:external.append(r.url) if not r.url.startswith(('http://127.0.0.1:4173/','data:')) else None)
+   def close():
+    page.get_by_role('button',name='Close showcase',exact=True).click()
+    expect(page.locator('[data-modal-target=showcase]')).to_have_attribute('data-modal-status','not-active')
+   try:
+    page.goto('http://127.0.0.1:4173/',wait_until='load');page.locator('body.gg-repair-ready').wait_for();page.evaluate('document.fonts.ready')
+    assert 'Haffer' in page.locator('body').evaluate('(e)=>getComputedStyle(e).fontFamily')
+    page.screenshot(path=str(out/f'{engine}-{width}-hero.png'))
+    page.get_by_role('button',name='Open menu',exact=True).click()
+    expect(page.locator('.nav')).to_have_attribute('data-nav-status','active')
+    page.locator('.nav-bar__bottom a[href="#groove-band"]').click()
+    expect(page.locator('#gg-native-detail-title')).to_have_text('Groove Band');close()
+    for name in ['Identity','Shelf Events','Association','Reversibility','Live Cart','Settlement']:
+     control=page.get_by_role('button',name='Show '+name+' layer',exact=True);control.click();expect(control).to_have_attribute('aria-pressed','true')
+     page.get_by_role('button' if name=='Reversibility' else 'link',name='Explore '+name,exact=True).click()
+     expect(page.locator('#gg-native-detail-title')).to_have_text(name)
+     image=page.locator('[data-modal-target=showcase] [data-res-used=item-img]');expect(image).to_have_js_property('complete',True);assert image.evaluate('(e)=>e.naturalWidth')>0
+     close()
+    page.get_by_role('button',name='Show Identity layer',exact=True).click();page.screenshot(path=str(out/f'{engine}-{width}-layers.png'))
+    for i in range(5):
+     # Keyboard reaches the source bullet controls even when hidden on phones.
+     page.get_by_role('button',name='Next project note',exact=True).click()
+     note=page.locator('.latest-resources-slider [data-vertical-slider-item][aria-hidden="false"]')
+     expect(note).to_have_attribute('data-slide-id',str((i+1)%5))
+     note.locator('[data-gg-detail]').press('Enter');expect(page.locator('[data-modal-target=showcase]')).to_have_attribute('data-modal-status','active');close()
+    for i in range(6):
+     page.get_by_role('button',name='Next finding',exact=True).click()
+     active=page.locator('#findings [data-vertical-slider-item][aria-hidden="false"]');expect(active).to_have_attribute('data-slide-id',str((i+1)%6))
+     art=page.locator('.testimonial-globe__img.is--active');expect(art).to_have_css('opacity','1');expect(art).to_have_js_property('complete',True);assert art.evaluate('(e)=>e.naturalWidth')>0
+    page.screenshot(path=str(out/f'{engine}-{width}-findings.png'))
+    page.get_by_role('button',name='Next',exact=True).click();expect(page.locator('.pricing-card__title')).to_have_text(['Technical testing','Field evaluation'])
+    page.get_by_role('button',name='Today',exact=True).click();expect(page.locator('.pricing-card__title')).to_have_text(['Selected + funded','Built'])
+    page.get_by_role('button',name='Open system architecture',exact=True).click();expect(page.locator('#gg-native-detail-title')).to_have_text('Six-layer system');close()
+    hit=page.locator('[data-flick-cards-item][aria-hidden="false"] [data-gg-build]');hit.press('ArrowRight')
+    card=page.locator('[data-flick-cards-item][aria-hidden="false"]');expect(card.locator('h3')).to_have_text('Green Grooves');card.locator('[data-gg-build]').press('Enter');expect(page.locator('#gg-native-detail-title')).to_have_text('Green Grooves');close()
+    page.get_by_role('button',name='About the project',exact=True).click();expect(page.locator('[data-modal-target=about]')).to_have_attribute('data-modal-status','active');page.keyboard.press('Escape');expect(page.locator('[data-modal-target=about]')).to_have_attribute('data-modal-status','not-active')
+    page.get_by_role('button',name='Use light preview',exact=True).click();expect(page.locator('[data-marketing-theme]')).to_have_attribute('data-marketing-theme','light');expect(page.locator('.is--try-vault-light')).to_have_css('opacity','1')
+    page.get_by_role('button',name='Use dark preview',exact=True).click();expect(page.locator('[data-marketing-theme]')).to_have_attribute('data-marketing-theme','dark')
+    if width<768:
+     top=page.locator('footer .footer-link__col-top').first;top.click();expect(top).to_have_attribute('aria-expanded','true');top.click();expect(top).to_have_attribute('aria-expanded','false')
+    assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+1')
+    assert not errors,errors;assert not external,external
+    page.get_by_role('link',name='go to homepage',exact=True).click();page.screenshot(path=str(out/f'{engine}-{width}-full.png'),full_page=True)
+    # Normal-motion entrance and native animation smoke check.
+    page.emulate_media(reduced_motion='no-preference');page.goto('http://127.0.0.1:4173/');page.locator('body.gg-repair-ready').wait_for()
+    page.wait_for_function('getComputedStyle(document.querySelector("main")).height !== innerHeight+"px"')
+    page.wait_for_function('[...document.querySelectorAll(".home-hero__title-row .text-line-mask")].every(e=>getComputedStyle(e).overflow==="visible")')
+    page.screenshot(path=str(out/f'{engine}-{width}-motion.png'))
+    assert not errors,errors
+    report.append({'engine':engine,'width':width,'result':'pass'})
+   except Exception as e:
+    report.append({'engine':engine,'width':width,'result':'fail','error':str(e),'traceback':traceback.format_exc(),'console':errors,'external':external});page.screenshot(path=str(out/f'{engine}-{width}-failure.png'))
+   context.close()
+  browser.close()
+server.shutdown();(out/'report.json').write_text(json.dumps(report,indent=2));print(json.dumps(report,indent=2));raise SystemExit(any(r['result']=='fail' for r in report))
