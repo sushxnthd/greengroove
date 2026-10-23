@@ -31,6 +31,7 @@
  function start(){
   sync();new MutationObserver(sync).observe(document.body,{subtree:true,attributes:true,attributeFilter:['data-nav-status','data-gsap-slider-control-status','data-modal-status','aria-hidden','data-accordion-status']});addEventListener('resize',sync,{passive:true});
   const evidence=q('#evidence'),cards=qa('.pricing-card',evidence),buttons=qa('[data-pricing-button]',evidence);
+  evidence.setAttribute('data-pricing-section-status','quarterly');
   const saved=cards.map(c=>({title:q('.pricing-card__title',c).textContent,copy:q('.gg-card-description',c)?.innerHTML}));
   buttons.forEach(b=>b.addEventListener('click',()=>{const next=b.textContent.trim().startsWith('Next');evidence.setAttribute('data-pricing-section-status',next?'annually':'quarterly');buttons.forEach(x=>x.setAttribute('aria-pressed',String(x===b)));
    cards.forEach((c,i)=>{q('.pricing-card__title',c).textContent=next?['Technical testing','Field evaluation'][i]:saved[i].title;const p=q('.gg-card-description',c);if(p)p.innerHTML=next?['<span class="gg-card-lead">Planned: controlled tests of calibration, shopper association and reversible event recovery.</span><span class="gg-card-support">Document event-level errors and test conditions before making performance claims.</span>','<span class="gg-card-lead">Planned: evaluate the prototype under documented retail conditions.</span><span class="gg-card-support">Record ambiguity, operational recovery and store feedback. Field results are not yet claimed.</span>'][i]:saved[i].copy;
