@@ -1,0 +1,56 @@
+{
+  "baseline": "41859c3",
+  "checked_commit": "c36a0c59b96d4b19c948b70f28987a3a4cf87be7",
+  "workflow_run": "https://github.com/sushxnthd/greengroove/actions/runs/39979601816",
+  "live_files_match": true,
+  "original_section_order": true,
+  "original_headings": true,
+  "original_inline_styles": true,
+  "browser_matrix": [
+    {
+      "engine": "chromium",
+      "width": 390,
+      "result": "pass"
+    },
+    {
+      "engine": "chromium",
+      "width": 768,
+      "result": "pass"
+    },
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "result": "pass"
+    },
+    {
+      "engine": "firefox",
+      "width": 390,
+      "result": "pass"
+    },
+    {
+      "engine": "firefox",
+      "width": 768,
+      "result": "pass"
+    },
+    {
+      "engine": "firefox",
+      "width": 1440,
+      "result": "pass"
+    },
+    {
+      "engine": "webkit",
+      "width": 390,
+      "result": "pass"
+    },
+    {
+      "engine": "webkit",
+      "width": 768,
+      "result": "pass"
+    },
+    {
+      "engine": "webkit",
+      "width": 1440,
+      "result": "pass"
+    }
+  ]
+}
