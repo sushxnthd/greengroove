@@ -138,6 +138,7 @@
 
   function fitViewportCopy() {
     document.querySelectorAll('.gg-viewport-copy').forEach(function (el) {
+      if (el.closest('.info')) return;
       var rect = el.getBoundingClientRect();
       var gutter = window.innerWidth <= 480 ? 16 : 24;
       var available = Math.max(120, window.innerWidth - rect.left - gutter);

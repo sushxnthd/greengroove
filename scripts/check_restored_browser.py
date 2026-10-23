@@ -60,6 +60,8 @@ with sync_playwright() as p:
     if width<768:
      top=page.locator('footer .footer-link__col-top').first;top.click();expect(top).to_have_attribute('aria-expanded','true');top.click();expect(top).to_have_attribute('aria-expanded','false')
     assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+1')
+    assert page.locator('.info h3').evaluate('(e)=>e.getBoundingClientRect().width>=Math.min(300,innerWidth*.6)'), 'Legacy viewport guard narrowed the heading'
+    assert page.locator('.info p.p-m').evaluate_all('(es)=>es.every(e=>e.getBoundingClientRect().width>=Math.min(160,innerWidth*.3))'), 'Legacy viewport guard narrowed body copy'
     assert not errors,errors;assert not external,external
     page.get_by_role('link',name='go to homepage',exact=True).click();page.screenshot(path=str(out/f'{engine}-{width}-full.png'),full_page=True)
     # Normal-motion entrance and native animation smoke check.

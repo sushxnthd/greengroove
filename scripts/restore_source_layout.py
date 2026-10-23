@@ -130,6 +130,9 @@ for a in s.select('a.credit-link'):
  a['data-modal-trigger']='about'
 for el in s.select('.nav-bar__small-a.is--inactive'):
  el.name='a';el['href']='#layer-reversibility';el['data-gg-detail']='3';el.attrs.pop('aria-disabled',None)
+# The legacy viewport guard must not permanently shrink normal-flow text after a modal transform.
+guard=s.select_one('#gg-text-clipping-guard')
+if guard:guard.string=guard.get_text().replace("document.querySelectorAll('.gg-viewport-copy').forEach(function (el) {","document.querySelectorAll('.gg-viewport-copy').forEach(function (el) {\n      if (el.closest('.info')) return;")
 # Source form keeps its design, links to published work instead of collecting data.
 form=s.select_one('footer form')
 if form:
