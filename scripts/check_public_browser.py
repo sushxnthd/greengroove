@@ -48,6 +48,8 @@ with sync_playwright() as p:
      active=page.locator('#findings [data-vertical-slider-item][aria-hidden="false"]')
      expect(active).to_have_attribute('data-slide-id',str(i%6))
      expect(active.get_by_role('link',name='Open explanation diagram ↗')).to_be_visible()
+     expect(page.locator('.testimonial-globe__img.is--active')).to_have_css('opacity','1')
+     expect(page.locator('.testimonial-globe__img:not(.is--active):not(.is--base)').first).to_have_css('opacity','0')
     page.get_by_role('button',name='Next finding',exact=True).click()
     expect(page.locator('#findings [aria-hidden="false"] h3')).to_have_text('Physical actions must be reversible.')
     page.get_by_role('button',name='Previous finding',exact=True).click()

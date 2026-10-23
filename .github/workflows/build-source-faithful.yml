@@ -19,22 +19,22 @@ concurrency:
 jobs:
   validate:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    container:
+      image: mcr.microsoft.com/playwright/python:v1.63.0-noble
+      options: --init --shm-size=1gb
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: pip install beautifulsoup4 playwright
+      - run: pip install beautifulsoup4 playwright==1.63.0
       - name: Validate public dependencies, labels and routes
         run: python scripts/check_public_site.py
       - name: Validate JavaScript syntax
         run: |
           node --check public-launch.js
           node --check assets/vendor/animation-runtime.js
-      - run: python -m playwright install --with-deps chromium firefox webkit
       - name: Check shopping flow, navigation, dialogs and responsive layouts
         run: python scripts/check_public_browser.py
       - uses: actions/upload-artifact@v4
