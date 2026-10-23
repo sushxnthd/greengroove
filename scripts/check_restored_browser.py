@@ -20,7 +20,7 @@ with sync_playwright() as p:
    page.on('request',lambda r:external.append(r.url) if not r.url.startswith(('http://127.0.0.1:4173/','data:')) else None)
    def close():
     page.get_by_role('button',name='Close showcase',exact=True).click()
-    expect(page.locator('[data-modal-target=showcase]')).to_have_attribute('data-modal-status','not-active')
+    expect(page.locator('[data-modal-target=showcase]')).not_to_have_attribute('data-modal-status','active')
    try:
     page.goto('http://127.0.0.1:4173/',wait_until='load');page.locator('body.gg-repair-ready').wait_for();page.evaluate('document.fonts.ready')
     assert 'Haffer' in page.locator('body').evaluate('(e)=>getComputedStyle(e).fontFamily')
@@ -52,7 +52,7 @@ with sync_playwright() as p:
     page.get_by_role('button',name='Open system architecture',exact=True).click();expect(page.locator('#gg-native-detail-title')).to_have_text('Six-layer system');close()
     hit=page.locator('[data-flick-cards-item][aria-hidden="false"] [data-gg-build]');hit.press('ArrowRight')
     card=page.locator('[data-flick-cards-item][aria-hidden="false"]');expect(card.locator('h3')).to_have_text('Green Grooves');card.locator('[data-gg-build]').press('Enter');expect(page.locator('#gg-native-detail-title')).to_have_text('Green Grooves');close()
-    page.get_by_role('button',name='About the project',exact=True).click();expect(page.locator('[data-modal-target=about]')).to_have_attribute('data-modal-status','active');page.keyboard.press('Escape');expect(page.locator('[data-modal-target=about]')).to_have_attribute('data-modal-status','not-active')
+    page.get_by_role('button',name='About the project',exact=True).click();expect(page.locator('[data-modal-target=about]')).to_have_attribute('data-modal-status','active');page.keyboard.press('Escape');expect(page.locator('[data-modal-target=about]')).not_to_have_attribute('data-modal-status','active')
     page.get_by_role('button',name='Use light preview',exact=True).click();expect(page.locator('[data-marketing-theme]')).to_have_attribute('data-marketing-theme','light');expect(page.locator('.is--try-vault-light')).to_have_css('opacity','1')
     page.get_by_role('button',name='Use dark preview',exact=True).click();expect(page.locator('[data-marketing-theme]')).to_have_attribute('data-marketing-theme','dark')
     if width<768:
@@ -66,7 +66,7 @@ with sync_playwright() as p:
     page.wait_for_function('[...document.querySelectorAll(".home-hero__title-row .text-line-mask")].every(e=>getComputedStyle(e).overflow==="visible")')
     page.screenshot(path=str(out/f'{engine}-{width}-motion.png'))
     assert not errors,errors
-    report.append({'engine':engine,'width':width,'result':'pass'})
+    report.append({'engine':engine,'width':width,'result':'pass'});print(engine,width,'pass',flush=True)
    except Exception as e:
     report.append({'engine':engine,'width':width,'result':'fail','error':str(e),'traceback':traceback.format_exc(),'console':errors,'external':external});page.screenshot(path=str(out/f'{engine}-{width}-failure.png'))
    context.close()
