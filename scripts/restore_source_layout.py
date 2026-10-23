@@ -105,7 +105,10 @@ for a in s.select('a.nav-logo'):a['href']='#home'
 layer_ids=['identity','shelf-events','association','reversibility','live-cart','settlement']
 for a in s.select('a[href]'):
  if a['href'].startswith('#layer-') and a['href'][7:] in layer_ids:a['data-gg-detail']=str(layer_ids.index(a['href'][7:]))
- if a.get_text(' ',strip=True)=='Validation':a['data-gg-roadmap']='true'
+ label=a.get_text(' ',strip=True)
+ if label=='Validation' or label.startswith('Roadmap'):a['data-gg-roadmap']='true'
+ if label.startswith('System overview'):a['data-gg-map']='true'
+ if label.startswith('Explore build'):a['data-gg-active-build']='true'
  if a.get_text(' ',strip=True) in ['About Sushanth','About Aryan']:a['data-modal-trigger']='about'
  for b in a.select('button'):b.name='span'
 for b in s.select('[data-modal-close]'):b['aria-label']='Close '+b.get('data-modal-close','modal')

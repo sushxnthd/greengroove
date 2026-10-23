@@ -42,6 +42,7 @@
  document.addEventListener('click',e=>{
   const layer=e.target.closest('[data-gg-detail]');if(layer){e.preventDefault();e.stopImmediatePropagation();showDetail(+layer.dataset.ggDetail);return}
   const build=e.target.closest('[data-gg-build]');if(build){e.preventDefault();e.stopImmediatePropagation();showBuild(build.closest('[data-gg-build-title]'));return}
+  const activeBuild=e.target.closest('[data-gg-active-build]');if(activeBuild){e.preventDefault();e.stopImmediatePropagation();showBuild(q('[data-flick-cards-item-status=active]'));return}
   const map=e.target.closest('[data-gg-map]');if(map){e.preventDefault();e.stopImmediatePropagation();showDetail(0,'Six-layer system','assets/visuals/a07-full-six-layer-architecture.svg','Identity, shelf events, association, reversibility, the live cart and settlement form one retail-state model. This is a technical illustration of the prototype design.');return}
   const road=e.target.closest('[data-gg-roadmap]');if(road){e.preventDefault();e.stopImmediatePropagation();showDetail(1,'Validation roadmap','assets/visuals/e04-validation-roadmap.svg','Controlled testing and field evaluation remain planned development work.');return}
   const theme=e.target.closest('[data-gg-theme]');if(theme){e.preventDefault();q('[data-marketing-theme]').setAttribute('data-marketing-theme',theme.dataset.ggTheme);qa('[data-gg-theme]').forEach(x=>x.setAttribute('aria-pressed',String(x===theme)));return}

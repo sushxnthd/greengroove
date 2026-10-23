@@ -54,6 +54,8 @@ with sync_playwright() as p:
     page.get_by_role('button',name='Open system architecture',exact=True).click();expect(page.locator('#gg-native-detail-title')).to_have_text('Six-layer system');close()
     hit=page.locator('[data-flick-cards-item][aria-hidden="false"] [data-gg-build]');hit.press('ArrowRight')
     card=page.locator('[data-flick-cards-item][aria-hidden="false"]');expect(card.locator('h3')).to_have_text('Green Grooves');card.locator('[data-gg-build]').press('Enter');expect(page.locator('#gg-native-detail-title')).to_have_text('Green Grooves');close()
+    page.get_by_role('link',name='System overview',exact=True).click();expect(page.locator('#gg-native-detail-title')).to_have_text('Six-layer system');close()
+    page.get_by_role('link',name='Explore build',exact=True).click();expect(page.locator('#gg-native-detail-title')).to_have_text('Green Grooves');close()
     page.get_by_role('button',name='About the project',exact=True).click();expect(page.locator('[data-modal-target=about]')).to_have_attribute('data-modal-status','active');page.keyboard.press('Escape');expect(page.locator('[data-modal-target=about]')).not_to_have_attribute('data-modal-status','active')
     page.get_by_role('button',name='Use light preview',exact=True).click();expect(page.locator('[data-marketing-theme]')).to_have_attribute('data-marketing-theme','light');expect(page.locator('.is--try-vault-light')).to_have_css('opacity','1')
     page.get_by_role('button',name='Use dark preview',exact=True).click();expect(page.locator('[data-marketing-theme]')).to_have_attribute('data-marketing-theme','dark')
