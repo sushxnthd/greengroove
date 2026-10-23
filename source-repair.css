@@ -17,4 +17,4 @@ html[data-gg-motion=reduce] *,html[data-gg-motion=reduce] *::before,html[data-gg
 .latest-resources-slider [data-vertical-slider-list]{z-index:11;pointer-events:none}
 
 /* Keep a source illustration visible when the creator crossfade is paused. */
-html[data-gg-motion=reduce] .about-card__img-w>.about-card__img-layer:first-child>.about-card__img:first-child{opacity:1}
+html[data-gg-motion=reduce] .about-card__img-w>.about-card__img-layer:first-child>.about-card__img.is--2{opacity:1}

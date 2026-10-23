@@ -68,6 +68,9 @@ for a in modal.select('[data-res-used=item-link],[data-res-used=site-url]'):
  a['href']='assets/visuals/a07-full-six-layer-architecture.svg';a['target']='_blank';a['rel']=['noopener','noreferrer'];a['aria-label']='Open full-size system diagram'
  for b in a.select('button'):b.name='span'
 about=s.select_one('[data-modal-target=about]');about['role']='dialog';about['aria-modal']='true';about['aria-label']='About Green Groove'
+# The original circular map slot needs decorative artwork, not a cropped technical diagram.
+for im in about.select('.about-map__inner'):
+ im['src']='assets/visuals/g04-signal-motifs.svg';im['alt']='';im['aria-hidden']='true';im.attrs.pop('data-gg-asset',None);im.attrs.pop('data-gg-fit',None)
 # Fix foreign profile destinations and glyphs in their original button boxes.
 repo='https://github.com/sushxnthd/greengroove';case='https://www.behance.net/gallery/211169339/Green-Groove'
 paths={'source':'<path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-12-2 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>','case':'<path d="M14 4h6v6m0-6L10 14M10 5H5v14h14v-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>'}
