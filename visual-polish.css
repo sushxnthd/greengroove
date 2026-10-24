@@ -65,22 +65,3 @@ img:not([src]), img[src=""] { visibility: hidden; }
     animation-duration: .01ms !important;
   }
 }
-
-
-/* Green Groove founder portraits — 2026-10-24 */
-.about-card .about-card__img.gg-founder-portrait {
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  object-fit: cover;
-  object-position: 50% 28%;
-  filter: grayscale(1);
-}
-.about-card .about-card__img.gg-founder-portrait.is--aryan {
-  object-position: 50% 30%;
-}
-@media (hover:hover) and (pointer:fine) {
-  .about-card:hover .about-card__img.gg-founder-portrait {
-    transform: scale(1.035);
-  }
-}
