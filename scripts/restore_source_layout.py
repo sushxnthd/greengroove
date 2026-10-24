@@ -162,5 +162,10 @@ s.head.append(f('<script>document.documentElement.dataset.ggMotion=(new URLSearc
 for name in ['script-2.js','script-3.js','script-4.js','script-5.js','native-split-text.js','script-7.js','script-8.js','native-lenis.js','osmo-native-runtime.js']:
  s.body.append(f(f'<script src="assets/vendor/{name}" defer></script>'))
 s.body.append(f('<script src="source-repair.js" defer></script>'))
+# Remove earlier editorial overrides; retain only Green Groove palette tokens.
+for e in s.select('link[href*=visual-polish],link[href*=curated-integration],#gg-pricing-copy-refine,#gg-text-clipping-fix,#gg-text-clipping-guard'):
+ e.decompose()
+s.select_one('#green-groove-tailor').string=':root{--color-electric:#78ff45;--color-purple:#18bdf2;--color-purple-copy:#18bdf2}'
+s.body.append(f('<link rel="stylesheet" href="native-fidelity.css">'))
 Path('index.html').write_text(str(s))
 print('Restored source DOM from',BASE)

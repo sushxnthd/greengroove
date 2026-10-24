@@ -1,0 +1,28 @@
+{
+  "reference_url": "https://www.osmo.supply/",
+  "observed_on": "2026-10-24",
+  "published_baseline": "c2ec6687cf0ddc67d26880e92a81fc26c850bf06",
+  "css": [
+    {
+      "url": "https://cdn.prod.website-files.com/68a5787bba0829184628bd51/css/osmo-v2.shared.9ca76b64b.min.css",
+      "sha256": "3d11e2b0d966e570b57bb7f6ea661b2206cb01c59a27ad57c9cb58c9e8211320"
+    },
+    {
+      "url": "https://slater.app/16596/45154.css",
+      "sha256": "95e4cc0601ccb5d9a612dec2324fc21cc4f72e00494a4a1480e88313f2fe596c"
+    },
+    {
+      "url": "https://slater.app/16596/45446.css",
+      "sha256": "6ddeddb807547ac66b38b2c1da7253ee426a6980ca1bf8d360aa20433442f5d3"
+    },
+    {
+      "url": "https://slater.app/16596/45511.css",
+      "sha256": "0a6ccda55e9f378f34673542a9f66ae09786dfc8ef56d283dfab1249b2bde776"
+    },
+    {
+      "url": "https://slater.app/16596/45156.css",
+      "sha256": "205d0d96de2e918ca70ad83f83ef1ac7365bca71173bccd3e70e2f4dd3228c6a"
+    }
+  ],
+  "visual_fidelity_complete": false
+}

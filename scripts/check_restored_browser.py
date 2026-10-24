@@ -24,6 +24,10 @@ with sync_playwright() as p:
    try:
     page.goto('http://127.0.0.1:4173/',wait_until='load');page.locator('body.gg-repair-ready').wait_for();page.evaluate('document.fonts.ready')
     assert 'Haffer' in page.locator('body').evaluate('(e)=>getComputedStyle(e).fontFamily')
+    assert page.locator('.home-hero h1').evaluate('(e)=>Math.abs(parseFloat(getComputedStyle(e).letterSpacing)/parseFloat(getComputedStyle(e).fontSize)+.06)<.0001'), 'Hero tracking differs from live Osmo CSS'
+    assert page.locator('[data-wf--button-theme--variant=purple]').evaluate_all('(es)=>es.every(e=>getComputedStyle(e).backgroundImage==="none")'), 'Unrequested gradients returned'
+    if width>=992:
+     assert page.locator('.pricing-card').evaluate_all('(es)=>es.every(e=>Math.abs(e.getBoundingClientRect().width-35*parseFloat(getComputedStyle(e).fontSize))<1)'), 'Evidence cards exceed the measured native 35em width'
     page.screenshot(path=str(out/f'{engine}-{width}-hero.png'))
     page.get_by_role('button',name='Open menu',exact=True).click()
     expect(page.locator('.nav')).to_have_attribute('data-nav-status','active')
