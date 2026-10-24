@@ -21,3 +21,5 @@ html[data-gg-motion=reduce] .about-card__img{opacity:0;visibility:hidden}
 html[data-gg-motion=reduce] .about-card__img-w>.about-card__img-layer:first-child>.about-card__img:first-child{opacity:1;visibility:visible}
 html[data-gg-motion=reduce] .about-card__img-layer:not(:first-child){visibility:hidden}
 html[data-gg-motion=reduce] .about-card__img-rotate{width:100%}
+/* Header-exported institutional marks contain white lettering; match the native monochrome logo strip. */
+.trustedby-marquee__item-svg image{filter:brightness(0)}
