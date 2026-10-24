@@ -74,6 +74,7 @@ for im in about.select('.about-map__inner'):
 # Fix foreign profile destinations and glyphs in their original button boxes.
 repo='https://github.com/sushxnthd/greengroove';case='https://www.behance.net/gallery/211169339/Green-Groove'
 linkedin={'sushanth':'https://www.linkedin.com/in/sushxnthd/','aryan':'https://www.linkedin.com/in/0aryan-kumar0/'}
+founder_names={'sushanth':'Sushanth Dasari','aryan':'Aryan Kumar'}
 paths={'source':'<path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-12-2 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>','case':'<path d="M14 4h6v6m0-6L10 14M10 5H5v14h14v-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>'}
 for i,a in enumerate(s.select('a.square-button')):
  href=a.get('href','');mode='source' if 'github' in href or i%2 else 'case';a['href']=repo if mode=='source' else case;a['aria-label']='Project source' if mode=='source' else 'Green Groove case study';a['rel']=['noopener','noreferrer'];a['target']='_blank'
@@ -83,7 +84,7 @@ for col in about.select('.about-hero__col'):
  label=col.get_text(' ',strip=True);person='sushanth' if 'Sushanth' in label else 'aryan' if 'Aryan' in label else None
  buttons=col.select('a.square-button')
  if person and buttons:
-  a=buttons[-1];a['href']=linkedin[person];a['aria-label']=people[person]+' on LinkedIn';a['rel']=['noopener','noreferrer'];a['target']='_blank'
+  a=buttons[-1];a['href']=linkedin[person];a['aria-label']=founder_names[person]+' on LinkedIn';a['rel']=['noopener','noreferrer'];a['target']='_blank'
   for svg in a.select('svg'):svg.clear();svg.append(f(paths['case']));svg['viewBox']='0 0 24 24'
 # Canonical wordmark geometry inside the existing About SVG boxes.
 canonical=s.select_one('.gg-footer-wordmark') or s.select_one('footer .footer-bottom__logo svg')
