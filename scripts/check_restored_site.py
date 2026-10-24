@@ -26,7 +26,12 @@ assert not s.select('img[src*=g02]'), 'Placeholder logo remains in a portrait sl
 assert len(s.select('.testimonial-item__info-img img[src*="assets/people/"]'))==6
 assert len(s.select('.join-faces__image-el'))==3
 assert len(s.select('.about-item__img img[src*="assets/people/"]'))==2
-assert 'amity-emblem.svg' in str(s.select('.trustedby-marquee__item-svg'))
+assert 'amity-readable.svg' in str(s.select('.trustedby-marquee__item-svg'))
+assert all(svg.get('viewbox')=='0 0 172 42' for svg in s.select('.trustedby-marquee__item-svg'))
+assert s.select_one('meta[name="description"]')['content'].find('retail product')>=0
+assert '₹2 lakh+ earned' in s.get_text(' ',strip=True)
+assert s.select_one('a[href="https://www.linkedin.com/in/sushxnthd/"]')
+assert s.select_one('a[href="https://www.linkedin.com/in/0aryan-kumar0/"]')
 assert all(e.get('data-gg-fit')=='cover' for e in s.select('#build .showcase-media__image'))
 assert not s.select('image[href$="iit-delhi.png"],img[src$="iit-delhi.png"]')
 assert 'brightness(' not in (root/'source-repair.css').read_text()
