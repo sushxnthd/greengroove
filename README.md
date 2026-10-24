@@ -71,4 +71,5 @@ The workflow checks baseline preservation, local assets, routes, JavaScript synt
 
 ## GitHub Pages
 
+.
 Publishing source: `main` / `/ (root)`.
