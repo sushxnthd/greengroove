@@ -16,3 +16,7 @@ The right hero heading reads “Built to Flow” to fit the original type size w
 About portraits, project-credit image metadata and system detail avatars now use the matching supplied founder portrait. The three programme badges use AISG46, NCERT and IIT Delhi. Placeholder G logos and silhouette SVGs are removed from these person slots.
 
 The original Amity WebP is retained. Two SVG wrappers embed the original image bytes: amity-emblem.svg shows the original coloured crest; amity-readable.svg preserves that crest and changes only the white lettering to dark ink for the light page background. No colour filter is applied to the crest. The IIT Delhi white header export alone receives a dark-ink filter.
+
+## Gallery fitting and full-colour logo correction
+
+Build-gallery previews use the source cover fit; full diagrams remain available in their detail dialog. The three institution marks use emblem-sized viewboxes without colour filters. IIT Delhi's red emblem is the official https://home.iitd.ac.in/images/preloaders/logo.png export. AISG46 uses its original coloured emblem rather than the contrast-adjusted wordmark. The programme badge row has three separated square boxes, without the inherited overlapping avatar mask.

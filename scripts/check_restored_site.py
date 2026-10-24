@@ -26,7 +26,10 @@ assert not s.select('img[src*=g02]'), 'Placeholder logo remains in a portrait sl
 assert len(s.select('.testimonial-item__info-img img[src*="assets/people/"]'))==6
 assert len(s.select('.join-faces__image-el'))==3
 assert len(s.select('.about-item__img img[src*="assets/people/"]'))==2
-assert 'amity-readable.svg' in str(s.select('.trustedby-marquee__item-svg'))
+assert 'amity-emblem.svg' in str(s.select('.trustedby-marquee__item-svg'))
+assert all(e.get('data-gg-fit')=='cover' for e in s.select('#build .showcase-media__image'))
+assert not s.select('image[href$="iit-delhi.png"],img[src$="iit-delhi.png"]')
+assert 'brightness(' not in (root/'source-repair.css').read_text()
 ids=[e['id'] for e in s.select('[id]')];assert len(ids)==len(set(ids)),'Duplicate IDs'
 refs=[]
 for e in s.select('[src],link[href],a[href],image[href]'):
