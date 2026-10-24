@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - index.html
+      - native-fidelity.css
       - source-repair.*
       - public-launch.*
       - public_launch.py

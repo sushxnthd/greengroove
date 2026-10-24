@@ -7,14 +7,16 @@ root=Path(__file__).resolve().parents[1]
 s=BeautifulSoup((root/'index.html').read_text(),'html.parser')
 b=BeautifulSoup(subprocess.check_output(['git','show','41859c3:index.html'],cwd=root),'html.parser')
 assert s.select_one('meta[name=gg-source-restored]')['content']=='41859c3'
-assert [e.text for e in s.select('style')]==[e.text for e in b.select('style')], 'Original inline layout styles changed'
+assert not s.select('#gg-pricing-copy-refine,#gg-text-clipping-fix,#gg-text-clipping-guard'), 'Legacy editorial overrides returned'
+assert not s.select('link[href*=visual-polish],link[href*=curated-integration]'), 'Legacy global style layers returned'
+assert 'linear-gradient' not in s.select_one('#green-groove-tailor').text, 'Unsupported button gradient returned'
 sections=lambda soup:[(x.name,x.get('class')) for x in soup.main.children if x.name and (x.name in ('section','footer') or x.get('class')==['under-nav-bar'])]
 assert sections(s)==sections(b),'Original section sequence changed'
 headings=lambda soup:[e.get_text(' ',strip=True) for e in soup.select('main section h1,main section h2,main section h3,main section h4') if not e.find_parent(attrs={'data-modal-target':True})]
 assert headings(s)==headings(b),'Original page headings changed'
 for p in ['visual-polish.css','assets/visuals/curated-integration.css']:
  assert (root/p).read_bytes()==subprocess.check_output(['git','show','41859c3:'+p],cwd=root),p+' changed'
-assert not re.search(r'(?:font(?:-size|-family)?|letter-spacing)\s*:',(root/'source-repair.css').read_text()),'Repair layer changes typography'
+assert not re.search(r'(?:font(?:-size|-family)?|letter-spacing)\s*:',((root/'source-repair.css').read_text()+(root/'native-fidelity.css').read_text())),'Repair layer changes typography'
 ids=[e['id'] for e in s.select('[id]')];assert len(ids)==len(set(ids)),'Duplicate IDs'
 refs=[]
 for e in s.select('[src],link[href],a[href],image[href]'):
@@ -31,5 +33,5 @@ assert len(s.select('.product-card'))==6
 assert len(s.select('[data-flick-cards-item]'))==7
 assert len(s.select('#findings [data-vertical-slider-item]'))==6
 for e in s.select('footer form input:not([type=submit]):not([type=checkbox])'):assert e.has_attr('readonly') and not e.has_attr('name')
-report={'baseline':'41859c3','original_sections':True,'original_headings':True,'original_inline_styles':True,'local_references':len(set(refs)),'product_cards':6,'build_cards':7,'findings':6}
+report={'content_baseline':'41859c3','design_reference':'https://www.osmo.supply/','visual_fidelity_complete':False,'original_sections':True,'original_headings':True,'legacy_editorial_overrides_removed':True,'local_references':len(set(refs)),'product_cards':6,'build_cards':7,'findings':6}
 out=root/'docs/visual-qa/restored-static-audit.json';out.parent.mkdir(parents=True,exist_ok=True);out.write_text(json.dumps(report,indent=2));print(json.dumps(report,indent=2))

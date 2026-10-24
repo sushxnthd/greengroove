@@ -1,0 +1,476 @@
+{
+  "reference": {
+    "items": [
+      {
+        "font": "\"Haffer VF\", Arial, sans-serif",
+        "fontSize": "15.1444px",
+        "height": 51.109375,
+        "letterSpacing": "-0.151444px",
+        "lineHeight": "20px",
+        "selector": ".nav-bar",
+        "top": 7072.921875,
+        "width": 575.484375
+      },
+      {
+        "font": "\"Haffer XH\", Arial, sans-serif",
+        "fontSize": "106.011px",
+        "height": 84.828125,
+        "letterSpacing": "-6.36067px",
+        "lineHeight": "106.011px",
+        "selector": ".home-hero h1",
+        "top": 249.671875,
+        "width": 475.3125
+      },
+      {
+        "font": "\"Haffer XH\", Arial, sans-serif",
+        "fontSize": "106.011px",
+        "height": 84.828125,
+        "letterSpacing": "-6.36067px",
+        "lineHeight": "106.011px",
+        "selector": ".home-hero h2",
+        "top": 249.671875,
+        "width": 481.6875
+      },
+      {
+        "font": "\"Haffer VF\", Arial, sans-serif",
+        "fontSize": "15.1444px",
+        "height": 127.5,
+        "letterSpacing": "-0.151444px",
+        "lineHeight": "20px",
+        "selector": ".home-hero__description-row",
+        "top": 369.046875,
+        "width": 499.765625
+      },
+      {
+        "font": "\"Haffer VF\", Arial, sans-serif",
+        "fontSize": "15.1444px",
+        "height": 1090.390625,
+        "letterSpacing": "-0.151444px",
+        "lineHeight": "20px",
+        "selector": ".radial-marquee",
+        "top": 538.65625,
+        "width": 2180.796875
+      },
+      {
+        "font": "\"Haffer VF\", Arial, sans-serif",
+        "fontSize": "15.1444px",
+        "height": 582.5,
+        "letterSpacing": "-0.151444px",
+        "lineHeight": "20px",
+        "selector": ".about-card",
+        "top": 1720.828125,
+        "width": 530.046875
+      },
+      {
+        "font": "\"Haffer VF\", Arial, sans-serif",
+        "fontSize": "15.1444px",
+        "height": 547.9375,
+        "letterSpacing": "-0.151444px",
+        "lineHeight": "20px",
+        "selector": ".pricing-card",
+        "top": 7168.703125,
+        "width": 530.046875
+      },
+      {
+        "font": "\"Haffer VF\", Arial, sans-serif",
+        "fontSize": "15.1444px",
+        "height": 547.9375,
+        "letterSpacing": "-0.151444px",
+        "lineHeight": "20px",
+        "selector": ".pricing-card",
+        "top": 7168.703125,
+        "width": 530.046875
+      },
+      {
+        "font": "\"Haffer VF\", Arial, sans-serif",
+        "fontSize": "15.1444px",
+        "height": 540.953125,
+        "letterSpacing": "-0.151444px",
+        "lineHeight": "20px",
+        "selector": ".product-card",
+        "top": 4331.109375,
+        "width": 416.125
+      },
+      {
+        "font": "\"Haffer VF\", Arial, sans-serif",
+        "fontSize": "15.1444px",
+        "height": 650.6527099609375,
+        "letterSpacing": "-0.151444px",
+        "lineHeight": "20px",
+        "selector": ".product-card",
+        "top": 4382.285888671875,
+        "width": 576.0464477539062
+      },
+      {
+        "font": "\"Haffer VF\", Arial, sans-serif",
+        "fontSize": "15.1444px",
+        "height": 681.8741455078125,
+        "letterSpacing": "-0.151444px",
+        "lineHeight": "20px",
+        "selector": ".product-card",
+        "top": 4671.965576171875,
+        "width": 666.4881591796875
+      },
+      {
+        "font": "\"Haffer VF\", Arial, sans-serif",
+        "fontSize": "15.1444px",
+        "height": 630.8514404296875,
+        "letterSpacing": "-0.151444px",
+        "lineHeight": "20px",
+        "selector": ".product-card",
+        "top": 5165.208984375,
+        "width": 676.541748046875
+      },
+      {
+        "font": "\"Haffer VF\", Arial, sans-serif",
+        "fontSize": "15.1444px",
+        "height": 681.8741455078125,
+        "letterSpacing": "-0.151444px",
+        "lineHeight": "20px",
+        "selector": ".product-card",
+        "top": 4671.965576171875,
+        "width": 666.4882202148438
+      },
+      {
+        "font": "\"Haffer VF\", Arial, sans-serif",
+        "fontSize": "15.1444px",
+        "height": 650.6527099609375,
+        "letterSpacing": "-0.151444px",
+        "lineHeight": "20px",
+        "selector": ".product-card",
+        "top": 4382.285888671875,
+        "width": 576.0464477539062
+      },
+      {
+        "font": "\"Haffer VF\", Arial, sans-serif",
+        "fontSize": "15.1444px",
+        "height": 936,
+        "letterSpacing": "-0.151444px",
+        "lineHeight": "20px",
+        "selector": ".footer",
+        "top": 9512.796875,
+        "width": 1363
+      }
+    ],
+    "viewport": [
+      1363,
+      936
+    ]
+  },
+  "published": {
+    "items": [
+      {
+        "font": "\"Haffer VF\", Arial, sans-serif",
+        "fontSize": "15.1444px",
+        "height": 51.109375,
+        "letterSpacing": "-0.151444px",
+        "lineHeight": "20px",
+        "selector": ".nav-bar",
+        "top": 7142.921875,
+        "width": 575.484375
+      },
+      {
+        "font": "\"Haffer XH\", Arial, sans-serif",
+        "fontSize": "106.011px",
+        "height": 84.828125,
+        "letterSpacing": "-6.89072px",
+        "lineHeight": "106.011px",
+        "selector": ".home-hero h1",
+        "top": 302.671875,
+        "width": 440.328125
+      },
+      {
+        "font": "\"Haffer XH\", Arial, sans-serif",
+        "fontSize": "106.011px",
+        "height": 190.84375,
+        "letterSpacing": "-6.89072px",
+        "lineHeight": "106.011px",
+        "selector": ".home-hero h2",
+        "top": 249.671875,
+        "width": 471.09375
+      },
+      {
+        "font": "\"Haffer VF\", Arial, sans-serif",
+        "fontSize": "15.1444px",
+        "height": 127.5,
+        "letterSpacing": "-0.151444px",
+        "lineHeight": "20px",
+        "selector": ".home-hero__description-row",
+        "top": 475.0625,
+        "width": 499.765625
+      },
+      {
+        "font": "\"Haffer VF\", Arial, sans-serif",
+        "fontSize": "15.1444px",
+        "height": 1090.390625,
+        "letterSpacing": "-0.151444px",
+        "lineHeight": "20px",
+        "selector": ".radial-marquee",
+        "top": 644.671875,
+        "width": 2180.796875
+      },
+      {
+        "font": "\"Haffer VF\", Arial, sans-serif",
+        "fontSize": "15.1444px",
+        "height": 582.5,
+        "letterSpacing": "-0.151444px",
+        "lineHeight": "20px",
+        "selector": ".about-card",
+        "top": 1787.09375,
+        "width": 530.046875
+      },
+      {
+        "font": "\"Haffer VF\", Arial, sans-serif",
+        "fontSize": "15.1444px",
+        "height": 626.765625,
+        "letterSpacing": "-0.151444px",
+        "lineHeight": "20px",
+        "selector": ".pricing-card",
+        "top": 7332.421875,
+        "width": 643.65625
+      },
+      {
+        "font": "\"Haffer VF\", Arial, sans-serif",
+        "fontSize": "15.1444px",
+        "height": 626.765625,
+        "letterSpacing": "-0.151444px",
+        "lineHeight": "20px",
+        "selector": ".pricing-card",
+        "top": 7332.421875,
+        "width": 643.640625
+      },
+      {
+        "font": "\"Haffer VF\", Arial, sans-serif",
+        "fontSize": "15.1444px",
+        "height": 540.953125,
+        "letterSpacing": "-0.151444px",
+        "lineHeight": "20px",
+        "selector": ".product-card",
+        "top": 4518.03125,
+        "width": 416.125
+      },
+      {
+        "font": "\"Haffer VF\", Arial, sans-serif",
+        "fontSize": "15.1444px",
+        "height": 650.6527099609375,
+        "letterSpacing": "-0.151444px",
+        "lineHeight": "20px",
+        "selector": ".product-card",
+        "top": 4569.207763671875,
+        "width": 576.0464477539062
+      },
+      {
+        "font": "\"Haffer VF\", Arial, sans-serif",
+        "fontSize": "15.1444px",
+        "height": 681.8741455078125,
+        "letterSpacing": "-0.151444px",
+        "lineHeight": "20px",
+        "selector": ".product-card",
+        "top": 4858.887451171875,
+        "width": 666.4881591796875
+      },
+      {
+        "font": "\"Haffer VF\", Arial, sans-serif",
+        "fontSize": "15.1444px",
+        "height": 630.8514404296875,
+        "letterSpacing": "-0.151444px",
+        "lineHeight": "20px",
+        "selector": ".product-card",
+        "top": 5352.130859375,
+        "width": 676.541748046875
+      },
+      {
+        "font": "\"Haffer VF\", Arial, sans-serif",
+        "fontSize": "15.1444px",
+        "height": 681.8741455078125,
+        "letterSpacing": "-0.151444px",
+        "lineHeight": "20px",
+        "selector": ".product-card",
+        "top": 4858.887451171875,
+        "width": 666.4882202148438
+      },
+      {
+        "font": "\"Haffer VF\", Arial, sans-serif",
+        "fontSize": "15.1444px",
+        "height": 650.6527099609375,
+        "letterSpacing": "-0.151444px",
+        "lineHeight": "20px",
+        "selector": ".product-card",
+        "top": 4569.207763671875,
+        "width": 576.0464477539062
+      },
+      {
+        "font": "\"Haffer VF\", Arial, sans-serif",
+        "fontSize": "15.1444px",
+        "height": 936,
+        "letterSpacing": "-0.151444px",
+        "lineHeight": "20px",
+        "selector": ".footer",
+        "top": 9755.34375,
+        "width": 1363
+      }
+    ],
+    "viewport": [
+      1363,
+      936
+    ]
+  },
+  "first_repair": {
+    "items": [
+      {
+        "font": "\"Haffer VF\", Arial, sans-serif",
+        "fontSize": "15.1444px",
+        "height": 51.109375,
+        "letterSpacing": "-0.151444px",
+        "lineHeight": "20px",
+        "selector": ".nav-bar",
+        "top": 18.921875,
+        "width": 575.484375
+      },
+      {
+        "font": "\"Haffer XH\", Arial, sans-serif",
+        "fontSize": "106.011px",
+        "height": 84.828125,
+        "letterSpacing": "-6.36067px",
+        "lineHeight": "106.011px",
+        "selector": ".home-hero h1",
+        "top": 302.671875,
+        "width": 444.5625
+      },
+      {
+        "font": "\"Haffer XH\", Arial, sans-serif",
+        "fontSize": "106.011px",
+        "height": 190.84375,
+        "letterSpacing": "-6.36067px",
+        "lineHeight": "106.011px",
+        "selector": ".home-hero h2",
+        "top": 249.671875,
+        "width": 526.5
+      },
+      {
+        "font": "\"Haffer VF\", Arial, sans-serif",
+        "fontSize": "15.1444px",
+        "height": 127.5,
+        "letterSpacing": "-0.151444px",
+        "lineHeight": "20px",
+        "selector": ".home-hero__description-row",
+        "top": 475.0625,
+        "width": 499.765625
+      },
+      {
+        "font": "\"Haffer VF\", Arial, sans-serif",
+        "fontSize": "15.1444px",
+        "height": 1090.390625,
+        "letterSpacing": "-0.151444px",
+        "lineHeight": "20px",
+        "selector": ".radial-marquee",
+        "top": 644.671875,
+        "width": 2180.796875
+      },
+      {
+        "font": "\"Haffer VF\", Arial, sans-serif",
+        "fontSize": "15.1444px",
+        "height": 582.5,
+        "letterSpacing": "-0.151444px",
+        "lineHeight": "20px",
+        "selector": ".about-card",
+        "top": 1787.09375,
+        "width": 530.046875
+      },
+      {
+        "font": "\"Haffer VF\", Arial, sans-serif",
+        "fontSize": "15.1444px",
+        "height": 686.875,
+        "letterSpacing": "-0.151444px",
+        "lineHeight": "20px",
+        "selector": ".pricing-card",
+        "top": 7332.421875,
+        "width": 530.046875
+      },
+      {
+        "font": "\"Haffer VF\", Arial, sans-serif",
+        "fontSize": "15.1444px",
+        "height": 686.875,
+        "letterSpacing": "-0.151444px",
+        "lineHeight": "20px",
+        "selector": ".pricing-card",
+        "top": 7332.421875,
+        "width": 530.046875
+      },
+      {
+        "font": "\"Haffer VF\", Arial, sans-serif",
+        "fontSize": "15.1444px",
+        "height": 540.953125,
+        "letterSpacing": "-0.151444px",
+        "lineHeight": "20px",
+        "selector": ".product-card",
+        "top": 4518.03125,
+        "width": 416.125
+      },
+      {
+        "font": "\"Haffer VF\", Arial, sans-serif",
+        "fontSize": "15.1444px",
+        "height": 650.65283203125,
+        "letterSpacing": "-0.151444px",
+        "lineHeight": "20px",
+        "selector": ".product-card",
+        "top": 4569.20751953125,
+        "width": 576.0464477539062
+      },
+      {
+        "font": "\"Haffer VF\", Arial, sans-serif",
+        "fontSize": "15.1444px",
+        "height": 681.8740234375,
+        "letterSpacing": "-0.151444px",
+        "lineHeight": "20px",
+        "selector": ".product-card",
+        "top": 4858.8876953125,
+        "width": 666.4881591796875
+      },
+      {
+        "font": "\"Haffer VF\", Arial, sans-serif",
+        "fontSize": "15.1444px",
+        "height": 630.8515625,
+        "letterSpacing": "-0.151444px",
+        "lineHeight": "20px",
+        "selector": ".product-card",
+        "top": 5352.130859375,
+        "width": 676.541748046875
+      },
+      {
+        "font": "\"Haffer VF\", Arial, sans-serif",
+        "fontSize": "15.1444px",
+        "height": 681.8740234375,
+        "letterSpacing": "-0.151444px",
+        "lineHeight": "20px",
+        "selector": ".product-card",
+        "top": 4858.8876953125,
+        "width": 666.4882202148438
+      },
+      {
+        "font": "\"Haffer VF\", Arial, sans-serif",
+        "fontSize": "15.1444px",
+        "height": 650.65283203125,
+        "letterSpacing": "-0.151444px",
+        "lineHeight": "20px",
+        "selector": ".product-card",
+        "top": 4569.20751953125,
+        "width": 576.0464477539062
+      },
+      {
+        "font": "\"Haffer VF\", Arial, sans-serif",
+        "fontSize": "15.1444px",
+        "height": 936,
+        "letterSpacing": "-0.151444px",
+        "lineHeight": "20px",
+        "selector": ".footer",
+        "top": 9815.453125,
+        "width": 1363
+      }
+    ],
+    "viewport": [
+      1363,
+      936
+    ]
+  }
+}

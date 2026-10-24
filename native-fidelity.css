@@ -1,0 +1,14 @@
+/* Preserve source typography and geometry; constrain adapted prose to native card widths. */
+@media (min-width:992px){
+ .pricing-card:has(.gg-card-description){width:35em;max-width:35em}
+}
+@media (min-width:768px) and (max-width:991px){
+ .pricing-card:has(.gg-card-description){flex:1 1 0;min-width:0}
+}
+.pricing-card .gg-editorial-description-wrap{display:block;min-width:0;max-width:100%}
+.pricing-card .gg-card-description{max-width:100%;white-space:normal;overflow-wrap:break-word}
+.pricing-card .gg-card-support{display:block;margin-top:.5em;opacity:.6}
+
+/* Keep illustration fitting local to assets; never force opacity or a background. */
+img[data-gg-fit="contain"]{object-fit:contain}
+img[data-gg-fit="cover"]{object-fit:cover}

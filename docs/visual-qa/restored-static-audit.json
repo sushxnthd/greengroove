@@ -1,9 +1,11 @@
 {
-  "baseline": "41859c3",
+  "content_baseline": "41859c3",
+  "design_reference": "https://www.osmo.supply/",
+  "visual_fidelity_complete": false,
   "original_sections": true,
   "original_headings": true,
-  "original_inline_styles": true,
-  "local_references": 52,
+  "legacy_editorial_overrides_removed": true,
+  "local_references": 51,
   "product_cards": 6,
   "build_cards": 7,
   "findings": 6
