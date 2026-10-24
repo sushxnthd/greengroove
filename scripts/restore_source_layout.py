@@ -73,10 +73,18 @@ for im in about.select('.about-map__inner'):
  im['src']='assets/visuals/g04-signal-motifs.svg';im['alt']='';im['aria-hidden']='true';im.attrs.pop('data-gg-asset',None);im.attrs.pop('data-gg-fit',None)
 # Fix foreign profile destinations and glyphs in their original button boxes.
 repo='https://github.com/sushxnthd/greengroove';case='https://www.behance.net/gallery/211169339/Green-Groove'
+linkedin={'sushanth':'https://www.linkedin.com/in/sushxnthd/','aryan':'https://www.linkedin.com/in/0aryan-kumar0/'}
 paths={'source':'<path d="m8 7-5 5 5 5m8-10 5 5-5 5m-3-12-2 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>','case':'<path d="M14 4h6v6m0-6L10 14M10 5H5v14h14v-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>'}
 for i,a in enumerate(s.select('a.square-button')):
  href=a.get('href','');mode='source' if 'github' in href or i%2 else 'case';a['href']=repo if mode=='source' else case;a['aria-label']='Project source' if mode=='source' else 'Green Groove case study';a['rel']=['noopener','noreferrer'];a['target']='_blank'
  for svg in a.select('svg'):svg.clear();svg.append(f(paths[mode]));svg['viewBox']='0 0 24 24'
+# Keep the native three-button founder layout, using the final button as each founder's LinkedIn.
+for col in about.select('.about-hero__col'):
+ label=col.get_text(' ',strip=True);person='sushanth' if 'Sushanth' in label else 'aryan' if 'Aryan' in label else None
+ buttons=col.select('a.square-button')
+ if person and buttons:
+  a=buttons[-1];a['href']=linkedin[person];a['aria-label']=people[person]+' on LinkedIn';a['rel']=['noopener','noreferrer'];a['target']='_blank'
+  for svg in a.select('svg'):svg.clear();svg.append(f(paths['case']));svg['viewBox']='0 0 24 24'
 # Canonical wordmark geometry inside the existing About SVG boxes.
 canonical=s.select_one('.gg-footer-wordmark') or s.select_one('footer .footer-bottom__logo svg')
 if canonical:
@@ -180,12 +188,11 @@ native_art=json.loads(Path('docs/visual-qa/native-art-provenance.json').read_tex
 for item in native_art:
  for im in s.select(item['selector']):
   im['src']=item['path'];im.attrs.pop('data-gg-asset',None)
-# Institutional marks fill the existing marquee boxes without changing its motion.
-marks=[('amity-emblem.svg','Amity International School, Gurugram Sector 46'),('ncert.png','NCERT — PRAYAAS programme'),('iit-delhi-colour.png','IIT Delhi — associated HEI')]
+# Institutional marks keep the original Osmo wide-logo geometry and their real colours.
+marks=[('amity-readable.svg','Amity International School, Gurugram Sector 46'),('ncert.png','NCERT — PRAYAAS programme'),('iit-delhi-colour.png','IIT Delhi — associated HEI')]
 for i,svg in enumerate(s.select('.trustedby-marquee__item-svg')):
- name,label=marks[(i%8)%3];svg.clear();svg['viewbox']='0 0 42 42';svg['role']='img';svg['aria-label']=label
- vb=svg.get('viewbox','0 0 172 42').split();w,h=vb[-2:]
- svg.append(s.new_tag('image',href='assets/institutions/'+name,x='0',y='0',width=w,height=h,preserveAspectRatio='xMidYMid meet'))
+ name,label=marks[i%len(marks)];svg.clear();svg['viewbox']='0 0 172 42';svg['role']='img';svg['aria-label']=label
+ svg.append(s.new_tag('image',href='assets/institutions/'+name,x='0',y='0',width='172',height='42',preserveAspectRatio='xMidYMid meet'))
 for el,label in zip(s.select('.info .eyebrow.is--relative'),['School · Programme','Associated HEI']):el.string=label
 # Real founder portraits replace avatar logos in About and project credits.
 people={'sushanth':'Sushanth Dasari','aryan':'Aryan Kumar'}
@@ -207,6 +214,29 @@ items=s.select('.join-faces__image-el')
 for item,(name,label) in zip(items,[('amity-emblem.svg','Amity International School, Sector 46'),('ncert.png','NCERT'),('iit-delhi-colour.png','IIT Delhi')]):
  im=item.select_one('img');im['src']='assets/institutions/'+name;im['alt']=label;im.attrs.pop('aria-hidden',None);im.attrs.pop('data-gg-asset',None);im['data-institution']=name.split('.')[0]
 for item in items[3:]:item.decompose()
+# Product framing, founder identity links and the latest earned milestone.
+page_title='Green Groove — Student-Built Retail Product'
+page_desc='Green Groove is a student-built RFID + sensor retail product selected under NCERT PRAYAAS, supported through IIT Delhi as the associated HEI, awarded a ₹50,000 development grant, and has earned ₹2 lakh+ to date.'
+if s.title:s.title.string=page_title
+for meta in s.select('meta[name="description"],meta[property="og:description"],meta[name="twitter:description"]'):meta['content']=page_desc
+for meta in s.select('meta[property="og:title"],meta[name="twitter:title"]'):meta['content']=page_title
+ld=s.select_one('script[type="application/ld+json"]')
+if ld:
+ try:
+  data=json.loads(ld.string or ld.get_text())
+  data['description']=page_desc
+  for creator in data.get('creator',[]):
+   if creator.get('name')=='Sushanth Dasari':creator['sameAs']=linkedin['sushanth']
+   if creator.get('name')=='Aryan Kumar':creator['sameAs']=linkedin['aryan']
+  ld.string=json.dumps(data,ensure_ascii=False,separators=(',',':'))
+ except Exception:pass
+reel_title=s.select_one('.reel__title .h-m')
+if reel_title:reel_title.string='Green Groove is a student-built retail product linking identity, shelf events, reversible cart state and checkout into one physical-digital flow.'
+for card in s.select('#evidence .pricing-card'):
+ title=card.select_one('.pricing-card__title')
+ if title and title.get_text(strip=True)=='Selected + funded':
+  for p in card.select('.pricing-card__sub-details .p-m'):
+   if p.get_text(strip=True)=='SeNSE mentorship':p.string='₹2 lakh+ earned'
 # Restore the source cover fitting only in the Built into Green Groove previews.
 for im in s.select('#build .showcase-media__image'):im['data-gg-fit']='cover'
 Path('index.html').write_text(str(s))
