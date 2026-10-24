@@ -181,11 +181,29 @@ for item in native_art:
  for im in s.select(item['selector']):
   im['src']=item['path'];im.attrs.pop('data-gg-asset',None)
 # Institutional marks fill the existing marquee boxes without changing its motion.
-marks=[('amity.webp','Amity International School, Gurugram Sector 46'),('ncert.png','NCERT — PRAYAAS programme'),('iit-delhi.png','IIT Delhi — associated HEI')]
+marks=[('amity-readable.svg','Amity International School, Gurugram Sector 46'),('ncert.png','NCERT — PRAYAAS programme'),('iit-delhi.png','IIT Delhi — associated HEI')]
 for i,svg in enumerate(s.select('.trustedby-marquee__item-svg')):
  name,label=marks[(i%8)%3];svg.clear();svg['role']='img';svg['aria-label']=label
  vb=svg.get('viewbox','0 0 172 42').split();w,h=vb[-2:]
  svg.append(s.new_tag('image',href='assets/institutions/'+name,x='0',y='0',width=w,height=h,preserveAspectRatio='xMidYMid meet'))
 for el,label in zip(s.select('.info .eyebrow.is--relative'),['School · Programme','Associated HEI']):el.string=label
+# Real founder portraits replace avatar logos in About and project credits.
+people={'sushanth':'Sushanth Dasari','aryan':'Aryan Kumar'}
+for item in s.select('.about-item'):
+ im=item.select_one('.about-item__img img')
+ if im:
+  person='sushanth' if 'Sushanth' in item.get_text() else 'aryan'
+  im['src']=f'assets/people/{person}.webp';im['alt']=people[person];im.attrs.pop('aria-hidden',None)
+for im in s.select('.flick-card__hidden-profile-pic img'):
+ person='sushanth' if 'SUSHANTH' in im.find_parent('a').get_text() else 'aryan'
+ im['src']=f'assets/people/{person}.webp';im['alt']=people[person];im.attrs.pop('data-gg-asset',None)
+for i,im in enumerate(s.select('[data-modal-target=showcase] .profile-picture__image')):
+ person=['sushanth','aryan'][i%2];im['src']=f'assets/people/{person}.webp';im['alt']=people[person]
+for placeholder in s.select('.profile-picture__placeholder-svg'):placeholder.decompose()
+# The programme reference uses actual institutional emblems in its existing avatar row.
+items=s.select('.join-faces__image-el')
+for item,(name,label) in zip(items,[('amity-emblem.svg','Amity International School, Sector 46'),('ncert.png','NCERT'),('iit-delhi.png','IIT Delhi')]):
+ im=item.select_one('img');im['src']='assets/institutions/'+name;im['alt']=label;im.attrs.pop('aria-hidden',None);im.attrs.pop('data-gg-asset',None);im['data-institution']=name.split('.')[0]
+for item in items[3:]:item.decompose()
 Path('index.html').write_text(str(s))
 print('Restored source DOM from',BASE)

@@ -21,5 +21,7 @@ html[data-gg-motion=reduce] .about-card__img{opacity:0;visibility:hidden}
 html[data-gg-motion=reduce] .about-card__img-w>.about-card__img-layer:first-child>.about-card__img:first-child{opacity:1;visibility:visible}
 html[data-gg-motion=reduce] .about-card__img-layer:not(:first-child){visibility:hidden}
 html[data-gg-motion=reduce] .about-card__img-rotate{width:100%}
-/* Header-exported institutional marks contain white lettering; match the native monochrome logo strip. */
-.trustedby-marquee__item-svg image{filter:brightness(0)}
+/* Only IIT Delhi's white header export needs dark ink; school emblem retains its colours. */
+.trustedby-marquee__item-svg image[href$="iit-delhi.png"],.join-faces__image-el img[data-institution="iit-delhi"]{filter:brightness(0)}
+.join-faces__image-el img[data-institution]{object-fit:contain;padding:2px;background:var(--color-neutral-200,#f4f4f4)}
+.about-item__img:has(img[src*="assets/people/"]),.profile-picture:has(img[src*="assets/people/"]){background:var(--color-purple)}

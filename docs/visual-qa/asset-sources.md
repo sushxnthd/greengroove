@@ -10,3 +10,9 @@ Institutional marks identify school, programme and associated HEI, without addin
 The six original decorative assets and placements are recorded in native-art-provenance.json. Each is copied byte-for-byte from the current Osmo page. These replace the repeated G04 motif; native DOM, CSS positioning and GSAP hooks remain.
 
 The right hero heading reads “Built to Flow” to fit the original type size without clipping.
+
+## Portrait and institutional follow-up
+
+About portraits, project-credit image metadata and system detail avatars now use the matching supplied founder portrait. The three programme badges use AISG46, NCERT and IIT Delhi. Placeholder G logos and silhouette SVGs are removed from these person slots.
+
+The original Amity WebP is retained. Two SVG wrappers embed the original image bytes: amity-emblem.svg shows the original coloured crest; amity-readable.svg preserves that crest and changes only the white lettering to dark ink for the light page background. No colour filter is applied to the crest. The IIT Delhi white header export alone receives a dark-ink filter.
