@@ -200,6 +200,8 @@ for im in s.select('.flick-card__hidden-profile-pic img'):
 for i,im in enumerate(s.select('[data-modal-target=showcase] .profile-picture__image')):
  person=['sushanth','aryan'][i%2];im['src']=f'assets/people/{person}.webp';im['alt']=people[person]
 for placeholder in s.select('.profile-picture__placeholder-svg'):placeholder.decompose()
+for i,im in enumerate(s.select('.testimonial-item__info-img img')):
+ person=['sushanth','aryan'][i%2];im['src']=f'assets/people/{person}.webp';im['alt']=people[person]
 # The programme reference uses actual institutional emblems in its existing avatar row.
 items=s.select('.join-faces__image-el')
 for item,(name,label) in zip(items,[('amity-emblem.svg','Amity International School, Sector 46'),('ncert.png','NCERT'),('iit-delhi.png','IIT Delhi')]):

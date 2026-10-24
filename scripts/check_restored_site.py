@@ -23,6 +23,7 @@ for layer in s.select('.about-card__img-layer'):
  assert [im['src'] for im in layer.select('img')]==['assets/people/sushanth.webp','assets/people/aryan.webp']
 assert not s.select('img[src*=g04]'), 'Additional signal rings returned'
 assert not s.select('img[src*=g02]'), 'Placeholder logo remains in a portrait slot'
+assert len(s.select('.testimonial-item__info-img img[src*="assets/people/"]'))==6
 assert len(s.select('.join-faces__image-el'))==3
 assert len(s.select('.about-item__img img[src*="assets/people/"]'))==2
 assert 'amity-readable.svg' in str(s.select('.trustedby-marquee__item-svg'))
