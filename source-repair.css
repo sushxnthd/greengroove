@@ -16,5 +16,8 @@ html[data-gg-motion=reduce] *,html[data-gg-motion=reduce] *::before,html[data-gg
 .vertical-slider__bullets{z-index:11}
 .latest-resources-slider [data-vertical-slider-list]{z-index:11;pointer-events:none}
 
-/* Keep a source illustration visible when the creator crossfade is paused. */
-html[data-gg-motion=reduce] .about-card__img-w>.about-card__img-layer:first-child>.about-card__img.is--2{opacity:1}
+/* Paused founder crossfade shows the first portrait and its matching name. */
+html[data-gg-motion=reduce] .about-card__img{opacity:0;visibility:hidden}
+html[data-gg-motion=reduce] .about-card__img-w>.about-card__img-layer:first-child>.about-card__img:first-child{opacity:1;visibility:visible}
+html[data-gg-motion=reduce] .about-card__img-layer:not(:first-child){visibility:hidden}
+html[data-gg-motion=reduce] .about-card__img-rotate{width:100%}

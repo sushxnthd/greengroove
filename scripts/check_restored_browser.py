@@ -23,7 +23,11 @@ with sync_playwright() as p:
     expect(page.locator('[data-modal-target=showcase]')).not_to_have_attribute('data-modal-status','active')
    try:
     page.goto('http://127.0.0.1:4173/',wait_until='load');page.locator('body.gg-repair-ready').wait_for();page.evaluate('document.fonts.ready')
-    assert 'Haffer' in page.locator('body').evaluate('(e)=>getComputedStyle(e).fontFamily')
+    assert page.locator('.about-card__img').evaluate_all(r'(es)=>es.every(e=>/assets\/people\/(sushanth|aryan)\.webp$/.test(e.getAttribute("src")))'), 'Founder portrait wiring changed'
+    assert page.locator('.about-card__img-layer').first.locator('img').first.evaluate('(e)=>getComputedStyle(e).visibility==="visible"'), 'Paused portrait hidden'
+    assert page.locator('.about-card__img-layer').nth(1).evaluate('(e)=>getComputedStyle(e).visibility==="hidden"'), 'Paused inner mask hides the portrait'
+    assert page.locator('img[src*=g04]').count()==0, 'Additional rings returned'
+    assert 'Haffer'  in page.locator('body').evaluate('(e)=>getComputedStyle(e).fontFamily')
     assert page.locator('.home-hero h1').evaluate('(e)=>Math.abs(parseFloat(getComputedStyle(e).letterSpacing)/parseFloat(getComputedStyle(e).fontSize)+.06)<.0001'), 'Hero tracking differs from live Osmo CSS'
     assert page.locator('[data-wf--button-theme--variant=purple]').evaluate_all('(es)=>es.every(e=>getComputedStyle(e).backgroundImage==="none")'), 'Unrequested gradients returned'
     if width>=992:

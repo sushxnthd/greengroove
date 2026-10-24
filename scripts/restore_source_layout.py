@@ -53,7 +53,7 @@ for im in s.select('.try-vault__visual img'):
 for i,svg in enumerate(s.select('.trustedby-marquee__item-svg')):
  vb=svg.get('viewbox','0 0 172 42').split();w,h=vb[-2:];svg.clear()
  im=s.new_tag('image',href=f'assets/visuals/thumbnails/{thumbs[i%9]}.svg',x='0',y='0',width=w,height=h,preserveAspectRatio='xMidYMid meet');svg.append(im)
-# Existing symbols and native art remain; no fictional portraits.
+# Existing symbols and native art remain.
 for im in s.select('[data-gg-hidden="template-person"]'):im.attrs.pop('data-gg-hidden',None)
 # The supplied source already has the About and Showcase modals: reuse those.
 modal=s.select_one('[data-modal-target=showcase]');modal['id']='system-detail';modal['role']='dialog';modal['aria-modal']='true';modal['aria-label']='System detail'
@@ -167,5 +167,25 @@ for e in s.select('link[href*=visual-polish],link[href*=curated-integration],#gg
  e.decompose()
 s.select_one('#green-groove-tailor').string=':root{--color-electric:#78ff45;--color-purple:#18bdf2;--color-purple-copy:#18bdf2}'
 s.body.append(f('<link rel="stylesheet" href="native-fidelity.css">'))
+# Fit tailored copy inside the source heading without changing typography.
+for heading in s.select('.home-hero h2'):
+ if heading.get_text(strip=True)=='Without the Queue':heading.string='Built to Flow'
+# User-supplied transparent portraits use the source's three-layer crossfade.
+for layer in s.select('.about-card__img-layer'):
+ for im,person in zip(layer.select('img'),['sushanth','aryan']):
+  im['src']=f'assets/people/{person}.webp';im.attrs.pop('data-gg-asset',None)
+# Restore each original decorative asset in its own source coordinate system.
+import json
+native_art=json.loads(Path('docs/visual-qa/native-art-provenance.json').read_text())
+for item in native_art:
+ for im in s.select(item['selector']):
+  im['src']=item['path'];im.attrs.pop('data-gg-asset',None)
+# Institutional marks fill the existing marquee boxes without changing its motion.
+marks=[('amity.webp','Amity International School, Gurugram Sector 46'),('ncert.png','NCERT — PRAYAAS programme'),('iit-delhi.png','IIT Delhi — associated HEI')]
+for i,svg in enumerate(s.select('.trustedby-marquee__item-svg')):
+ name,label=marks[(i%8)%3];svg.clear();svg['role']='img';svg['aria-label']=label
+ vb=svg.get('viewbox','0 0 172 42').split();w,h=vb[-2:]
+ svg.append(s.new_tag('image',href='assets/institutions/'+name,x='0',y='0',width=w,height=h,preserveAspectRatio='xMidYMid meet'))
+for el,label in zip(s.select('.info .eyebrow.is--relative'),['School · Programme','Associated HEI']):el.string=label
 Path('index.html').write_text(str(s))
 print('Restored source DOM from',BASE)

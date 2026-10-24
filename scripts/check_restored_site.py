@@ -13,10 +13,15 @@ assert 'linear-gradient' not in s.select_one('#green-groove-tailor').text, 'Unsu
 sections=lambda soup:[(x.name,x.get('class')) for x in soup.main.children if x.name and (x.name in ('section','footer') or x.get('class')==['under-nav-bar'])]
 assert sections(s)==sections(b),'Original section sequence changed'
 headings=lambda soup:[e.get_text(' ',strip=True) for e in soup.select('main section h1,main section h2,main section h3,main section h4') if not e.find_parent(attrs={'data-modal-target':True})]
-assert headings(s)==headings(b),'Original page headings changed'
+assert headings(s)==['Built to Flow' if h=='Without the Queue' else h for h in headings(b)],'Original page headings changed'
 for p in ['visual-polish.css','assets/visuals/curated-integration.css']:
  assert (root/p).read_bytes()==subprocess.check_output(['git','show','41859c3:'+p],cwd=root),p+' changed'
 assert not re.search(r'(?:font(?:-size|-family)?|letter-spacing)\s*:',((root/'source-repair.css').read_text()+(root/'native-fidelity.css').read_text())),'Repair layer changes typography'
+for item in json.loads((root/'docs/visual-qa/native-art-provenance.json').read_text()):
+ assert s.select_one(item['selector'])['src']==item['path'], 'Native decorative asset replaced'
+for layer in s.select('.about-card__img-layer'):
+ assert [im['src'] for im in layer.select('img')]==['assets/people/sushanth.webp','assets/people/aryan.webp']
+assert not s.select('img[src*=g04]'), 'Additional signal rings returned'
 ids=[e['id'] for e in s.select('[id]')];assert len(ids)==len(set(ids)),'Duplicate IDs'
 refs=[]
 for e in s.select('[src],link[href],a[href],image[href]'):
