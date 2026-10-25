@@ -27,3 +27,13 @@ html[data-gg-motion=reduce] .about-card__img-rotate{width:100%}
 
 .testimonial-item__info-img:has(img[src*="assets/people/"]){background:var(--color-purple)}
 .testimonial-item__info-img img[src*="assets/people/"]{object-fit:cover}
+
+/* Media occupies the source reel box; the full 4:5 film opens without cropping. */
+.gg-demo-preview{object-fit:contain;background:#f4f4f4}
+.reel__visual-text{pointer-events:none}
+#gg-demo-player{width:min(64vh,calc(100vw - 2rem));max-width:100%;max-height:94dvh;padding:0;border:0;border-radius:.5em;background:#201d1d;overflow:visible;color:#f4f4f4}
+#gg-demo-player::backdrop{background:rgba(0,0,0,.8)}
+#gg-demo-player video{display:block;width:100%;max-height:90dvh;object-fit:contain;border-radius:inherit}
+.gg-demo-close{position:absolute;z-index:2;right:.75em;top:.75em;border:0;border-radius:2em;padding:.5em .8em;background:#f4f4f4;color:#201d1d;cursor:pointer}
+body.gg-demo-open{overflow:hidden}
+.testimonial-item__info-img img[src*="challenge-icons/"]{object-fit:contain}

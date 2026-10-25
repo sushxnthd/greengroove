@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400" role="img" aria-labelledby="title"><title id="title">Illustration: a stack of pick, return and held event records</title><rect width="600" height="400" fill="#e6ddd0"/><g stroke="#202722" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+<path d="m151 244 233-47 82 69-232 51Z" fill="#c9bdad" stroke="none"/>
+<g transform="translate(164 154) rotate(-13)"><path d="M0 0h267v109H0l11-17L0 75l11-17L0 41l11-20Z" fill="#c2cad2"/><path d="M73 31h144M73 51h117M73 72h82" stroke="#55616b"/><circle cx="39" cy="54" r="20" fill="#dcc08b"/><path d="M33 44v20m12-20v20" stroke-width="4"/></g>
+<g transform="translate(149 112) rotate(-4)"><path d="M0 0h267v109H0l11-17L0 75l11-17L0 41l11-20Z" fill="#eef0e7"/><path d="M73 31h144M73 51h117M73 72h82" stroke="#839184"/><circle cx="39" cy="54" r="20" fill="#18bdf2"/><path d="m44 43-12 11 12 11m-11-11h19" fill="none" stroke-width="4"/></g>
+<g transform="translate(156 66) rotate(7)"><path d="M0 0h267v109H0l11-17L0 75l11-17L0 41l11-20Z" fill="#fffaf0"/><path d="M73 31h144M73 51h117M73 72h82" stroke="#839184"/><circle cx="39" cy="54" r="20" fill="#78ff45"/><path d="M28 54h22m-11-11v22" stroke-width="4"/></g>
+</g></svg>

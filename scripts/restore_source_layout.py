@@ -289,5 +289,19 @@ reel_title=s.select_one('.reel__title .h-m')
 if reel_title:reel_title.string='Green Groove is a retail product linking identity, shelf events, reversible cart state and checkout into one physical-digital flow.'
 for el in earned.select('.pricing-card__sub-details .p-m'):
  if el.get_text(strip=True)=='₹2 lakh+ earned':el.string='SeNSE mentorship'
+# One bespoke, non-photographic illustration per existing hero carousel card.
+for i,im in enumerate(s.select('.radial-marquee__card img.resource-card__img')):
+ key=thumbs[i%len(thumbs)];im['src']=f'assets/visuals/illustrations/{key}.svg';im['alt']='Illustration: '+s.select('.radial-marquee__card')[i].get_text(' ',strip=True);im['data-gg-fit']='cover';im.attrs.pop('data-gg-asset',None)
+# Challenge icons describe the engineering problem; these cards are not testimonials.
+for im,key in zip(s.select('.testimonial-item__info-img img'),['association','reversal','cross-check','identity','uncertainty','settlement']):
+ im['src']=f'assets/visuals/challenge-icons/{key}.svg';im['alt']='';im['aria-hidden']='true'
+# Local demo preview and an accessible, native video dialog.
+reel=s.select_one('[data-reel-row]');reel.attrs.pop('data-gg-map',None);reel['data-gg-demo']='true';reel['aria-label']='Play Green Groove demo';reel.attrs.pop('data-player-control-open',None)
+preview=reel.select_one('.reel__visual');old=preview.select_one('img.cover-image')
+video=s.new_tag('video',attrs={'class':'cover-image gg-demo-preview','muted':'','loop':'','playsinline':'','preload':'none','poster':'assets/media/greengroove-demo-poster.webp','aria-hidden':'true','data-gg-preview':''})
+video.append(s.new_tag('source',src='assets/media/greengroove-demo.mp4',type='video/mp4'));old.replace_with(video)
+for el,label in zip(preview.select('.reel__visual-text p'),['Green Groove','00:15']):el.string=label
+for el in reel.select('.scribble'):el.string='See it in motion'
+s.body.append(f('<dialog id="gg-demo-player" aria-label="Green Groove animation demo"><button type="button" class="gg-demo-close" aria-label="Close demo">Close ×</button><video controls playsinline preload="none" poster="assets/media/greengroove-demo-poster.webp"><source src="assets/media/greengroove-demo.mp4" type="video/mp4"/>Your browser cannot play this video. <a href="assets/media/greengroove-demo.mp4">Open the demo video</a>.</video></dialog>'))
 Path('index.html').write_text(str(s))
 print('Restored source DOM from',BASE)

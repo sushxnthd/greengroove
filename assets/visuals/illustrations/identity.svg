@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400" role="img" aria-labelledby="title"><title id="title">Illustration: an RFID wristband worn on a wrist</title><rect width="600" height="400" fill="#e9ded0"/><g stroke="#202722" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+<path d="M-20 292 230 153l141 116-222 146" fill="#c68d69"/>
+<path d="m210 164 70-51c25-18 61-17 80 1l81 77c14 14 4 37-15 37l-26-5 12 21c10 18-5 37-24 32l-17-7c-34 20-75 25-99 3" fill="#e3b08b"/>
+<path d="m158 198 60-35c41-21 120 64 108 100l-57 38c-5-44-60-101-111-103Z" fill="#3b864c"/>
+<path d="m164 195 57-32c30-12 106 66 103 101l-51 31c-8-38-60-95-109-100Z" fill="#78ff45"/>
+<g transform="translate(241 217) rotate(44)"><rect x="-43" y="-35" width="86" height="70" rx="23" fill="#202722"/><rect x="-19" y="-16" width="38" height="32" rx="9" fill="#a1ff7b"/><path d="M-28-7c-7 5-7 10 0 15m56-15c7 5 7 10 0 15" fill="none" stroke="#a1ff7b" stroke-width="3"/></g>
+<path d="M419 70q60 8 79 57m-73-31q30 3 42 27" fill="none" stroke="#237a59" stroke-width="7"/>
+<circle cx="430" cy="135" r="7" fill="#237a59" stroke="none"/>
+</g></svg>

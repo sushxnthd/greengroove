@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400" role="img" aria-labelledby="title"><title id="title">Illustration: a milk carton returning to the shelf</title><rect width="600" height="400" fill="#eee6f0"/><g stroke="#202722" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+<path d="M93 310h417v35H93z" fill="#c3becb"/><path d="M93 310 151 279h358v31Z" fill="#fffdf6"/>
+<ellipse cx="336" cy="287" rx="104" ry="21" fill="#b3b2bc" stroke="none" opacity=".4"/>
+<g transform="translate(279 95) rotate(11 50 90)"><path d="m0 45 24-35h58l25 35v142H0Z" fill="#f9f7e9"/><path d="M0 45h107M24 10v35m58-35v35" fill="none"/><path d="M0 98h107v61H0z" fill="#18bdf2"/><path d="m24 10 30-17 28 17" fill="#e8e5d5"/><path d="M20 72h36" fill="none" stroke-width="7"/><path d="M29 129c0-17 25-31 25-31s25 14 25 31a25 25 0 0 1-50 0Z" fill="#effbfb" stroke="none"/></g>
+<path d="M181 100c-72 21-88 102-36 149" fill="none" stroke="#237a59" stroke-width="20"/><path d="m118 235 40 32 13-50" fill="#237a59" stroke="none"/>
+<path d="M411 264h66m-33-19v38" fill="none" stroke="#237a59" stroke-width="7"/>
+</g></svg>

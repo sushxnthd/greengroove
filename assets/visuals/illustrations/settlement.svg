@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400" role="img" aria-labelledby="title"><title id="title">Illustration: a receipt printer producing the basket invoice</title><rect width="600" height="400" fill="#dfE9df"/><g stroke="#202722" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+<ellipse cx="308" cy="337" rx="157" ry="18" fill="#b6c6b3" stroke="none"/>
+<path d="m162 215 54-45h207l39 45v110H162Z" fill="#44584b"/><path d="M162 215h300v110H162Z" fill="#26362b"/><rect x="196" y="236" width="234" height="18" rx="8" fill="#111b15"/>
+<path d="M219 246V52l19 10 19-10 19 10 19-10 19 10 19-10 19 10 19-10 20 10 18-10v194Z" fill="#fcfaf0"/>
+<path d="M249 97h107M249 117h65M249 151h66m26 0h17m-109 24h66m26 0h17M249 204h109" fill="none" stroke-width="5"/>
+<circle cx="426" cy="286" r="7" fill="#78ff45" stroke="none"/><path d="M185 309h48" stroke="#89a28e"/>
+<circle cx="427" cy="111" r="37" fill="#78ff45" stroke="none"/><path d="m410 111 12 13 24-29" fill="none" stroke-width="7"/>
+</g></svg>

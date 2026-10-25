@@ -29,6 +29,15 @@
   qa('.footer-link__col').forEach(e=>{const top=q('.footer-link__col-top',e),bottom=q('.footer-link__col-bottom',e);if(!top||!bottom)return;const mobile=innerWidth<=767,expanded=!mobile||e.getAttribute('data-accordion-status')==='active';top.tabIndex=mobile?0:-1;top.setAttribute('aria-expanded',String(expanded));if(mobile)top.setAttribute('role','button');else top.removeAttribute('role');bottom.inert=!expanded});
  }
  function start(){
+  const dialog=q('#gg-demo-player'),player=q('video',dialog),preview=q('[data-gg-preview]');
+  const closeDemo=()=>{player.pause();player.currentTime=0;document.body.classList.remove('gg-demo-open');};
+  dialog.addEventListener('close',()=>{closeDemo();q('[data-gg-demo]')?.focus();});
+  q('.gg-demo-close',dialog).addEventListener('click',()=>dialog.close());
+  dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close();});
+  if(preview && !prefersRM){
+   const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting && !dialog.open)preview.play().catch(()=>{});else preview.pause();}),{threshold:.25});observer.observe(preview);
+  }
+
   sync();new MutationObserver(sync).observe(document.body,{subtree:true,attributes:true,attributeFilter:['data-nav-status','data-gsap-slider-control-status','data-modal-status','aria-hidden','data-accordion-status']});addEventListener('resize',sync,{passive:true});
   const evidence=q('#evidence'),cards=qa('.pricing-card',evidence),buttons=qa('[data-pricing-button]',evidence);
   evidence.setAttribute('data-pricing-section-status','quarterly');
@@ -41,6 +50,7 @@
   qa('[data-current-year]').forEach(e=>e.textContent=new Date().getFullYear());document.body.classList.add('gg-repair-ready');
  }
  document.addEventListener('click',e=>{
+  const demo=e.target.closest('[data-gg-demo]');if(demo){e.preventDefault();e.stopImmediatePropagation();const dialog=q('#gg-demo-player');q('[data-gg-preview]')?.pause();dialog.showModal();document.body.classList.add('gg-demo-open');q('video',dialog).play().catch(()=>{});return}
   const layer=e.target.closest('[data-gg-detail]');if(layer){e.preventDefault();e.stopImmediatePropagation();showDetail(+layer.dataset.ggDetail);return}
   const build=e.target.closest('[data-gg-build]');if(build){e.preventDefault();e.stopImmediatePropagation();showBuild(build.closest('[data-gg-build-title]'));return}
   const activeBuild=e.target.closest('[data-gg-active-build]');if(activeBuild){e.preventDefault();e.stopImmediatePropagation();showBuild(q('[data-flick-cards-item-status=active]'));return}

@@ -23,7 +23,7 @@ for layer in s.select('.about-card__img-layer'):
  assert [im['src'] for im in layer.select('img')]==['assets/people/sushanth.webp','assets/people/aryan.webp']
 assert not s.select('img[src*=g04]'), 'Additional signal rings returned'
 assert not s.select('img[src*=g02]'), 'Placeholder logo remains in a portrait slot'
-assert len(s.select('.testimonial-item__info-img img[src*="assets/people/"]'))==6
+assert len(s.select('.testimonial-item__info-img img[src*="challenge-icons/"]'))==6
 assert len(s.select('.join-faces__image-el'))==3
 assert len(s.select('.about-item__img img[src*="assets/people/"]'))==2
 assert 'amity-readable.svg' in str(s.select('.trustedby-marquee__item-svg'))
@@ -45,7 +45,9 @@ for e in s.select('[src],link[href],a[href],image[href]'):
  elif not parts.scheme and not u.startswith('//'):
   p=root/unquote(parts.path);assert p.is_file(),str(p);refs.append(parts.path)
 for e in s.select('script[src],link[rel=stylesheet]'):assert not urlsplit(e.get('src') or e.get('href')).scheme,'Remote runtime'
-assert not s.select('video,[data-mapping],[data-form-validate],[data-o-auth]')
+assert not s.select('[data-mapping],[data-form-validate],[data-o-auth]')
+assert len(s.select('video'))==2 and s.select_one('#gg-demo-player video') and s.select_one('[data-gg-preview]')
+assert all('illustrations/' in im['src'] for im in s.select('.radial-marquee__card img.resource-card__img'))
 assert not s.select('script[src*=public-launch],link[href*=public-launch]')
 assert len(s.select('.product-card'))==6
 assert len(s.select('[data-flick-cards-item]'))==7

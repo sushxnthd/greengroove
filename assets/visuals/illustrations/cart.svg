@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400" role="img" aria-labelledby="title"><title id="title">Illustration: a phone showing a live shopping basket</title><rect width="600" height="400" fill="#242f2c"/><g stroke="#202722" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+<ellipse cx="302" cy="350" rx="150" ry="17" fill="#101a16" stroke="none"/>
+<g transform="rotate(-8 300 205)"><rect x="203" y="32" width="194" height="331" rx="32" fill="#8da096"/><rect x="212" y="38" width="175" height="313" rx="25" fill="#f5f3eb"/><path d="M264 45h71l-8 12h-55Z" fill="#202722"/>
+<path d="m236 90 9 39h100l14-39Z" fill="#78ff45"/><path d="M230 79h10l5 11m18 0 5 39m22-39v39m23-39-5 39m-55 18h92" fill="none"/><circle cx="269" cy="148" r="5" fill="#202722"/><circle cx="330" cy="148" r="5" fill="#202722"/>
+<rect x="232" y="173" width="135" height="56" rx="10" fill="#dedfd5" stroke="none"/><path d="m246 188 10-7 16 8v25h-26Z" fill="#18bdf2" stroke-width="2"/><path d="M290 191h50m-50 12h27" stroke-width="5"/>
+<rect x="232" y="241" width="135" height="56" rx="10" fill="#dedfd5" stroke="none"/><path d="M249 257c-13 1-12 28 1 28 6 0 6-3 10 0 11 0 15-30 0-28-7 2-4 2-11 0Z" fill="#d5976f" stroke-width="2"/><path d="M290 258h50m-50 12h27M270 325h60" stroke-width="5"/></g>
+<circle cx="418" cy="108" r="38" fill="#78ff45" stroke="none"/><path d="m401 109 11 12 23-27" fill="none" stroke-width="7"/>
+</g></svg>

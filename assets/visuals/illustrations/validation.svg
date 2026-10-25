@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400" role="img" aria-labelledby="title"><title id="title">Illustration: a calibration weight on a load-cell test platform</title><rect width="600" height="400" fill="#e0e4f0"/><g stroke="#202722" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+<path d="m101 267 196-51 103 61-197 58Z" fill="#f9f6ec"/><path d="m101 267 102 68 197-58v22l-197 58-102-68Z" fill="#b3bccd"/>
+<path d="m210 335 5 27 57-15v-26Z" fill="#18bdf2"/>
+<path d="M237 236v-76c0-10 21-18 44-18s44 8 44 18v76c0 10-20 18-44 18s-44-8-44-18Z" fill="#74857f"/><ellipse cx="281" cy="160" rx="44" ry="17" fill="#c7d5c9"/><path d="M264 144v-20a17 17 0 0 1 34 0v20" fill="none" stroke-width="8"/>
+<rect x="411" y="97" width="124" height="133" rx="14" fill="#2e4037"/><rect x="426" y="113" width="94" height="75" rx="5" fill="#10251a"/><path d="M438 161h13l9-17 12 35 12-26h23" fill="none" stroke="#78ff45" stroke-width="4"/><circle cx="449" cy="210" r="6" fill="#78ff45"/><circle cx="478" cy="210" r="6" fill="#b2c2b2"/>
+<path d="M441 230v54q0 32-63 32h-31" fill="none" stroke-width="5"/><path d="m167 132-8-10m29-3v-14m-40 49h-14" stroke="#556f60"/>
+</g></svg>
