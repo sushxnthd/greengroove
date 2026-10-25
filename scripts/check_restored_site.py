@@ -26,7 +26,7 @@ assert not s.select('img[src*=g02]'), 'Placeholder logo remains in a portrait sl
 assert len(s.select('.testimonial-item__info-img img[src*="assets/people/"]'))==6
 assert len(s.select('.join-faces__image-el'))==3
 assert len(s.select('.about-item__img img[src*="assets/people/"]'))==2
-assert 'amity.webp' in str(s.select('.trustedby-marquee__item-svg'))
+assert 'amity-readable.svg' in str(s.select('.trustedby-marquee__item-svg'))
 assert all(svg.get('viewbox')=='0 0 172 42' for svg in s.select('.trustedby-marquee__item-svg'))
 assert s.select_one('meta[name="description"]')['content'].find('retail product')>=0
 assert s.select_one('#evidence .pricing-card__sub > .p-m').get_text()=='Earned to date'

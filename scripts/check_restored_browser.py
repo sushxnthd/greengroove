@@ -27,7 +27,7 @@ with sync_playwright() as p:
     assert page.locator('.about-card__img-layer').first.locator('img').first.evaluate('(e)=>getComputedStyle(e).visibility==="visible"'), 'Paused portrait hidden'
     assert page.locator('.about-card__img-layer').nth(1).evaluate('(e)=>getComputedStyle(e).visibility==="hidden"'), 'Paused inner mask hides the portrait'
     assert page.locator('img[src*=g02]').count()==0, 'Placeholder portrait logos returned'
-    assert page.locator('.trustedby-marquee__item-svg image[href$="amity.webp"]').first.evaluate('(e)=>getComputedStyle(e).filter==="none"'), 'AISG46 wordmark is blacked out'
+    assert page.locator('.trustedby-marquee__item-svg image[href$="amity-readable.svg"]').first.evaluate('(e)=>getComputedStyle(e).filter==="none"'), 'AISG46 wordmark is blacked out'
     assert page.locator('.trustedby-marquee__item-svg image').evaluate_all('(es)=>es.every(e=>getComputedStyle(e).filter==="none")'), 'Logo colour filter returned'
     assert page.locator('#build .showcase-media__image').evaluate_all('(es)=>es.every(e=>getComputedStyle(e).objectFit==="cover")'), 'Build previews are zoomed out'
     assert page.locator('.join-faces__image-el').evaluate_all('(es)=>es.every(e=>parseFloat(getComputedStyle(e).marginRight)<0)'), 'Native Osmo institution overlap was lost'

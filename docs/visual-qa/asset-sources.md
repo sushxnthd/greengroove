@@ -26,3 +26,7 @@ Build-gallery previews use the source cover fit; full diagrams remain available 
 Both founders' LinkedIn URLs were provided directly by the user. Founder controls, card credits, detail-dialog credits and footer names link to the corresponding profile. Green Groove is presented as a physical retail product with the user-reported ₹2 lakh+ earned milestone; no sales/revenue breakdown or customer testimonials were inferred. The documented ₹50,000 development grant remains separate context.
 
 The full original AISG46 WebP crest and wordmark is shown without filtering on a dark backing in the existing 172 × 42 logo slot. The compact PRAYAAS strip retains the original Osmo circular overlap and uses the three institutional emblems. No customer testimonials were added.
+
+## Transparent school wordmark correction
+
+Removed the dark backing rectangle from the AISG46 marquee slot. The transparent amity-readable.svg retains the coloured crest and full wordmark, with dark lettering for the light page background. No whole-logo monochrome filter is applied.

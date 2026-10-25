@@ -190,10 +190,9 @@ for item in native_art:
  for im in s.select(item['selector']):
   im['src']=item['path'];im.attrs.pop('data-gg-asset',None)
 # Institutional marks keep the original Osmo wide-logo geometry and their real colours.
-marks=[('amity.webp','Amity International School, Gurugram Sector 46'),('ncert.png','NCERT — PRAYAAS programme'),('iit-delhi-colour.png','IIT Delhi — associated HEI')]
+marks=[('amity-readable.svg','Amity International School, Gurugram Sector 46'),('ncert.png','NCERT — PRAYAAS programme'),('iit-delhi-colour.png','IIT Delhi — associated HEI')]
 for i,svg in enumerate(s.select('.trustedby-marquee__item-svg')):
  name,label=marks[i%len(marks)];svg.clear();svg['viewbox']='0 0 172 42';svg['role']='img';svg['aria-label']=label
- if name=='amity.webp':svg.append(s.new_tag('rect',x='0',y='0',width='172',height='42',fill='#201d1d',rx='2'))
  svg.append(s.new_tag('image',href='assets/institutions/'+name,x='0',y='0',width='172',height='42',preserveAspectRatio='xMidYMid meet'))
 for el,label in zip(s.select('.info .eyebrow.is--relative'),['School · Programme','Associated HEI']):el.string=label
 # Real founder portraits replace avatar logos in About and project credits.
