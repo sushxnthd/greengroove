@@ -17,7 +17,8 @@ with sync_playwright() as p:
    page=context.new_page();errors=[];external=[]
    page.on('pageerror',lambda e:errors.append(str(e)))
    page.on('console',lambda m:errors.append(m.text) if m.type=='error' else None)
-   page.on('request',lambda r:external.append(r.url) if not r.url.startswith(('http://127.0.0.1:4173/','data:')) else None)
+   # WebKit creates same-origin blob buffers for local video decoding.
+   page.on('request',lambda r:external.append(r.url) if not r.url.startswith(('http://127.0.0.1:4173/','data:','blob:http://127.0.0.1:4173/')) else None)
    def close():
     page.get_by_role('button',name='Close showcase',exact=True).click()
     expect(page.locator('[data-modal-target=showcase]')).not_to_have_attribute('data-modal-status','active')
