@@ -30,7 +30,10 @@ with sync_playwright() as p:
     assert page.locator('img[src*=g02]').count()==0, 'Placeholder portrait logos returned'
     assert page.locator('.trustedby-marquee__item-svg image[href$="amity-readable.svg"]').first.evaluate('(e)=>getComputedStyle(e).filter==="none"'), 'AISG46 wordmark is blacked out'
     assert page.locator('.trustedby-marquee__item-svg image').evaluate_all('(es)=>es.every(e=>getComputedStyle(e).filter==="none")'), 'Logo colour filter returned'
-    assert page.locator('#build .showcase-media__image').evaluate_all('(es)=>es.every(e=>getComputedStyle(e).objectFit==="cover")'), 'Build previews are zoomed out'
+    assert page.locator('#build .showcase-media__image').evaluate_all('(es)=>es.every(e=>getComputedStyle(e).objectFit==="contain")'), 'Build previews crop the artwork'
+    assert page.locator('#build .showcase-media').evaluate_all('(es)=>es.every(e=>{const im=e.querySelector("img");return Math.abs(e.clientWidth/e.clientHeight-Number(im.getAttribute("width"))/Number(im.getAttribute("height")))<.02})'), 'Build frames do not follow artwork proportions'
+    assert page.locator('.testimonial-item__info-img').evaluate_all('(es)=>es.every(e=>getComputedStyle(e).backgroundColor==="rgb(0, 0, 0)"&&e.querySelector("img").src.includes("assets/people/"))'), 'Challenge portraits need black backings'
+    assert page.locator('.gg-build-notes svg').count()==1
     assert page.locator('.join-faces__image-el').evaluate_all('(es)=>es.every(e=>parseFloat(getComputedStyle(e).marginRight)<0)'), 'Native Osmo institution overlap was lost'
     assert page.locator('.join-faces__image-el').evaluate_all('(es)=>es.every(e=>parseFloat(getComputedStyle(e).borderTopLeftRadius)>0)'), 'Native circular institution framing was lost'
     assert page.locator('.trustedby-marquee__item-svg').evaluate_all('(es)=>es.every(e=>e.viewBox.baseVal.width===172&&e.viewBox.baseVal.height===42)'), 'Wide Osmo logo geometry was lost'

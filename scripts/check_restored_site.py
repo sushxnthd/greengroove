@@ -23,7 +23,7 @@ for layer in s.select('.about-card__img-layer'):
  assert [im['src'] for im in layer.select('img')]==['assets/people/sushanth.webp','assets/people/aryan.webp']
 assert not s.select('img[src*=g04]'), 'Additional signal rings returned'
 assert not s.select('img[src*=g02]'), 'Placeholder logo remains in a portrait slot'
-assert len(s.select('.testimonial-item__info-img img[src*="challenge-icons/"]'))==6
+assert len(s.select('.testimonial-item__info-img img[src*="assets/people/"]'))==6
 assert len(s.select('.join-faces__image-el'))==3
 assert len(s.select('.about-item__img img[src*="assets/people/"]'))==2
 assert 'amity-readable.svg' in str(s.select('.trustedby-marquee__item-svg'))
@@ -32,7 +32,11 @@ assert s.select_one('meta[name="description"]')['content'].find('retail product'
 assert s.select_one('#evidence .pricing-card__sub > .p-m').get_text()=='Earned to date'
 assert s.select_one('a[href="https://www.linkedin.com/in/sushxnthd/"]')
 assert s.select_one('a[href="https://www.linkedin.com/in/0aryan-kumar0/"]')
-assert all(e.get('data-gg-fit')=='cover' for e in s.select('#build .showcase-media__image'))
+assert all(e.get('data-gg-fit')=='contain' and e.get('width') and e.get('height') for e in s.select('#build .showcase-media__image'))
+assert all('--gg-media-ratio:' in e.get('style','') for e in s.select('#build .flick-card'))
+assert s.select_one('.gg-build-notes svg') and not s.select_one('footer .radiocheck-field.is--newsletter')
+assert s.select_one('[data-gg-nav-demo]')['src'].endswith('greengroove-demo-nav.gif')
+assert len(s.select('.product-card img[src*="layer-previews/"]'))==6
 assert not s.select('image[href$="iit-delhi.png"],img[src$="iit-delhi.png"]')
 assert 'brightness(' not in (root/'source-repair.css').read_text()
 ids=[e['id'] for e in s.select('[id]')];assert len(ids)==len(set(ids)),'Duplicate IDs'

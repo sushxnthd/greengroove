@@ -25,7 +25,7 @@ html[data-gg-motion=reduce] .about-card__img-rotate{width:100%}
 .join-faces__image-el img[data-institution]{object-fit:contain;padding:2px;background:var(--color-neutral-200,#f4f4f4)}
 .about-item__img:has(img[src*="assets/people/"]),.profile-picture:has(img[src*="assets/people/"]){background:var(--color-purple)}
 
-.testimonial-item__info-img:has(img[src*="assets/people/"]){background:var(--color-purple)}
+.testimonial-item__info-img:has(img[src*="assets/people/"]){background:#000}
 .testimonial-item__info-img img[src*="assets/people/"]{object-fit:cover}
 
 /* Media occupies the source reel box; the full 4:5 film opens without cropping. */
@@ -36,4 +36,22 @@ html[data-gg-motion=reduce] .about-card__img-rotate{width:100%}
 #gg-demo-player video{display:block;width:100%;max-height:90dvh;object-fit:contain;border-radius:inherit}
 .gg-demo-close{position:absolute;z-index:2;right:.75em;top:.75em;border:0;border-radius:2em;padding:.5em .8em;background:#f4f4f4;color:#201d1d;cursor:pointer}
 body.gg-demo-open{overflow:hidden}
-.testimonial-item__info-img img[src*="challenge-icons/"]{object-fit:contain}
+/* Each draggable frame follows its artwork ratio; all edges remain visible. */
+#build .flick-card{width:min(36em,88vw);border-radius:1.1em;padding:.375em}
+#build .flick-card__bg{border-radius:1.1em}
+#build .flick-card__media,#build .showcase-media{border-radius:.8em;overflow:hidden}
+#build .showcase-media__before{padding-top:calc(100% / var(--gg-media-ratio,1.33333333))}
+#build .showcase-media__image{width:100%;height:100%;object-fit:contain;object-position:center}
+/* Round the diagram surfaces themselves, while keeping all diagram content visible. */
+#system .db-visual{width:min(100%,68em);margin-inline:auto;border-radius:1.5em;overflow:hidden}
+#system .db-visual img{width:100%;height:100%;object-fit:contain;border-radius:inherit}
+.try-vault__visual{width:92%;margin-inline:auto;border-radius:1.5em;overflow:hidden}
+.try-vault__visual-before{padding-top:62.5%}
+.try-vault__visual img{width:100%;height:100%;object-fit:contain;object-position:center;border-radius:inherit}
+.gg-build-notes{display:inline-flex;align-items:center;gap:.65em;line-height:1.4;text-decoration:none}
+.gg-build-notes svg{display:block;flex:none;width:1.2em;height:1.2em}
+.gg-build-notes:hover span{text-decoration:underline;text-underline-offset:.2em}
+/* Keep the original menu card; the movie preview retains its full 4:5 frame. */
+.nav-banner__ptc-preview{width:8em;max-width:65%;aspect-ratio:4/5;margin:1em auto .5em;border-radius:.75em;background:#f4f4f4;flex:none}
+.nav-banner__ptc-preview .product-card__ptc-preview-before{display:none}
+.nav-banner__ptc-preview img{width:100%;height:100%;object-fit:contain}

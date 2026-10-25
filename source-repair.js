@@ -29,6 +29,12 @@
   qa('.footer-link__col').forEach(e=>{const top=q('.footer-link__col-top',e),bottom=q('.footer-link__col-bottom',e);if(!top||!bottom)return;const mobile=innerWidth<=767,expanded=!mobile||e.getAttribute('data-accordion-status')==='active';top.tabIndex=mobile?0:-1;top.setAttribute('aria-expanded',String(expanded));if(mobile)top.setAttribute('role','button');else top.removeAttribute('role');bottom.inert=!expanded});
  }
  function start(){
+  const navDemo=q('[data-gg-nav-demo]');
+  if(navDemo){
+   const motion=matchMedia('(prefers-reduced-motion: reduce)');
+   const updateNavDemo=()=>navDemo.src=(motion.matches||new URLSearchParams(location.search).get('motion')==='reduce')?'assets/media/greengroove-demo-poster.webp':'assets/media/greengroove-demo-nav.gif';
+   updateNavDemo();motion.addEventListener('change',updateNavDemo);
+  }
   const dialog=q('#gg-demo-player'),player=q('video',dialog),preview=q('[data-gg-preview]');
   const closeDemo=()=>{player.pause();player.currentTime=0;document.body.classList.remove('gg-demo-open');};
   dialog.addEventListener('close',()=>{closeDemo();q('[data-gg-demo]')?.focus();});

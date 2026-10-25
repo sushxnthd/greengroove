@@ -5,15 +5,16 @@ INK='#202722';GREEN='#78ff45';BLUE='#18bdf2';CREAM='#f4f1e8'
 def write(key,title,bg,body):
  svg=f'''<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400" role="img" aria-labelledby="title"><title id="title">{title}</title><rect width="600" height="400" fill="{bg}"/><g stroke="{INK}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">{body}</g></svg>'''
  (out/f'{key}.svg').write_text(svg)
-# Thesis: a wristband establishes identity at the start of a shopping trip.
-write('identity','Illustration: an RFID wristband worn on a wrist','#e9ded0','''
-<path d="M-20 292 230 153l141 116-222 146" fill="#c68d69"/>
-<path d="m210 164 70-51c25-18 61-17 80 1l81 77c14 14 4 37-15 37l-26-5 12 21c10 18-5 37-24 32l-17-7c-34 20-75 25-99 3" fill="#e3b08b"/>
-<path d="m158 198 60-35c41-21 120 64 108 100l-57 38c-5-44-60-101-111-103Z" fill="#3b864c"/>
-<path d="m164 195 57-32c30-12 106 66 103 101l-51 31c-8-38-60-95-109-100Z" fill="#78ff45"/>
-<g transform="translate(241 217) rotate(44)"><rect x="-43" y="-35" width="86" height="70" rx="23" fill="#202722"/><rect x="-19" y="-16" width="38" height="32" rx="9" fill="#a1ff7b"/><path d="M-28-7c-7 5-7 10 0 15m56-15c7 5 7 10 0 15" fill="none" stroke="#a1ff7b" stroke-width="3"/></g>
-<path d="M419 70q60 8 79 57m-73-31q30 3 42 27" fill="none" stroke="#237a59" stroke-width="7"/>
-<circle cx="430" cy="135" r="7" fill="#237a59" stroke="none"/>
+# Thesis: the RFID module is the focal point of a recognisable closed wristband.
+write('identity','Illustration: a closed RFID wristband with an embedded identity module','#e9ded0','''
+<ellipse cx="300" cy="316" rx="170" ry="24" fill="#c8baaa" stroke="none"/>
+<path d="M139 188c0-73 72-126 161-126s161 53 161 126v49c0 68-72 120-161 120s-161-52-161-120Z" fill="#2f6546"/>
+<ellipse cx="300" cy="188" rx="161" ry="126" fill="#78ff45"/>
+<ellipse cx="300" cy="182" rx="112" ry="79" fill="#e9ded0"/>
+<path d="M188 182v30c8-43 53-70 112-70s104 27 112 70v-30c0-44-50-79-112-79s-112 35-112 79Z" fill="#458858"/>
+<path d="M139 216c19 67 86 103 161 103s142-36 161-103" fill="none" stroke="#97ff73" stroke-width="3"/>
+<g transform="translate(300 266) rotate(-6)"><rect x="-60" y="-39" width="120" height="78" rx="22" fill="#202722"/><rect x="-28" y="-21" width="56" height="42" rx="10" fill="#c4ffad"/><path d="M-41-11q-13 11 0 22m82-22q13 11 0 22" fill="none" stroke="#c4ffad" stroke-width="3"/><path d="M-13-8h26v16h-26z" fill="none" stroke-width="2"/></g>
+<path d="M489 87q27 24 25 55m-45-40q17 16 16 35" fill="none" stroke="#237a59" stroke-width="6"/>
 ''')
 # Thesis: shelf sensing lives beneath physical products, not inside an abstract diagram.
 write('shelf','Illustration: a sensor-equipped shelf with product packages','#dbe8ec','''
@@ -75,11 +76,14 @@ write('validation','Illustration: a calibration weight on a load-cell test platf
 <rect x="411" y="97" width="124" height="133" rx="14" fill="#2e4037"/><rect x="426" y="113" width="94" height="75" rx="5" fill="#10251a"/><path d="M438 161h13l9-17 12 35 12-26h23" fill="none" stroke="#78ff45" stroke-width="4"/><circle cx="449" cy="210" r="6" fill="#78ff45"/><circle cx="478" cy="210" r="6" fill="#b2c2b2"/>
 <path d="M441 230v54q0 32-63 32h-31" fill="none" stroke-width="5"/><path d="m167 132-8-10m29-3v-14m-40 49h-14" stroke="#556f60"/>
 ''')
-# Thesis: one product pick is a physical action, not an abstract state transition.
-write('interaction','Illustration: a hand picking an apple from a retail crate','#efdfd9','''
-<path d="m67 261 228-27 180 57-230 42Z" fill="#b07951"/><path d="m67 261 178 72 230-42v62l-230 49-178-75Z" fill="#d7a475"/><path d="m84 294 147 60m27 4 194-39M84 316l147 60m27 4 194-39" stroke="#a16b47"/>
-<path d="M162 248c-47-6-46 66-9 67 13 1 13-7 24-3 38-1 34-71 0-65-9 3-9 5-15 1Z" fill="#ba6557"/><path d="M164 248c-1-13 8-21 16-25" fill="none" stroke="#476e42"/><path d="M255 244c-39-6-42 62-9 63 13 0 14-7 23-3 33-1 30-68 0-62-8 2-9 4-14 2Z" fill="#a2b86d"/>
-<path d="M570 67 473 140l-59-10-66 36-11 46c-5 18 16 23 24 8l12-26 29-9-21 39c-10 18 9 29 23 15l43-43 72-13 84-73Z" fill="#e0aa87"/>
-<path d="M339 139c-50-9-59 78-14 85 16 2 21-8 33-2 43 3 49-84 9-82-10 0-19 8-28-1Z" fill="#cb705c"/><path d="M344 139c0-17 12-28 23-31" fill="none" stroke="#476e42" stroke-width="7"/><path d="m355 120 17-10 16 4-17 11Z" fill="#699258"/>
-<path d="M298 105 281 91m42 0-4-19m-40 56-23-3" stroke="#9a5b4d" stroke-width="5"/>
+# Thesis: a product lifted from a shelf is one clear, reversible physical action.
+write('interaction','Illustration: one carton picked up from a stocked shelf','#efdfd9','''
+<ellipse cx="294" cy="347" rx="198" ry="18" fill="#d6bfb3" stroke="none"/>
+<path d="m70 286 329-44 132 52-330 48Z" fill="#f4f1e8"/><path d="m70 286 131 56 330-48v24l-330 48-131-55Z" fill="#ac9383"/>
+<g transform="translate(116 185)"><path d="m0 19 17-21 33-5 23 19v96l-49 8L0 99Z" fill="#a2b86d"/><path d="m0 19 24 16 49-7M24 35v81" fill="none"/><path d="m35 52 25-4v29l-25 4Z" fill="#e4eccd" stroke="none"/></g>
+<g transform="translate(378 185)"><path d="m0 19 17-21 33-5 23 19v96l-49 8L0 99Z" fill="#d49d61"/><path d="m0 19 24 16 49-7M24 35v81" fill="none"/><path d="m35 52 25-4v29l-25 4Z" fill="#f7dfba" stroke="none"/></g>
+<g transform="translate(241 62) rotate(-8 45 65)"><path d="M0 30 21 0h46l23 30v115H0Z" fill="#f8f5e9"/><path d="M0 30h90M21 0v30M67 0v30" fill="none"/><path d="M0 68h90v48H0Z" fill="#18bdf2"/><path d="M33 91c0-9 12-18 12-18s12 9 12 18a12 12 0 0 1-24 0Z" fill="#f8f5e9" stroke="none"/></g>
+<path d="M303 273v-43m-16 16 16-16 16 16" fill="none" stroke="#237a59" stroke-width="8"/>
+<path d="M230 269 319 257 358 273 269 287Z" fill="none" stroke="#a28270" stroke-width="3" stroke-dasharray="6 8"/>
+<path d="m214 85-17-9m26-8-6-17m-13 55h-20" stroke="#a28270"/>
 ''')

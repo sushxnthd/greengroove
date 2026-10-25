@@ -292,9 +292,39 @@ for el in earned.select('.pricing-card__sub-details .p-m'):
 # One bespoke, non-photographic illustration per existing hero carousel card.
 for i,im in enumerate(s.select('.radial-marquee__card img.resource-card__img')):
  key=thumbs[i%len(thumbs)];im['src']=f'assets/visuals/illustrations/{key}.svg';im['alt']='Illustration: '+s.select('.radial-marquee__card')[i].get_text(' ',strip=True);im['data-gg-fit']='cover';im.attrs.pop('data-gg-asset',None)
-# Challenge icons describe the engineering problem; these cards are not testimonials.
-for im,key in zip(s.select('.testimonial-item__info-img img'),['association','reversal','cross-check','identity','uncertainty','settlement']):
- im['src']=f'assets/visuals/challenge-icons/{key}.svg';im['alt']='';im['aria-hidden']='true'
+# Founder portraits remain in the engineering challenge cards, on a black backing.
+for i,im in enumerate(s.select('.testimonial-item__info-img img')):
+ person=['sushanth','aryan'][i%2];im['src']=f'assets/people/{person}.webp';im['alt']=people[person];im.attrs.pop('aria-hidden',None)
+# Product-preview artwork occupies the original six-card illustration slots.
+layer_glyphs=[
+ '<rect x="28" y="9" width="40" height="78" rx="18"/><rect x="17" y="29" width="62" height="38" rx="13"/><rect x="36" y="40" width="24" height="16" rx="5"/>',
+ '<path d="M12 62h72v14H12zM21 27h20v35H21zM55 20h20v42H55zM30 76v10m36-10v10"/>',
+ '<circle cx="18" cy="25" r="10"/><circle cx="18" cy="71" r="10"/><rect x="62" y="34" width="24" height="28" rx="5"/><path d="M28 25h15l18 23m-33 23h15l18-23"/>',
+ '<path d="M26 29h29a25 25 0 1 1-24 33M26 14 11 29l15 15"/>',
+ '<path d="m15 28 12 40h43l14-40H15Zm18 0 10-15m20 15L53 13M37 40v15m13-15v15m13-15v15M30 81h1m36 0h1"/>',
+ '<path d="M23 12h50v74l-8-5-8 5-9-5-9 5-8-5-8 5V12Zm12 20h26M35 46h26M35 62h16"/>'
+]
+for card,key,glyph in zip(s.select('.product-card'),keys,layer_glyphs):
+ for lock in card.select('.ptc-card__locked'):lock.decompose()
+ for im in card.select('img'):
+  im['src']=f'assets/visuals/layer-previews/{key}.svg';im['alt']='';im['aria-hidden']='true'
+ icon=card.select_one('.product-card__icon-svg');icon.clear();icon.attrs.pop('viewbox',None);icon['viewBox']='0 0 96 96';icon['aria-hidden']='true'
+ icon.append(f(f'<g fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">{glyph}</g>'))
+# Fit the draggable green frames to each original artwork's dimensions.
+import xml.etree.ElementTree as ET
+for im in s.select('#build .showcase-media__image'):
+ art=ET.parse(im['src']).getroot();_,_,w,h=map(float,art.attrib['viewBox'].split())
+ im['data-gg-fit']='contain';im['width']=str(int(w));im['height']=str(int(h))
+ im.find_parent(class_='flick-card')['style']=f'--gg-media-ratio:{w/h:.8f}'
+# Replace the leftover newsletter consent UI with a real external notes link.
+label=s.select_one('footer .radiocheck-field.is--newsletter')
+if label:
+ label.replace_with(f(f'<a class="gg-build-notes" href="{case}" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true" viewBox="0 0 24 24" width="24" height="24">{paths["case"]}</svg><span>Build notes on Behance</span></a>'))
+# The architecture menu preview uses the supplied film, with a still for reduced motion.
+nav_preview=s.select_one('.nav-banner__ptc-preview')
+for e in nav_preview.select('.ptc-card__locked'):e.decompose()
+nav_im=nav_preview.select_one('img');nav_im['src']='assets/media/greengroove-demo-nav.gif';nav_im['alt']='Green Groove animated product demo';nav_im.attrs.pop('data-gg-asset',None)
+nav_im['data-gg-nav-demo']='';nav_im['data-gg-fit']='contain'
 # Local demo preview and an accessible, native video dialog.
 reel=s.select_one('[data-reel-row]');reel.attrs.pop('data-gg-map',None);reel['data-gg-demo']='true';reel['aria-label']='Play Green Groove demo';reel.attrs.pop('data-player-control-open',None)
 preview=reel.select_one('.reel__visual');old=preview.select_one('img.cover-image')
