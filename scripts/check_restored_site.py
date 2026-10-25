@@ -13,7 +13,7 @@ assert 'linear-gradient' not in s.select_one('#green-groove-tailor').text, 'Unsu
 sections=lambda soup:[(x.name,x.get('class')) for x in soup.main.children if x.name and (x.name in ('section','footer') or x.get('class')==['under-nav-bar'])]
 assert sections(s)==sections(b),'Original section sequence changed'
 headings=lambda soup:[e.get_text(' ',strip=True) for e in soup.select('main section h1,main section h2,main section h3,main section h4') if not e.find_parent(attrs={'data-modal-target':True})]
-assert headings(s)==['Built to Flow' if h=='Without the Queue' else h for h in headings(b)],'Original page headings changed'
+assert headings(s)==[{'Without the Queue':'Built to Flow','Green Groove links identity, shelf events, reversible cart state and checkout into one physical-digital retail flow.':'Green Groove is a retail product linking identity, shelf events, reversible cart state and checkout into one physical-digital flow.'}.get(h,h) for h in headings(b)],'Original page headings changed'
 for p in ['visual-polish.css','assets/visuals/curated-integration.css']:
  assert (root/p).read_bytes()==subprocess.check_output(['git','show','41859c3:'+p],cwd=root),p+' changed'
 assert not re.search(r'(?:font(?:-size|-family)?|letter-spacing)\s*:',((root/'source-repair.css').read_text()+(root/'native-fidelity.css').read_text())),'Repair layer changes typography'
@@ -26,10 +26,10 @@ assert not s.select('img[src*=g02]'), 'Placeholder logo remains in a portrait sl
 assert len(s.select('.testimonial-item__info-img img[src*="assets/people/"]'))==6
 assert len(s.select('.join-faces__image-el'))==3
 assert len(s.select('.about-item__img img[src*="assets/people/"]'))==2
-assert 'amity-readable.svg' in str(s.select('.trustedby-marquee__item-svg'))
+assert 'amity.webp' in str(s.select('.trustedby-marquee__item-svg'))
 assert all(svg.get('viewbox')=='0 0 172 42' for svg in s.select('.trustedby-marquee__item-svg'))
 assert s.select_one('meta[name="description"]')['content'].find('retail product')>=0
-assert '₹2 lakh+ earned' in s.get_text(' ',strip=True)
+assert s.select_one('#evidence .pricing-card__sub > .p-m').get_text()=='Earned to date'
 assert s.select_one('a[href="https://www.linkedin.com/in/sushxnthd/"]')
 assert s.select_one('a[href="https://www.linkedin.com/in/0aryan-kumar0/"]')
 assert all(e.get('data-gg-fit')=='cover' for e in s.select('#build .showcase-media__image'))

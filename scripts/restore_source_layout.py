@@ -190,9 +190,10 @@ for item in native_art:
  for im in s.select(item['selector']):
   im['src']=item['path'];im.attrs.pop('data-gg-asset',None)
 # Institutional marks keep the original Osmo wide-logo geometry and their real colours.
-marks=[('amity-readable.svg','Amity International School, Gurugram Sector 46'),('ncert.png','NCERT — PRAYAAS programme'),('iit-delhi-colour.png','IIT Delhi — associated HEI')]
+marks=[('amity.webp','Amity International School, Gurugram Sector 46'),('ncert.png','NCERT — PRAYAAS programme'),('iit-delhi-colour.png','IIT Delhi — associated HEI')]
 for i,svg in enumerate(s.select('.trustedby-marquee__item-svg')):
  name,label=marks[i%len(marks)];svg.clear();svg['viewbox']='0 0 172 42';svg['role']='img';svg['aria-label']=label
+ if name=='amity.webp':svg.append(s.new_tag('rect',x='0',y='0',width='172',height='42',fill='#201d1d',rx='2'))
  svg.append(s.new_tag('image',href='assets/institutions/'+name,x='0',y='0',width='172',height='42',preserveAspectRatio='xMidYMid meet'))
 for el,label in zip(s.select('.info .eyebrow.is--relative'),['School · Programme','Associated HEI']):el.string=label
 # Real founder portraits replace avatar logos in About and project credits.
@@ -240,5 +241,54 @@ for card in s.select('#evidence .pricing-card'):
    if p.get_text(strip=True)=='SeNSE mentorship':p.string='₹2 lakh+ earned'
 # Restore the source cover fitting only in the Built into Green Groove previews.
 for im in s.select('#build .showcase-media__image'):im['data-gg-fit']='cover'
+# User-provided social destinations replace generic project links in founder slots.
+social={'sushanth':'https://www.linkedin.com/in/sushxnthd/','aryan':'https://www.linkedin.com/in/0aryan-kumar0/'}
+linkedin='<path d="M6.5 8.5h-3V20h3V8.5ZM5 3a1.75 1.75 0 1 0 0 3.5A1.75 1.75 0 0 0 5 3Zm6 5.5H8V20h3v-6c0-1.7.7-2.8 2.3-2.8 1.5 0 1.7 1.3 1.7 2.9V20h3v-6.5c0-3.2-1.3-4.8-3.8-4.8-1.5 0-2.6.7-3.2 1.7V8.5Z" fill="currentColor"/>'
+def destination(a,href,label):
+ a['href']=href;a['target']='_blank';a['rel']=['noopener','noreferrer'];a['aria-label']=label;a.attrs.pop('data-modal-trigger',None)
+for im in about.select('.about-item__img img'):
+ person='sushanth' if 'sushanth' in im['src'] else 'aryan'
+ item=im.find_parent(class_='about-item');controls=item.find_next_sibling(class_='about-item')
+ if controls:
+  links=controls.select('a')
+  for i,a in enumerate(links):
+   href,label=[(social[person],people[person]+' on LinkedIn'),(repo,'Project source'),(case,'Green Groove case study')][i%3]
+   destination(a,href,label)
+   for svg in a.select('svg'):svg.clear();svg.append(f([linkedin,paths['source'],paths['case']][i%3]));svg['viewBox']='0 0 24 24'
+for a in s.select('.flick-card__bottom a'):
+ person='sushanth' if 'SUSHANTH' in a.get_text() else 'aryan';destination(a,social[person],people[person]+' on LinkedIn')
+for i,a in enumerate(s.select('[data-modal-target=showcase] a.credit-link')):
+ person=['sushanth','aryan'][i%2];destination(a,social[person],people[person]+' on LinkedIn')
+for a in s.select('.footer-bottom__details-col.is--end a'):
+ person='sushanth' if 'SUSHANTH' in a.get_text().upper() else 'aryan';destination(a,social[person],people[person]+' on LinkedIn')
+# Product positioning and user-reported earnings; no sales or testimonial claims are inferred.
+s.title.string='Green Groove — Connected Retail Product'
+for meta in s.select('meta[property="og:title"],meta[name="twitter:title"]'):meta['content']=s.title.string
+for meta in s.select('meta[name=description],meta[property="og:description"],meta[name="twitter:description"]'):
+ meta['content']='Green Groove is a physical retail product connecting RFID bands, sensor-equipped shelves and a live cart app. It has earned over ₹2 lakh and was selected under NCERT PRAYAAS with IIT Delhi as the associated HEI.'
+for el in s.select('.latest-resources-slider .resource-card .eyebrow.is--relative'):
+ if el.get_text(strip=True)=='Prototype':el.string='Product'
+for heading in about.select('h2'):
+ if heading.get_text(strip=True)=='A project by...':heading.string='A product by...'
+about.select_one('p.p-m').string='Green Groove is a physical retail product combining RFID identity, shelf sensing, a live cart and reversible transaction logic. It has earned over ₹2 lakh.'
+earned=s.select_one('#evidence .pricing-card')
+earned.select_one('.pricing-card__price > .pricing-card__price-h').string='₹'
+for el in earned.select('.pricing-card__price-w .pricing-card__price-h'):el.string='2'
+earned.select_one('.pricing-card__price-h.u--opacity-60').string='lakh+'
+earned.select_one('.pricing-card__sub > .p-m').string='Earned to date'
+earned.select_one('.gg-card-lead').string='Green Groove has earned over ₹2 lakh. Selected for NCERT PRAYAAS with IIT Delhi as the associated HEI, alongside a ₹50,000 development grant and SeNSE mentorship.'
+earned.select_one('.gg-card-support').string='RFID bands, sensor-equipped shelves and a connected cart app form a physical retail product.'
+for el in s.select('#evidence p'):
+ if el.get_text(strip=True)=='Prototype stack':el.string='Product stack'
+ if el.get_text(strip=True)=='Physical + digital prototype':el.string='Physical + digital product'
+
+# Keep social metadata and product copy consistent with the visible page.
+ld=s.select_one('script[type="application/ld+json"]')
+if ld:
+ data=json.loads(ld.string or ld.get_text());data['description']=s.select_one('meta[name="description"]')['content'];ld.string=json.dumps(data,ensure_ascii=False,separators=(',',':'))
+reel_title=s.select_one('.reel__title .h-m')
+if reel_title:reel_title.string='Green Groove is a retail product linking identity, shelf events, reversible cart state and checkout into one physical-digital flow.'
+for el in earned.select('.pricing-card__sub-details .p-m'):
+ if el.get_text(strip=True)=='₹2 lakh+ earned':el.string='SeNSE mentorship'
 Path('index.html').write_text(str(s))
 print('Restored source DOM from',BASE)

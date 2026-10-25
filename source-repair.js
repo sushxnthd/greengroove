@@ -7,7 +7,7 @@
  ['Association','a03-association-layer.svg','A unique shopper association accepts the event. Ambiguous candidates remain on hold without changing a bill.'],
  ['Reversibility','a04-reversibility-layer.svg','An accepted return appends the inverse of an earlier pickup. Both events remain visible in the history.'],
  ['Live Cart','a05-live-cart-layer.svg','Accepted events determine quantities and subtotal. Held events remain separate.'],
- ['Settlement','a06-settlement-layer.svg','The accepted cart produces an invoice summary. Payment processing is separate from this prototype.']];
+ ['Settlement','a06-settlement-layer.svg','The accepted cart produces an invoice summary. Payment processing is separate from invoice generation.']];
  let detailReturn=null;
  function showDetail(index,title,src,description){
   const l=layers[index]||layers[0],modal=q('[data-modal-target=showcase]'),wrap=modal.closest('[data-modal-wrap]');

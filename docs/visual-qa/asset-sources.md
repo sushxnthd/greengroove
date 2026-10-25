@@ -20,3 +20,9 @@ The original Amity WebP is retained. Two SVG wrappers embed the original image b
 ## Gallery fitting and full-colour logo correction
 
 Build-gallery previews use the source cover fit; full diagrams remain available in their detail dialog. The three institution marks use emblem-sized viewboxes without colour filters. IIT Delhi's red emblem is the official https://home.iitd.ac.in/images/preloaders/logo.png export. AISG46 uses its original coloured emblem rather than the contrast-adjusted wordmark. The programme badge row has three separated square boxes, without the inherited overlapping avatar mask.
+
+## Founder social links, product milestone and source geometry
+
+Both founders' LinkedIn URLs were provided directly by the user. Founder controls, card credits, detail-dialog credits and footer names link to the corresponding profile. Green Groove is presented as a physical retail product with the user-reported ₹2 lakh+ earned milestone; no sales/revenue breakdown or customer testimonials were inferred. The documented ₹50,000 development grant remains separate context.
+
+The full original AISG46 WebP crest and wordmark is shown without filtering on a dark backing in the existing 172 × 42 logo slot. The compact PRAYAAS strip retains the original Osmo circular overlap and uses the three institutional emblems. No customer testimonials were added.
